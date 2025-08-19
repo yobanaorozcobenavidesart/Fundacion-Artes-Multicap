@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fundación Artes Multicap – Talleres Artísticos y Técnicos</title>
+  <meta name="description" content="Talleres de arte gratuitos y cursos técnicos en Cali, Colombia. Dibujo, pintura, programación, robótica y más." />
+  <!-- TailwindCSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root { 
+      --brand:#000000;  /* Fondo negro */
+      --brand-2:#06b6d4; 
+      --art:#e11d48;    /* Rojo artístico */
+      --tech:#2563eb;   /* Azul tecnología */
+      --values:#059669; /* Verde valores */
+      --ink:#ffffff;    /* Texto blanco */
+    }
+    html { scroll-behavior: smooth; }
+    body { 
+      font-family: 'Outfit', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji','Segoe UI Emoji'; 
+      color: var(--ink);
+      background-color: var(--brand);
+    }
+    .glass { background: rgba(0,0,0,.75); backdrop-filter: blur(8px); }
+    .ring-brand { box-shadow: 0 0 0 3px rgba(4,107,153,.25); }
+    .badge-art { background-color: var(--art); color: white; }
+    .badge-tech { background-color: var(--tech); color: white; }
+    .badge-values { background-color: var(--values); color: white; }
+    .accordion-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+    .accordion-button.active + .accordion-content {
+      max-height: 5000px;
+      transition: max-height 0.5s ease-in;
+    }
+    .rotate-180 {
+      transform: rotate(180deg);
+    }
+    .payment-method {
+      width: 120px; 
+      margin: 10px; 
+      border-radius: 15px; 
+      box-shadow: 0 0 12px #00ffff; 
+      transition: transform 0.3s;
+    }
+    .payment-method:hover {
+      transform: scale(1.05);
+    }
+    .course-level {
+      background-color: rgba(59, 130, 246, 0.2);
+      border-left: 4px solid #3b82f6;
+    }
+    .two-columns {
+      column-count: 2;
+      column-gap: 1.5rem;
+    }
+    @media (max-width: 768px) {
+      .two-columns {
+        column-count: 1;
+      }
+    }
+  </style>
+</head>
+<body class="bg-black text-white">
+  <!-- Top Bar -->
+  <header class="sticky top-0 z-50 glass border-b border-gray-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <a href="#home" class="flex items-center gap-3">
+        <img src="https://scontent.fclo17-1.fna.fbcdn.net/v/t39.30808-6/480702220_618041787505911_8280549859336367380_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=QuoYFpNU7L4Q7kNvwG7zstB&_nc_oc=Adly08wvHEMBRsGymvrML0u98KZit-SgyFBlVXRi9C_Jp3KpZmzzLisuLNMeQ7-SFto&_nc_zt=23&_nc_ht=scontent.fclo17-1.fna&_nc_gid=zhRZgMTkh1DL0Qcd0tlVwg&oh=00_AfWD1f4atCmllZWnh9tTLhp-w_N2Oj3GQmNmt2Er0lXzkA&oe=68A95D82" alt="Logo Fundación Artes Multicap" class="h-10 w-10 rounded-full object-cover">
+        <div class="leading-tight">
+          <p class="text-sm font-semibold">Fundación Artes Multicap</p>
+          <p class="text-xs text-gray-400">Cali, Colombia</p>
+        </div>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-6 text-sm">
+        <a href="#talleres-artisticos" class="hover:text-white text-gray-400">Talleres Artísticos</a>
+        <a href="#talleres-tecnicos" class="hover:text-white text-gray-400">Talleres Técnicos</a>
+        <a href="#nivelacion" class="hover:text-white text-gray-400">Nivelación</a>
+        <a href="#galeria" class="hover:text-white text-gray-400">Galería Virtual</a>
+        <a href="#inscripcion" class="hover:text-white text-gray-400">Inscripción</a>
+        <a href="#faq" class="hover:text-white text-gray-400">Preguntas</a>
+      </nav>
+
+      <div class="flex items-center gap-2">
+        <a href="#inscripcion" class="ml-2 hidden sm:inline-block bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-sm font-medium px-4 py-2 rounded-xl shadow hover:opacity-95">Inscribirse</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="relative overflow-hidden bg-gray-900">
+    <div class="absolute -top-24 -right-24 h-72 w-72 bg-cyan-200/10 rounded-full blur-3xl"></div>
+    <div class="absolute -bottom-24 -left-24 h-72 w-72 bg-blue-200/10 rounded-full blur-3xl"></div>
+
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
+          <span class="text-white">Talleres artísticos gratuitos</span>
+          <span class="block bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">y formación técnica en Cali</span>
+        </h1>
+        <p class="mt-4 text-gray-400 text-lg">Explora tu creatividad con nuestros talleres de dibujo, pintura y arteterapia, o aprende habilidades técnicas en programación y robótica.</p>
+        <div class="mt-6 flex gap-3">
+          <a href="#talleres-artisticos" class="px-5 py-3 rounded-xl bg-white text-black font-medium hover:bg-gray-200">Talleres gratuitos</a>
+          <a href="#talleres-tecnicos" class="px-5 py-3 rounded-xl border border-gray-700 hover:border-gray-600 font-medium">Talleres técnicos</a>
+          <a href="#nivelacion" class="px-5 py-3 rounded-xl border border-gray-700 hover:border-gray-600 font-medium">Nivelación</a>
+        </div>
+        <p class="mt-4 text-sm text-gray-500">Transformando vidas a través del arte, la literatura, las emociones y la tecnología en Cali, Colombia.</p>
+      </div>
+      <div class="relative">
+        <div class="rounded-3xl overflow-hidden shadow-2xl ring-1 ring-gray-800">
+          <img src="https://scontent.fclo17-1.fna.fbcdn.net/v/t39.30808-6/486952169_638677908775632_3015207578380651141_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=ZCizw7HIkqYQ7kNvwE1hozh&_nc_oc=AdnIjLZERhcjiSJUvM10rxJc2UVMvhpY34mopUtsV4e25kdnPM1EB_hS7ZpRYQAasrU&_nc_zt=23&_nc_ht=scontent.fclo17-1.fna&_nc_gid=H_ysP8GWRQB093Ssqsdn-Q&oh=00_AfWhf0CGetVXaFOuwEVbPfC29X7E7UTC7Lnha88bVUUjvQ&oe=68A99CFC" alt="Talleres de arte y tecnología" class="w-full h-[360px] object-cover"/>
+        </div>
+        <div class="absolute -bottom-6 -left-6 bg-gray-800 rounded-2xl shadow p-4 w-64 border border-gray-700">
+          <p class="text-sm font-semibold">Talleres virtuales</p>
+          <p class="text-xs text-gray-400">Artísticos gratuitos y técnicos con costo accesible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Talleres Artísticos Gratuitos -->
+  <section id="talleres-artisticos" class="py-12 border-t border-gray-800 bg-gray-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl font-bold">Talleres Artísticos Gratuitos</h2>
+        <p class="text-gray-400 mt-1">Sesiones virtuales de 2 horas para explorar diferentes técnicas artísticas</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Talleres de Dibujo - Acordeón -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden">
+          <button class="accordion-button w-full text-left p-6 font-semibold text-lg flex justify-between items-center hover:bg-gray-700 transition-colors">
+            Talleres de Dibujo
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <ul class="space-y-2 text-sm text-gray-300">
+                <li>• Introducción al Dibujo Artístico</li>
+                <li>• Líneas, Formas y Volúmenes</li>
+                <li>• Proporciones y Escala</li>
+                <li>• Sombras y Luces</li>
+                <li>• Perspectiva Básica</li>
+                <li>• Dibujo de Objetos Cotidianos</li>
+                <li>• Dibujo del Cuerpo Humano</li>
+                <li>• Retrato Básico</li>
+                <li>• Dibujo de Animales</li>
+                <li>• Introducción al Color</li>
+              </ul>
+              <button onclick="selectCourse('dibujo')" class="mt-4 text-sm font-medium px-3 py-1.5 rounded-xl border border-gray-700 hover:border-gray-600 self-start">Inscribirme</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Talleres de Pintura - Acordeón -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden">
+          <button class="accordion-button w-full text-left p-6 font-semibold text-lg flex justify-between items-center hover:bg-gray-700 transition-colors">
+            Talleres de Pintura
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <ul class="space-y-2 text-sm text-gray-300">
+                <li>• Introducción a la Pintura</li>
+                <li>• Teoría del Color</li>
+                <li>• Mezclas y Gammas de Colores</li>
+                <li>• Aplicación de Pintura</li>
+                <li>• Texturas y Efectos</li>
+                <li>• Composición Visual</li>
+                <li>• Pintura con Acrílicos</li>
+                <li>• Pintura con Acuarelas</li>
+                <li>• Naturaleza Muerta</li>
+                <li>• Paisaje Básico</li>
+              </ul>
+              <button onclick="selectCourse('pintura')" class="mt-4 text-sm font-medium px-3 py-1.5 rounded-xl border border-gray-700 hover:border-gray-600 self-start">Inscribirme</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Talleres de Teatro - Acordeón -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden">
+          <button class="accordion-button w-full text-left p-6 font-semibold text-lg flex justify-between items-center hover:bg-gray-700 transition-colors">
+            Talleres de Teatro
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <h4 class="font-medium text-gray-300">Taller 1: Expresión Corporal y Juegos Teatrales</h4>
+              <p class="text-xs text-gray-400 mb-3">Objetivo: perder la timidez, reconocer el cuerpo y expresarse libremente.</p>
+              
+              <h4 class="font-medium text-gray-300">Taller 2: La Voz y la Emoción en Escena</h4>
+              <p class="text-xs text-gray-400 mb-3">Objetivo: trabajar la proyección de la voz, entonación y cómo transmitir emociones.</p>
+              
+              <h4 class="font-medium text-gray-300">Taller 3: Improvisación y Pequeñas Escenas</h4>
+              <p class="text-xs text-gray-400">Objetivo: aprender a crear situaciones espontáneas y representar escenas cortas en grupo.</p>
+              
+              <button onclick="selectCourse('teatro')" class="mt-4 text-sm font-medium px-3 py-1.5 rounded-xl border border-gray-700 hover:border-gray-600 self-start">Inscribirme</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Talleres de Literatura - Acordeón -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden">
+          <button class="accordion-button w-full text-left p-6 font-semibold text-lg flex justify-between items-center hover:bg-gray-700 transition-colors">
+            Talleres de Literatura
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <h4 class="font-medium text-gray-300">Taller 1: Introducción a la Literatura – El Arte de Contar Historias</h4>
+              <p class="text-xs text-gray-400 mb-3">Objetivo: reconocer qué es la literatura, géneros básicos y la importancia de leer.</p>
+              
+              <h4 class="font-medium text-gray-300">Taller 2: Poesía y Creatividad – Jugando con las Palabras</h4>
+              <p class="text-xs text-gray-400 mb-3">Objetivo: explorar la poesía a través de rimas, metáforas y escritura de poemas cortos.</p>
+              
+              <h4 class="font-medium text-gray-300">Taller 3: Narrativa Breve – Escribiendo mi Primer Relato</h4>
+              <p class="text-xs text-gray-400">Objetivo: aprender a estructurar un cuento corto (inicio, nudo y desenlace).</p>
+              
+              <button onclick="selectCourse('literatura')" class="mt-4 text-sm font-medium px-3 py-1.5 rounded-xl border border-gray-700 hover:border-gray-600 self-start">Inscribirme</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Talleres de Danza - Acordeón -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden">
+          <button class="accordion-button w-full text-left p-6 font-semibold text-lg flex justify-between items-center hover:bg-gray-700 transition-colors">
+            Talleres de Danza
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <h4 class="font-medium text-gray-300">Taller 1: Introducción a la Danza Clásica – Postura y Movimiento Básico</h4>
+              <p class="text-xs text-gray-400 mb-3">Objetivo: aprender posiciones básicas de brazos y pies, coordinación y conciencia corporal.</p>
+              
+              <h4 class="font-medium text-gray-300">Taller 2: Expresión Corporal en la Danza Moderna</h4>
+              <p class="text-xs text-gray-400 mb-3">Objetivo: trabajar la fluidez del movimiento, la respiración y la conexión con la música.</p>
+              
+              <h4 class="font-medium text-gray-300">Taller 3: Fusión Creativa – Coreografía Simple</h4>
+              <p class="text-xs text-gray-400">Objetivo: combinar elementos de danza clásica y moderna en una pequeña secuencia grupal.</p>
+              
+              <button onclick="selectCourse('danza')" class="mt-4 text-sm font-medium px-3 py-1.5 rounded-xl border border-gray-700 hover:border-gray-600 self-start">Inscribirme</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Talleres de Inglés Gratis - Acordeón -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden">
+          <button class="accordion-button w-full text-left p-6 font-semibold text-lg flex justify-between items-center hover:bg-gray-700 transition-colors">
+            Inglés Básico Gratuito
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <ul class="space-y-2 text-sm text-gray-300">
+                <li>• Pronouns (Los pronombres)</li>
+                <li>• The Articles (Los artículos)</li>
+                <li>• Prepositions (Las preposiciones)</li>
+                <li>• Nouns (Los nombres)</li>
+                <li>• Adjectives (Los adjetivos)</li>
+                <li>• Verbs (Los verbos)</li>
+                <li>• Sentence Structure (La estructura de las frases)</li>
+              </ul>
+              <button onclick="selectCourse('ingles-gratis')" class="mt-4 text-sm font-medium px-3 py-1.5 rounded-xl border border-gray-700 hover:border-gray-600 self-start">Inscribirme</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Talleres de Microsoft Office - Acordeón -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden">
+          <button class="accordion-button w-full text-left p-6 font-semibold text-lg flex justify-between items-center hover:bg-gray-700 transition-colors">
+            Microsoft Office Gratuito
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <h4 class="font-medium text-gray-300">Taller 1: Word Básico</h4>
+              <p class="text-xs text-gray-400 mb-3">Objetivo: aprender a crear y formatear documentos básicos.</p>
+              
+              <h4 class="font-medium text-gray-300">Taller 2: Excel Básico</h4>
+              <p class="text-xs text-gray-400 mb-3">Objetivo: introducción a hojas de cálculo y fórmulas simples.</p>
+              
+              <h4 class="font-medium text-gray-300">Taller 3: PowerPoint Básico</h4>
+              <p class="text-xs text-gray-400">Objetivo: crear presentaciones efectivas.</p>
+              
+              <button onclick="selectCourse('office-gratis')" class="mt-4 text-sm font-medium px-3 py-1.5 rounded-xl border border-gray-700 hover:border-gray-600 self-start">Inscribirme</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Talleres Técnicos -->
+  <section id="talleres-tecnicos" class="py-12 bg-black border-t border-gray-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl font-bold">Talleres Técnicos</h2>
+        <p class="text-gray-400 mt-1">Paquetes de 10 horas (5 talleres de 2 horas) por $380,000 COP ($50,000 por hora)</p>
+      </div>
+
+      <div class="two-columns gap-6">
+        <!-- Programación Web -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden mb-6">
+          <button class="accordion-button w-full text-left p-6 flex justify-between items-center hover:bg-gray-700 transition-colors">
+            <div>
+              <h3 class="font-semibold">Programación Web</h3>
+              <span class="badge-tech text-xs px-2 py-1 rounded-lg mt-1 inline-block">$380,000 por nivel</span>
+            </div>
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <!-- Nivel Básico -->
+              <div class="course-level p-4 rounded-lg mb-4">
+                <h4 class="font-semibold text-lg mb-2">Básico (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Introducción a HTML – ⏰ 2 horas</li>
+                  <li>• Estructura básica de páginas web – ⏰ 2 horas</li>
+                  <li>• Uso de imágenes y enlaces – ⏰ 2 horas</li>
+                  <li>• Introducción a CSS – ⏰ 2 horas</li>
+                  <li>• Proyecto: primera página web – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('programacion-basico')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Básico</button>
+              </div>
+
+              <!-- Nivel Intermedio -->
+              <div class="course-level p-4 rounded-lg mb-4">
+                <h4 class="font-semibold text-lg mb-2">Intermedio (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• CSS avanzado (colores, fondos, tipografías) – ⏰ 2 horas</li>
+                  <li>• Diseño responsivo – ⏰ 2 horas</li>
+                  <li>• Introducción a JavaScript – ⏰ 2 horas</li>
+                  <li>• Interactividad en páginas web – ⏰ 2 horas</li>
+                  <li>• Proyecto: página con estilos dinámicos – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('programacion-intermedio')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Intermedio</button>
+              </div>
+
+              <!-- Nivel Avanzado -->
+              <div class="course-level p-4 rounded-lg">
+                <h4 class="font-semibold text-lg mb-2">Avanzado (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Formularios y validación con JS – ⏰ 2 horas</li>
+                  <li>• Animaciones en CSS y JS – ⏰ 2 horas</li>
+                  <li>• Buenas prácticas en desarrollo web – ⏰ 2 horas</li>
+                  <li>• Publicación de una página en GitHub Pages – ⏰ 2 horas</li>
+                  <li>• Proyecto final: sitio web completo – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('programacion-avanzado')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Avanzado</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Robótica -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden mb-6">
+          <button class="accordion-button w-full text-left p-6 flex justify-between items-center hover:bg-gray-700 transition-colors">
+            <div>
+              <h3 class="font-semibold">Robótica</h3>
+              <span class="badge-tech text-xs px-2 py-1 rounded-lg mt-1 inline-block">$380,000 por nivel</span>
+            </div>
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <!-- Nivel Básico -->
+              <div class="course-level p-4 rounded-lg mb-4">
+                <h4 class="font-semibold text-lg mb-2">Básico (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• ¿Qué es la robótica? – conceptos y partes – ⏰ 2 horas</li>
+                  <li>• Sensores y actuadores – ⏰ 2 horas</li>
+                  <li>• Programación básica con bloques – ⏰ 2 horas</li>
+                  <li>• Construcción de prototipos simples – ⏰ 2 horas</li>
+                  <li>• Proyecto: mini robot funcional – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('robotica-basico')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Básico</button>
+              </div>
+
+              <!-- Nivel Intermedio -->
+              <div class="course-level p-4 rounded-lg mb-4">
+                <h4 class="font-semibold text-lg mb-2">Intermedio (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Programación de movimientos – ⏰ 2 horas</li>
+                  <li>• Sensores de luz y distancia – ⏰ 2 horas</li>
+                  <li>• Control remoto y autónomo – ⏰ 2 horas</li>
+                  <li>• Integración de funciones – ⏰ 2 horas</li>
+                  <li>• Proyecto: robot seguidor de línea – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('robotica-intermedio')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Intermedio</button>
+              </div>
+
+              <!-- Nivel Avanzado -->
+              <div class="course-level p-4 rounded-lg">
+                <h4 class="font-semibold text-lg mb-2">Avanzado (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Programación avanzada de robots – ⏰ 2 horas</li>
+                  <li>• Uso de múltiples sensores – ⏰ 2 horas</li>
+                  <li>• Reto: robot que evita obstáculos – ⏰ 2 horas</li>
+                  <li>• Competencias y trabajo en equipo – ⏰ 2 horas</li>
+                  <li>• Proyecto final: robot inteligente – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('robotica-avanzado')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Avanzado</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inglés -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden mb-6">
+          <button class="accordion-button w-full text-left p-6 flex justify-between items-center hover:bg-gray-700 transition-colors">
+            <div>
+              <h3 class="font-semibold">Inglés</h3>
+              <span class="badge-tech text-xs px-2 py-1 rounded-lg mt-1 inline-block">$380,000 por nivel</span>
+            </div>
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <!-- Nivel Básico -->
+              <div class="course-level p-4 rounded-lg mb-4">
+                <h4 class="font-semibold text-lg mb-2">Básico (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Saludos y presentaciones – ⏰ 2 horas</li>
+                  <li>• Verb "to be" – ⏰ 2 horas</li>
+                  <li>• Vocabulario básico – ⏰ 2 horas</li>
+                  <li>• Conversaciones simples – ⏰ 2 horas</li>
+                  <li>• Proyecto: role play de presentación – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('ingles-basico')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Básico</button>
+              </div>
+
+              <!-- Nivel Intermedio -->
+              <div class="course-level p-4 rounded-lg mb-4">
+                <h4 class="font-semibold text-lg mb-2">Intermedio (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Presente simple – ⏰ 2 horas</li>
+                  <li>• Presente progresivo – ⏰ 2 horas</li>
+                  <li>• Conversaciones cotidianas – ⏰ 2 horas</li>
+                  <li>• Comprensión de textos cortos – ⏰ 2 horas</li>
+                  <li>• Proyecto: diálogo en contexto real – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('ingles-intermedio')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Intermedio</button>
+              </div>
+
+              <!-- Nivel Avanzado -->
+              <div class="course-level p-4 rounded-lg">
+                <h4 class="font-semibold text-lg mb-2">Avanzado (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Pasado simple – ⏰ 2 horas</li>
+                  <li>• Futuro con "will" y "going to" – ⏰ 2 horas</li>
+                  <li>• Comprensión auditiva – ⏰ 2 horas</li>
+                  <li>• Expresiones idiomáticas – ⏰ 2 horas</li>
+                  <li>• Proyecto final: conversación fluida – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('ingles-avanzado')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Avanzado</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Diseño Gráfico (Photopea) -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden mb-6">
+          <button class="accordion-button w-full text-left p-6 flex justify-between items-center hover:bg-gray-700 transition-colors">
+            <div>
+              <h3 class="font-semibold">Diseño Gráfico (Photopea)</h3>
+              <span class="badge-tech text-xs px-2 py-1 rounded-lg mt-1 inline-block">$380,000 por nivel</span>
+            </div>
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <!-- Nivel Básico -->
+              <div class="course-level p-4 rounded-lg mb-4">
+                <h4 class="font-semibold text-lg mb-2">Básico (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Introducción al diseño gráfico – ⏰ 2 horas</li>
+                  <li>• Teoría del color – ⏰ 2 horas</li>
+                  <li>• Tipografía y composición – ⏰ 2 horas</li>
+                  <li>• Herramientas básicas en Photopea – ⏰ 2 horas</li>
+                  <li>• Proyecto: póster sencillo – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('diseno-basico')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Básico</button>
+              </div>
+
+              <!-- Nivel Intermedio -->
+              <div class="course-level p-4 rounded-lg mb-4">
+                <h4 class="font-semibold text-lg mb-2">Intermedio (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Retoque fotográfico – ⏰ 2 horas</li>
+                  <li>• Fotomontaje – ⏰ 2 horas</li>
+                  <li>• Creación de flyers – ⏰ 2 horas</li>
+                  <li>• Diseño digital avanzado – ⏰ 2 horas</li>
+                  <li>• Proyecto: afiche profesional – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('diseno-intermedio')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Intermedio</button>
+              </div>
+
+              <!-- Nivel Avanzado -->
+              <div class="course-level p-4 rounded-lg">
+                <h4 class="font-semibold text-lg mb-2">Avanzado (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Portadas para redes sociales – ⏰ 2 horas</li>
+                  <li>• Identidad visual y branding – ⏰ 2 horas</li>
+                  <li>• Creación de logotipos – ⏰ 2 horas</li>
+                  <li>• Publicidad digital – ⏰ 2 horas</li>
+                  <li>• Proyecto final: portafolio – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('diseno-avanzado')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Avanzado</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Canva -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden mb-6">
+          <button class="accordion-button w-full text-left p-6 flex justify-between items-center hover:bg-gray-700 transition-colors">
+            <div>
+              <h3 class="font-semibold">Canva</h3>
+              <span class="badge-tech text-xs px-2 py-1 rounded-lg mt-1 inline-block">$380,000 por nivel</span>
+            </div>
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <!-- Nivel Básico -->
+              <div class="course-level p-4 rounded-lg mb-4">
+                <h4 class="font-semibold text-lg mb-2">Básico (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Introducción a Canva – ⏰ 2 horas</li>
+                  <li>• Publicaciones para redes – ⏰ 2 horas</li>
+                  <li>• Uso de plantillas – ⏰ 2 horas</li>
+                  <li>• Edición de imágenes – ⏰ 2 horas</li>
+                  <li>• Proyecto: post en redes – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('canva-basico')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Básico</button>
+              </div>
+
+              <!-- Nivel Intermedio -->
+              <div class="course-level p-4 rounded-lg mb-4">
+                <h4 class="font-semibold text-lg mb-2">Intermedio (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Creación de presentaciones – ⏰ 2 horas</li>
+                  <li>• Flyers y posters – ⏰ 2 horas</li>
+                  <li>• Infografías – ⏰ 2 horas</li>
+                  <li>• Videos sencillos – ⏰ 2 horas</li>
+                  <li>• Proyecto: presentación creativa – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('canva-intermedio')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Intermedio</button>
+              </div>
+
+              <!-- Nivel Avanzado -->
+              <div class="course-level p-4 rounded-lg">
+                <h4 class="font-semibold text-lg mb-2">Avanzado (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Diseño para branding – ⏰ 2 horas</li>
+                  <li>• Marketing digital con Canva – ⏰ 2 horas</li>
+                  <li>• Diseños interactivos – ⏰ 2 horas</li>
+                  <li>• Portafolio creativo – ⏰ 2 horas</li>
+                  <li>• Proyecto final: campaña en Canva – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('canva-avanzado')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Avanzado</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Inteligencia Artificial -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden mb-6">
+          <button class="accordion-button w-full text-left p-6 flex justify-between items-center hover:bg-gray-700 transition-colors">
+            <div>
+              <h3 class="font-semibold">Inteligencia Artificial</h3>
+              <span class="badge-tech text-xs px-2 py-1 rounded-lg mt-1 inline-block">$380,000 por nivel</span>
+            </div>
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <!-- Nivel Básico -->
+              <div class="course-level p-4 rounded-lg mb-4">
+                <h4 class="font-semibold text-lg mb-2">Básico (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• ¿Qué es la IA? – ⏰ 2 horas</li>
+                  <li>• IA en la vida diaria – ⏰ 2 horas</li>
+                  <li>• ChatGPT: uso básico – ⏰ 2 horas</li>
+                  <li>• DALL·E: creación de imágenes – ⏰ 2 horas</li>
+                  <li>• Proyecto: texto + imagen con IA – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('ia-basico')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Básico</button>
+              </div>
+
+              <!-- Nivel Intermedio -->
+              <div class="course-level p-4 rounded-lg mb-4">
+                <h4 class="font-semibold text-lg mb-2">Intermedio (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• ChatGPT aplicado a educación – ⏰ 2 horas</li>
+                  <li>• IA para productividad – ⏰ 2 horas</li>
+                  <li>• Teachable Machine – ⏰ 2 horas</li>
+                  <li>• Creación de contenido con IA – ⏰ 2 horas</li>
+                  <li>• Proyecto: asistente virtual simple – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('ia-intermedio')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Intermedio</button>
+              </div>
+
+              <!-- Nivel Avanzado -->
+              <div class="course-level p-4 rounded-lg">
+                <h4 class="font-semibold text-lg mb-2">Avanzado (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Ética y futuro de la IA – ⏰ 2 horas</li>
+                  <li>• IA en el arte y literatura – ⏰ 2 horas</li>
+                  <li>• Herramientas de IA avanzadas – ⏰ 2 horas</li>
+                  <li>• IA aplicada a negocios – ⏰ 2 horas</li>
+                  <li>• Proyecto final: aplicación con IA – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('ia-avanzado')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Avanzado</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Creación de Libros -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden mb-6">
+          <button class="accordion-button w-full text-left p-6 flex justify-between items-center hover:bg-gray-700 transition-colors">
+            <div>
+              <h3 class="font-semibold">Creación de Libros</h3>
+              <span class="badge-tech text-xs px-2 py-1 rounded-lg mt-1 inline-block">$380,000 por nivel</span>
+            </div>
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <!-- Nivel Básico -->
+              <div class="course-level p-4 rounded-lg mb-4">
+                <h4 class="font-semibold text-lg mb-2">Básico (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Introducción a la escritura – ⏰ 2 horas</li>
+                  <li>• Estructura narrativa – ⏰ 2 horas</li>
+                  <li>• Personajes y escenarios – ⏰ 2 horas</li>
+                  <li>• Estilo y corrección básica – ⏰ 2 horas</li>
+                  <li>• Proyecto: primer capítulo – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('libros-basico')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Básico</button>
+              </div>
+
+              <!-- Nivel Intermedio -->
+              <div class="course-level p-4 rounded-lg mb-4">
+                <h4 class="font-semibold text-lg mb-2">Intermedio (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Técnicas de escritura avanzada – ⏰ 2 horas</li>
+                  <li>• Construcción de tramas – ⏰ 2 horas</li>
+                  <li>• Revisión y edición – ⏰ 2 horas</li>
+                  <li>• Maquetación básica – ⏰ 2 horas</li>
+                  <li>• Proyecto: libro corto – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('libros-intermedio')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Intermedio</button>
+              </div>
+
+              <!-- Nivel Avanzado -->
+              <div class="course-level p-4 rounded-lg">
+                <h4 class="font-semibold text-lg mb-2">Avanzado (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Publicar en plataformas nacionales – ⏰ 2 horas</li>
+                  <li>• Publicar en plataformas internacionales – ⏰ 2 horas</li>
+                  <li>• Marketing para escritores – ⏰ 2 horas</li>
+                  <li>• Ventas en línea – ⏰ 2 horas</li>
+                  <li>• Proyecto final: libro listo para publicar – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('libros-avanzado')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Avanzado</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Gestión de Emociones -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden mb-6">
+          <button class="accordion-button w-full text-left p-6 flex justify-between items-center hover:bg-gray-700 transition-colors">
+            <div>
+              <h3 class="font-semibold">Gestión de Emociones</h3>
+              <span class="badge-tech text-xs px-2 py-1 rounded-lg mt-1 inline-block">$380,000 por nivel</span>
+            </div>
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <!-- Nivel Básico -->
+              <div class="course-level p-4 rounded-lg mb-4">
+                <h4 class="font-semibold text-lg mb-2">Básico (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Reconociendo emociones con colores – ⏰ 2 horas</li>
+                  <li>• Escritura libre emocional – ⏰ 2 horas</li>
+                  <li>• Música y emociones – ⏰ 2 horas</li>
+                  <li>• Apps de relajación – ⏰ 2 horas</li>
+                  <li>• Proyecto: diario emocional ilustrado – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('emociones-basico')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Básico</button>
+              </div>
+
+              <!-- Nivel Intermedio -->
+              <div class="course-level p-4 rounded-lg mb-4">
+                <h4 class="font-semibold text-lg mb-2">Intermedio (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Lectura y catarsis literaria – ⏰ 2 horas</li>
+                  <li>• Pintura y creatividad – ⏰ 2 horas</li>
+                  <li>• Narrativas digitales – ⏰ 2 horas</li>
+                  <li>• Teatro y expresión corporal – ⏰ 2 horas</li>
+                  <li>• Proyecto: obra personal – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('emociones-intermedio')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Intermedio</button>
+              </div>
+
+              <!-- Nivel Avanzado -->
+              <div class="course-level p-4 rounded-lg">
+                <h4 class="font-semibold text-lg mb-2">Avanzado (10 horas - $380,000 COP)</h4>
+                <ul class="space-y-2 text-sm text-gray-300">
+                  <li>• Arte como resiliencia – ⏰ 2 horas</li>
+                  <li>• Escritura terapéutica avanzada – ⏰ 2 horas</li>
+                  <li>• Tecnología y bienestar – ⏰ 2 horas</li>
+                  <li>• Creación colectiva de arte – ⏰ 2 horas</li>
+                  <li>• Proyecto final: obra integradora – ⏰ 2 horas</li>
+                </ul>
+                <button onclick="selectCourse('emociones-avanzado')" class="mt-3 text-sm font-medium px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-700">Inscribirse en Avanzado</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Talleres de Nivelación -->
+  <section id="nivelacion" class="py-12 bg-gray-900 border-t border-gray-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-10">
+        <h2 class="text-2xl font-bold">Talleres de Nivelación Académica</h2>
+        <p class="text-gray-400 mt-1">Sesiones virtuales para reforzar conocimientos escolares ($50,000 por hora)</p>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <!-- Ciclo 1 -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden">
+          <button class="accordion-button w-full text-left p-6 flex justify-between items-center hover:bg-gray-700 transition-colors">
+            <div>
+              <h3 class="font-semibold">Ciclo 1 (1°-3°)</h3>
+              <span class="badge-values text-xs px-2 py-1 rounded-lg mt-1 inline-block">$50,000/taller (2 horas)</span>
+            </div>
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <ul class="mt-2 space-y-2 text-sm text-gray-300">
+                <li>• Lengua Castellana</li>
+                <li>• Matemáticas</li>
+                <li>• Ciencias Naturales</li>
+                <li>• Ciencias Sociales</li>
+                <li>• Inglés</li>
+                <li>• Educación Artística</li>
+                <li>• Educación Ética</li>
+                <li>• Educación Física</li>
+                <li>• Tecnología</li>
+              </ul>
+              <p class="mt-3 text-xs text-gray-500">Horarios: Lunes a Viernes 9-11am, 4-6pm o 7-9pm (hora Colombia)</p>
+              <button onclick="selectCourse('nivelacion-ciclo1')" class="mt-4 text-sm font-medium px-3 py-1.5 rounded-xl border border-gray-700 hover:border-gray-600">Inscribirme</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ciclo 2 -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden">
+          <button class="accordion-button w-full text-left p-6 flex justify-between items-center hover:bg-gray-700 transition-colors">
+            <div>
+              <h3 class="font-semibold">Ciclo 2 (4°-5°)</h3>
+              <span class="badge-values text-xs px-2 py-1 rounded-lg mt-1 inline-block">$50,000/taller (2 horas)</span>
+            </div>
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <ul class="mt-2 space-y-2 text-sm text-gray-300">
+                <li>• Lengua Castellana</li>
+                <li>• Matemáticas</li>
+                <li>• Ciencias Naturales</li>
+                <li>• Ciencias Sociales</li>
+                <li>• Inglés</li>
+                <li>• Educación Artística</li>
+                <li>• Educación Ética</li>
+                <li>• Educación Física</li>
+                <li>• Tecnología</li>
+              </ul>
+              <p class="mt-3 text-xs text-gray-500">Horarios: Lunes a Viernes 9-11am, 4-6pm o 7-9pm (hora Colombia)</p>
+              <button onclick="selectCourse('nivelacion-ciclo2')" class="mt-4 text-sm font-medium px-3 py-1.5 rounded-xl border border-gray-700 hover:border-gray-600">Inscribirme</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ciclo 3 -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden">
+          <button class="accordion-button w-full text-left p-6 flex justify-between items-center hover:bg-gray-700 transition-colors">
+            <div>
+              <h3 class="font-semibold">Ciclo 3 (6°-7°)</h3>
+              <span class="badge-values text-xs px-2 py-1 rounded-lg mt-1 inline-block">$50,000/taller (2 horas)</span>
+            </div>
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <ul class="mt-2 space-y-2 text-sm text-gray-300">
+                <li>• Lengua Castellana</li>
+                <li>• Matemáticas</li>
+                <li>• Ciencias Naturales</li>
+                <li>• Ciencias Sociales</li>
+                <li>• Inglés</li>
+                <li>• Educación Artística</li>
+                <li>• Educación Ética</li>
+                <li>• Educación Física</li>
+                <li>• Tecnología</li>
+              </ul>
+              <p class="mt-3 text-xs text-gray-500">Horarios: Lunes a Viernes 9-11am, 4-6pm o 7-9pm (hora Colombia)</p>
+              <button onclick="selectCourse('nivelacion-ciclo3')" class="mt-4 text-sm font-medium px-3 py-1.5 rounded-xl border border-gray-700 hover:border-gray-600">Inscribirme</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ciclo 4 -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden">
+          <button class="accordion-button w-full text-left p-6 flex justify-between items-center hover:bg-gray-700 transition-colors">
+            <div>
+              <h3 class="font-semibold">Ciclo 4 (8°-9°)</h3>
+              <span class="badge-values text-xs px-2 py-1 rounded-lg mt-1 inline-block">$50,000/taller (2 horas)</span>
+            </div>
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <ul class="mt-2 space-y-2 text-sm text-gray-300">
+                <li>• Lengua Castellana</li>
+                <li>• Matemáticas</li>
+                <li>• Ciencias Naturales</li>
+                <li>• Ciencias Sociales</li>
+                <li>• Inglés</li>
+                <li>• Educación Artística</li>
+                <li>• Educación Ética</li>
+                <li>• Educación Física</li>
+                <li>• Tecnología</li>
+              </ul>
+              <p class="mt-3 text-xs text-gray-500">Horarios: Lunes a Viernes 9-11am, 4-6pm o 7-9pm (hora Colombia)</p>
+              <button onclick="selectCourse('nivelacion-ciclo4')" class="mt-4 text-sm font-medium px-3 py-1.5 rounded-xl border border-gray-700 hover:border-gray-600">Inscribirme</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Ciclo 5 -->
+        <div class="border border-gray-800 rounded-2xl bg-gray-800 overflow-hidden">
+          <button class="accordion-button w-full text-left p-6 flex justify-between items-center hover:bg-gray-700 transition-colors">
+            <div>
+              <h3 class="font-semibold">Ciclo 5 (10°-11°)</h3>
+              <span class="badge-values text-xs px-2 py-1 rounded-lg mt-1 inline-block">$50,000/taller (2 horas)</span>
+            </div>
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </button>
+          <div class="accordion-content">
+            <div class="px-6 pb-6">
+              <ul class="mt-2 space-y-2 text-sm text-gray-300">
+                <li>• Lengua Castellana</li>
+                <li>• Matemáticas</li>
+                <li>• Ciencias Naturales</li>
+                <li>• Ciencias Sociales</li>
+                <li>• Inglés</li>
+                <li>• Educación Artística</li>
+                <li>• Educación Ética</li>
+                <li>• Educación Física</li>
+                <li>• Tecnología</li>
+              </ul>
+              <p class="mt-3 text-xs text-gray-500">Horarios: Lunes a Viernes 9-11am, 4-6pm o 7-9pm (hora Colombia)</p>
+              <button onclick="selectCourse('nivelacion-ciclo5')" class="mt-4 text-sm font-medium px-3 py-1.5 rounded-xl border border-gray-700 hover:border-gray-600">Inscribirme</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Galería Virtual -->
+  <section id="galeria" class="py-12 bg-gray-900 border-t border-gray-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold">Galería Virtual</h2>
+      <p class="text-gray-400 mt-1">Muy pronto estaremos compartiendo los trabajos de nuestros estudiantes</p>
+
+      <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- Botones para futuras galerías -->
+        <button class="rounded-xl overflow-hidden shadow-md border border-gray-800 bg-gray-800 p-4 hover:bg-gray-700 transition-colors">
+          <div class="h-32 bg-gray-700 rounded-lg flex items-center justify-center">
+            <span class="text-gray-400">Galería de Dibujo</span>
+          </div>
+          <div class="mt-3">
+            <p class="text-sm font-medium text-center">Próximamente</p>
+          </div>
+        </button>
+        
+        <button class="rounded-xl overflow-hidden shadow-md border border-gray-800 bg-gray-800 p-4 hover:bg-gray-700 transition-colors">
+          <div class="h-32 bg-gray-700 rounded-lg flex items-center justify-center">
+            <span class="text-gray-400">Galería de Pintura</span>
+          </div>
+          <div class="mt-3">
+            <p class="text-sm font-medium text-center">Próximamente</p>
+          </div>
+        </button>
+        
+        <button class="rounded-xl overflow-hidden shadow-md border border-gray-800 bg-gray-800 p-4 hover:bg-gray-700 transition-colors">
+          <div class="h-32 bg-gray-700 rounded-lg flex items-center justify-center">
+            <span class="text-gray-400">Galería de Literatura</span>
+          </div>
+          <div class="mt-3">
+            <p class="text-sm font-medium text-center">Próximamente</p>
+          </div>
+        </button>
+        
+        <button class="rounded-xl overflow-hidden shadow-md border border-gray-800 bg-gray-800 p-4 hover:bg-gray-700 transition-colors">
+          <div class="h-32 bg-gray-700 rounded-lg flex items-center justify-center">
+            <span class="text-gray-400">Galería de Proyectos</span>
+          </div>
+          <div class="mt-3">
+            <p class="text-sm font-medium text-center">Próximamente</p>
+          </div>
+        </button>
+      </div>
+
+      <div class="mt-6 text-center">
+        <a href="https://juegoemocionesenelaulayobanaorozcob.netlify.app/" target="_blank" class="inline-block px-4 py-2 rounded-xl border border-gray-700 hover:border-gray-600 text-sm font-medium">
+          Ver nuestro proyecto cultural educativo
+        </a>
+        <a href="https://explorandomuseosyartelatinoamericano.netlify.app/" target="_blank" class="inline-block px-4 py-2 rounded-xl border border-gray-700 hover:border-gray-600 text-sm font-medium ml-4">
+          Ver nuestro proyecto de museos y arte
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section id="equipo" class="py-12 bg-black border-t border-gray-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold">Nuestro Equipo</h2>
+      <p class="text-gray-400 mt-1">Profesionales especializados en educación artística y técnica</p>
+
+     <div class="mt-8 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <div class="p-6 border border-gray-800 rounded-2xl bg-gray-800">
+    <img src="https://scontent.fclo17-1.fna.fbcdn.net/v/t39.30808-6/391720950_10159357933921456_2054886513705272429_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=6ee11a&_nc_eui2=AeHOO9zyLHygwO37akYOYN1R6rdLEXfw6ajqt0sRd_DpqGM0vZEPqhvRJ9HFJYb6p7I&_nc_ohc=orstApFSXD4Q7kNvwHivDzB&_nc_oc=AdmtdGk1TCbN_LCkyO1Fyuwj5DJ8slMGkx9VKdFvpFNEy01ZbxU00SWrzlKZuQVUzQA&_nc_zt=23&_nc_ht=scontent.fclo17-1.fna&_nc_gid=tCpQgNbof8LVHylmm2hq4A&oh=00_AfWA2yGNyc_JGF1_uI_0z7nGgjEJy0YRwN55auc-7dGnlQ&oe=68A99EA5"
+         class="w-full max-h-40 object-contain rounded-xl mx-auto" 
+         alt="Docente 1"/>
+    <h3 class="mt-4 font-semibold text-center">Yobana Orozco Benavides</h3>
+    <p class="text-sm text-gray-400 text-center">Artista Integral y Fundadora</p>
+    <p class="mt-2 text-xs text-gray-500 text-center">Especialista en artes plásticas, literatura y educación emocional.</p>
+    <p class="mt-2 text-xs text-blue-400 text-center">
+      <a href="https://yobanaorozcoartista.bio.link/" target="_blank" class="hover:underline">
+        Conoce más sobre mí
+      </a>
+    </p>
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  <!-- Enrollment Form -->
+  <section id="inscripcion" class="py-12 bg-gray-900 border-t border-gray-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-8">
+        <div>
+          <h2 class="text-2xl font-bold">Formulario de inscripción</h2>
+          <p class="text-gray-400 mt-1">Completa tus datos y elige tu taller</p>
+
+          <form id="enrollForm" class="mt-6 space-y-4 p-6 bg-gray-800 rounded-2xl border border-gray-700">
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium" for="name">Nombre completo</label>
+                <input id="name" name="name" required class="mt-1 w-full px-4 py-2 rounded-xl border border-gray-700 bg-gray-900 focus:outline-none focus:ring-2 focus:ring-cyan-500" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium" for="email">Correo electrónico</label>
+                <input id="email" name="email" type="email" required class="mt-1 w-full px-4 py-2 rounded-xl border border-gray-700 bg-gray-900 focus:outline-none focus:ring-2 focus:ring-cyan-500" />
+              </div>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-4">
+              <div>
+                <label class="block text-sm font-medium" for="whatsapp">WhatsApp</label>
+                <input id="whatsapp" name="whatsapp" class="mt-1 w-full px-4 py-2 rounded-xl border border-gray-700 bg-gray-900 focus:outline-none focus:ring-2 focus:ring-cyan-500" />
+              </div>
+              <div>
+                <label class="block text-sm font-medium" for="age">Edad (opcional)</label>
+                <input id="age" name="age" type="number" min="5" class="mt-1 w-full px-4 py-2 rounded-xl border border-gray-700 bg-gray-900 focus:outline-none focus:ring-2 focus:ring-cyan-500" />
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium" for="program">Selecciona taller</label>
+              <select id="program" name="program" required class="mt-1 w-full px-4 py-2 rounded-xl border border-gray-700 bg-gray-900 focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                <option value="">-- Selecciona un taller --</option>
+                <optgroup label="Talleres Artísticos Gratuitos">
+                  <option value="dibujo">Talleres de Dibujo</option>
+                  <option value="pintura">Talleres de Pintura</option>
+                  <option value="teatro">Talleres de Teatro</option>
+                  <option value="literatura">Talleres de Literatura</option>
+                  <option value="danza">Talleres de Danza</option>
+                  <option value="ingles-gratis">Inglés Básico Gratuito</option>
+                  <option value="office-gratis">Microsoft Office Gratuito</option>
+                </optgroup>
+                <optgroup label="Programación Web ($380,000 por nivel - $50,000 por hora)">
+                  <option value="programacion-basico">Programación Web - Básico</option>
+                  <option value="programacion-intermedio">Programación Web - Intermedio</option>
+                  <option value="programacion-avanzado">Programación Web - Avanzado</option>
+                </optgroup>
+                <optgroup label="Robótica ($380,000 por nivel - $50,000 por hora)">
+                  <option value="robotica-basico">Robótica - Básico</option>
+                  <option value="robotica-intermedio">Robótica - Intermedio</option>
+                  <option value="robotica-avanzado">Robótica - Avanzado</option>
+                </optgroup>
+                <optgroup label="Inglés ($380,000 por nivel - $50,000 por hora)">
+                  <option value="ingles-basico">Inglés - Básico</option>
+                  <option value="ingles-intermedio">Inglés - Intermedio</option>
+                  <option value="ingles-avanzado">Inglés - Avanzado</option>
+                </optgroup>
+                <optgroup label="Diseño Gráfico ($380,000 por nivel - $50,000 por hora)">
+                  <option value="diseno-basico">Diseño Gráfico - Básico</option>
+                  <option value="diseno-intermedio">Diseño Gráfico - Intermedio</option>
+                  <option value="diseno-avanzado">Diseño Gráfico - Avanzado</option>
+                </optgroup>
+                <optgroup label="Canva ($380,000 por nivel - $50,000 por hora)">
+                  <option value="canva-basico">Canva - Básico</option>
+                  <option value="canva-intermedio">Canva - Intermedio</option>
+                  <option value="canva-avanzado">Canva - Avanzado</option>
+                </optgroup>
+                <optgroup label="Inteligencia Artificial ($380,000 por nivel - $50,000 por hora)">
+                  <option value="ia-basico">IA - Básico</option>
+                  <option value="ia-intermedio">IA - Intermedio</option>
+                  <option value="ia-avanzado">IA - Avanzado</option>
+                </optgroup>
+                <optgroup label="Creación de Libros ($380,000 por nivel - $50,000 por hora)">
+                  <option value="libros-basico">Creación de Libros - Básico</option>
+                  <option value="libros-intermedio">Creación de Libros - Intermedio</option>
+                  <option value="libros-avanzado">Creación de Libros - Avanzado</option>
+                </optgroup>
+                <optgroup label="Gestión de Emociones ($380,000 por nivel - $50,000 por hora)">
+                  <option value="emociones-basico">Gestión de Emociones - Básico</option>
+                  <option value="emociones-intermedio">Gestión de Emociones - Intermedio</option>
+                  <option value="emociones-avanzado">Gestión de Emociones - Avanzado</option>
+                </optgroup>
+                <optgroup label="Nivelación Académica ($50,000 por hora)">
+                  <option value="nivelacion-ciclo1">Ciclo 1 (1°-3°)</option>
+                  <option value="nivelacion-ciclo2">Ciclo 2 (4°-5°)</option>
+                  <option value="nivelacion-ciclo3">Ciclo 3 (6°-7°)</option>
+                  <option value="nivelacion-ciclo4">Ciclo 4 (8°-9°)</option>
+                  <option value="nivelacion-ciclo5">Ciclo 5 (10°-11°)</option>
+                </optgroup>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium" for="schedule">Horario preferido</label>
+              <select id="schedule" name="schedule" class="mt-1 w-full px-4 py-2 rounded-xl border border-gray-700 bg-gray-900 focus:outline-none focus:ring-2 focus:ring-cyan-500">
+                <option value="">-- Selecciona --</option>
+                <option value="lunes-viernes-manana">Lunes a Viernes 9-11am</option>
+                <option value="lunes-viernes-tarde">Lunes a Viernes 4-6pm</option>
+                <option value="lunes-viernes-noche">Lunes a Viernes 7-9pm</option>
+              </select>
+            </div>
+            <div>
+              <label class="block text-sm font-medium" for="message">Mensaje adicional</label>
+              <textarea id="message" name="message" rows="3" class="mt-1 w-full px-4 py-2 rounded-xl border border-gray-700 bg-gray-900 focus:outline-none focus:ring-2 focus:ring-cyan-500"></textarea>
+            </div>
+            <div class="flex items-center gap-3">
+              <button type="submit" class="px-5 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold">
+                Enviar inscripción
+              </button>
+              <p id="formStatus" class="text-sm text-gray-400"></p>
+            </div>
+          </form>
+        </div>
+
+        <aside class="p-6 bg-gray-800 rounded-2xl border border-gray-700 h-fit">
+          <h3 class="text-xl font-semibold">Información importante</h3>
+          <ul class="mt-4 space-y-2 text-gray-300 text-sm">
+            <li>• <strong>Talleres artísticos:</strong> Completamente gratuitos, materiales básicos no incluidos.</li>
+            <li>• <strong>Talleres técnicos:</strong> $380,000 por nivel (10 horas, 5 talleres de 2 horas) - $50,000 por hora.</li>
+            <li>• <strong>Nivelación académica:</strong> $50,000 por hora (talleres de 2 horas por $100,000).</li>
+            <li>• Horarios: Lunes a Viernes 9-11am, 4-6pm o 7-9pm (hora Colombia).</li>
+            <li>• Certificado de participación al completar el 80% de las sesiones.</li>
+            <li>• Todos los talleres son virtuales a nivel nacional e internacional.</li>
+            <li>• Los materiales corren por cuenta del aprendiz.</li>
+          </ul>
+          <div class="mt-6 p-4 rounded-xl bg-gray-900 border border-gray-700">
+            <p class="text-sm font-medium">Métodos de pago:</p>
+            <div class="flex flex-wrap justify-center mt-3">
+              <!-- Transferencia Nacional -->
+              <div class="text-center m-2">
+                <p class="text-xs font-medium mb-1">Transferencia Nacional</p>
+                <p class="text-xs">NEQUI: @NEQUIYOB778</p>
+                <a href="https://clientes.nequi.com.co/recargas" target="_blank">
+                  <img src="https://i.pinimg.com/736x/c4/0a/b0/c40ab01d14db177db1cf5005e57b3d75.jpg" 
+                       alt="Transferencia Nacional" 
+                       class="payment-method">
+                </a>
+              </div>
+              
+              <!-- PayPal -->
+              <div class="text-center m-2">
+                <p class="text-xs font-medium mb-1">PayPal</p>
+                <a href="https://www.paypal.me/yobanaoro82" target="_blank">
+                  <img src="https://newsroom.es.paypal-corp.com/image/pp_h_rgb_logo_tn.jpg" 
+                       alt="PayPal" 
+                       class="payment-method" style="width: 110px;">
+                </a>
+              </div>
+              
+              <!-- Mercado Pago -->
+              <div class="text-center m-2">
+                <p class="text-xs font-medium mb-1">Mercado Pago</p>
+                <a href="https://link.mercadopago.com.co/artesmulticap" target="_blank">
+                  <img src="https://www.valoraanalitik.com/wp-content/uploads/2023/07/Mercado-Pago.jpg" 
+                       alt="Mercado Pago" 
+                       class="payment-method" style="width: 130px;">
+                </a>
+              </div>
+              
+              <!-- Western Union -->
+              <div class="text-center m-2">
+                <p class="text-xs font-medium mb-1">Western Union</p>
+                <p class="text-xs">Yobana Orozco Benavides</p>
+                <a href="https://www.westernunion.com/co/es/how-to-send-money.html" target="_blank">
+                  <img src="https://e7.pngegg.com/pngimages/408/663/png-clipart-logo-product-design-brand-western-union-font-design-text-label-thumbnail.png" 
+                       alt="Western Union" 
+                       class="payment-method" style="width: 130px;">
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 p-4 rounded-xl bg-gray-900 border border-gray-700">
+            <p class="text-sm font-medium">Contacto:</p>
+            <p class="text-xs text-gray-400 mt-1">Correo: artesmulticap2024@gmail.com<br/>WhatsApp: +57 311 355 5949<br/>Cali, Colombia</p>
+          </div>
+          <div class="mt-4 p-4 rounded-xl bg-gray-900 border border-gray-700">
+            <p class="text-sm font-medium">Proyectos culturales y educativos:</p>
+            <p class="text-xs text-gray-400 mt-1">La fundación maneja 2 proyectos culturales y educativos nacionales e internacionales sin ánimo de lucro:</p>
+            <div class="mt-2">
+              <a href="https://explorandomuseosyartelatinoamericano.netlify.app/" target="_blank" class="text-xs text-blue-400 hover:text-blue-300 block">Explorando Museos y Arte Latinoamericano</a>
+              <a href="https://juegoemocionesenelaulayobanaorozcob.netlify.app/" target="_blank" class="text-xs text-blue-400 hover:text-blue-300 block mt-1">Juego de Emociones en el Aula</a>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="py-12 bg-black border-t border-gray-800">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <h2 class="text-2xl font-bold">Preguntas frecuentes</h2>
+      <div class="mt-6 grid lg:grid-cols-2 gap-6">
+        <details class="p-6 border border-gray-800 rounded-2xl bg-gray-800" open>
+          <summary class="font-semibold cursor-pointer flex justify-between items-center">
+            ¿Dónde se realizan los talleres?
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <p class="mt-2 text-gray-300 text-sm">Todos nuestros talleres se realizan de manera virtual a través de plataformas digitales. Al inscribirte recibirás los detalles de conexión.</p>
+        </details>
+        <details class="p-6 border border-gray-800 rounded-2xl bg-gray-800">
+          <summary class="font-semibold cursor-pointer flex justify-between items-center">
+            ¿Qué materiales necesito para los talleres?
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <p class="mt-2 text-gray-300 text-sm">Para los talleres artísticos necesitarás tus propios materiales (lápices, pinturas, etc.). Para talleres técnicos necesitarás un computador con conexión a internet. Todos los materiales corren por cuenta del aprendiz.</p>
+        </details>
+        <details class="p-6 border border-gray-800 rounded-2xl bg-gray-800">
+          <summary class="font-semibold cursor-pointer flex justify-between items-center">
+            ¿Puedo tomar más de un taller?
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <p class="mt-2 text-gray-300 text-sm">Sí, puedes inscribirte en tantos talleres como desees, siempre que los horarios no se crucen. Recomendamos no tomar más de 2 talleres por semana para mejor aprovechamiento.</p>
+        </details>
+        <details class="p-6 border border-gray-800 rounded-2xl bg-gray-800">
+          <summary class="font-semibold cursor-pointer flex justify-between items-center">
+            ¿Cómo se pagan los talleres con costo?
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <p class="mt-2 text-gray-300 text-sm">Los talleres técnicos se pagan por nivel completo ($380,000 por 10 horas). Se paga por hora ($50,000). El pago se realiza antes del inicio mediante Nequi, PayPal, Mercado Pago o Western Union.</p>
+        </details>
+        <details class="p-6 border border-gray-800 rounded-2xl bg-gray-800">
+          <summary class="font-semibold cursor-pointer flex justify-between items-center">
+            ¿Ofrecen certificados?
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <p class="mt-2 text-gray-300 text-sm">Sí, al completar al menos el 80% de las sesiones de cualquier taller, recibirás un certificado de participación avalado por la Fundación Artes Multicap.</p>
+        </details>
+        <details class="p-6 border border-gray-800 rounded-2xl bg-gray-800">
+          <summary class="font-semibold cursor-pointer flex justify-between items-center">
+            ¿Puedo ver los trabajos de otros estudiantes?
+            <svg class="w-5 h-5 transform transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+            </svg>
+          </summary>
+          <p class="mt-2 text-gray-300 text-sm">Sí, muy pronto estaremos compartiendo una galería virtual donde exhibiremos los trabajos de nuestros estudiantes. También puedes visitar nuestros proyectos culturales educativos en línea para ver más creaciones.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-10 border-t border-gray-800 bg-gray-900">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8 items-start">
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <img src="https://scontent.fclo17-1.fna.fbcdn.net/v/t39.30808-6/480702220_618041787505911_8280549859336367380_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=6ee11a&_nc_ohc=QuoYFpNU7L4Q7kNvwG7zstB&_nc_oc=Adly08wvHEMBRsGymvrML0u98KZit-SgyFBlVXRi9C_Jp3KpZmzzLisuLNMeQ7-SFto&_nc_zt=23&_nc_ht=scontent.fclo17-1.fna&_nc_gid=zhRZgMTkh1DL0Qcd0tlVwg&oh=00_AfWD1f4atCmllZWnh9tTLhp-w_N2Oj3GQmNmt2Er0lXzkA&oe=68A95D82" alt="Logo Fundación Artes Multicap" class="h-10 w-10 rounded-full object-cover">
+          <h4 class="font-semibold">Fundación Artes Multicap</h4>
+        </div>
+        <p class="text-sm text-gray-400">Transformando vidas a través del arte, la literatura, las emociones y la tecnología en Cali, Colombia.</p>
+      </div>
+      <div>
+        <h4 class="font-semibold">Enlaces rápidos</h4>
+        <ul class="mt-2 text-sm text-gray-300 space-y-1">
+          <li><a href="#talleres-artisticos" class="hover:text-white">Talleres artísticos</a></li>
+          <li><a href="#talleres-tecnicos" class="hover:text-white">Talleres técnicos</a></li>
+          <li><a href="#nivelacion" class="hover:text-white">Nivelación académica</a></li>
+          <li><a href="#galeria" class="hover:text-white">Galería virtual</a></li>
+          <li><a href="#inscripcion" class="hover:text-white">Inscripción</a></li>
+          <li><a href="#faq" class="hover:text-white">Preguntas frecuentes</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 class="font-semibold">Contacto</h4>
+        <p class="text-sm text-gray-300 mt-1">
+          Correo: artesmulticap2024@gmail.com<br/>
+          WhatsApp: +57 311 355 5949<br/>
+          Cali, Colombia
+        </p>
+        <div class="mt-3">
+          <a href="https://juegoemocionesenelaulayobanaorozcob.netlify.app/" target="_blank" class="text-sm font-medium text-blue-400 hover:text-blue-300">Visita nuestro proyecto cultural educativo</a>
+          <a href="https://explorandomuseosyartelatinoamericano.netlify.app/" target="_blank" class="text-sm font-medium text-blue-400 hover:text-blue-300 block mt-1">Explorando Museos y Arte Latinoamericano</a>
+        </div>
+      </div>
+    </div>
+    <p class="text-center text-xs text-gray-500 mt-8">© <span id="year"></span> Fundación Artes Multicap. Todos los derechos reservados.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script>
+    // ====== Helpers ======
+    const $ = (sel, el=document) => el.querySelector(sel);
+    const $$ = (sel, el=document) => [...el.querySelectorAll(sel)];
+
+    // ====== Acordeón ======
+    function setupAccordion() {
+      const buttons = $$('.accordion-button');
+      buttons.forEach(button => {
+        button.addEventListener('click', () => {
+          const isActive = button.classList.contains('active');
+          
+          // Cerrar todos los acordeones primero
+          $$('.accordion-button').forEach(btn => {
+            btn.classList.remove('active');
+            btn.querySelector('svg').classList.remove('rotate-180');
+          });
+          
+          // Abrir el acordeón clickeado si no estaba activo
+          if (!isActive) {
+            button.classList.add('active');
+            button.querySelector('svg').classList.add('rotate-180');
+          }
+        });
+      });
+    }
+
+    // ====== Select course ======
+    function selectCourse(id){
+      $('#program').value = id;
+      location.hash = '#inscripcion';
+      $('#enrollForm').classList.add('ring-brand');
+      setTimeout(()=>$('#enrollForm').classList.remove('ring-brand'), 1200);
+    }
+
+    // ====== Form handler (demo) ======
+    $('#enrollForm').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target).entries());
+      console.log('Enrollment data', data);
+      $('#formStatus').textContent = '¡Inscripción enviada! Te contactaremos pronto.';
+      setTimeout(() => $('#formStatus').textContent = '', 3000);
+      e.target.reset();
+    });
+
+    // ====== Init ======
+    document.addEventListener('DOMContentLoaded', ()=>{
+      $('#year').textContent = new Date().getFullYear();
+      setupAccordion();
+    });
+  </script>
+</body>
+</html>
