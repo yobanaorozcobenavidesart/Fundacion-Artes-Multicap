@@ -5,133 +5,211 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Fundación Artes Multicap – Talleres Artísticos y Técnicos</title>
   <meta name="description" content="Talleres de arte gratuitos y cursos técnicos en Cali, Colombia. Dibujo, pintura, programación, robótica y más." />
+
   <!-- TailwindCSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
     :root { 
-      --brand:#000000;  /* Fondo negro */
+      --brand:#000000;
       --brand-2:#06b6d4; 
-      --art:#e11d48;    /* Rojo artístico */
-      --tech:#2563eb;   /* Azul tecnología */
-      --values:#059669; /* Verde valores */
-      --ink:#ffffff;    /* Texto blanco */
+      --art:#e11d48;
+      --tech:#2563eb;
+      --values:#059669;
+      --ink:#ffffff;
     }
+
     html { scroll-behavior: smooth; }
+
     body { 
-      font-family: 'Outfit', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, 'Apple Color Emoji','Segoe UI Emoji'; 
+      font-family: 'Outfit', system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color: var(--ink);
       background-color: var(--brand);
     }
-    .glass { background: rgba(0,0,0,.75); backdrop-filter: blur(8px); }
-    .ring-brand { box-shadow: 0 0 0 3px rgba(4,107,153,.25); }
-    .badge-art { background-color: var(--art); color: white; }
-    .badge-tech { background-color: var(--tech); color: white; }
-    .badge-values { background-color: var(--values); color: white; }
-    .accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.3s ease-out;
-    }
-    .accordion-button.active + .accordion-content {
-      max-height: 5000px;
-      transition: max-height 0.5s ease-in;
-    }
-    .rotate-180 {
-      transform: rotate(180deg);
-    }
-    .payment-method {
-      width: 120px; 
-      margin: 10px; 
-      border-radius: 15px; 
-      box-shadow: 0 0 12px #00ffff; 
-      transition: transform 0.3s;
-    }
-    .payment-method:hover {
-      transform: scale(1.05);
-    }
-    .course-level {
-      background-color: rgba(59, 130, 246, 0.2);
-      border-left: 4px solid #3b82f6;
-    }
-    .two-columns {
-      column-count: 2;
-      column-gap: 1.5rem;
-    }
-    @media (max-width: 768px) {
-      .two-columns {
-        column-count: 1;
-      }
+
+    .glass {
+      background: rgba(0,0,0,.75);
+      backdrop-filter: blur(8px);
     }
   </style>
 </head>
+
 <body class="bg-black text-white">
-  <!-- Top Bar -->
-  <header class="sticky top-0 z-50 glass border-b border-gray-800">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-      <a href="#home" class="flex items-center gap-3">
-        <img src="https://i.postimg.cc/dqKj7LQQ/480702220-618041787505911-8280549859336367380-n.jpg" alt="Logo Fundación Artes Multicap" class="h-10 w-10 rounded-full object-cover">
-        <div class="leading-tight">
-          <p class="text-sm font-semibold">Fundación Artes Multicap</p>
-          <p class="text-xs text-gray-400">Cali, Colombia</p>
-        </div>
+
+<!-- Top Bar -->
+<!-- Top Bar -->
+<header class="relative z-40 glass border-b border-gray-800">
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-4">
+
+    <!-- FILA SUPERIOR: LOGO -->
+    <div class="flex items-center justify-between">
+
+<a href="#home" class="flex items-center gap-3">
+  <img
+    src="https://i.postimg.cc/dqKj7LQQ/480702220-618041787505911-8280549859336367380-n.jpg"
+    alt="Logo Fundación Artes Multicap"
+    class="h-20 w-20 rounded-full object-cover"
+  >
+  <div class="leading-tight">
+    <p class="text-base font-semibold text-white">
+      Fundación Artes Multicap
+    </p>
+    <p class="text-sm text-gray-400">
+      Cali, Colombia
+    </p>
+  </div>
+</a>
+
+
+      <a href="#inscripcion"
+         class="hidden sm:inline-block bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-sm font-medium px-4 py-2 rounded-xl shadow">
+        Inscribirse
       </a>
 
-      <nav class="hidden md:flex items-center gap-6 text-sm">
-        <a href="#talleres-artisticos" class="hover:text-white text-gray-400">Talleres Artísticos</a>
-        <a href="#talleres-tecnicos" class="hover:text-white text-gray-400">Talleres Técnicos</a>
-        <a href="#nivelacion" class="hover:text-white text-gray-400">Nivelación</a>
-        <a href="#galeria" class="hover:text-white text-gray-400">Galería Virtual</a>
-        <a href="#inscripcion" class="hover:text-white text-gray-400">Inscripción</a>
-        <a href="#faq" class="hover:text-white text-gray-400">Preguntas</a>
-      </nav>
-
-      <div class="flex items-center gap-2">
-        <a href="#inscripcion" class="ml-2 hidden sm:inline-block bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-sm font-medium px-4 py-2 rounded-xl shadow hover:opacity-95">Inscribirse</a>
-      </div>
     </div>
-  </header>
 
-  <!-- Hero -->
-  <section id="home" class="relative overflow-hidden bg-gray-900">
-    <div class="absolute -top-24 -right-24 h-72 w-72 bg-cyan-200/10 rounded-full blur-3xl"></div>
-    <div class="absolute -bottom-24 -left-24 h-72 w-72 bg-blue-200/10 rounded-full blur-3xl"></div>
+    <!-- FILA INFERIOR: MENÚ -->
+    <nav class="mt-4 hidden md:flex gap-6 text-sm text-gray-400">
+      <a href="#talleres-artisticos" class="hover:text-white">Talleres Artísticos</a>
+      <a href="#talleres-tecnicos" class="hover:text-white">Talleres Técnicos</a>
+      <a href="#nivelacion" class="hover:text-white">Nivelación</a>
+      <a href="#galeria" class="hover:text-white">Galería Virtual</a>
+      <a href="#inscripcion" class="hover:text-white">Inscripción</a>
+      <a href="#faq" class="hover:text-white">Preguntas</a>
+      <a href="#proyectos-culturales" class="hover:text-white">Proyectos Culturales</a>
 
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-10 items-center">
-      <div>
-        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
-          <span class="text-white">Talleres artísticos gratuitos</span>
-          <span class="block bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">y formación técnica en Cali</span>
-        </h1>
-        <p class="mt-4 text-gray-400 text-lg">Explora tu creatividad con nuestros talleres de dibujo, pintura y arteterapia, o aprende habilidades técnicas en programación y robótica.</p>
-        <div class="mt-6 flex gap-3">
-          <a href="#talleres-artisticos" class="px-5 py-3 rounded-xl bg-white text-black font-medium hover:bg-gray-200">Talleres gratuitos</a>
-          <a href="#talleres-tecnicos" class="px-5 py-3 rounded-xl border border-gray-700 hover:border-gray-600 font-medium">Talleres técnicos</a>
-          <a href="#nivelacion" class="px-5 py-3 rounded-xl border border-gray-700 hover:border-gray-600 font-medium">Nivelación</a>
-        </div>
-        <p class="mt-4 text-sm text-gray-500">Transformando vidas a través del arte, la literatura, las emociones y la tecnología en Cali, Colombia.</p>
-      </div>
-      <div class="relative">
-        <div class="rounded-3xl overflow-hidden shadow-2xl ring-1 ring-gray-800">
-          <img src="https://scontent.fclo17-1.fna.fbcdn.net/v/t39.30808-6/486952169_638677908775632_3015207578380651141_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=cc71e4&_nc_ohc=ZCizw7HIkqYQ7kNvwE1hozh&_nc_oc=AdnIjLZERhcjiSJUvM10rxJc2UVMvhpY34mopUtsV4e25kdnPM1EB_hS7ZpRYQAasrU&_nc_zt=23&_nc_ht=scontent.fclo17-1.fna&_nc_gid=H_ysP8GWRQB093Ssqsdn-Q&oh=00_AfWhf0CGetVXaFOuwEVbPfC29X7E7UTC7Lnha88bVUUjvQ&oe=68A99CFC" alt="Talleres de arte y tecnología" class="w-full h-[360px] object-cover"/>
-        </div>
-        <div class="absolute -bottom-6 -left-6 bg-gray-800 rounded-2xl shadow p-4 w-64 border border-gray-700">
-          <p class="text-sm font-semibold">Talleres virtuales</p>
-          <p class="text-xs text-gray-400">Artísticos gratuitos y técnicos con costo accesible.</p>
-        </div>
-      </div>
+    </nav>
+
+  </div>
+</header>
+
+  
+  <!-- Misión y Visión -->
+<section id="mision-vision" class="py-16 bg-black border-t border-gray-800">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-extrabold text-white">
+        Nuestra <span class="bg-gradient-to-r from-cyan-500 to-blue-600 bg-clip-text text-transparent">Razón de Ser</span>
+      </h2>
+      <p class="mt-3 text-gray-400">
+        Arte, cultura, educación y emociones como herramientas de transformación social
+      </p>
     </div>
-  </section>
 
-  <!-- Talleres Artísticos Gratuitos -->
-  <section id="talleres-artisticos" class="py-12 border-t border-gray-800 bg-gray-900">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-      <div class="text-center mb-10">
-        <h2 class="text-2xl font-bold">Talleres Artísticos Gratuitos</h2>
-        <p class="text-gray-400 mt-1">Sesiones virtuales de 2 horas para explorar diferentes técnicas artísticas</p>
+    <div class="grid md:grid-cols-2 gap-8">
+
+      <!-- Misión -->
+      <div class="bg-gray-900 rounded-2xl p-6 border border-gray-800">
+        <h3 class="text-2xl font-bold text-white mb-4">
+          Misión
+        </h3>
+        <p class="text-gray-300 leading-relaxed">
+          La Fundación Artes Multicap tiene como misión promover, fortalecer y visibilizar
+          el arte, la cultura, la literatura, la educación emocional, la inclusión y la formación técnica
+          como medios de transformación social, inclusión y desarrollo humano.
+          <br><br>
+          Impulsamos espacios creativos, formativos y culturales para niños, niñas, jóvenes
+          y adultos, tanto a nivel nacional como internacional, brindando oportunidades
+          reales de aprendizaje, expresión artística y reconocimiento del talento
+          latinoamericano.
+        </p>
       </div>
+
+      <!-- Visión -->
+      <div class="bg-gray-900 rounded-2xl p-6 border border-gray-800">
+        <h3 class="text-2xl font-bold text-white mb-4">
+          Visión
+        </h3>
+        <p class="text-gray-300 leading-relaxed">
+          Ser una fundación referente en Latinoamérica por su impacto cultural, educativo
+          y artístico, reconocida por la creación de proyectos innovadores que integran
+          arte, literatura, tecnología, emociones, inclusión y diversidad.
+          <br><br>
+          Aspiramos a consolidar plataformas culturales, formativas y editoriales como
+          nuestras revistas artísticas nacionales e internacionales que den voz,
+          visibilidad y reconocimiento a artistas emergentes, niños, jóvenes y creadores
+          de todas las edades, contribuyendo a una sociedad más sensible, creativa e inclusiva.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- Hero -->
+<section id="home" class="relative overflow-hidden bg-gray-900 scroll-mt-28">
+
+  <div class="absolute -top-24 -right-24 h-72 w-72 bg-cyan-200/10 rounded-full blur-3xl"></div>
+  <div class="absolute -bottom-24 -left-24 h-72 w-72 bg-blue-200/10 rounded-full blur-3xl"></div>
+
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24 grid lg:grid-cols-2 gap-10 items-center">
+
+    <div>
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
+        <span class="text-white">Talleres artísticos</span>
+        <span class="block bg-gradient-to-r from-cyan-600 to-blue-600 bg-clip-text text-transparent">
+          y formación técnica en Cali
+        </span>
+      </h1>
+
+      <p class="mt-4 text-gray-400 text-lg">
+        Explora tu creatividad con nuestros talleres de dibujo, pintura y arteterapia,
+        o aprende habilidades técnicas en programación y robótica.
+      </p>
+
+<div class="mt-6 flex flex-wrap gap-3">
+  <a href="#talleres-artisticos"
+     class="px-5 py-3 w-48 h-12 flex items-center justify-center rounded-xl bg-white text-black font-medium hover:bg-gray-200 text-center">
+    Talleres Artísticos
+  </a>
+
+  <a href="#talleres-tecnicos"
+     class="px-5 py-3 w-48 h-12 flex items-center justify-center rounded-xl bg-white text-black font-medium hover:bg-gray-200 text-center">
+    Talleres Técnicos
+  </a>
+
+  <a href="#nivelacion"
+     class="px-5 py-3 w-48 h-12 flex items-center justify-center rounded-xl bg-white text-black font-medium hover:bg-gray-200 text-center">
+    Nivelación
+  </a>
+
+  <a href="#talleres-personalizados"
+     class="px-5 py-3 w-48 h-12 flex items-center justify-center rounded-xl bg-white text-black font-medium hover:bg-gray-200 text-center">
+    Talleres Personalizados
+  </a>
+</div>
+
+                
+      </div>
+
+      <p class="mt-4 text-sm text-gray-500">
+        Transformando vidas a través del arte, la literatura, las emociones y la tecnología
+        en Cali, Colombia.
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- Talleres Artísticos -->
+<section id="talleres-artisticos" class="py-12 border-t border-gray-800 bg-gray-900 scroll-mt-28">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+
+    <div class="text-center mb-10">
+      <h2 class="text-2xl font-bold text-white">Talleres Artísticos</h2>
+      <p class="text-gray-400 mt-1">
+        Sesiones virtuales de 2 horas para explorar diferentes técnicas artísticas
+      </p>
+    </div>
+
 
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         <!-- Talleres de Dibujo - Acordeón -->
@@ -1040,6 +1118,7 @@
               <select id="program" name="program" required class="mt-1 w-full px-4 py-2 rounded-xl border border-gray-700 bg-gray-900 focus:outline-none focus:ring-2 focus:ring-cyan-500">
                 <option value="">-- Selecciona un taller --</option>
                 <optgroup label="Talleres Artísticos Gratuitos">
+                  <option value="dibujo">Taller Personalizado</option>
                   <option value="dibujo">Talleres de Dibujo</option>
                   <option value="pintura">Talleres de Pintura</option>
                   <option value="teatro">Talleres de Teatro</option>
@@ -1122,72 +1201,119 @@
         <aside class="p-6 bg-gray-800 rounded-2xl border border-gray-700 h-fit">
           <h3 class="text-xl font-semibold">Información importante</h3>
           <ul class="mt-4 space-y-2 text-gray-300 text-sm">
-            <li>• <strong>Talleres artísticos:</strong> Completamente gratuitos, materiales básicos no incluidos.</li>
+            <li>• <strong>Talleres artísticos:</strong> Completamente gratuitos, materiales no incluidos.</li>
+                        <li>• <strong>Talleres artísticos:</strong> Con materiales incluidos tienen costo.</li>
             <li>• <strong>Talleres técnicos:</strong> $380,000 por nivel (10 horas, 5 talleres de 2 horas) - $50,000 por hora.</li>
-            <li>• <strong>Nivelación académica:</strong> $50,000 por hora (talleres de 2 horas por $100,000).</li>
+            <li>• <strong>Nivelación académica:</strong> $50,000 por hora (talleres de 2 horas por $80,000).</li>
             <li>• Horarios: Lunes a Viernes 9-11am, 4-6pm o 7-9pm (hora Colombia).</li>
             <li>• Certificado de participación al completar el 80% de las sesiones.</li>
-            <li>• Todos los talleres son virtuales a nivel nacional e internacional.</li>
+            <li>• Todos los talleres son presenciales en cali o virtuales a nivel nacional e internacional.</li>
             <li>• Los materiales corren por cuenta del aprendiz.</li>
+            <div class="mt-4 p-4 rounded-xl bg-gray-900 border border-gray-700">
+  <p class="text-sm font-medium">Paquetes Personalizados:</p>
+  <p class="text-xs text-gray-400 mt-1">
+    La fundación ofrece la posibilidad de crear <strong>paquetes personalizados de talleres</strong> según las necesidades de cada persona. 
+    Tú nos dices qué temáticas te interesan, y nosotros organizamos las clases para ajustarlas a tus intereses y objetivos.
+  </p>
+  <ul class="space-y-2 text-xs text-gray-400 mt-2">
+    <li>• Puedes combinar talleres artísticos, técnicos, literarios, de teatro, danza o idiomas.</li>
+    <li>• Los paquetes se ajustan al número de horas y disponibilidad del estudiante.</li>
+    <li>• Puedes elegir modalidad presencial en Cali o virtual a nivel nacional e internacional.</li>
+    <li>• La fundación garantiza que el material necesario esté incluido según el tipo de taller o se indicará si el estudiante debe traerlo.</li>
+    <li>• Ideal para quienes buscan formación personalizada, enfocada en sus intereses y necesidades educativas.</li>
+  </ul>
+  <a href="#inscripcion" class="mt-2 inline-block text-xs text-blue-400 hover:text-blue-300">Solicitar paquete personalizado</a>
+</div>
+
           </ul>
-          <div class="mt-6 p-4 rounded-xl bg-gray-900 border border-gray-700">
-            <p class="text-sm font-medium">Métodos de pago:</p>
-            <div class="flex flex-wrap justify-center mt-3">
-              <!-- Transferencia Nacional -->
-              <div class="text-center m-2">
-                <p class="text-xs font-medium mb-1">Transferencia Nacional</p>
-                <p class="text-xs">NEQUI: @NEQUIYOB778</p>
-                <a href="https://clientes.nequi.com.co/recargas" target="_blank">
-                  <img src="https://i.pinimg.com/736x/c4/0a/b0/c40ab01d14db177db1cf5005e57b3d75.jpg" 
-                       alt="Transferencia Nacional" 
-                       class="payment-method">
-                </a>
-              </div>
-              
-              <!-- PayPal -->
-              <div class="text-center m-2">
-                <p class="text-xs font-medium mb-1">PayPal</p>
-                <a href="https://www.paypal.me/yobanaoro82" target="_blank">
-                  <img src="https://newsroom.es.paypal-corp.com/image/pp_h_rgb_logo_tn.jpg" 
-                       alt="PayPal" 
-                       class="payment-method" style="width: 110px;">
-                </a>
-              </div>
-              
-              <!-- Mercado Pago -->
-              <div class="text-center m-2">
-                <p class="text-xs font-medium mb-1">Mercado Pago</p>
-                <a href="https://link.mercadopago.com.co/artesmulticap" target="_blank">
-                  <img src="https://www.valoraanalitik.com/wp-content/uploads/2023/07/Mercado-Pago.jpg" 
-                       alt="Mercado Pago" 
-                       class="payment-method" style="width: 130px;">
-                </a>
-              </div>
-              
-              <!-- Western Union -->
-              <div class="text-center m-2">
-                <p class="text-xs font-medium mb-1">Western Union</p>
-                <p class="text-xs">Yobana Orozco Benavides</p>
-                <a href="https://www.westernunion.com/co/es/how-to-send-money.html" target="_blank">
-                  <img src="https://e7.pngegg.com/pngimages/408/663/png-clipart-logo-product-design-brand-western-union-font-design-text-label-thumbnail.png" 
-                       alt="Western Union" 
-                       class="payment-method" style="width: 130px;">
-                </a>
-              </div>
-            </div>
-          </div>
+<div class="mt-6 p-4 rounded-xl bg-gray-900 border border-gray-700">
+  <p class="text-sm font-medium">Métodos de pago:</p>
+  <div class="flex flex-wrap justify-center mt-3">
+    <!-- Transferencia Nacional -->
+    <div class="text-center m-2">
+      <p class="text-xs font-medium mb-1">Transferencia Nacional</p>
+      <p class="text-xs">NEQUI: @NEQUIYOB778</p>
+      <a href="https://clientes.nequi.com.co/recargas" target="_blank">
+        <img src="https://i.pinimg.com/736x/c4/0a/b0/c40ab01d14db177db1cf5005e57b3d75.jpg" 
+             alt="Transferencia Nacional" 
+             class="payment-method w-32 h-20 object-contain rounded-md">
+      </a>
+    </div>
+    
+    <!-- PayPal -->
+    <div class="text-center m-2">
+      <p class="text-xs font-medium mb-1">PayPal</p>
+      <a href="https://www.paypal.me/yobanaoro82" target="_blank">
+        <img src="https://newsroom.es.paypal-corp.com/image/pp_h_rgb_logo_tn.jpg" 
+             alt="PayPal" 
+             class="payment-method w-32 h-20 object-contain rounded-md">
+      </a>
+    </div>
+    
+    <!-- Mercado Pago -->
+    <div class="text-center m-2">
+      <p class="text-xs font-medium mb-1">Mercado Pago</p>
+      <a href="https://link.mercadopago.com.co/artesmulticap" target="_blank">
+        <img src="https://www.valoraanalitik.com/wp-content/uploads/2023/07/Mercado-Pago.jpg" 
+             alt="Mercado Pago" 
+             class="payment-method w-32 h-20 object-contain rounded-md">
+      </a>
+    </div>
+    
+    <!-- Western Union -->
+    <div class="text-center m-2">
+      <p class="text-xs font-medium mb-1">Western Union</p>
+      <p class="text-xs">Yobana Orozco Benavides</p>
+      <a href="https://www.westernunion.com/co/es/how-to-send-money.html" target="_blank">
+        <img src="https://e7.pngegg.com/pngimages/408/663/png-clipart-logo-product-design-brand-western-union-font-design-text-label-thumbnail.png" 
+             alt="Western Union" 
+             class="payment-method w-32 h-20 object-contain rounded-md">
+      </a>
+    </div>
+  </div>
+</div>
+
           <div class="mt-4 p-4 rounded-xl bg-gray-900 border border-gray-700">
             <p class="text-sm font-medium">Contacto:</p>
             <p class="text-xs text-gray-400 mt-1">Correo: artesmulticap2024@gmail.com<br/>WhatsApp: +57 311 355 5949<br/>Cali, Colombia</p>
           </div>
-          <div class="mt-4 p-4 rounded-xl bg-gray-900 border border-gray-700">
-            <p class="text-sm font-medium">Proyectos culturales y educativos:</p>
-            <p class="text-xs text-gray-400 mt-1">La fundación maneja 2 proyectos culturales y educativos nacionales e internacionales sin ánimo de lucro:</p>
-            <div class="mt-2">
-              <a href="https://explorandomuseosyartelatinoamericano.netlify.app/" target="_blank" class="text-xs text-blue-400 hover:text-blue-300 block">Explorando Museos y Arte Latinoamericano</a>
-              <a href="https://juegoemocionesenelaulayobanaorozcob.netlify.app/" target="_blank" class="text-xs text-blue-400 hover:text-blue-300 block mt-1">Juego de Emociones en el Aula</a>
-            </div>
-          </div>
+          <div id="proyectos-culturales" class="mt-4 p-4 rounded-xl bg-gray-900 border border-gray-700">
+  <p class="text-sm font-medium">Proyectos culturales y educativos:</p>
+  <p class="text-xs text-gray-400 mt-1">
+    La fundación maneja 2 proyectos culturales y educativos nacionales e internacionales sin ánimo de lucro:
+  </p>
+
+  <div class="mt-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
+    <!-- Proyecto 1: Explorando Museos y Arte Latinoamericano -->
+    <div class="bg-gray-800 rounded-lg p-2 text-center">
+      <p class="text-xs text-gray-200 mt-2 font-medium">Explorando Museos y Arte Latinoamericano</p>
+      <!-- Imágenes de las revistas, visibles completas -->
+      <div class="flex flex-col gap-2 mt-2">
+        <img src="https://i.postimg.cc/wvCtQBSN/Revista%20Explorando%20Arte%20y%20Cultura%20de%20Latinoam%C3%A9rica%201%202025%20(4).png" 
+             alt="Revista 1" 
+             class="w-full h-64 object-contain rounded-md bg-gray-900 p-2">
+        <img src="https://i.postimg.cc/Vvjdw2bG/Cover.jpg" 
+             alt="Revista 2" 
+             class="w-full h-64 object-contain rounded-md bg-gray-900 p-2">
+      </div>
+      <a href="https://explorandomuseosyartelatinoamericano.netlify.app/" 
+         target="_blank" 
+         class="text-xs text-blue-400 hover:text-blue-300 block mt-2">Ver proyecto</a>
+    </div>
+
+    <!-- Proyecto 2: Juego de Emociones en el Aula -->
+    <div class="bg-gray-800 rounded-lg p-2 text-center">
+      <p class="text-xs text-gray-200 mt-2 font-medium">Juego de Emociones en el Aula</p>
+      <img src="https://i.postimg.cc/yYnhMFWF/418b1c0f-8d2a-463f-9cb1-271bd0abfd0e-(1).png" 
+           alt="Juego de Emociones en el Aula" 
+           class="w-full h-64 object-contain rounded-md bg-gray-900 p-2 mt-2">
+      <a href="https://juegoemocionesenelaulayobanaorozcob.netlify.app/" 
+         target="_blank" 
+         class="text-xs text-blue-400 hover:text-blue-300 block mt-2">Ver proyecto</a>
+    </div>
+  </div>
+</div>
+
         </aside>
       </div>
     </div>
@@ -1278,12 +1404,15 @@
         </ul>
       </div>
       <div>
-        <h4 class="font-semibold">Contacto</h4>
-        <p class="text-sm text-gray-300 mt-1">
-          Correo: artesmulticap2024@gmail.com<br/>
-          WhatsApp: +57 311 355 5949<br/>
-          Cali, Colombia
-        </p>
+      <h4 class="font-semibold">Contacto</h4>
+<p class="text-sm text-gray-300 mt-1">
+  Correo: <a href="mailto:artesmulticap2024@gmail.com" class="text-blue-400 hover:text-blue-300">artesmulticap2024@gmail.com</a><br/>
+  WhatsApp: <a href="https://wa.me/573113555949" target="_blank" class="text-blue-400 hover:text-blue-300">+57 311 355 5949</a><br/>
+  Cali, Colombia<br/>
+  Facebook: <a href="https://www.facebook.com/ArtesMulticap/?locale=es_LA" target="_blank" class="text-blue-400 hover:text-blue-300">/ArtesMulticap</a><br/>
+  TikTok: <a href="https://www.tiktok.com/@fundacionartesmulticap?_r=1&_t=ZS-92sY8bo4onA" target="_blank" class="text-blue-400 hover:text-blue-300">@fundacionartesmulticap</a>
+</p>
+
         <div class="mt-3">
           <a href="https://juegoemocionesenelaulayobanaorozcob.netlify.app/" target="_blank" class="text-sm font-medium text-blue-400 hover:text-blue-300">Visita nuestro proyecto cultural educativo</a>
           <a href="https://explorandomuseosyartelatinoamericano.netlify.app/" target="_blank" class="text-sm font-medium text-blue-400 hover:text-blue-300 block mt-1">Explorando Museos y Arte Latinoamericano</a>
@@ -1345,5 +1474,38 @@
       setupAccordion();
     });
   </script>
+  <script>
+  // Seleccionamos todos los botones del acordeón
+  const accordionButtons = document.querySelectorAll('.accordion-button');
+
+  accordionButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      // Seleccionamos el contenido que sigue al botón
+      const content = button.nextElementSibling;
+
+      // Verificamos si ya está abierto
+      const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
+
+      // Cerramos todos los acordeones
+      document.querySelectorAll('.accordion-content').forEach(c => {
+        c.style.maxHeight = null;
+      });
+
+      // Si estaba cerrado, lo abrimos
+      if (!isOpen) {
+        content.style.maxHeight = content.scrollHeight + "px";
+      }
+    });
+  });
+</script>
+
+<style>
+  .accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+</style>
+
 </body>
 </html>
