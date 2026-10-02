@@ -18,10 +18,9 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 
   <style>
-    /* ==================== RESET + FLUIDO ==================== */
     * { margin:0; padding:0; box-sizing:border-box; }
     :root {
-      --brand:#000; --brand-2:#d4af37; --brand-2-light:#f4d03f; --brand-2-bright:#ffd966; --ink:#fff;
+      --brand:#000; --brand-2:#d4af37; --brand-2-light:#f4d03f; --ink:#fff;
       --fs-xs: clamp(0.65rem, 1.6vw, 0.75rem);
       --fs-sm: clamp(0.75rem, 1.8vw, 0.875rem);
       --fs-base: clamp(0.85rem, 2vw, 1rem);
@@ -30,29 +29,30 @@
       --fs-2xl: clamp(1.35rem, 4vw, 2rem);
       --fs-3xl: clamp(1.5rem, 5vw, 2.25rem);
       --pad-container: clamp(0.75rem, 3vw, 2rem);
-      --gap-fluid: clamp(0.5rem, 1.5vw, 1rem);
     }
     html { scroll-behavior:smooth; width:100%; overflow-x:hidden; background:#000; }
-    body { font-family:'Outfit',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial; color:var(--ink); background:#000; width:100%; overflow-x:hidden; line-height:1.35; }
-
-    p, li, span, a, h1, h2, h3, h4 { line-height:1.35; word-wrap:break-word; overflow-wrap:break-word; }
+    body {
+      font-family:'Outfit',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color:var(--ink); background:#000; width:100%; overflow-x:hidden;
+      line-height: 1.6;
+      text-align: justify;
+    }
+    p, li, span, a { line-height: 1.7; word-wrap: break-word; overflow-wrap: break-word; }
+    .que-es-text p { line-height: 1.85 !important; margin-bottom: 1rem !important; }
+    h1, h2, h3, h4, h5, h6 { text-align: center; line-height: 1.3; word-wrap: break-word; }
+    summary, label, .no-justify, button, .price-row, .taller-item, .nivelacion-header, .chat-msg, .chat-msg h1, .chat-msg h2, .chat-msg h3, .chat-msg h4, .chat-quick button {
+      text-align: left;
+    }
     section { padding-top: clamp(1.5rem, 4vw, 2.5rem) !important; padding-bottom: clamp(1.5rem, 4vw, 2.5rem) !important; }
     section h2 { margin-bottom:0.4rem !important; font-size: var(--fs-2xl) !important; }
     section h3 { margin-top:0.5rem !important; margin-bottom:0.3rem !important; font-size: var(--fs-xl) !important; }
-    p { margin-bottom:0.4rem !important; font-size: var(--fs-sm); }
-    ul, ol { margin-bottom:0.4rem !important; }
-    li { margin-bottom:0.15rem !important; font-size: var(--fs-sm); }
+    p { margin-bottom:0.6rem !important; font-size: var(--fs-sm); }
+    ul, ol { margin-bottom:0.6rem !important; padding-left: 1.2rem; }
+    li { margin-bottom:0.3rem !important; font-size: var(--fs-sm); }
     img { max-width:100%; height:auto; display:block; }
 
-    .container-fluid {
-      width:100%;
-      max-width:1280px;
-      margin:0 auto;
-      padding-left: var(--pad-container);
-      padding-right: var(--pad-container);
-    }
+    .container-fluid { width:100%; max-width:1280px; margin:0 auto; padding-left: var(--pad-container); padding-right: var(--pad-container); }
 
-    /* ==================== TAILWIND OVERRIDES ==================== */
     .bg-gray-900,.bg-gray-800,.bg-gray-700 { background-color:#000 !important; }
     .glass { background:rgba(0,0,0,0.95); backdrop-filter:blur(12px); }
     .accordion-content { max-height:0; overflow:hidden; transition:max-height 0.35s ease; }
@@ -71,29 +71,23 @@
 
     .text-cyan-400,.text-cyan-500 { color:#f4d03f !important; }
     .border-cyan-500 { border-color:#d4af37 !important; }
-    .bg-cyan-600 { background-color:#d4af37 !important; }
-    .bg-cyan-700 { background-color:#b8941f !important; }
     .focus\:ring-cyan-500:focus { --tw-ring-color:#d4af37; }
     .hover\:bg-gray-700:hover { background-color:#0a0a0a !important; }
 
-    input,select,textarea { background-color:#000 !important; color:#fff !important; font-size: var(--fs-sm) !important; max-width:100%; }
+    input,select,textarea { background-color:#000 !important; color:#fff !important; font-size: var(--fs-sm) !important; max-width:100%; text-align: left; }
     input:-webkit-autofill,input:-webkit-autofill:hover,input:-webkit-autofill:focus,textarea:-webkit-autofill,select:-webkit-autofill {
       -webkit-text-fill-color:#fff !important;
       -webkit-box-shadow:0 0 0 1000px #000 inset !important;
       transition:background-color 5000s ease-in-out 0s;
     }
 
-    /* ==================== WORKSHOP ICON (escala fluida) ==================== */
     .workshop-icon {
       display:inline-flex; align-items:center; justify-content:center;
-      width: clamp(70px, 12vw, 140px);
-      height: clamp(70px, 12vw, 140px);
+      width: clamp(70px, 12vw, 140px); height: clamp(70px, 12vw, 140px);
       min-width: clamp(70px, 12vw, 140px);
-      border-radius:14px;
-      background:#000;
+      border-radius:14px; background:#000;
       border:2px solid rgba(212,175,55,0.6); color:#d4af37;
-      transition:all 0.3s ease; flex-shrink:0; position:relative;
-      overflow:hidden;
+      transition:all 0.3s ease; flex-shrink:0; position:relative; overflow:hidden;
     }
     .workshop-icon img { width:100%; height:100%; object-fit:contain; border-radius:12px; display:block; }
     .accordion-button:hover .workshop-icon { border-color:#f4d03f; box-shadow:0 0 18px rgba(212,175,55,0.7); transform:scale(1.04); }
@@ -105,36 +99,23 @@
 
     @keyframes pulseGold { 0%,100% { box-shadow:0 0 8px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.4); } 50% { box-shadow:0 0 18px rgba(212,175,55,1), 0 0 40px rgba(212,175,55,0.6); } }
 
-    /* ==================== BOTONES FLOTANTES AGRUPADOS ==================== */
     .floating-stack {
-      position:fixed;
-      right: clamp(10px, 2vw, 24px);
-      bottom: clamp(10px, 2vw, 20px);
-      z-index:9999;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap: clamp(6px, 1.2vw, 12px);
-      pointer-events:none;
+      position:fixed; right: clamp(10px, 2vw, 24px); bottom: clamp(10px, 2vw, 20px);
+      z-index:9999; display:flex; flex-direction:column; align-items:center;
+      gap: clamp(6px, 1.2vw, 12px); pointer-events:none;
     }
     .floating-stack > * { pointer-events:auto; }
 
     .whatsapp-float, .back-to-top, .chatbot-btn {
       position:relative !important;
-      width: clamp(46px, 7vw, 58px);
-      height: clamp(46px, 7vw, 58px);
-      border-radius:50%;
-      display:flex; align-items:center; justify-content:center;
+      width: clamp(46px, 7vw, 58px); height: clamp(46px, 7vw, 58px);
+      border-radius:50%; display:flex; align-items:center; justify-content:center;
       text-decoration:none; border:none; cursor:pointer;
-      transition:all 0.3s ease;
-      flex-shrink:0;
-      padding:0;
+      transition:all 0.3s ease; flex-shrink:0; padding:0;
     }
-
     .whatsapp-float { background:#25D366; color:#fff; box-shadow:0 6px 25px rgba(37,211,102,0.6); }
     .whatsapp-float:hover { transform:scale(1.12); }
     .whatsapp-float svg { width: clamp(22px, 3.6vw, 28px); height: clamp(22px, 3.6vw, 28px); }
-
     .back-to-top { background:linear-gradient(135deg,#d4af37,#b8941f); color:#000; box-shadow:0 6px 25px rgba(212,175,55,0.6); animation:pulseGold 3s ease-in-out infinite; }
     .back-to-top:hover { transform:scale(1.12); }
     .back-to-top svg { width: clamp(18px, 3vw, 24px); height: clamp(18px, 3vw, 24px); }
@@ -143,8 +124,7 @@
     .chatbot-btn {
       background:linear-gradient(135deg,#7c3aed,#5b21b6);
       border:3px solid #f4d03f;
-      width: clamp(54px, 8vw, 64px);
-      height: clamp(54px, 8vw, 64px);
+      width: clamp(54px, 8vw, 64px); height: clamp(54px, 8vw, 64px);
       box-shadow:0 6px 30px rgba(124,58,237,0.8);
       animation:robotFloat 3s ease-in-out infinite, robotGlow 2.5s ease-in-out infinite;
     }
@@ -160,25 +140,23 @@
       background:#ef4444; color:#fff; font-size:0.65rem; font-weight:800;
       min-width:20px; height:20px; border-radius:999px;
       display:flex; align-items:center; justify-content:center;
-      padding:0 5px;
-      box-shadow:0 0 0 3px #000;
+      padding:0 5px; box-shadow:0 0 0 3px #000;
     }
 
     #mobileMenu { max-height:0; overflow:hidden; transition:max-height 0.35s ease; }
     #mobileMenu.open { max-height:900px; }
-
     .hamburger-line { display:block; width:26px; height:3px; background:#f4d03f; margin:5px 0; border-radius:3px; transition:all 0.3s ease; }
 
     .testimonial-card { background:#000; border:1px solid rgba(212,175,55,0.25); border-radius:16px; padding:1.25rem; transition:all 0.3s ease; position:relative; }
     .testimonial-card:hover { border-color:#d4af37; box-shadow:0 0 20px rgba(212,175,55,0.2); transform:translateY(-4px); }
     .testimonial-card::before { content:'"'; position:absolute; top:0.3rem; left:0.9rem; font-size:3.2rem; color:rgba(212,175,55,0.25); font-family:Georgia,serif; line-height:1; }
 
-    .taller-item { display:flex; align-items:flex-start; gap:0.5rem; padding:0.4rem 0; border-bottom:1px dashed rgba(212,175,55,0.15); }
+    .taller-item { display:flex; align-items:flex-start; gap:0.5rem; padding:0.4rem 0; border-bottom:1px dashed rgba(212,175,55,0.15); text-align: left; }
     .taller-item:last-child { border-bottom:none; }
     .taller-num { display:inline-flex; align-items:center; justify-content:center; width:22px; height:22px; min-width:22px; border-radius:50%; background:rgba(212,175,55,0.15); color:#f4d03f; font-size:0.7rem; font-weight:700; border:1px solid rgba(212,175,55,0.4); }
 
     .price-box { background:linear-gradient(135deg,rgba(212,175,55,0.08),rgba(212,175,55,0.02)); border:1px solid rgba(212,175,55,0.3); border-radius:12px; padding:0.6rem 0.75rem; margin-top:0.75rem; }
-    .price-row { display:flex; justify-content:space-between; align-items:center; font-size:var(--fs-xs); padding:0.25rem 0; border-bottom:1px dashed rgba(212,175,55,0.15); gap:0.4rem; flex-wrap:wrap; }
+    .price-row { display:flex; justify-content:space-between; align-items:center; font-size:var(--fs-xs); padding:0.25rem 0; border-bottom:1px dashed rgba(212,175,55,0.15); gap:0.4rem; flex-wrap:wrap; text-align: left; }
     .price-row:last-child { border-bottom:none; }
     .price-row .label { color:#d1d5db; }
     .price-row .value { font-weight:700; color:#f4d03f; }
@@ -188,238 +166,104 @@
     .price-row.highlight .value { color:#fff; }
 
     .audio-highlight {
-      outline:3px solid #d4af37 !important;
-      outline-offset:3px;
-      border-radius:8px;
+      outline:3px solid #d4af37 !important; outline-offset:3px; border-radius:8px;
       background-color:rgba(212,175,55,0.14) !important;
       scroll-margin-top:120px;
       transition:background-color 0.3s ease, outline 0.3s ease;
     }
 
-    /* ==================== CHATBOT PANEL ==================== */
     .chatbot-panel {
-      position:fixed;
-      bottom: clamp(10px, 2vw, 20px);
-      right: clamp(10px, 2vw, 20px);
-      z-index:10000;
-      width:min(96vw, 400px);
-      height:min(88vh, 640px);
-      max-height:calc(100vh - 20px);
-      background:#0a0a0a;
-      border:2px solid #d4af37;
-      border-radius:22px;
-      display:none;
-      flex-direction:column;
-      overflow:hidden;
+      position:fixed; bottom: clamp(10px, 2vw, 20px); right: clamp(10px, 2vw, 20px);
+      z-index:10000; width:min(96vw, 400px); height:min(88vh, 640px);
+      max-height:calc(100vh - 20px); background:#0a0a0a;
+      border:2px solid #d4af37; border-radius:22px;
+      display:none; flex-direction:column; overflow:hidden;
       box-shadow:0 25px 70px rgba(0,0,0,0.9), 0 0 45px rgba(124,58,237,0.4);
       font-family:'Outfit',system-ui,sans-serif;
     }
     .chatbot-panel.show { display:flex; }
-
     .chat-header {
       background:linear-gradient(135deg,#7c3aed,#5b21b6);
-      padding:0.9rem 1rem;
-      display:flex; align-items:center; gap:0.7rem;
-      color:#fff;
-      flex-shrink:0;
-      border-bottom:2px solid #f4d03f;
+      padding:0.9rem 1rem; display:flex; align-items:center; gap:0.7rem;
+      color:#fff; flex-shrink:0; border-bottom:2px solid #f4d03f;
     }
     .chat-header .chat-avatar {
-      width: clamp(40px, 8vw, 48px);
-      height: clamp(40px, 8vw, 48px);
-      border-radius:50%;
-      background:#fff; color:#000;
+      width: clamp(40px, 8vw, 48px); height: clamp(40px, 8vw, 48px);
+      border-radius:50%; background:#fff; color:#000;
       display:flex; align-items:center; justify-content:center;
-      flex-shrink:0;
-      box-shadow:0 0 0 3px rgba(244,208,63,0.8);
-      overflow:hidden;
-      padding:2px;
+      flex-shrink:0; box-shadow:0 0 0 3px rgba(244,208,63,0.8);
+      overflow:hidden; padding:2px;
     }
     .chat-header .chat-avatar svg { width:100%; height:100%; }
-    .chat-header .chat-title { flex:1; min-width:0; line-height:1.2; }
+    .chat-header .chat-title { flex:1; min-width:0; line-height:1.2; text-align: left; }
     .chat-header .chat-title strong { display:block; font-size:var(--fs-base); font-weight:800; }
-    .chat-header .chat-title span {
-      font-size:var(--fs-xs); opacity:0.9;
-      display:flex; align-items:center; gap:5px;
-      margin-top:2px;
-    }
-    .chat-header .chat-title span::before {
-      content:''; display:inline-block;
-      width:8px; height:8px; border-radius:50%;
-      background:#22c55e; box-shadow:0 0 8px #22c55e;
-    }
-    .chat-header button {
-      background:rgba(255,255,255,0.18); border:none; color:#fff;
-      width:32px; height:32px; border-radius:50%;
-      display:flex; align-items:center; justify-content:center;
-      cursor:pointer; transition:all 0.2s;
-      flex-shrink:0;
-    }
+    .chat-header .chat-title span { font-size:var(--fs-xs); opacity:0.9; display:flex; align-items:center; gap:5px; margin-top:2px; }
+    .chat-header .chat-title span::before { content:''; display:inline-block; width:8px; height:8px; border-radius:50%; background:#22c55e; box-shadow:0 0 8px #22c55e; }
+    .chat-header button { background:rgba(255,255,255,0.18); border:none; color:#fff; width:32px; height:32px; border-radius:50%; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:all 0.2s; flex-shrink:0; }
     .chat-header button:hover { background:rgba(255,255,255,0.32); transform:rotate(90deg); }
     .chat-header button svg { width:16px; height:16px; fill:none; stroke:#fff; stroke-width:2.5; stroke-linecap:round; }
 
     .chat-body {
-      flex:1; overflow-y:auto;
-      padding:1rem;
-      background:#000;
+      flex:1; overflow-y:auto; padding:1rem; background:#000;
       display:flex; flex-direction:column; gap:0.65rem;
-      scrollbar-width:thin;
-      scrollbar-color:#d4af37 #111;
-      min-height:100px;
+      scrollbar-width:thin; scrollbar-color:#d4af37 #111; min-height:100px;
     }
     .chat-body::-webkit-scrollbar { width:6px; }
     .chat-body::-webkit-scrollbar-track { background:#111; }
     .chat-body::-webkit-scrollbar-thumb { background:#d4af37; border-radius:3px; }
 
-    .chat-msg {
-      max-width:88%;
-      padding:0.7rem 0.9rem;
-      border-radius:15px;
-      font-size:var(--fs-sm);
-      line-height:1.45;
-      word-wrap:break-word;
-      overflow-wrap:break-word;
-      animation:chatMsgIn 0.3s ease;
-    }
-    @keyframes chatMsgIn {
-      from { opacity:0; transform:translateY(8px); }
-      to { opacity:1; transform:translateY(0); }
-    }
+    .chat-msg { max-width:88%; padding:0.7rem 0.9rem; border-radius:15px; font-size:var(--fs-sm); line-height:1.5; word-wrap:break-word; overflow-wrap:break-word; animation:chatMsgIn 0.3s ease; text-align: left; }
+    @keyframes chatMsgIn { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:translateY(0); } }
     .chat-msg.bot { align-self:flex-start; background:#1a1a1a; border:1px solid rgba(212,175,55,0.35); color:#e5e7eb; border-bottom-left-radius:4px; }
     .chat-msg.user { align-self:flex-end; background:linear-gradient(135deg,#d4af37,#b8941f); color:#000; font-weight:600; border-bottom-right-radius:4px; }
     .chat-msg a { color:#f4d03f; text-decoration:underline; font-weight:700; }
     .chat-msg strong { color:#f4d03f; }
 
-    .chat-typing {
-      align-self:flex-start;
-      background:#1a1a1a;
-      border:1px solid rgba(212,175,55,0.35);
-      padding:0.75rem 1rem;
-      border-radius:15px;
-      border-bottom-left-radius:4px;
-      display:flex; gap:5px;
-    }
+    .chat-typing { align-self:flex-start; background:#1a1a1a; border:1px solid rgba(212,175,55,0.35); padding:0.75rem 1rem; border-radius:15px; border-bottom-left-radius:4px; display:flex; gap:5px; }
     .chat-typing span { width:7px; height:7px; border-radius:50%; background:#d4af37; animation:typingDot 1.2s infinite ease-in-out; }
     .chat-typing span:nth-child(2) { animation-delay:0.2s; }
     .chat-typing span:nth-child(3) { animation-delay:0.4s; }
     @keyframes typingDot { 0%,60%,100% { transform:translateY(0); opacity:0.5; } 30% { transform:translateY(-5px); opacity:1; } }
 
-    .chat-quick {
-      display:flex; flex-wrap:wrap; gap:5px;
-      padding:0.55rem 0.75rem 0.5rem;
-      background:#000; border-top:1px solid rgba(212,175,55,0.18);
-      flex-shrink:0;
-      max-height:96px;
-      overflow-y:auto;
-    }
+    .chat-quick { display:flex; flex-wrap:wrap; gap:5px; padding:0.55rem 0.75rem 0.5rem; background:#000; border-top:1px solid rgba(212,175,55,0.18); flex-shrink:0; max-height:96px; overflow-y:auto; }
     .chat-quick::-webkit-scrollbar { height:4px; }
     .chat-quick::-webkit-scrollbar-thumb { background:#d4af37; border-radius:2px; }
-    .chat-quick button {
-      background:transparent;
-      border:1px solid rgba(212,175,55,0.55);
-      color:#f4d03f;
-      border-radius:999px;
-      padding:0.32rem 0.68rem;
-      font-family:inherit;
-      font-size:var(--fs-xs);
-      font-weight:600;
-      cursor:pointer;
-      transition:all 0.2s;
-      white-space:nowrap;
-    }
+    .chat-quick button { background:transparent; border:1px solid rgba(212,175,55,0.55); color:#f4d03f; border-radius:999px; padding:0.32rem 0.68rem; font-family:inherit; font-size:var(--fs-xs); font-weight:600; cursor:pointer; transition:all 0.2s; white-space:nowrap; }
     .chat-quick button:hover { background:#d4af37; color:#000; }
 
-    .chat-input-row {
-      display:flex; gap:0.5rem;
-      padding:0.7rem;
-      background:#0a0a0a;
-      border-top:1px solid rgba(212,175,55,0.28);
-      flex-shrink:0;
-    }
-    .chat-input-row input {
-      flex:1; min-width:0;
-      background:#111 !important;
-      border:1px solid rgba(212,175,55,0.45);
-      color:#fff !important;
-      border-radius:12px;
-      padding:0.62rem 0.85rem;
-      font-family:inherit;
-      font-size:var(--fs-sm);
-      outline:none;
-    }
+    .chat-input-row { display:flex; gap:0.5rem; padding:0.7rem; background:#0a0a0a; border-top:1px solid rgba(212,175,55,0.28); flex-shrink:0; }
+    .chat-input-row input { flex:1; min-width:0; background:#111 !important; border:1px solid rgba(212,175,55,0.45); color:#fff !important; border-radius:12px; padding:0.62rem 0.85rem; font-family:inherit; font-size:var(--fs-sm); outline:none; }
     .chat-input-row input:focus { border-color:#d4af37; box-shadow:0 0 0 2px rgba(212,175,55,0.2); }
     .chat-input-row input::placeholder { color:#6b7280; }
-    .chat-input-row button {
-      background:linear-gradient(135deg,#d4af37,#b8941f);
-      border:none; color:#000;
-      width:42px; height:42px; border-radius:12px;
-      display:flex; align-items:center; justify-content:center;
-      cursor:pointer; flex-shrink:0;
-    }
+    .chat-input-row button { background:linear-gradient(135deg,#d4af37,#b8941f); border:none; color:#000; width:42px; height:42px; border-radius:12px; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; }
     .chat-input-row button svg { width:18px; height:18px; fill:#000; }
 
     .chat-wa-row { padding:0 0.7rem 0.7rem; background:#0a0a0a; flex-shrink:0; }
-    .chat-wa-btn {
-      display:flex; align-items:center; justify-content:center; gap:0.5rem;
-      width:100%; background:#25D366; color:#fff;
-      border:none; border-radius:12px;
-      padding:0.68rem 1rem;
-      font-family:inherit; font-weight:700; font-size:var(--fs-sm);
-      cursor:pointer; text-decoration:none;
-    }
+    .chat-wa-btn { display:flex; align-items:center; justify-content:center; gap:0.5rem; width:100%; background:#25D366; color:#fff; border:none; border-radius:12px; padding:0.68rem 1rem; font-family:inherit; font-weight:700; font-size:var(--fs-sm); cursor:pointer; text-decoration:none; }
     .chat-wa-btn:hover { background:#1eb355; }
     .chat-wa-btn svg { width:18px; height:18px; }
 
-    /* ==================== CONTADOR ==================== */
-    .visitor-counter-box {
-      display:flex; align-items:center; justify-content:center;
-      min-height:56px;
-      padding:0.5rem 1rem;
-      background:#000;
-      border:1px solid rgba(212,175,55,0.4);
-      border-radius:12px;
-      box-shadow:0 0 18px rgba(212,175,55,0.2);
-      max-width:100%;
-      overflow:hidden;
-    }
+    .visitor-counter-box { display:flex; align-items:center; justify-content:center; min-height:56px; padding:0.5rem 1rem; background:#000; border:1px solid rgba(212,175,55,0.4); border-radius:12px; box-shadow:0 0 18px rgba(212,175,55,0.2); max-width:100%; overflow:hidden; }
     .visitor-counter-box img { max-width:100%; height:auto; display:inline-block; }
 
-    /* ==================== VOICE STATUS ==================== */
     #voiceStatus {
-      position:fixed;
-      bottom: clamp(10px, 2vw, 20px);
-      left: clamp(10px, 2vw, 20px);
-      z-index:9999;
-      display:none;
-      align-items:center; gap:8px;
-      background:rgba(0,0,0,0.94);
-      color:#f4d03f;
-      border:1.5px solid rgba(212,175,55,0.75);
-      border-radius:999px;
-      padding: 8px 14px;
-      font-family:'Outfit',system-ui,sans-serif;
-      font-size: var(--fs-xs);
-      font-weight:600;
-      backdrop-filter:blur(10px);
+      position:fixed; bottom: clamp(10px, 2vw, 20px); left: clamp(10px, 2vw, 20px);
+      z-index:9999; display:none; align-items:center; gap:8px;
+      background:rgba(0,0,0,0.94); color:#f4d03f;
+      border:1.5px solid rgba(212,175,55,0.75); border-radius:999px;
+      padding: 8px 14px; font-family:'Outfit',system-ui,sans-serif;
+      font-size: var(--fs-xs); font-weight:600; backdrop-filter:blur(10px);
       box-shadow:0 0 28px rgba(212,175,55,0.55);
-      white-space:nowrap;
-      pointer-events:none;
-      max-width: calc(100vw - 100px);
-      overflow:hidden;
-      text-overflow:ellipsis;
+      white-space:nowrap; pointer-events:none;
+      max-width: calc(100vw - 100px); overflow:hidden; text-overflow:ellipsis;
     }
     #voiceStatus.active { display:flex; }
 
     #voiceFallback {
-      position:fixed;
-      bottom: clamp(10px, 2vw, 20px);
-      left: clamp(10px, 2vw, 20px);
-      z-index:9998;
-      display:flex; align-items:center; justify-content:center;
-      width: clamp(46px, 7vw, 58px);
-      height: clamp(46px, 7vw, 58px);
-      border-radius:50%;
-      background:linear-gradient(135deg,#d4af37,#b8941f);
+      position:fixed; bottom: clamp(10px, 2vw, 20px); left: clamp(10px, 2vw, 20px);
+      z-index:9998; display:flex; align-items:center; justify-content:center;
+      width: clamp(46px, 7vw, 58px); height: clamp(46px, 7vw, 58px);
+      border-radius:50%; background:linear-gradient(135deg,#d4af37,#b8941f);
       border:none; cursor:pointer; color:#000;
       box-shadow:0 6px 25px rgba(212,175,55,0.75);
       animation:voicePulse 2.5s ease-in-out infinite;
@@ -434,7 +278,6 @@
       50% { opacity:0.5; transform:scale(0.85); }
     }
 
-    /* ==================== RESPONSIVE ==================== */
     @media (max-width:640px) {
       section { padding-top: 1.5rem !important; padding-bottom: 1.5rem !important; }
       .testimonial-card::before { font-size:2rem; top:0.2rem; left:0.5rem; }
@@ -445,15 +288,11 @@
       :root { --pad-container: 0.6rem; }
       .chat-quick button { padding:0.28rem 0.55rem; font-size:0.65rem; }
     }
-
-    @media (min-width:1600px) {
-      .container-fluid { max-width:1440px; }
-    }
+    @media (min-width:1600px) { .container-fluid { max-width:1440px; } }
   </style>
 </head>
 <body class="bg-black text-white">
 
-<!-- ============ INDICADOR DE VOZ ============ -->
 <div id="voiceStatus" role="status" aria-live="polite">
   <span id="voiceDot" style="width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e;animation:voiceDotPulse 1.3s infinite ease-in-out;flex-shrink:0"></span>
   <span id="voiceText">Escuchando... di "audio"</span>
@@ -472,7 +311,7 @@
     <div class="flex flex-col md:flex-row items-center justify-between gap-3">
       <a href="#inicio" class="flex items-center gap-3 md:gap-4 flex-shrink-0">
         <img src="https://i.postimg.cc/dqKj7LQQ/480702220-618041787505911-8280549859336367380-n.jpg" alt="Logo Fundación Artes Multicap" class="h-14 w-14 md:h-20 md:w-20 rounded-full object-cover border-2 border-[#d4af37] shadow-lg shadow-[#d4af37]/30">
-        <div class="leading-tight">
+        <div class="leading-tight text-left">
           <p class="text-base md:text-2xl font-extrabold text-white tracking-wide">Fundación Artes Multicap</p>
           <p class="text-xs md:text-base text-[#f4d03f] font-medium">Colombia</p>
         </div>
@@ -481,19 +320,16 @@
         <a href="#descuentos" class="btn-outline-neon flex-1 md:flex-none text-center text-[#f4d03f] text-xs md:text-sm font-semibold px-3 md:px-5 py-2 md:py-3 rounded-xl shadow-lg transition-all duration-300 whitespace-nowrap">Ver Descuentos</a>
         <a href="#inscripcion" class="btn-neon flex-1 md:flex-none text-center text-white text-xs md:text-sm font-semibold px-3 md:px-6 py-2 md:py-3 rounded-xl shadow-lg transition-all duration-300 whitespace-nowrap">Inscribirse Ahora</a>
         <button id="hamburgerBtn" type="button" class="md:hidden p-2 rounded-lg border border-[#d4af37]/40" aria-label="Abrir menú">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
+          <span class="hamburger-line"></span><span class="hamburger-line"></span><span class="hamburger-line"></span>
         </button>
       </div>
     </div>
-
     <nav class="mt-3 hidden md:flex flex-wrap justify-center gap-2 lg:gap-5 text-xs lg:text-sm text-gray-400">
       <a href="#talleres-basicos" class="hover:text-[#f4d03f] transition-colors">Talleres Gratis</a>
       <a href="#descuentos" class="hover:text-[#f4d03f] transition-colors">Descuentos</a>
-      <a href="#talleres-intermedios" class="hover:text-[#f4d03f] transition-colors">Intermedios</a>
-      <a href="#talleres-avanzados" class="hover:text-[#f4d03f] transition-colors">Avanzados</a>
-      <a href="#personalizado" class="hover:text-[#f4d03f] transition-colors">A Medida</a>
+      <a href="#talleres-intermedios" class="hover:text-[#f4d03f] transition-colors">Paquetes Intermedios</a>
+      <a href="#talleres-avanzados" class="hover:text-[#f4d03f] transition-colors">Paquetes Avanzados</a>
+      <a href="#personalizado" class="hover:text-[#f4d03f] transition-colors">Paquetes a Medida</a>
       <a href="#nivelacion" class="hover:text-[#f4d03f] transition-colors">Nivelación</a>
       <a href="#galeria" class="hover:text-[#f4d03f] transition-colors">Galería</a>
       <a href="#testimonios" class="hover:text-[#f4d03f] transition-colors">Testimonios</a>
@@ -502,20 +338,19 @@
       <a href="#editorial" class="hover:text-[#f4d03f] transition-colors">Editorial</a>
       <a href="#convocatorias" class="hover:text-[#f4d03f] transition-colors">Convocatorias</a>
     </nav>
-
     <nav id="mobileMenu" class="md:hidden mt-2 flex flex-col gap-1 text-sm text-gray-300">
-      <a href="#talleres-basicos" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f] transition-colors">Talleres Gratis</a>
-      <a href="#descuentos" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f] transition-colors">Descuentos</a>
-      <a href="#talleres-intermedios" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f] transition-colors">Paquetes Intermedios</a>
-      <a href="#talleres-avanzados" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f] transition-colors">Paquetes Avanzados</a>
-      <a href="#personalizado" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f] transition-colors">Paquetes a Medida</a>
-      <a href="#nivelacion" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f] transition-colors">Nivelación</a>
-      <a href="#galeria" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f] transition-colors">Galería</a>
-      <a href="#testimonios" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f] transition-colors">Testimonios</a>
-      <a href="#inscripcion" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f] transition-colors">Inscripción</a>
-      <a href="#faq" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f] transition-colors">Preguntas</a>
-      <a href="#editorial" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f] transition-colors">Editorial</a>
-      <a href="#convocatorias" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f] transition-colors">Convocatorias</a>
+      <a href="#talleres-basicos" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f]">Talleres Gratis</a>
+      <a href="#descuentos" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f]">Descuentos</a>
+      <a href="#talleres-intermedios" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f]">Paquetes Intermedios</a>
+      <a href="#talleres-avanzados" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f]">Paquetes Avanzados</a>
+      <a href="#personalizado" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f]">Paquetes a Medida</a>
+      <a href="#nivelacion" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f]">Nivelación</a>
+      <a href="#galeria" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f]">Galería</a>
+      <a href="#testimonios" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f]">Testimonios</a>
+      <a href="#inscripcion" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f]">Inscripción</a>
+      <a href="#faq" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f]">Preguntas</a>
+      <a href="#editorial" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f]">Editorial</a>
+      <a href="#convocatorias" class="py-1.5 px-3 rounded-lg hover:bg-[#0a0a0a] hover:text-[#f4d03f]">Convocatorias</a>
     </nav>
   </div>
 </header>
@@ -530,36 +365,13 @@
       <h2 class="text-3xl font-extrabold text-white">¿Qué es la <span class="bg-gradient-to-r from-[#d4af37] to-[#f4d03f] bg-clip-text text-transparent">Fundación Artes Multicap</span>?</h2>
       <p class="mt-2 text-gray-400 text-sm">Arte, cultura, educación y emociones como herramientas de transformación social</p>
     </div>
-
-    <div class="bg-black rounded-2xl p-5 md:p-8 border border-[#d4af37]/40 shadow-lg shadow-[#d4af37]/10 max-w-4xl mx-auto">
-      <p class="text-gray-200 text-sm md:text-lg leading-relaxed mb-4">
-        La <strong class="text-[#f4d03f]">Fundación Artes Multicap</strong> es una organización cultural y educativa de Colombia, dedicada a promover, fortalecer y visibilizar el <strong class="text-white">arte, la cultura, la literatura, la educación emocional, la inclusión y la formación técnica</strong> como herramientas de transformación social y desarrollo humano.
-      </p>
-      <p class="text-gray-200 text-sm md:text-lg leading-relaxed mb-4">
-        Ofrecemos talleres artísticos gratuitos, paquetes de formación intermedia y avanzada, cursos personalizados, nivelación académica, servicios editoriales y convocatorias internacionales para niños, niñas, jóvenes y adultos, tanto en Colombia como en el resto de Latinoamérica.
-      </p>
-      <p class="text-gray-200 text-sm md:text-lg leading-relaxed">
-        Trabajamos para consolidarnos como una fundación referente en la región, integrando arte, literatura, tecnología, emociones, inclusión y diversidad, y creando espacios reales de aprendizaje, expresión artística y reconocimiento del talento latinoamericano.
-      </p>
+    <div class="que-es-text bg-black rounded-2xl p-4 md:p-6 border border-[#d4af37]/40 shadow-lg shadow-[#d4af37]/10 max-w-4xl mx-auto text-justify">
+      <p class="text-gray-200 text-sm md:text-base">La <strong class="text-[#f4d03f]">Fundación Artes Multicap</strong> es una organización cultural y educativa de Colombia, de carácter comunitario y sin ánimo de lucro, comprometida con la promoción, fortalecimiento y visibilización del <strong class="text-white">arte, la cultura, la literatura, la educación emocional, la tecnología, la inclusión y la formación técnica</strong> como herramientas para la transformación social y el desarrollo humano.</p>
+      <p class="text-gray-200 text-sm md:text-base">Nuestra labor parte de una convicción: el arte y la cultura deben ser espacios de encuentro, aprendizaje, expresión y participación accesibles para todas las personas. Por ello, desarrollamos propuestas dirigidas a niños, niñas, jóvenes, adultos, artistas, escritores, docentes, investigadores, gestores culturales y comunidades, tanto en Colombia como en otros países de Latinoamérica. En Artes Multicap, la inclusión no es solamente un principio; es una forma de construir nuestros proyectos y de relacionarnos con las comunidades.</p>
+      <p class="text-gray-200 text-sm md:text-base">Nuestro modelo integra diversidad cultural, inclusión social, educación, creación artística, literatura, tecnología y educación emocional, generando espacios donde diferentes generaciones, experiencias, capacidades y formas de expresión pueden encontrarse.</p>
     </div>
-
-    <div class="mt-6 grid grid-cols-2 lg:grid-cols-4 gap-3 text-center max-w-4xl mx-auto">
-      <div class="p-3 rounded-xl bg-black border border-[#d4af37]/40">
-        <p class="text-[#f4d03f] font-bold text-sm md:text-lg">Arte y Cultura</p>
-        <p class="text-xs text-gray-400 mt-1">Promoción y visibilización</p>
-      </div>
-      <div class="p-3 rounded-xl bg-black border border-[#d4af37]/40">
-        <p class="text-[#f4d03f] font-bold text-sm md:text-lg">Educación</p>
-        <p class="text-xs text-gray-400 mt-1">Talleres, cursos y nivelación</p>
-      </div>
-      <div class="p-3 rounded-xl bg-black border border-[#d4af37]/40">
-        <p class="text-[#f4d03f] font-bold text-sm md:text-lg">Inclusión</p>
-        <p class="text-xs text-gray-400 mt-1">Para todas las edades y estratos</p>
-      </div>
-      <div class="p-3 rounded-xl bg-black border border-[#d4af37]/40">
-        <p class="text-[#f4d03f] font-bold text-sm md:text-lg">Sin ánimo de lucro</p>
-        <p class="text-xs text-gray-400 mt-1">Revistas y talleres gratuitos</p>
-      </div>
+    <div class="mt-6 max-w-4xl mx-auto">
+      <img src="https://i.postimg.cc/XqS7bH3M/Mapa-conceptual-de-Artes-Multicap-en-Colombia-(1).png" alt="Mapa conceptual Fundación Artes Multicap en Colombia" class="w-full h-auto rounded-2xl border border-[#d4af37]/40 shadow-lg shadow-[#d4af37]/20" loading="lazy">
     </div>
   </div>
 </section>
@@ -570,7 +382,7 @@
     <div class="text-center mb-6">
       <h2 class="text-2xl font-bold text-white">Talleres Básicos - GRATIS</h2>
       <p class="text-gray-400 mt-1 text-sm">Cada área incluye 3 talleres individuales de 1 a 2 horas cada uno</p>
-      <p class="text-[#f4d03f] text-xs mt-1">Modalidad: Virtual o Presencial (mínimo 10 personas)</p>
+      <p class="text-[#f4d03f] text-xs mt-1">Modalidad: Virtual o Presencial (mínimo 10 personas para modalidad presencial)</p>
       <div class="mt-3"><a href="#inicio" class="btn-outline-neon inline-block px-4 py-1.5 text-xs font-semibold text-[#f4d03f] rounded-xl transition-all duration-300">Volver al inicio</a></div>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -747,6 +559,7 @@
           <div class="taller-item"><span class="taller-num">1</span><span class="text-sm text-gray-300">Los 10 errores que descalifican una obra antes de llegar al jurado</span></div>
           <div class="taller-item"><span class="taller-num">2</span><span class="text-sm text-gray-300">Cómo leer correctamente las bases de una convocatoria</span></div>
           <div class="taller-item"><span class="taller-num">3</span><span class="text-sm text-gray-300">Formato, seudónimo, extensión y documentación obligatoria</span></div>
+          <p class="text-xs text-gray-400 mt-2">Incluye sesión de preguntas frecuentes de los participantes.</p>
           <button type="button" onclick="selectCourse('convocatorias-basico')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme Gratis</button>
         </div></div>
       </div>
@@ -764,26 +577,24 @@
       <p class="mt-1 text-gray-400 text-sm">En la Fundación creemos que el arte debe ser accesible. Aplica descuento en paquetes y talleres individuales.</p>
     </div>
     <div class="max-w-4xl mx-auto">
-      <img src="https://i.postimg.cc/nL74q2pY/Chat-GPT-Image-30-sept-2026-10-05-02-a-m-44.png" 
-           alt="Tabla de descuentos por estrato - Fundación Artes Multicap" 
-           class="w-full h-auto rounded-2xl border border-[#d4af37]/40 shadow-lg shadow-[#d4af37]/20"
-           loading="lazy">
+      <img src="https://i.postimg.cc/nL74q2pY/Chat-GPT-Image-30-sept-2026-10-05-02-a-m-44.png" alt="Tabla de descuentos por estrato socioeconómico - Fundación Artes Multicap" class="w-full h-auto rounded-2xl border border-[#d4af37]/40 shadow-lg shadow-[#d4af37]/20" loading="lazy">
     </div>
     <div class="max-w-4xl mx-auto mt-4 p-4 rounded-2xl bg-black border border-[#d4af37]/40 text-center">
       <p class="text-xs text-gray-300 mb-1"><strong class="text-[#d4af37]">Estratos 1 y 2:</strong> el 50% aplica a <strong class="text-[#f4d03f]">paquetes y talleres individuales</strong> de cobro.</p>
-      <p class="text-xs text-gray-300"><strong class="text-[#d4af37]">Estratos 3 y 4:</strong> el 30% aplica únicamente a <strong class="text-[#f4d03f]">paquetes</strong> (2 o más talleres). El taller individual de $60,000 no tiene descuento para estos estratos.</p>
+      <p class="text-xs text-gray-300"><strong class="text-[#d4af37]">Estratos 3 y 4:</strong> el 30% aplica únicamente a <strong class="text-[#f4d03f]">paquetes</strong> (2 o más talleres). El taller individual de $60.000 COP no tiene descuento para estos estratos.</p>
     </div>
   </div>
 </section>
 
-<!-- ==================== TALLERES INTERMEDIOS - PAQUETES ==================== -->
+<!-- ==================== TALLERES INTERMEDIOS ==================== -->
 <section id="talleres-intermedios" class="py-8 bg-black border-t border-gray-800 scroll-mt-24">
   <div class="container-fluid">
     <div class="text-center mb-6">
-      <h2 class="text-2xl font-bold">Paquetes Intermedios - $380,000</h2>
+      <h2 class="text-2xl font-bold">Paquetes Intermedios - $380.000 COP</h2>
       <p class="text-gray-400 mt-1 text-sm">Cada paquete incluye 7 talleres de 2 horas + proyecto final</p>
-      <p class="text-[#f4d03f] text-xs mt-1">Taller individual: $60,000 · Paquete de 7 talleres: $380,000 (ahorras $40,000)</p>
-      <p class="text-[#d4af37] text-xs mt-1 font-semibold">Estratos 1 y 2: 50% dto → $190,000 · Estratos 3 y 4: 30% dto → $266,000</p>
+      <p class="text-[#f4d03f] text-xs mt-1">Taller individual: $60.000 COP · Paquete de 7 talleres: $380.000 COP (ahorras $40.000 COP)</p>
+      <p class="text-[#d4af37] text-xs mt-1 font-semibold">Estratos 1 y 2: 50% dto → $190.000 COP · Estratos 3 y 4: 30% dto → $266.000 COP</p>
+      <p class="text-[#f4d03f] text-xs mt-1">Modalidad: Virtual o Presencial (mínimo 10 personas para modalidad presencial)</p>
       <div class="mt-3"><a href="#inicio" class="btn-outline-neon inline-block px-4 py-1.5 text-xs font-semibold text-[#f4d03f] rounded-xl transition-all duration-300">Volver al inicio</a></div>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -791,13 +602,13 @@
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left p-3 md:p-4 py-4 md:py-5 font-semibold text-sm md:text-base flex justify-between items-center hover:bg-gray-700 transition-colors gap-2">
           <div class="flex items-center gap-3 flex-1 min-w-0">
-            <span class="workshop-icon"><img src="https://i.postimg.cc/R03CNp1f/Gemini-Generated-Image-etgy4eetgy4eetgy1.jpg" alt="Dibujo Intermedio" loading="lazy"></span>
-            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380,000</span>
+            <span class="workshop-icon"><img src="https://i.postimg.cc/R03CNp1f/Gemini-Generated-Image-etgy4eetgy4eetgy1.jpg" alt="Dibujo" loading="lazy"></span>
+            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380.000 COP</span>
           </div>
           <svg class="chev w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="accordion-content"><div class="px-4 md:px-5 pb-4 pt-2">
-          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · Individual: $60,000 c/u</p>
+          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · Individual: $60.000 COP c/u</p>
           <div class="taller-item"><span class="taller-num">1</span><span class="text-sm text-gray-300">Técnicas avanzadas de líneas y trazos</span></div>
           <div class="taller-item"><span class="taller-num">2</span><span class="text-sm text-gray-300">Proporción y anatomía básica</span></div>
           <div class="taller-item"><span class="taller-num">3</span><span class="text-sm text-gray-300">Perspectiva y profundidad</span></div>
@@ -807,24 +618,24 @@
           <div class="taller-item"><span class="taller-num">7</span><span class="text-sm text-gray-300">Técnicas mixtas (carboncillo, pastel)</span></div>
           <p class="text-sm text-[#f4d03f] font-semibold mt-2">+ PROYECTO: Serie de 3 dibujos temáticos</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2 (50% dto)</span><span class="value">$190,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4 (30% dto)</span><span class="value">$266,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2 (50% dto)</span><span class="value">$190.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4 (30% dto)</span><span class="value">$266.000 COP</span></div>
           </div>
-          <button type="button" onclick="selectCourse('dibujo-intermedio')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380,000</button>
+          <button type="button" onclick="selectCourse('dibujo-intermedio')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380.000 COP</button>
         </div></div>
       </div>
 
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left p-3 md:p-4 py-4 md:py-5 font-semibold text-sm md:text-base flex justify-between items-center hover:bg-gray-700 transition-colors gap-2">
           <div class="flex items-center gap-3 flex-1 min-w-0">
-            <span class="workshop-icon"><img src="https://i.postimg.cc/XvZNp1Ky/Gemini-Generated-Image-etgy4eetgy4eetgy2.jpg" alt="Pintura Intermedio" loading="lazy"></span>
-            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380,000</span>
+            <span class="workshop-icon"><img src="https://i.postimg.cc/XvZNp1Ky/Gemini-Generated-Image-etgy4eetgy4eetgy2.jpg" alt="Pintura" loading="lazy"></span>
+            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380.000 COP</span>
           </div>
           <svg class="chev w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="accordion-content"><div class="px-4 md:px-5 pb-4 pt-2">
-          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · Individual: $60,000 c/u</p>
+          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · Individual: $60.000 COP c/u</p>
           <div class="taller-item"><span class="taller-num">1</span><span class="text-sm text-gray-300">Teoría del color avanzada</span></div>
           <div class="taller-item"><span class="taller-num">2</span><span class="text-sm text-gray-300">Técnicas de acrílico profesional</span></div>
           <div class="taller-item"><span class="taller-num">3</span><span class="text-sm text-gray-300">Técnicas de acuarela</span></div>
@@ -834,19 +645,19 @@
           <div class="taller-item"><span class="taller-num">7</span><span class="text-sm text-gray-300">Texturas y efectos especiales</span></div>
           <p class="text-sm text-[#f4d03f] font-semibold mt-2">+ PROYECTO: Serie de 3 pinturas originales</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2 (50% dto)</span><span class="value">$190,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4 (30% dto)</span><span class="value">$266,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2 (50% dto)</span><span class="value">$190.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4 (30% dto)</span><span class="value">$266.000 COP</span></div>
           </div>
-          <button type="button" onclick="selectCourse('pintura-intermedio')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380,000</button>
+          <button type="button" onclick="selectCourse('pintura-intermedio')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380.000 COP</button>
         </div></div>
       </div>
 
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left p-3 md:p-4 py-4 md:py-5 font-semibold text-sm md:text-base flex justify-between items-center hover:bg-gray-700 transition-colors gap-2">
           <div class="flex items-center gap-3 flex-1 min-w-0">
-            <span class="workshop-icon"><img src="https://i.postimg.cc/8CFkjXdf/Gemini-Generated-Image-etgy4eetgy4eetgy3.jpg" alt="Teatro Intermedio" loading="lazy"></span>
-            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380,000</span>
+            <span class="workshop-icon"><img src="https://i.postimg.cc/8CFkjXdf/Gemini-Generated-Image-etgy4eetgy4eetgy3.jpg" alt="Teatro" loading="lazy"></span>
+            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380.000 COP</span>
           </div>
           <svg class="chev w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
@@ -861,19 +672,19 @@
           <div class="taller-item"><span class="taller-num">7</span><span class="text-sm text-gray-300">Trabajo en equipo y ensambles</span></div>
           <p class="text-sm text-[#f4d03f] font-semibold mt-2">+ PROYECTO: Monólogo o escena grupal</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2 (50% dto)</span><span class="value">$190,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4 (30% dto)</span><span class="value">$266,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2 (50% dto)</span><span class="value">$190.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4 (30% dto)</span><span class="value">$266.000 COP</span></div>
           </div>
-          <button type="button" onclick="selectCourse('teatro-intermedio')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380,000</button>
+          <button type="button" onclick="selectCourse('teatro-intermedio')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380.000 COP</button>
         </div></div>
       </div>
 
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left p-3 md:p-4 py-4 md:py-5 font-semibold text-sm md:text-base flex justify-between items-center hover:bg-gray-700 transition-colors gap-2">
           <div class="flex items-center gap-3 flex-1 min-w-0">
-            <span class="workshop-icon"><img src="https://i.postimg.cc/0N65bXG6/Gemini-Generated-Image-etgy4eetgy4eetgy4.jpg" alt="Guion Intermedio" loading="lazy"></span>
-            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380,000</span>
+            <span class="workshop-icon"><img src="https://i.postimg.cc/0N65bXG6/Gemini-Generated-Image-etgy4eetgy4eetgy4.jpg" alt="Guion" loading="lazy"></span>
+            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380.000 COP</span>
           </div>
           <svg class="chev w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
@@ -888,19 +699,19 @@
           <div class="taller-item"><span class="taller-num">7</span><span class="text-sm text-gray-300">Revisión y corrección de guion</span></div>
           <p class="text-sm text-[#f4d03f] font-semibold mt-2">+ PROYECTO: Guion de cortometraje</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2 (50% dto)</span><span class="value">$190,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4 (30% dto)</span><span class="value">$266,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2 (50% dto)</span><span class="value">$190.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4 (30% dto)</span><span class="value">$266.000 COP</span></div>
           </div>
-          <button type="button" onclick="selectCourse('guion-intermedio')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380,000</button>
+          <button type="button" onclick="selectCourse('guion-intermedio')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380.000 COP</button>
         </div></div>
       </div>
 
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left p-3 md:p-4 py-4 md:py-5 font-semibold text-sm md:text-base flex justify-between items-center hover:bg-gray-700 transition-colors gap-2">
           <div class="flex items-center gap-3 flex-1 min-w-0">
-            <span class="workshop-icon"><img src="https://i.postimg.cc/PqLfPVbC/Gemini-Generated-Image-etgy4eetgy4eetgy5.jpg" alt="Revistas Intermedio" loading="lazy"></span>
-            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380,000</span>
+            <span class="workshop-icon"><img src="https://i.postimg.cc/PqLfPVbC/Gemini-Generated-Image-etgy4eetgy4eetgy5.jpg" alt="Revistas" loading="lazy"></span>
+            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380.000 COP</span>
           </div>
           <svg class="chev w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
@@ -915,19 +726,19 @@
           <div class="taller-item"><span class="taller-num">7</span><span class="text-sm text-gray-300">SEO para revistas digitales</span></div>
           <p class="text-sm text-[#f4d03f] font-semibold mt-2">+ PROYECTO: Revista digital completa</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2 (50% dto)</span><span class="value">$190,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4 (30% dto)</span><span class="value">$266,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2 (50% dto)</span><span class="value">$190.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4 (30% dto)</span><span class="value">$266.000 COP</span></div>
           </div>
-          <button type="button" onclick="selectCourse('revistas-intermedio')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380,000</button>
+          <button type="button" onclick="selectCourse('revistas-intermedio')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380.000 COP</button>
         </div></div>
       </div>
 
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left p-3 md:p-4 py-4 md:py-5 font-semibold text-sm md:text-base flex justify-between items-center hover:bg-gray-700 transition-colors gap-2">
           <div class="flex items-center gap-3 flex-1 min-w-0">
-            <span class="workshop-icon"><img src="https://i.postimg.cc/FKfF7Cb7/Gemini-Generated-Image-etgy4eetgy4eetgy6.jpg" alt="Literatura Intermedio" loading="lazy"></span>
-            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380,000</span>
+            <span class="workshop-icon"><img src="https://i.postimg.cc/FKfF7Cb7/Gemini-Generated-Image-etgy4eetgy4eetgy6.jpg" alt="Literatura" loading="lazy"></span>
+            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380.000 COP</span>
           </div>
           <svg class="chev w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
@@ -942,19 +753,19 @@
           <div class="taller-item"><span class="taller-num">7</span><span class="text-sm text-gray-300">Análisis de obras literarias</span></div>
           <p class="text-sm text-[#f4d03f] font-semibold mt-2">+ PROYECTO: Cuento corto o poemario</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2 (50% dto)</span><span class="value">$190,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4 (30% dto)</span><span class="value">$266,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2 (50% dto)</span><span class="value">$190.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4 (30% dto)</span><span class="value">$266.000 COP</span></div>
           </div>
-          <button type="button" onclick="selectCourse('literatura-intermedio')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380,000</button>
+          <button type="button" onclick="selectCourse('literatura-intermedio')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380.000 COP</button>
         </div></div>
       </div>
 
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left p-3 md:p-4 py-4 md:py-5 font-semibold text-sm md:text-base flex justify-between items-center hover:bg-gray-700 transition-colors gap-2">
           <div class="flex items-center gap-3 flex-1 min-w-0">
-            <span class="workshop-icon"><img src="https://i.postimg.cc/xdkjcpGC/Gemini-Generated-Image-etgy4eetgy4eetgy7.jpg" alt="Danza Intermedio" loading="lazy"></span>
-            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380,000</span>
+            <span class="workshop-icon"><img src="https://i.postimg.cc/xdkjcpGC/Gemini-Generated-Image-etgy4eetgy4eetgy7.jpg" alt="Danza" loading="lazy"></span>
+            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380.000 COP</span>
           </div>
           <svg class="chev w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
@@ -969,19 +780,19 @@
           <div class="taller-item"><span class="taller-num">7</span><span class="text-sm text-gray-300">Preparación física</span></div>
           <p class="text-sm text-[#f4d03f] font-semibold mt-2">+ PROYECTO: Coreografía grupal</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2 (50% dto)</span><span class="value">$190,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4 (30% dto)</span><span class="value">$266,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2 (50% dto)</span><span class="value">$190.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4 (30% dto)</span><span class="value">$266.000 COP</span></div>
           </div>
-          <button type="button" onclick="selectCourse('danza-intermedio')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380,000</button>
+          <button type="button" onclick="selectCourse('danza-intermedio')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380.000 COP</button>
         </div></div>
       </div>
 
       <div class="border-2 border-[#7c3aed] rounded-2xl bg-black overflow-hidden hover:border-[#a78bfa] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left p-3 md:p-4 py-4 md:py-5 font-semibold text-sm md:text-base flex justify-between items-center hover:bg-gray-700 transition-colors gap-2">
           <div class="flex items-center gap-3 flex-1 min-w-0">
-            <span class="workshop-icon"><img src="https://i.postimg.cc/9f4XrgP0/Gemini-Generated-Image-etgy4eetgy4eetgy10.jpg" alt="Convocatorias Intermedio" loading="lazy"></span>
-            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380,000</span>
+            <span class="workshop-icon"><img src="https://i.postimg.cc/9f4XrgP0/Gemini-Generated-Image-etgy4eetgy4eetgy10.jpg" alt="Convocatorias" loading="lazy"></span>
+            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380.000 COP</span>
           </div>
           <svg class="chev w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
@@ -996,11 +807,11 @@
           <div class="taller-item"><span class="taller-num">7</span><span class="text-sm text-gray-300">Análisis de convocatorias reales</span></div>
           <p class="text-sm text-[#f4d03f] font-semibold mt-2">+ PROYECTO: Postulación guiada</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2 (50% dto)</span><span class="value">$190,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4 (30% dto)</span><span class="value">$266,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2 (50% dto)</span><span class="value">$190.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4 (30% dto)</span><span class="value">$266.000 COP</span></div>
           </div>
-          <button type="button" onclick="selectCourse('participa-convocatorias')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380,000</button>
+          <button type="button" onclick="selectCourse('participa-convocatorias')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380.000 COP</button>
         </div></div>
       </div>
 
@@ -1008,14 +819,15 @@
   </div>
 </section>
 
-<!-- ==================== TALLERES AVANZADOS - PAQUETES ==================== -->
+<!-- ==================== TALLERES AVANZADOS ==================== -->
 <section id="talleres-avanzados" class="py-8 bg-black border-t border-gray-800 scroll-mt-24">
   <div class="container-fluid">
     <div class="text-center mb-6">
-      <h2 class="text-2xl font-bold">Paquetes Avanzados - $380,000</h2>
+      <h2 class="text-2xl font-bold">Paquetes Avanzados - $380.000 COP</h2>
       <p class="text-gray-400 mt-1 text-sm">Cada paquete incluye 7 talleres de 2 horas + proyecto final profesional</p>
-      <p class="text-[#f4d03f] text-xs mt-1">Taller individual: $60,000 · Paquete de 7 talleres: $380,000</p>
-      <p class="text-[#d4af37] text-xs mt-1 font-semibold">Estratos 1 y 2: 50% dto → $190,000 · Estratos 3 y 4: 30% dto → $266,000</p>
+      <p class="text-[#f4d03f] text-xs mt-1">Taller individual: $60.000 COP · Paquete de 7 talleres: $380.000 COP</p>
+      <p class="text-[#d4af37] text-xs mt-1 font-semibold">Estratos 1 y 2: 50% dto → $190.000 COP · Estratos 3 y 4: 30% dto → $266.000 COP</p>
+      <p class="text-[#f4d03f] text-xs mt-1">Modalidad: Virtual o Presencial (mínimo 10 personas para modalidad presencial)</p>
       <div class="mt-3"><a href="#inicio" class="btn-outline-neon inline-block px-4 py-1.5 text-xs font-semibold text-[#f4d03f] rounded-xl transition-all duration-300">Volver al inicio</a></div>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -1023,13 +835,13 @@
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left p-3 md:p-4 py-4 md:py-5 font-semibold text-sm md:text-base flex justify-between items-center hover:bg-gray-700 transition-colors gap-2">
           <div class="flex items-center gap-3 flex-1 min-w-0">
-            <span class="workshop-icon"><img src="https://i.postimg.cc/zXCYPZpm/Gemini-Generated-Image-ey0rtbey0rtbey0r1.jpg" alt="Dibujo Avanzado" loading="lazy"></span>
-            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380,000</span>
+            <span class="workshop-icon"><img src="https://i.postimg.cc/zXCYPZpm/Gemini-Generated-Image-ey0rtbey0rtbey0r1.jpg" alt="Dibujo" loading="lazy"></span>
+            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380.000 COP</span>
           </div>
           <svg class="chev w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="accordion-content"><div class="px-4 md:px-5 pb-4 pt-2">
-          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · $60,000 c/u</p>
+          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · $60.000 COP c/u</p>
           <div class="taller-item"><span class="taller-num">1</span><span class="text-sm text-gray-300">Hiperrealismo</span></div>
           <div class="taller-item"><span class="taller-num">2</span><span class="text-sm text-gray-300">Anatomía artística</span></div>
           <div class="taller-item"><span class="taller-num">3</span><span class="text-sm text-gray-300">Retrato profesional</span></div>
@@ -1039,24 +851,24 @@
           <div class="taller-item"><span class="taller-num">7</span><span class="text-sm text-gray-300">Preparación para exposiciones</span></div>
           <p class="text-sm text-[#f4d03f] font-semibold mt-2">+ PROYECTO: Portafolio + obra estrella</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$190,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$266,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$190.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$266.000 COP</span></div>
           </div>
-          <button type="button" onclick="selectCourse('dibujo-avanzado')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380,000</button>
+          <button type="button" onclick="selectCourse('dibujo-avanzado')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380.000 COP</button>
         </div></div>
       </div>
 
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left p-3 md:p-4 py-4 md:py-5 font-semibold text-sm md:text-base flex justify-between items-center hover:bg-gray-700 transition-colors gap-2">
           <div class="flex items-center gap-3 flex-1 min-w-0">
-            <span class="workshop-icon"><img src="https://i.postimg.cc/02Y1HRnL/Gemini-Generated-Image-ey0rtbey0rtbey0r2.jpg" alt="Pintura Avanzada" loading="lazy"></span>
-            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380,000</span>
+            <span class="workshop-icon"><img src="https://i.postimg.cc/02Y1HRnL/Gemini-Generated-Image-ey0rtbey0rtbey0r2.jpg" alt="Pintura" loading="lazy"></span>
+            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380.000 COP</span>
           </div>
           <svg class="chev w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="accordion-content"><div class="px-4 md:px-5 pb-4 pt-2">
-          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · $60,000 c/u</p>
+          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · $60.000 COP c/u</p>
           <div class="taller-item"><span class="taller-num">1</span><span class="text-sm text-gray-300">Pintura al óleo profesional</span></div>
           <div class="taller-item"><span class="taller-num">2</span><span class="text-sm text-gray-300">Técnicas mixtas avanzadas</span></div>
           <div class="taller-item"><span class="taller-num">3</span><span class="text-sm text-gray-300">Estilo personal y vanguardia</span></div>
@@ -1066,24 +878,24 @@
           <div class="taller-item"><span class="taller-num">7</span><span class="text-sm text-gray-300">Marketing para artistas</span></div>
           <p class="text-sm text-[#f4d03f] font-semibold mt-2">+ PROYECTO: Serie de 5 pinturas + exposición virtual</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$190,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$266,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$190.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$266.000 COP</span></div>
           </div>
-          <button type="button" onclick="selectCourse('pintura-avanzado')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380,000</button>
+          <button type="button" onclick="selectCourse('pintura-avanzado')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380.000 COP</button>
         </div></div>
       </div>
 
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left p-3 md:p-4 py-4 md:py-5 font-semibold text-sm md:text-base flex justify-between items-center hover:bg-gray-700 transition-colors gap-2">
           <div class="flex items-center gap-3 flex-1 min-w-0">
-            <span class="workshop-icon"><img src="https://i.postimg.cc/02Y1HRnB/Gemini-Generated-Image-ey0rtbey0rtbey0r3.jpg" alt="Teatro Avanzado" loading="lazy"></span>
-            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380,000</span>
+            <span class="workshop-icon"><img src="https://i.postimg.cc/02Y1HRnB/Gemini-Generated-Image-ey0rtbey0rtbey0r3.jpg" alt="Teatro" loading="lazy"></span>
+            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380.000 COP</span>
           </div>
           <svg class="chev w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="accordion-content"><div class="px-4 md:px-5 pb-4 pt-2">
-          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · $60,000 c/u</p>
+          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · $60.000 COP c/u</p>
           <div class="taller-item"><span class="taller-num">1</span><span class="text-sm text-gray-300">Stanislavski y Meisner</span></div>
           <div class="taller-item"><span class="taller-num">2</span><span class="text-sm text-gray-300">Producción teatral integral</span></div>
           <div class="taller-item"><span class="taller-num">3</span><span class="text-sm text-gray-300">Dirección de actores</span></div>
@@ -1093,24 +905,24 @@
           <div class="taller-item"><span class="taller-num">7</span><span class="text-sm text-gray-300">Gestión de proyectos</span></div>
           <p class="text-sm text-[#f4d03f] font-semibold mt-2">+ PROYECTO: Obra de teatro corta</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$190,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$266,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$190.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$266.000 COP</span></div>
           </div>
-          <button type="button" onclick="selectCourse('teatro-avanzado')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380,000</button>
+          <button type="button" onclick="selectCourse('teatro-avanzado')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380.000 COP</button>
         </div></div>
       </div>
 
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left p-3 md:p-4 py-4 md:py-5 font-semibold text-sm md:text-base flex justify-between items-center hover:bg-gray-700 transition-colors gap-2">
           <div class="flex items-center gap-3 flex-1 min-w-0">
-            <span class="workshop-icon"><img src="https://i.postimg.cc/gkVbBFs7/Gemini-Generated-Image-ey0rtbey0rtbey0r4.jpg" alt="Guion Avanzado" loading="lazy"></span>
-            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380,000</span>
+            <span class="workshop-icon"><img src="https://i.postimg.cc/gkVbBFs7/Gemini-Generated-Image-ey0rtbey0rtbey0r4.jpg" alt="Guion" loading="lazy"></span>
+            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380.000 COP</span>
           </div>
           <svg class="chev w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="accordion-content"><div class="px-4 md:px-5 pb-4 pt-2">
-          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · $60,000 c/u</p>
+          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · $60.000 COP c/u</p>
           <div class="taller-item"><span class="taller-num">1</span><span class="text-sm text-gray-300">Series y largometrajes</span></div>
           <div class="taller-item"><span class="taller-num">2</span><span class="text-sm text-gray-300">Análisis de guion</span></div>
           <div class="taller-item"><span class="taller-num">3</span><span class="text-sm text-gray-300">Pitch a productoras</span></div>
@@ -1120,24 +932,24 @@
           <div class="taller-item"><span class="taller-num">7</span><span class="text-sm text-gray-300">Derechos de autor</span></div>
           <p class="text-sm text-[#f4d03f] font-semibold mt-2">+ PROYECTO: Guion listo para producir</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$190,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$266,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$190.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$266.000 COP</span></div>
           </div>
-          <button type="button" onclick="selectCourse('guion-avanzado')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380,000</button>
+          <button type="button" onclick="selectCourse('guion-avanzado')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380.000 COP</button>
         </div></div>
       </div>
 
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left p-3 md:p-4 py-4 md:py-5 font-semibold text-sm md:text-base flex justify-between items-center hover:bg-gray-700 transition-colors gap-2">
           <div class="flex items-center gap-3 flex-1 min-w-0">
-            <span class="workshop-icon"><img src="https://i.postimg.cc/m2YW6fjy/Gemini-Generated-Image-ey0rtbey0rtbey0r5.jpg" alt="Revistas Avanzado" loading="lazy"></span>
-            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380,000</span>
+            <span class="workshop-icon"><img src="https://i.postimg.cc/m2YW6fjy/Gemini-Generated-Image-ey0rtbey0rtbey0r5.jpg" alt="Revistas" loading="lazy"></span>
+            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380.000 COP</span>
           </div>
           <svg class="chev w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="accordion-content"><div class="px-4 md:px-5 pb-4 pt-2">
-          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · $60,000 c/u</p>
+          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · $60.000 COP c/u</p>
           <div class="taller-item"><span class="taller-num">1</span><span class="text-sm text-gray-300">Dirección de arte editorial</span></div>
           <div class="taller-item"><span class="taller-num">2</span><span class="text-sm text-gray-300">Marketing de revistas</span></div>
           <div class="taller-item"><span class="taller-num">3</span><span class="text-sm text-gray-300">Monetización</span></div>
@@ -1147,24 +959,24 @@
           <div class="taller-item"><span class="taller-num">7</span><span class="text-sm text-gray-300">Tendencias globales</span></div>
           <p class="text-sm text-[#f4d03f] font-semibold mt-2">+ PROYECTO: Lanzamiento de revista</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$190,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$266,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$190.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$266.000 COP</span></div>
           </div>
-          <button type="button" onclick="selectCourse('revistas-avanzado')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380,000</button>
+          <button type="button" onclick="selectCourse('revistas-avanzado')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380.000 COP</button>
         </div></div>
       </div>
 
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left p-3 md:p-4 py-4 md:py-5 font-semibold text-sm md:text-base flex justify-between items-center hover:bg-gray-700 transition-colors gap-2">
           <div class="flex items-center gap-3 flex-1 min-w-0">
-            <span class="workshop-icon"><img src="https://i.postimg.cc/qMsHZVw2/Gemini-Generated-Image-ey0rtbey0rtbey0r6.jpg" alt="Literatura Avanzada" loading="lazy"></span>
-            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380,000</span>
+            <span class="workshop-icon"><img src="https://i.postimg.cc/qMsHZVw2/Gemini-Generated-Image-ey0rtbey0rtbey0r6.jpg" alt="Literatura" loading="lazy"></span>
+            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380.000 COP</span>
           </div>
           <svg class="chev w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="accordion-content"><div class="px-4 md:px-5 pb-4 pt-2">
-          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · $60,000 c/u</p>
+          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · $60.000 COP c/u</p>
           <div class="taller-item"><span class="taller-num">1</span><span class="text-sm text-gray-300">Novela estructura completa</span></div>
           <div class="taller-item"><span class="taller-num">2</span><span class="text-sm text-gray-300">Agentes literarios</span></div>
           <div class="taller-item"><span class="taller-num">3</span><span class="text-sm text-gray-300">Escritura creativa</span></div>
@@ -1174,24 +986,24 @@
           <div class="taller-item"><span class="taller-num">7</span><span class="text-sm text-gray-300">Marca autoral</span></div>
           <p class="text-sm text-[#f4d03f] font-semibold mt-2">+ PROYECTO: Manuscrito listo para publicar</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$190,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$266,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$190.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$266.000 COP</span></div>
           </div>
-          <button type="button" onclick="selectCourse('literatura-avanzado')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380,000</button>
+          <button type="button" onclick="selectCourse('literatura-avanzado')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380.000 COP</button>
         </div></div>
       </div>
 
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left p-3 md:p-4 py-4 md:py-5 font-semibold text-sm md:text-base flex justify-between items-center hover:bg-gray-700 transition-colors gap-2">
           <div class="flex items-center gap-3 flex-1 min-w-0">
-            <span class="workshop-icon"><img src="https://i.postimg.cc/pXbtZXfs/Gemini-Generated-Image-ey0rtbey0rtbey0r7.jpg" alt="Danza Avanzada" loading="lazy"></span>
-            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380,000</span>
+            <span class="workshop-icon"><img src="https://i.postimg.cc/pXbtZXfs/Gemini-Generated-Image-ey0rtbey0rtbey0r7.jpg" alt="Danza" loading="lazy"></span>
+            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380.000 COP</span>
           </div>
           <svg class="chev w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
         <div class="accordion-content"><div class="px-4 md:px-5 pb-4 pt-2">
-          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · $60,000 c/u</p>
+          <p class="text-xs text-[#f4d03f] mb-2 font-semibold">7 talleres + proyecto final · $60.000 COP c/u</p>
           <div class="taller-item"><span class="taller-num">1</span><span class="text-sm text-gray-300">Técnica profesional</span></div>
           <div class="taller-item"><span class="taller-num">2</span><span class="text-sm text-gray-300">Creación coreográfica</span></div>
           <div class="taller-item"><span class="taller-num">3</span><span class="text-sm text-gray-300">Producción de espectáculos</span></div>
@@ -1201,11 +1013,11 @@
           <div class="taller-item"><span class="taller-num">7</span><span class="text-sm text-gray-300">Gestión de compañías</span></div>
           <p class="text-sm text-[#f4d03f] font-semibold mt-2">+ PROYECTO: Montaje profesional</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$190,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$266,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$190.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$266.000 COP</span></div>
           </div>
-          <button type="button" onclick="selectCourse('danza-avanzado')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380,000</button>
+          <button type="button" onclick="selectCourse('danza-avanzado')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380.000 COP</button>
         </div></div>
       </div>
 
@@ -1213,7 +1025,7 @@
         <button type="button" class="accordion-button w-full text-left p-3 md:p-4 py-4 md:py-5 font-semibold text-sm md:text-base flex justify-between items-center hover:bg-gray-700 transition-colors gap-2">
           <div class="flex items-center gap-3 flex-1 min-w-0">
             <span class="workshop-icon"><img src="https://i.postimg.cc/sDdRcDYK/Gemini-Generated-Image-ey0rtbey0rtbey0r8.jpg" alt="Derechos de autor" loading="lazy"></span>
-            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380,000</span>
+            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$380.000 COP</span>
           </div>
           <svg class="chev w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
@@ -1228,11 +1040,11 @@
           <div class="taller-item"><span class="taller-num">7</span><span class="text-sm text-gray-300">Qué hacer ante plagio</span></div>
           <p class="text-sm text-[#f4d03f] font-semibold mt-2">+ PROYECTO: Registro de obra propia</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$190,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$266,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$380.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$190.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$266.000 COP</span></div>
           </div>
-          <button type="button" onclick="selectCourse('derechos-autor-ia')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380,000</button>
+          <button type="button" onclick="selectCourse('derechos-autor-ia')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $380.000 COP</button>
         </div></div>
       </div>
 
@@ -1240,7 +1052,7 @@
         <button type="button" class="accordion-button w-full text-left p-3 md:p-4 py-4 md:py-5 font-semibold text-sm md:text-base flex justify-between items-center hover:bg-gray-700 transition-colors gap-2">
           <div class="flex items-center gap-3 flex-1 min-w-0">
             <span class="workshop-icon"><img src="https://i.postimg.cc/J4VWq4Nx/Gemini-Generated-Image-ey0rtbey0rtbey0r9.jpg" alt="Formulación" loading="lazy"></span>
-            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$420,000</span>
+            <span class="badge-pack text-xs px-2 py-0.5 rounded-lg inline-block w-fit">$420.000 COP</span>
           </div>
           <svg class="chev w-5 h-5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
         </button>
@@ -1256,11 +1068,11 @@
           <div class="taller-item"><span class="taller-num">8</span><span class="text-sm text-gray-300">Errores frecuentes</span></div>
           <p class="text-sm text-[#f4d03f] font-semibold mt-2">+ PROYECTO: Formulación completa</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$420,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$210,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$294,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$420.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$210.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$294.000 COP</span></div>
           </div>
-          <button type="button" onclick="selectCourse('formulacion-proyectos')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $420,000</button>
+          <button type="button" onclick="selectCourse('formulacion-proyectos')" class="btn-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme - $420.000 COP</button>
         </div></div>
       </div>
 
@@ -1274,9 +1086,9 @@
           <h4 class="font-semibold text-white text-sm mb-1">Convocatorias internacionales</h4>
           <p class="text-xs text-gray-400 mb-2">4 talleres · 8h</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$220,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$110,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$154,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$220.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$110.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$154.000 COP</span></div>
           </div>
           <button type="button" onclick="selectCourse('convocatorias-internacionales')" class="btn-neon mt-3 text-xs font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme</button>
         </div>
@@ -1285,9 +1097,9 @@
           <h4 class="font-semibold text-white text-sm mb-1">Dossier residencias artísticas</h4>
           <p class="text-xs text-gray-400 mb-2">4 talleres · 8h</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$220,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$110,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$154,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$220.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$110.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$154.000 COP</span></div>
           </div>
           <button type="button" onclick="selectCourse('dossier-residencias')" class="btn-neon mt-3 text-xs font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme</button>
         </div>
@@ -1296,9 +1108,9 @@
           <h4 class="font-semibold text-white text-sm mb-1">Investigación-creación</h4>
           <p class="text-xs text-gray-400 mb-2">6 talleres · 12h</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$320,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$160,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$224,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$320.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$160.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$224.000 COP</span></div>
           </div>
           <button type="button" onclick="selectCourse('investigacion-creacion')" class="btn-neon mt-3 text-xs font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme</button>
         </div>
@@ -1307,9 +1119,9 @@
           <h4 class="font-semibold text-white text-sm mb-1">Publicar una obra</h4>
           <p class="text-xs text-gray-400 mb-2">6 talleres · 12h</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$320,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$160,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$224,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$320.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$160.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$224.000 COP</span></div>
           </div>
           <button type="button" onclick="selectCourse('publicar-obra')" class="btn-neon mt-3 text-xs font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme</button>
         </div>
@@ -1318,9 +1130,9 @@
           <h4 class="font-semibold text-white text-sm mb-1">Mundo editorial independiente</h4>
           <p class="text-xs text-gray-400 mb-2">4 talleres · 8h</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$240,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$120,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$168,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$240.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$120.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$168.000 COP</span></div>
           </div>
           <button type="button" onclick="selectCourse('mundo-editorial')" class="btn-neon mt-3 text-xs font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme</button>
         </div>
@@ -1329,9 +1141,9 @@
           <h4 class="font-semibold text-white text-sm mb-1">Publicar y posicionar obra</h4>
           <p class="text-xs text-gray-400 mb-2">4 talleres · 8h</p>
           <div class="price-box">
-            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$240,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$120,000</span></div>
-            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$168,000</span></div>
+            <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$240.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$120.000 COP</span></div>
+            <div class="price-row highlight"><span class="label">Estratos 3 y 4</span><span class="value">$168.000 COP</span></div>
           </div>
           <button type="button" onclick="selectCourse('publicar-posicionar')" class="btn-neon mt-3 text-xs font-medium px-3 py-1.5 rounded-xl text-white transition-all duration-300">Inscribirme</button>
         </div>
@@ -1354,9 +1166,9 @@
         <h3 class="text-lg md:text-xl font-semibold mb-2 text-[#f4d03f]">Taller Individual</h3>
         <p class="text-gray-300 mb-3 text-sm">Elige un solo taller de cualquier área o nivel. Duración: 2 horas.</p>
         <div class="price-box text-left">
-          <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$60,000</span></div>
-          <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$30,000</span></div>
-          <div class="price-row"><span class="label">Estratos 3-6</span><span class="value">$60,000</span></div>
+          <div class="price-row"><span class="label">Precio pleno</span><span class="value full">$60.000 COP</span></div>
+          <div class="price-row highlight"><span class="label">Estratos 1 y 2</span><span class="value">$30.000 COP</span></div>
+          <div class="price-row"><span class="label">Estratos 3-6</span><span class="value">$60.000 COP</span></div>
         </div>
         <button type="button" onclick="selectCourse('personalizado')" class="btn-neon mt-3 px-5 py-2.5 rounded-xl text-white font-semibold transition-all duration-300">Solicitar Taller</button>
       </div>
@@ -1371,29 +1183,21 @@
       <h4 class="text-base font-semibold text-white mb-2">¿Cómo armar tu paquete?</h4>
       <p class="text-gray-300 text-sm mb-2">Puedes combinar talleres de Dibujo, Pintura, Teatro, Literatura, Guion, Revistas, Danza, Convocatorias, Derechos de Autor y más.</p>
       <div class="mt-3 grid sm:grid-cols-3 gap-3 text-xs">
-        <div class="p-3 rounded-xl bg-black border border-[#d4af37]/60">
-          <p class="text-[#d4af37] font-bold text-sm">Estratos 1 y 2</p>
-          <p class="text-white font-semibold">50% descuento</p>
-        </div>
-        <div class="p-3 rounded-xl bg-black border border-[#d4af37]/60">
-          <p class="text-[#d4af37] font-bold text-sm">Estratos 3 y 4</p>
-          <p class="text-white font-semibold">30% descuento</p>
-        </div>
-        <div class="p-3 rounded-xl bg-black border border-gray-700">
-          <p class="text-gray-300 font-bold text-sm">Estratos 5 y 6</p>
-          <p class="text-white font-semibold">Precio pleno</p>
-        </div>
+        <div class="p-3 rounded-xl bg-black border border-[#d4af37]/60"><p class="text-[#d4af37] font-bold text-sm">Estratos 1 y 2</p><p class="text-white font-semibold">50% descuento</p></div>
+        <div class="p-3 rounded-xl bg-black border border-[#d4af37]/60"><p class="text-[#d4af37] font-bold text-sm">Estratos 3 y 4</p><p class="text-white font-semibold">30% descuento</p></div>
+        <div class="p-3 rounded-xl bg-black border border-gray-700"><p class="text-gray-300 font-bold text-sm">Estratos 5 y 6</p><p class="text-white font-semibold">Precio pleno</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ==================== TALLERES DE NIVELACIÓN ==================== -->
+<!-- ==================== NIVELACIÓN ==================== -->
 <section id="nivelacion" class="py-8 bg-black border-t border-gray-800 scroll-mt-24">
   <div class="container-fluid">
     <div class="text-center mb-6">
       <h2 class="text-2xl font-bold">Talleres de Nivelación Académica</h2>
-      <p class="text-gray-400 mt-1 text-sm">Sesiones virtuales para reforzar conocimientos escolares ($50,000 por hora)</p>
+      <p class="text-gray-400 mt-1 text-sm">Sesiones virtuales para reforzar conocimientos escolares ($50.000 COP por hora)</p>
+      <p class="text-[#f4d03f] text-xs mt-1">Modalidad: Virtual o Presencial (mínimo 10 personas para modalidad presencial)</p>
       <div class="mt-3"><a href="#inicio" class="btn-outline-neon inline-block px-4 py-1.5 text-xs font-semibold text-[#f4d03f] rounded-xl transition-all duration-300">Volver al inicio</a></div>
     </div>
 
@@ -1401,79 +1205,50 @@
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left hover:bg-gray-700 transition-colors">
           <div class="relative w-full"><img src="https://i.postimg.cc/d0khCVRR/Chat-GPT-Image-30-sept-2026-10-23-49-a-m-1.png" alt="Ciclo 1" class="nivelacion-img" loading="lazy"></div>
-          <div class="nivelacion-header">
-            <span class="nivelacion-price">$50,000/hora</span>
-            <svg class="chev w-5 h-5 shrink-0 text-[#f4d03f]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </div>
+          <div class="nivelacion-header"><span class="nivelacion-price">$50.000 COP/hora</span><svg class="chev w-5 h-5 shrink-0 text-[#f4d03f]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div>
         </button>
         <div class="accordion-content"><div class="px-5 pb-4 pt-2">
-          <ul class="space-y-1 text-sm text-gray-300">
-            <li>• Lengua Castellana</li><li>• Matemáticas</li><li>• Ciencias Naturales</li><li>• Ciencias Sociales</li><li>• Inglés</li>
-          </ul>
+          <ul class="space-y-1 text-sm text-gray-300"><li>• Lengua Castellana</li><li>• Matemáticas</li><li>• Ciencias Naturales</li><li>• Ciencias Sociales</li><li>• Inglés</li></ul>
           <button type="button" onclick="selectCourse('nivelacion-ciclo1')" class="btn-outline-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-[#f4d03f] transition-all duration-300">Inscribirme</button>
         </div></div>
       </div>
-
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left hover:bg-gray-700 transition-colors">
           <div class="relative w-full"><img src="https://i.postimg.cc/q7hNKvc2/Chat-GPT-Image-30-sept-2026-10-23-49-a-m-2.png" alt="Ciclo 2" class="nivelacion-img" loading="lazy"></div>
-          <div class="nivelacion-header">
-            <span class="nivelacion-price">$50,000/hora</span>
-            <svg class="chev w-5 h-5 shrink-0 text-[#f4d03f]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </div>
+          <div class="nivelacion-header"><span class="nivelacion-price">$50.000 COP/hora</span><svg class="chev w-5 h-5 shrink-0 text-[#f4d03f]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div>
         </button>
         <div class="accordion-content"><div class="px-5 pb-4 pt-2">
-          <ul class="space-y-1 text-sm text-gray-300">
-            <li>• Lengua Castellana</li><li>• Matemáticas</li><li>• Ciencias Naturales</li><li>• Ciencias Sociales</li><li>• Inglés</li>
-          </ul>
+          <ul class="space-y-1 text-sm text-gray-300"><li>• Lengua Castellana</li><li>• Matemáticas</li><li>• Ciencias Naturales</li><li>• Ciencias Sociales</li><li>• Inglés</li></ul>
           <button type="button" onclick="selectCourse('nivelacion-ciclo2')" class="btn-outline-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-[#f4d03f] transition-all duration-300">Inscribirme</button>
         </div></div>
       </div>
-
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left hover:bg-gray-700 transition-colors">
           <div class="relative w-full"><img src="https://i.postimg.cc/PqpCD5bm/Chat-GPT-Image-30-sept-2026-10-23-49-a-m-3.png" alt="Ciclo 3" class="nivelacion-img" loading="lazy"></div>
-          <div class="nivelacion-header">
-            <span class="nivelacion-price">$50,000/hora</span>
-            <svg class="chev w-5 h-5 shrink-0 text-[#f4d03f]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </div>
+          <div class="nivelacion-header"><span class="nivelacion-price">$50.000 COP/hora</span><svg class="chev w-5 h-5 shrink-0 text-[#f4d03f]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div>
         </button>
         <div class="accordion-content"><div class="px-5 pb-4 pt-2">
-          <ul class="space-y-1 text-sm text-gray-300">
-            <li>• Lengua Castellana</li><li>• Matemáticas</li><li>• Ciencias Naturales</li><li>• Ciencias Sociales</li><li>• Inglés</li>
-          </ul>
+          <ul class="space-y-1 text-sm text-gray-300"><li>• Lengua Castellana</li><li>• Matemáticas</li><li>• Ciencias Naturales</li><li>• Ciencias Sociales</li><li>• Inglés</li></ul>
           <button type="button" onclick="selectCourse('nivelacion-ciclo3')" class="btn-outline-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-[#f4d03f] transition-all duration-300">Inscribirme</button>
         </div></div>
       </div>
-
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left hover:bg-gray-700 transition-colors">
           <div class="relative w-full"><img src="https://i.postimg.cc/6p17TvZj/Chat-GPT-Image-30-sept-2026-10-23-49-a-m-4.png" alt="Ciclo 4" class="nivelacion-img" loading="lazy"></div>
-          <div class="nivelacion-header">
-            <span class="nivelacion-price">$50,000/hora</span>
-            <svg class="chev w-5 h-5 shrink-0 text-[#f4d03f]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </div>
+          <div class="nivelacion-header"><span class="nivelacion-price">$50.000 COP/hora</span><svg class="chev w-5 h-5 shrink-0 text-[#f4d03f]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div>
         </button>
         <div class="accordion-content"><div class="px-5 pb-4 pt-2">
-          <ul class="space-y-1 text-sm text-gray-300">
-            <li>• Lengua Castellana</li><li>• Matemáticas</li><li>• Ciencias Naturales</li><li>• Ciencias Sociales</li><li>• Inglés</li>
-          </ul>
+          <ul class="space-y-1 text-sm text-gray-300"><li>• Lengua Castellana</li><li>• Matemáticas</li><li>• Ciencias Naturales</li><li>• Ciencias Sociales</li><li>• Inglés</li></ul>
           <button type="button" onclick="selectCourse('nivelacion-ciclo4')" class="btn-outline-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-[#f4d03f] transition-all duration-300">Inscribirme</button>
         </div></div>
       </div>
-
       <div class="border border-gray-800 rounded-2xl bg-black overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <button type="button" class="accordion-button w-full text-left hover:bg-gray-700 transition-colors">
           <div class="relative w-full"><img src="https://i.postimg.cc/K8sK4MT9/Chat-GPT-Image-30-sept-2026-10-23-49-a-m-5.png" alt="Ciclo 5" class="nivelacion-img" loading="lazy"></div>
-          <div class="nivelacion-header">
-            <span class="nivelacion-price">$50,000/hora</span>
-            <svg class="chev w-5 h-5 shrink-0 text-[#f4d03f]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-          </div>
+          <div class="nivelacion-header"><span class="nivelacion-price">$50.000 COP/hora</span><svg class="chev w-5 h-5 shrink-0 text-[#f4d03f]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg></div>
         </button>
         <div class="accordion-content"><div class="px-5 pb-4 pt-2">
-          <ul class="space-y-1 text-sm text-gray-300">
-            <li>• Lengua Castellana</li><li>• Matemáticas</li><li>• Ciencias Naturales</li><li>• Ciencias Sociales</li><li>• Inglés</li>
-          </ul>
+          <ul class="space-y-1 text-sm text-gray-300"><li>• Lengua Castellana</li><li>• Matemáticas</li><li>• Ciencias Naturales</li><li>• Ciencias Sociales</li><li>• Inglés</li></ul>
           <button type="button" onclick="selectCourse('nivelacion-ciclo5')" class="btn-outline-neon mt-3 text-sm font-medium px-3 py-1.5 rounded-xl text-[#f4d03f] transition-all duration-300">Inscribirme</button>
         </div></div>
       </div>
@@ -1486,24 +1261,25 @@
   <div class="container-fluid">
     <div class="text-center mb-6">
       <h2 class="text-2xl font-extrabold text-white">Lo que dicen nuestros <span class="bg-gradient-to-r from-[#d4af37] to-[#f4d03f] bg-clip-text text-transparent">estudiantes</span></h2>
+      <p class="mt-1 text-gray-400 text-sm">Historias reales de quienes han transformado su vida a través del arte</p>
     </div>
     <div class="grid md:grid-cols-3 gap-4">
       <div class="testimonial-card">
-        <p class="text-gray-300 italic mb-4 relative z-10 text-sm">"Empecé sin saber dibujar nada y hoy tengo mi propio portafolio."</p>
+        <p class="text-gray-300 italic mb-4 relative z-10 text-sm">"Empecé sin saber dibujar nada y hoy tengo mi propio portafolio. Los profesores tienen mucha paciencia y las clases virtuales son muy dinámicas."</p>
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#d4af37] to-[#b8941f] flex items-center justify-center text-black font-bold">M</div>
           <div><p class="font-semibold text-white text-sm">María Camila R.</p><p class="text-xs text-[#f4d03f]">Dibujo Intermedio</p></div>
         </div>
       </div>
       <div class="testimonial-card">
-        <p class="text-gray-300 italic mb-4 relative z-10 text-sm">"Los talleres gratuitos me permitieron descubrir mi pasión por la pintura."</p>
+        <p class="text-gray-300 italic mb-4 relative z-10 text-sm">"Los talleres gratuitos me permitieron descubrir mi pasión por la pintura. Ahora participo en las convocatorias internacionales de la Fundación."</p>
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#d4af37] to-[#b8941f] flex items-center justify-center text-black font-bold">J</div>
           <div><p class="font-semibold text-white text-sm">Juan Esteban T.</p><p class="text-xs text-[#f4d03f]">Pintura Básica</p></div>
         </div>
       </div>
       <div class="testimonial-card">
-        <p class="text-gray-300 italic mb-4 relative z-10 text-sm">"Mi hija ha crecido muchísimo en su expresión artística."</p>
+        <p class="text-gray-300 italic mb-4 relative z-10 text-sm">"Mi hija ha crecido muchísimo en su expresión artística. La Fundación no solo enseña, también crea comunidad."</p>
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-full bg-gradient-to-br from-[#d4af37] to-[#b8941f] flex items-center justify-center text-black font-bold">L</div>
           <div><p class="font-semibold text-white text-sm">Laura G.</p><p class="text-xs text-[#f4d03f]">Madre de estudiante</p></div>
@@ -1524,12 +1300,12 @@
     <div class="grid md:grid-cols-2 gap-4 mb-6 max-w-4xl mx-auto">
       <div class="bg-black rounded-2xl p-5 border border-gray-800 text-center">
         <h3 class="text-lg font-bold text-white mb-2">Servicios Editoriales</h3>
-        <p class="text-gray-300 mb-4 text-sm">Corrección, maquetación, portada, ISBN, publicación internacional y eBook.</p>
+        <p class="text-gray-300 mb-4 text-sm">Corrección ortotipográfica y de estilo, maquetación interior profesional, diseño de portada, gestión de ISBN, publicación internacional y eBook.</p>
         <a href="https://editorialartesmulticap.netlify.app/" target="_blank" class="btn-neon inline-block px-5 py-2.5 rounded-xl text-white font-semibold transition-all duration-300 text-sm">Conocer más</a>
       </div>
       <div class="bg-black rounded-2xl p-5 border border-gray-800 text-center">
         <h3 class="text-lg font-bold text-white mb-2">Paquetes Integrales</h3>
-        <p class="text-gray-300 mb-4 text-sm">Plan Profesional y Plan Premium Global.</p>
+        <p class="text-gray-300 mb-4 text-sm">Plan Profesional y Plan Premium Global. Cada obra es única y merece una cotización personalizada.</p>
         <a href="https://editorialartesmulticap.netlify.app/#cotizador" target="_blank" class="btn-outline-neon inline-block px-5 py-2.5 rounded-xl text-[#f4d03f] font-semibold transition-all duration-300 text-sm">Cotizar mi libro</a>
       </div>
     </div>
@@ -1544,13 +1320,14 @@
   <div class="container-fluid">
     <div class="text-center mb-6">
       <h2 class="text-2xl font-extrabold text-white">Convocatorias <span class="bg-gradient-to-r from-[#d4af37] to-[#f4d03f] bg-clip-text text-transparent">Internacionales 2026</span></h2>
+      <p class="mt-1 text-gray-400 text-sm">Participa en nuestras revistas con ISSN internacional y comparte tu talento con el mundo.</p>
     </div>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
       <div class="bg-black rounded-2xl border border-gray-700 overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <div class="p-5">
           <span class="text-xs font-bold uppercase tracking-wider text-[#f4d03f]">ISSN 3114-9871</span>
           <h3 class="text-base md:text-lg font-bold text-white mt-1 mb-2">Revista Explorando Arte y Cultura de Latinoamérica</h3>
-          <p class="text-gray-300 text-sm mb-3">Convocatoria N.º 3 – 2026 · Mayores de 18 años.</p>
+          <p class="text-gray-300 text-sm mb-3">Convocatoria N.º 3 – 2026 · Tema: "Horizontes que nos unen" · Artes visuales, literatura e investigación artística. Mayores de 18 años.</p>
           <a href="https://convocatoria3explorandoarteycultura.netlify.app/" target="_blank" class="btn-neon inline-block px-5 py-2.5 rounded-xl text-white font-semibold transition-all duration-300 text-sm">Ver convocatoria</a>
         </div>
       </div>
@@ -1558,15 +1335,15 @@
         <div class="p-5">
           <span class="text-xs font-bold uppercase tracking-wider text-[#f4d03f]">ISSN 3115-0357</span>
           <h3 class="text-base md:text-lg font-bold text-white mt-1 mb-2">Revista Jóvenes Creadores de Latinoamérica</h3>
-          <p class="text-gray-300 text-sm mb-3">Convocatoria N.º 3 – 2026 · Jóvenes de 8 a 17 años.</p>
+          <p class="text-gray-300 text-sm mb-3">Convocatoria N.º 3 – 2026 · Tema: "Sueños que Transforman" · Jóvenes talentos de 8 a 17 años. Artes visuales y literatura.</p>
           <a href="https://convocatoria3jovenescreadores.netlify.app/" target="_blank" class="btn-neon inline-block px-5 py-2.5 rounded-xl text-white font-semibold transition-all duration-300 text-sm">Ver convocatoria</a>
         </div>
       </div>
       <div class="bg-black rounded-2xl border border-gray-700 overflow-hidden hover:border-[#d4af37] transition-all duration-300">
         <div class="p-5">
-          <span class="text-xs font-bold uppercase tracking-wider text-[#f4d03f]">LANZAMIENTO 2026</span>
+          <span class="text-xs font-bold uppercase tracking-wider text-[#f4d03f]">LANZAMIENTO EDITORIAL 2026</span>
           <h3 class="text-base md:text-lg font-bold text-white mt-1 mb-2">Concurso Latinoamérica Escribe</h3>
-          <p class="text-gray-300 text-sm mb-3">Premio Plan Premium Global valorado en $4.100.000. GRATIS.</p>
+          <p class="text-gray-300 text-sm mb-3">Concurso Internacional de Creación Literaria y Publicación · Una obra ganadora recibirá el Plan Premium Global valorado en $4.100.000 COP. Tema y género libres. Participación GRATIS.</p>
           <a href="https://editorialartesmulticap.netlify.app/#convocatoria" target="_blank" class="btn-neon inline-block px-5 py-2.5 rounded-xl text-white font-semibold transition-all duration-300 text-sm">Ver convocatoria</a>
         </div>
       </div>
@@ -1586,10 +1363,14 @@
       <div class="rounded-xl border border-gray-800 bg-black p-3 text-center"><div class="h-24 md:h-28 bg-black rounded-lg flex items-center justify-center border border-gray-800"><span class="text-gray-400 text-xs md:text-sm">Galería de Literatura</span></div><p class="text-xs font-medium mt-2">Próximamente</p></div>
       <div class="rounded-xl border border-gray-800 bg-black p-3 text-center"><div class="h-24 md:h-28 bg-black rounded-lg flex items-center justify-center border border-gray-800"><span class="text-gray-400 text-xs md:text-sm">Galería de Proyectos</span></div><p class="text-xs font-medium mt-2">Próximamente</p></div>
     </div>
+    <div class="mt-4 text-center">
+      <a href="https://juegoemocionesenelaulayobanaorozcob.netlify.app/" target="_blank" class="btn-outline-neon inline-block px-4 py-1.5 rounded-xl text-[#f4d03f] text-xs font-medium transition-all duration-300">Ver nuestro proyecto cultural educativo</a>
+      <a href="https://explorandomuseosyartelatinoamericano.netlify.app/" target="_blank" class="btn-outline-neon inline-block px-4 py-1.5 rounded-xl text-[#f4d03f] text-xs font-medium ml-2 transition-all duration-300">Ver nuestro proyecto de museos y arte</a>
+    </div>
   </div>
 </section>
 
-<!-- Enrollment Form -->
+<!-- Formulario -->
 <section id="inscripcion" class="py-8 bg-black border-t border-gray-800 scroll-mt-24">
   <div class="container-fluid">
     <div class="grid lg:grid-cols-2 gap-5">
@@ -1627,37 +1408,37 @@
                 <option value="Pintura - Básico (Gratis)" data-id="pintura-basico">Pintura - Básico (Gratis)</option>
                 <option value="Teatro - Básico (Gratis)" data-id="teatro-basico">Teatro - Básico (Gratis)</option>
                 <option value="Literatura - Básico (Gratis)" data-id="literatura-basico">Literatura - Básico (Gratis)</option>
-                <option value="Escritura de Guion - Básico (Gratis)" data-id="guion-basico">Guion - Básico (Gratis)</option>
-                <option value="Edición de Revistas - Básico (Gratis)" data-id="revistas-basico">Revistas - Básico (Gratis)</option>
+                <option value="Guion - Básico (Gratis)" data-id="guion-basico">Guion - Básico (Gratis)</option>
+                <option value="Revistas - Básico (Gratis)" data-id="revistas-basico">Revistas - Básico (Gratis)</option>
                 <option value="Danza - Básico (Gratis)" data-id="danza-basico">Danza - Básico (Gratis)</option>
-                <option value="Arte Reciclado - Básico (Gratis)" data-id="arte-reciclado">Arte Reciclado (Gratis)</option>
+                <option value="Arte Reciclado (Gratis)" data-id="arte-reciclado">Arte Reciclado (Gratis)</option>
                 <option value="Inglés - Básico (Gratis)" data-id="ingles-basico">Inglés - Básico (Gratis)</option>
-                <option value="Microsoft Office - Básico (Gratis)" data-id="office-basico">Office - Básico (Gratis)</option>
-                <option value="Convocatorias y Concursos - Básico (Gratis)" data-id="convocatorias-basico">Convocatorias (Gratis)</option>
+                <option value="Office - Básico (Gratis)" data-id="office-basico">Office - Básico (Gratis)</option>
+                <option value="Convocatorias (Gratis)" data-id="convocatorias-basico">Convocatorias (Gratis)</option>
               </optgroup>
-              <optgroup label="PAQUETES INTERMEDIOS - $380,000">
-                <option value="Dibujo - Intermedio ($380,000)" data-id="dibujo-intermedio">Dibujo Intermedio</option>
-                <option value="Pintura - Intermedio ($380,000)" data-id="pintura-intermedio">Pintura Intermedio</option>
-                <option value="Teatro - Intermedio ($380,000)" data-id="teatro-intermedio">Teatro Intermedio</option>
-                <option value="Escritura de Guion - Intermedio ($380,000)" data-id="guion-intermedio">Guion Intermedio</option>
-                <option value="Edición de Revistas - Intermedio ($380,000)" data-id="revistas-intermedio">Revistas Intermedio</option>
-                <option value="Literatura - Intermedio ($380,000)" data-id="literatura-intermedio">Literatura Intermedio</option>
-                <option value="Danza - Intermedio ($380,000)" data-id="danza-intermedio">Danza Intermedio</option>
-                <option value="Convocatorias - Intermedio ($380,000)" data-id="participa-convocatorias">Convocatorias Intermedio</option>
+              <optgroup label="PAQUETES INTERMEDIOS - $380.000 COP">
+                <option value="Dibujo Intermedio" data-id="dibujo-intermedio">Dibujo Intermedio</option>
+                <option value="Pintura Intermedio" data-id="pintura-intermedio">Pintura Intermedio</option>
+                <option value="Teatro Intermedio" data-id="teatro-intermedio">Teatro Intermedio</option>
+                <option value="Guion Intermedio" data-id="guion-intermedio">Guion Intermedio</option>
+                <option value="Revistas Intermedio" data-id="revistas-intermedio">Revistas Intermedio</option>
+                <option value="Literatura Intermedio" data-id="literatura-intermedio">Literatura Intermedio</option>
+                <option value="Danza Intermedio" data-id="danza-intermedio">Danza Intermedio</option>
+                <option value="Convocatorias Intermedio" data-id="participa-convocatorias">Convocatorias Intermedio</option>
               </optgroup>
-              <optgroup label="PAQUETES AVANZADOS - $380,000">
-                <option value="Dibujo - Avanzado ($380,000)" data-id="dibujo-avanzado">Dibujo Avanzado</option>
-                <option value="Pintura - Avanzado ($380,000)" data-id="pintura-avanzado">Pintura Avanzado</option>
-                <option value="Teatro - Avanzado ($380,000)" data-id="teatro-avanzado">Teatro Avanzado</option>
-                <option value="Escritura de Guion - Avanzado ($380,000)" data-id="guion-avanzado">Guion Avanzado</option>
-                <option value="Edición de Revistas - Avanzado ($380,000)" data-id="revistas-avanzado">Revistas Avanzado</option>
-                <option value="Literatura - Avanzado ($380,000)" data-id="literatura-avanzado">Literatura Avanzado</option>
-                <option value="Danza - Avanzado ($380,000)" data-id="danza-avanzado">Danza Avanzado</option>
-                <option value="Derechos de autor e IA ($380,000)" data-id="derechos-autor-ia">Derechos e IA</option>
-                <option value="Formulación proyectos culturales ($420,000)" data-id="formulacion-proyectos">Formulación ($420,000)</option>
+              <optgroup label="PAQUETES AVANZADOS - $380.000 COP">
+                <option value="Dibujo Avanzado" data-id="dibujo-avanzado">Dibujo Avanzado</option>
+                <option value="Pintura Avanzado" data-id="pintura-avanzado">Pintura Avanzado</option>
+                <option value="Teatro Avanzado" data-id="teatro-avanzado">Teatro Avanzado</option>
+                <option value="Guion Avanzado" data-id="guion-avanzado">Guion Avanzado</option>
+                <option value="Revistas Avanzado" data-id="revistas-avanzado">Revistas Avanzado</option>
+                <option value="Literatura Avanzado" data-id="literatura-avanzado">Literatura Avanzado</option>
+                <option value="Danza Avanzado" data-id="danza-avanzado">Danza Avanzado</option>
+                <option value="Derechos e IA" data-id="derechos-autor-ia">Derechos e IA</option>
+                <option value="Formulación ($420.000 COP)" data-id="formulacion-proyectos">Formulación ($420.000 COP)</option>
               </optgroup>
-              <optgroup label="TALLER INDIVIDUAL - $60,000">
-                <option value="Taller Individual - $60,000" data-id="personalizado">Taller Individual</option>
+              <optgroup label="TALLER INDIVIDUAL - $60.000 COP">
+                <option value="Taller Individual" data-id="personalizado">Taller Individual</option>
                 <option value="Paquete Personalizado" data-id="personalizado">Paquete Personalizado</option>
               </optgroup>
               <optgroup label="NIVELACIÓN">
@@ -1670,12 +1451,12 @@
             </select>
           </div>
           <div>
-            <label class="block text-sm font-medium" for="schedule">Horario preferido</label>
+            <label class="block text-sm font-medium" for="schedule">Horario preferido (hora Colombia)</label>
             <select id="schedule" class="mt-1 w-full px-3 py-2 rounded-xl border border-gray-700 bg-black text-sm">
               <option value="">-- Selecciona --</option>
-              <option value="Lunes a Viernes 9-11am">L-V 9-11am</option>
-              <option value="Lunes a Viernes 4-6pm">L-V 4-6pm</option>
-              <option value="Lunes a Viernes 7-9pm">L-V 7-9pm</option>
+              <option value="Lunes a Viernes 9-11am (hora Colombia)">L-V 9-11am (hora Colombia)</option>
+              <option value="Lunes a Viernes 4-6pm (hora Colombia)">L-V 4-6pm (hora Colombia)</option>
+              <option value="Lunes a Viernes 7-9pm (hora Colombia)">L-V 7-9pm (hora Colombia)</option>
             </select>
           </div>
           <div>
@@ -1695,14 +1476,14 @@
           <li>• <strong>Paquetes:</strong> 7 talleres de 2h + proyecto final.</li>
           <li>• <strong>Estratos 1 y 2:</strong> 50% dto.</li>
           <li>• <strong>Estratos 3 y 4:</strong> 30% dto en paquetes.</li>
-          <li>• <strong>Taller individual:</strong> $60,000 (2h).</li>
-          <li>• <strong>Nivelación:</strong> $50,000 por hora.</li>
+          <li>• <strong>Taller individual:</strong> $60.000 COP (2h).</li>
+          <li>• <strong>Nivelación:</strong> $50.000 COP por hora.</li>
           <li>• <strong>Modalidad:</strong> VIRTUAL o PRESENCIAL (mínimo 10 personas).</li>
           <li>• Certificado al completar 80% de sesiones.</li>
         </ul>
         <div class="mt-3 p-3 rounded-xl bg-black border border-gray-700">
           <p class="text-sm font-medium">Contacto:</p>
-          <p class="text-xs text-gray-400 mt-1">Correo: artesmulticap2024@gmail.com<br/>WhatsApp: +57 311 355 5949<br/>Colombia</p>
+          <p class="text-xs text-gray-400 mt-1">Correo: artesmulticap2024@gmail.com<br/>WhatsApp: +57 311 355 5949<br/>Colombia · Hora Colombia (GMT-5)</p>
         </div>
       </aside>
     </div>
@@ -1721,13 +1502,14 @@
       <div class="bg-black rounded-2xl p-5 border border-gray-700 text-center">
         <p class="text-base font-medium text-[#f4d03f] mb-2">Explorando Museos y Arte Latinoamericano</p>
         <div class="flex flex-col gap-3 mt-3">
-          <img src="https://i.postimg.cc/wvCtQBSN/Revista%20Explorando%20Arte%20y%20Cultura%20de%20Latinoam%C3%A9rica%201%202025%20(4).png" alt="Revista 1" class="w-full h-48 md:h-56 object-contain rounded-md bg-black p-2 border border-gray-800" loading="lazy">
+          <img src="https://i.postimg.cc/wvCtQBSN/Revista%20Explorando%20Arte%20y%20Cultura%20de%20Latinoam%C3%A9rica%201%202025%20(4).png" alt="Revista Explorando Arte y Cultura de Latinoamérica" class="w-full h-48 md:h-56 object-contain rounded-md bg-black p-2 border border-gray-800" loading="lazy">
+          <img src="https://i.postimg.cc/Vvjdw2bG/Cover.jpg" alt="Portada Revista Jóvenes Creadores" class="w-full h-48 md:h-56 object-contain rounded-md bg-black p-2 border border-gray-800" loading="lazy">
         </div>
         <a href="https://explorandomuseosyartelatinoamericano.netlify.app/" target="_blank" class="btn-neon inline-block mt-3 px-4 py-2 rounded-xl text-white text-sm font-medium transition-all duration-300">Ver proyecto</a>
       </div>
       <div class="bg-black rounded-2xl p-5 border border-gray-700 text-center">
         <p class="text-base font-medium text-[#f4d03f] mb-2">Juego de Emociones en el Aula</p>
-        <img src="https://i.postimg.cc/yYnhMFWF/418b1c0f-8d2a-463f-9cb1-271bd0abfd0e-(1).png" alt="Juego de Emociones" class="w-full h-48 md:h-72 object-contain rounded-md bg-black p-2 mt-1 border border-gray-800" loading="lazy">
+        <img src="https://i.postimg.cc/yYnhMFWF/418b1c0f-8d2a-463f-9cb1-271bd0abfd0e-(1).png" alt="Juego de Emociones en el Aula" class="w-full h-48 md:h-72 object-contain rounded-md bg-black p-2 mt-1 border border-gray-800" loading="lazy">
         <a href="https://juegoemocionesenelaulayobanaorozcob.netlify.app/" target="_blank" class="btn-neon inline-block mt-3 px-4 py-2 rounded-xl text-white text-sm font-medium transition-all duration-300">Ver proyecto</a>
       </div>
     </div>
@@ -1749,7 +1531,7 @@
       </details>
       <details class="p-4 border border-gray-800 rounded-2xl bg-black">
         <summary class="font-semibold cursor-pointer text-sm">¿Diferencia entre taller suelto y paquete?</summary>
-        <p class="mt-2 text-gray-300 text-xs">Taller suelto: 2h por $60,000. Paquete: 7 talleres + proyecto por $380,000.</p>
+        <p class="mt-2 text-gray-300 text-xs">Taller suelto: 2h por $60.000 COP. Paquete: 7 talleres + proyecto por $380.000 COP.</p>
       </details>
       <details class="p-4 border border-gray-800 rounded-2xl bg-black">
         <summary class="font-semibold cursor-pointer text-sm">¿Cómo aplican los descuentos?</summary>
@@ -1761,7 +1543,7 @@
       </details>
       <details class="p-4 border border-gray-800 rounded-2xl bg-black">
         <summary class="font-semibold cursor-pointer text-sm">¿Cómo se paga?</summary>
-        <p class="mt-2 text-gray-300 text-xs">Nequi, PayPal, Mercado Pago o Western Union. Antes del inicio.</p>
+        <p class="mt-2 text-gray-300 text-xs">Nequi, PayPal, Mercado Pago o Western Union. Antes del inicio. Moneda: pesos colombianos (COP).</p>
       </details>
       <details class="p-4 border border-gray-800 rounded-2xl bg-black">
         <summary class="font-semibold cursor-pointer text-sm">¿Ofrecen certificados?</summary>
@@ -1779,7 +1561,7 @@
   <button type="button" onclick="window.scrollTo({ top: 0, behavior: 'smooth' })" class="btn-neon px-5 py-2 text-sm font-semibold text-white rounded-xl transition-all duration-300">Volver al inicio</button>
 </div>
 
-<!-- ==================== FOOTER (con espacio para botones flotantes) ==================== -->
+<!-- ==================== FOOTER ==================== -->
 <footer class="pt-6 pb-56 md:pb-44 border-t border-gray-800 bg-black">
   <div class="container-fluid">
     <div class="grid md:grid-cols-3 gap-5 items-start">
@@ -1814,10 +1596,8 @@
       </div>
     </div>
 
-    <!-- Contador de visitas -->
     <div class="mt-6 pt-5 border-t border-gray-800 flex flex-col items-center gap-3">
       <p class="text-center text-xs text-gray-500">© <span id="year"></span> Fundación Artes Multicap. Todos los derechos reservados.</p>
-
       <div class="flex flex-col items-center gap-2" aria-label="Contador de visitas">
         <span class="text-[0.7rem] uppercase tracking-widest text-[#d4af37] font-semibold">Visitas a nuestro sitio</span>
         <div class="visitor-counter-box">
@@ -1828,7 +1608,6 @@
   </div>
 </footer>
 
-<!-- Script del contador NUEVO -->
 <script type="text/javascript" src="https://counter6.optistats.ovh/private/counter.js?c=hen8r8w8q4rz5489cbgagkhes6ucxhhw&down=async" async></script>
 <noscript>
   <div class="text-center mt-2">
@@ -1862,32 +1641,28 @@
       <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </button>
   </div>
-
   <div class="chat-body" id="chatBody"></div>
-
   <div class="chat-quick" id="chatQuick">
     <button type="button" data-q="Talleres gratis">Talleres gratis</button>
-    <button type="button" data-q="Precios">Precios</button>
+    <button type="button" data-q="Dibujo gratis">Dibujo gratis</button>
+    <button type="button" data-q="Pintura gratis">Pintura gratis</button>
     <button type="button" data-q="Descuentos">Descuentos</button>
-    <button type="button" data-q="Paquetes intermedios">Intermedios</button>
-    <button type="button" data-q="Paquetes avanzados">Avanzados</button>
-    <button type="button" data-q="Taller individual">Individual</button>
+    <button type="button" data-q="Precios">Precios</button>
+    <button type="button" data-q="Paquetes intermedios">Paquetes intermedios</button>
+    <button type="button" data-q="Paquetes avanzados">Paquetes avanzados</button>
     <button type="button" data-q="Nivelación">Nivelación</button>
     <button type="button" data-q="Editorial">Editorial</button>
     <button type="button" data-q="Convocatorias">Convocatorias</button>
-    <button type="button" data-q="Sin ánimo de lucro">Sin ánimo</button>
     <button type="button" data-q="Horarios">Horarios</button>
     <button type="button" data-q="Certificados">Certificados</button>
     <button type="button" data-q="Contacto">Contacto</button>
   </div>
-
   <div class="chat-input-row">
     <input type="text" id="chatInput" placeholder="Escribe tu pregunta..." aria-label="Escribe tu pregunta" />
     <button type="button" id="chatSend" aria-label="Enviar mensaje">
       <svg viewBox="0 0 24 24"><path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"/></svg>
     </button>
   </div>
-
   <div class="chat-wa-row">
     <a href="https://wa.me/573113555949?text=Hola%20Fundaci%C3%B3n%20Artes%20Multicap%2C%20tengo%20una%20consulta." target="_blank" class="chat-wa-btn">
       <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
@@ -1918,11 +1693,9 @@
     </svg>
     <span class="chat-badge">1</span>
   </button>
-
   <a href="https://wa.me/573113555949?text=Hola%20Fundaci%C3%B3n%20Artes%20Multicap%2C%20quiero%20informaci%C3%B3n." target="_blank" class="whatsapp-float" aria-label="Escribir por WhatsApp" title="WhatsApp">
     <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
   </a>
-
   <button id="backToTop" type="button" class="back-to-top hidden" aria-label="Volver arriba" title="Volver arriba">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
   </button>
@@ -1999,8 +1772,7 @@ if (enrollForm) {
     }
     const btn = e.target.querySelector('button[type="submit"]');
     const original = btn.textContent;
-    btn.textContent = 'Enviando...';
-    btn.disabled = true;
+    btn.textContent = 'Enviando...'; btn.disabled = true;
     try {
       await sendToWhatsApp(formData);
       document.getElementById('formStatus').textContent = '✔ Enviado correctamente';
@@ -2009,10 +1781,7 @@ if (enrollForm) {
     } catch (error) {
       document.getElementById('formStatus').textContent = '⚠ Error, intenta de nuevo.';
       setTimeout(() => document.getElementById('formStatus').textContent = '', 4000);
-    } finally {
-      btn.textContent = original;
-      btn.disabled = false;
-    }
+    } finally { btn.textContent = original; btn.disabled = false; }
   });
 }
 
@@ -2049,7 +1818,6 @@ let chatbotFindAnswer = null;
 
 (function () {
   'use strict';
-
   const chatbotBtn = document.getElementById('chatbotBtn');
   const chatbotPanel = document.getElementById('chatbotPanel');
   const chatbotCloseBtn = document.getElementById('chatbotClose');
@@ -2057,32 +1825,42 @@ let chatbotFindAnswer = null;
   const chatInput = document.getElementById('chatInput');
   const chatSend = document.getElementById('chatSend');
   const chatQuick = document.getElementById('chatQuick');
-
   if (!chatbotBtn || !chatbotPanel) return;
 
   const WA_NUMBER = '573113555949';
   const WA_GENERAL = 'https://wa.me/' + WA_NUMBER + '?text=Hola%20Fundaci%C3%B3n%20Artes%20Multicap%2C%20tengo%20una%20consulta.';
 
   const KB = [
-    { keys: ['hola','buenas','buenos días','buenos dias','buenas tardes','buenas noches','hey','saludos','qué tal','que tal'], reply: '¡Hola! 👋 Soy <strong>MULTI</strong>, tu asistente virtual. Pregúntame sobre talleres, precios, descuentos, paquetes, nivelación, editorial, convocatorias y más.' },
+    { keys: ['dibujo gratis','dibujo básico','dibujo basico','taller de dibujo gratis'], reply: '🎨 <strong>Taller de Dibujo Básico GRATIS</strong><br><br><strong>3 talleres incluidos:</strong><br>1. Introducción al Dibujo y materiales<br>2. Líneas, formas y volúmenes básicos<br>3. Sombras y luces - ejercicios prácticos<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['pintura gratis','pintura básico','pintura basico','taller de pintura gratis'], reply: '🖌️ <strong>Taller de Pintura Básico GRATIS</strong><br><br><strong>3 talleres incluidos:</strong><br>1. Introducción a la pintura y materiales<br>2. Teoría del color básica<br>3. Mezclas de colores y primeras pinceladas<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['teatro gratis','teatro básico','teatro basico'], reply: '🎭 <strong>Taller de Teatro Básico GRATIS</strong><br><br><strong>3 talleres:</strong><br>1. Expresión corporal y juegos teatrales<br>2. La voz y la emoción en escena<br>3. Improvisación básica<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['literatura gratis','literatura básico'], reply: '📚 <strong>Taller de Literatura Básico GRATIS</strong><br><br><strong>3 talleres:</strong><br>1. Introducción a la literatura y géneros<br>2. Poesía y creatividad - rimas básicas<br>3. Narrativa breve - escribir un microcuento<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['guion gratis','guion básico','guión básico'], reply: '🎬 <strong>Taller de Guion Básico GRATIS</strong><br><br><strong>3 talleres:</strong><br>1. Introducción al guion audiovisual<br>2. Estructura de tres actos básica<br>3. Creación de personajes simples<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['revistas gratis','revista gratis'], reply: '📰 <strong>Taller de Edición de Revistas Básico GRATIS</strong><br><br><strong>3 talleres:</strong><br>1. Introducción al diseño editorial<br>2. Maquetación básica con Canva<br>3. Creación de portada simple<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['danza gratis','danza básico'], reply: '💃 <strong>Taller de Danza Básico GRATIS</strong><br><br><strong>3 talleres:</strong><br>1. Introducción a la danza y postura básica<br>2. Coordinación y ritmo<br>3. Secuencia coreográfica simple<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['reciclado gratis','reciclaje gratis'], reply: '♻️ <strong>Taller de Arte Reciclado GRATIS</strong><br><br><strong>3 talleres:</strong><br>1. Introducción al arte con materiales reciclados<br>2. Esculturas básicas con botellas plásticas<br>3. Creación de un objeto decorativo reciclado<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['inglés gratis','ingles gratis'], reply: '🇬🇧 <strong>Taller de Inglés Básico GRATIS</strong><br><br><strong>3 talleres:</strong><br>1. Saludos y presentaciones básicas<br>2. Verb "to be" y vocabulario esencial<br>3. Conversaciones simples<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['office gratis','excel gratis','word gratis'], reply: '💻 <strong>Taller de Microsoft Office Básico GRATIS</strong><br><br><strong>3 talleres:</strong><br>1. Word básico<br>2. Excel básico<br>3. PowerPoint básico<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['convocatorias gratis','convocatoria gratis'], reply: '🏆 <strong>Taller de Convocatorias y Concursos GRATIS</strong><br><br><strong>3 talleres:</strong><br>1. Los 10 errores que descalifican una obra<br>2. Cómo leer correctamente las bases de una convocatoria<br>3. Formato, seudónimo, extensión y documentación<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['hola','buenas','buenos días','buenos dias','buenas tardes','buenas noches','hey','saludos','qué tal','que tal'], reply: '¡Hola! 👋 Soy <strong>MULTI</strong>, tu asistente virtual. Puedo darte info específica de cada taller. Por ejemplo: <strong>"dibujo gratis"</strong>, <strong>"pintura intermedio"</strong>, <strong>"teatro avanzado"</strong>.' },
     { keys: ['gracias','ok','perfecto','listo','genial','excelente'], reply: '¡Con gusto! 😊 Si necesitas más ayuda, escríbenos por <a href="' + WA_GENERAL + '" target="_blank">WhatsApp</a>.' },
     { keys: ['adios','adiós','chao','nos vemos','hasta luego'], reply: '¡Hasta luego! 👋 <a href="' + WA_GENERAL + '" target="_blank">WhatsApp aquí</a> cuando quieras.' },
-    { keys: ['taller gratis','talleres gratis','taller gratuito','talleres gratuitos','gratis','gratuitos','talleres básicos','talleres basicos','básico','basico','sin costo'], reply: 'Tenemos <strong>11 talleres básicos GRATIS</strong>: 🎨 Dibujo, 🖌️ Pintura, 🎭 Teatro, 📚 Literatura, 🎬 Guion, 📰 Revistas, 💃 Danza, ♻️ Arte Reciclado, 🇬🇧 Inglés, 💻 Office, 🏆 Convocatorias.<br><br>Cada uno con 3 talleres de 1-2h. <a href="#talleres-basicos">Ver más</a> · <a href="#inscripcion">Inscribirme</a>' },
-    { keys: ['precio','precios','cuánto','cuanto','vale','costo','costos','tarifas'], reply: '💰 <strong>Precios:</strong><br>• Taller individual: <strong>$60,000</strong><br>• Paquete intermedio/avanzado: <strong>$380,000</strong><br>• Paquete complementario: desde <strong>$220,000</strong><br>• Nivelación: <strong>$50,000/hora</strong><br>• Talleres básicos: <strong>GRATIS</strong><br><br><a href="#descuentos">Ver descuentos</a>' },
-    { keys: ['descuento','descuentos','estrato','estratos','rebaja','económico'], reply: '🎯 <strong>Descuentos por estrato:</strong><br>• Estratos <strong>1 y 2:</strong> 50% en paquetes y talleres<br>• Estratos <strong>3 y 4:</strong> 30% solo en paquetes<br>• Estratos <strong>5 y 6:</strong> precio pleno<br><br><a href="#descuentos">Ver tabla completa</a>' },
-    { keys: ['paquete','paquetes','combo','intermedio','intermedios'], reply: '📦 <strong>Paquetes intermedios - $380,000</strong>: Dibujo, Pintura, Teatro, Guion, Revistas, Literatura, Danza, Convocatorias. 7 talleres + proyecto. <a href="#talleres-intermedios">Ver detalles</a>' },
-    { keys: ['paquete avanzado','avanzado','avanzados'], reply: '🚀 <strong>Paquetes avanzados - $380,000</strong>: Dibujo, Pintura, Teatro, Guion, Revistas, Literatura, Danza, Derechos de Autor e IA. <a href="#talleres-avanzados">Ver detalles</a>' },
-    { keys: ['individual','personalizado','personalizados','a medida'], reply: '🎨 <strong>Taller individual:</strong> $60,000 (2h). Estratos 1 y 2: $30,000.<br>✨ <strong>Paquete personalizado:</strong> combina 2+ talleres. <a href="#personalizado">Solicitar</a>' },
-    { keys: ['nivelación','nivelacion','refuerzo','colegio','matemáticas','lengua'], reply: '📚 <strong>Nivelación académica</strong> - $50,000/hora. Lengua, Matemáticas, Ciencias, Inglés. 5 ciclos (1°-11°). <a href="#nivelacion">Ver</a>' },
+    { keys: ['todos los talleres gratis','lista de talleres gratis','cuáles talleres gratis'], reply: 'Tenemos <strong>11 talleres básicos GRATIS</strong>: 🎨 Dibujo, 🖌️ Pintura, 🎭 Teatro, 📚 Literatura, 🎬 Guion, 📰 Revistas, 💃 Danza, ♻️ Arte Reciclado, 🇬🇧 Inglés, 💻 Office, 🏆 Convocatorias.<br><br>Pregúntame por uno específico: "dibujo gratis", "pintura gratis"...' },
+    { keys: ['descuento','descuentos','estrato','estratos','rebaja','económico'], reply: '🎯 <strong>Descuentos por estrato socioeconómico (Colombia):</strong><br><br>• <strong>Estratos 1 y 2:</strong> 50% de descuento en paquetes y talleres individuales de cobro.<br>• <strong>Estratos 3 y 4:</strong> 30% de descuento únicamente en paquetes (2 o más talleres). El taller individual de $60.000 COP no tiene descuento para estos estratos.<br>• <strong>Estratos 5 y 6:</strong> precio pleno.<br><br>Ejemplo: paquete de $380.000 COP queda en <strong>$190.000 COP</strong> para estrato 1 o 2. <a href="#descuentos">Ver tabla completa</a>' },
+    { keys: ['precio','precios','cuánto','cuanto','vale','costo','costos','tarifas'], reply: '💰 <strong>Precios en pesos colombianos (COP):</strong><br>• Taller individual: <strong>$60.000 COP</strong><br>• Paquete intermedio/avanzado: <strong>$380.000 COP</strong><br>• Paquete complementario: desde <strong>$220.000 COP</strong><br>• Nivelación: <strong>$50.000 COP/hora</strong><br>• Talleres básicos: <strong>GRATIS</strong><br><br><a href="#descuentos">Ver descuentos</a>' },
+    { keys: ['paquete intermedio','paquetes intermedios','intermedios'], reply: '📦 <strong>Paquetes intermedios - $380.000 COP</strong>: Dibujo, Pintura, Teatro, Guion, Revistas, Literatura, Danza, Convocatorias. 7 talleres + proyecto. <a href="#talleres-intermedios">Ver detalles</a>' },
+    { keys: ['paquete avanzado','paquetes avanzados','avanzados'], reply: '🚀 <strong>Paquetes avanzados - $380.000 COP</strong>: Dibujo, Pintura, Teatro, Guion, Revistas, Literatura, Danza, Derechos de Autor e IA. <a href="#talleres-avanzados">Ver detalles</a>' },
+    { keys: ['individual','personalizado','personalizados','a medida'], reply: '🎨 <strong>Taller individual:</strong> $60.000 COP (2h). Estratos 1 y 2: $30.000 COP.<br>✨ <strong>Paquete personalizado:</strong> combina 2+ talleres. <a href="#personalizado">Solicitar</a>' },
+    { keys: ['nivelación','nivelacion','refuerzo','colegio','matemáticas','lengua'], reply: '📚 <strong>Nivelación académica</strong> - $50.000 COP por hora. Lengua, Matemáticas, Ciencias, Inglés. 5 ciclos (1°-11°). <a href="#nivelacion">Ver</a>' },
     { keys: ['editorial','libro','publicar','isbn','manuscrito'], reply: '📖 <strong>Editorial Artes Multicap</strong>: corrección, maquetación, portada, ISBN, publicación y eBook. <a href="https://editorialartesmulticap.netlify.app/" target="_blank">Conocer</a> · <a href="https://editorialartesmulticap.netlify.app/#cotizador" target="_blank">Cotizar</a>' },
-    { keys: ['convocatoria','convocatorias','concurso','concursos','revista','issn'], reply: '🏆 <strong>Convocatorias 2026</strong>:<br>1️⃣ Explorando Arte y Cultura<br>2️⃣ Jóvenes Creadores<br>3️⃣ Concurso Latinoamérica Escribe (GRATIS, premio $4.100.000)<br><br><a href="#convocatorias">Ver todas</a>' },
+    { keys: ['convocatoria','convocatorias','concurso','concursos','revista','issn'], reply: '🏆 <strong>Convocatorias 2026</strong>:<br>1️⃣ Explorando Arte y Cultura<br>2️⃣ Jóvenes Creadores<br>3️⃣ Concurso Latinoamérica Escribe (GRATIS, premio $4.100.000 COP)<br><br><a href="#convocatorias">Ver todas</a>' },
     { keys: ['sin ánimo de lucro','sin animo de lucro','proyectos culturales','proyectos educativos'], reply: '❤️ <strong>Proyectos sin ánimo de lucro</strong>:<br>1️⃣ Explorando Museos y Arte Latinoamericano<br>2️⃣ Juego de Emociones en el Aula<br><br><a href="#proyectos-culturales">Ver</a>' },
-    { keys: ['horario','horarios','hora','días','clases'], reply: '⏰ <strong>Horarios</strong> (Colombia): L-V 9-11am, 4-6pm, 7-9pm. <a href="#inscripcion">Inscribirme</a>' },
+    { keys: ['horario','horarios','hora','días','clases'], reply: '⏰ <strong>Horarios (hora Colombia, GMT-5):</strong> L-V 9-11am, 4-6pm, 7-9pm. <a href="#inscripcion">Inscribirme</a>' },
     { keys: ['modalidad','virtual','presencial','online'], reply: '🌐 Modalidad VIRTUAL o PRESENCIAL. Presencial requiere mínimo 10 personas.' },
     { keys: ['certificado','certificados','diploma'], reply: '🎓 Certificado al completar 80% de sesiones. Avalado por la Fundación.' },
     { keys: ['materiales','material','necesito','requisitos'], reply: '🎨 Materiales por cuenta del aprendiz. Talleres técnicos requieren computador con internet.' },
     { keys: ['inscripción','inscripcion','inscribir','inscribirme','formulario','matrícula'], reply: '📝 Llena el <a href="#inscripcion">formulario</a> o escríbenos por <a href="' + WA_GENERAL + '" target="_blank">WhatsApp</a>.' },
-    { keys: ['pago','pagar','nequi','paypal','mercado pago'], reply: '💳 Aceptamos Nequi, PayPal, Mercado Pago y Western Union.' },
+    { keys: ['pago','pagar','nequi','paypal','mercado pago'], reply: '💳 Aceptamos Nequi, PayPal, Mercado Pago y Western Union. Moneda: pesos colombianos (COP).' },
     { keys: ['contacto','contactar','correo','email','teléfono'], reply: '📞 Correo: artesmulticap2024@gmail.com<br>📱 WhatsApp: <a href="' + WA_GENERAL + '" target="_blank">+57 311 355 5949</a>' },
     { keys: ['whatsapp','wasap','escribir','mensaje'], reply: '📲 <a href="' + WA_GENERAL + '" target="_blank">Haz clic aquí para abrir WhatsApp</a>.' },
     { keys: ['edad','edades','niños','jóvenes','adultos'], reply: '👥 Talleres para todas las edades. Jóvenes Creadores: 8-17 años.' },
@@ -2093,13 +1871,12 @@ let chatbotFindAnswer = null;
   ];
 
   const FALLBACKS = [
-    'No tengo esa respuesta exacta. 🤔 Escríbenos por <a href="' + WA_GENERAL + '" target="_blank">WhatsApp</a> o intenta otra pregunta.',
-    'No encontré info. 😅 <a href="' + WA_GENERAL + '" target="_blank">Escríbenos por WhatsApp</a>.'
+    'No tengo esa respuesta exacta. 🤔 Prueba con: <strong>"dibujo gratis"</strong>, <strong>"pintura intermedio"</strong>, <strong>"descuentos"</strong>, <strong>"precios"</strong>. O <a href="' + WA_GENERAL + '" target="_blank">WhatsApp aquí</a>.',
+    'No encontré info. 😅 Prueba con el nombre del taller + nivel, por ejemplo <strong>"dibujo gratis"</strong>. O <a href="' + WA_GENERAL + '" target="_blank">WhatsApp</a>.'
   ];
   let fallbackIdx = 0;
 
   function scrollBottom() { setTimeout(() => chatBody.scrollTop = chatBody.scrollHeight, 60); }
-
   function addMsg(html, who) {
     const div = document.createElement('div');
     div.className = 'chat-msg ' + (who === 'user' ? 'user' : 'bot');
@@ -2107,21 +1884,16 @@ let chatbotFindAnswer = null;
     chatBody.appendChild(div);
     scrollBottom();
   }
-
   function addTyping() {
     const div = document.createElement('div');
-    div.className = 'chat-typing';
-    div.id = 'chatTypingIndicator';
+    div.className = 'chat-typing'; div.id = 'chatTypingIndicator';
     div.innerHTML = '<span></span><span></span><span></span>';
-    chatBody.appendChild(div);
-    scrollBottom();
+    chatBody.appendChild(div); scrollBottom();
   }
-
   function removeTyping() {
     const el = document.getElementById('chatTypingIndicator');
     if (el) el.remove();
   }
-
   function findAnswer(text) {
     const t = (text || '').toLowerCase().trim();
     if (!t) return null;
@@ -2133,13 +1905,11 @@ let chatbotFindAnswer = null;
     });
     return best ? best.reply : null;
   }
-
   function stripHtml(html) {
     const tmp = document.createElement('div');
     tmp.innerHTML = html;
     return (tmp.textContent || tmp.innerText || '').replace(/\s+/g, ' ').trim();
   }
-
   function sendMessage(text) {
     if (!text || !text.trim()) return null;
     addMsg(text.replace(/</g, '&lt;').replace(/>/g, '&gt;'), 'user');
@@ -2151,56 +1921,42 @@ let chatbotFindAnswer = null;
     setTimeout(() => { removeTyping(); addMsg(finalAnswer, 'bot'); }, 500);
     return { answer: finalAnswer, plain: stripHtml(finalAnswer) };
   }
-
   function openChat() {
     chatbotPanel.classList.add('show');
     const badge = chatbotBtn.querySelector('.chat-badge');
     if (badge) badge.style.display = 'none';
     if (!chatBody.dataset.welcomed) {
       chatBody.dataset.welcomed = '1';
-      setTimeout(() => addMsg('¡Hola! 👋 Soy <strong>MULTI</strong>. Pregúntame sobre talleres, precios, paquetes, nivelación, editorial o convocatorias.', 'bot'), 200);
+      setTimeout(() => addMsg('¡Hola! 👋 Soy <strong>MULTI</strong>. Pregúntame por un taller específico: <strong>"dibujo gratis"</strong>, <strong>"pintura intermedio"</strong>, <strong>"descuentos"</strong>, etc.', 'bot'), 200);
     }
     setTimeout(() => chatInput.focus(), 250);
   }
-
   function closeChat() { chatbotPanel.classList.remove('show'); }
 
   chatbotBtn.addEventListener('click', () => {
-    if (chatbotPanel.classList.contains('show')) closeChat();
-    else openChat();
+    if (chatbotPanel.classList.contains('show')) closeChat(); else openChat();
   });
   chatbotCloseBtn.addEventListener('click', closeChat);
-
   chatSend.addEventListener('click', () => sendMessage(chatInput.value));
-  chatInput.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter') { e.preventDefault(); sendMessage(chatInput.value); }
-  });
-
+  chatInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); sendMessage(chatInput.value); } });
   chatQuick.addEventListener('click', (e) => {
     const btn = e.target.closest('button[data-q]');
     if (!btn) return;
     sendMessage(btn.getAttribute('data-q'));
   });
-
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && chatbotPanel.classList.contains('show')) closeChat();
-  });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && chatbotPanel.classList.contains('show')) closeChat(); });
 
   chatbotOpen = openChat;
   chatbotSendMessage = sendMessage;
-  chatbotGetPlainAnswer = function(text) {
-    const ans = findAnswer(text);
-    return ans ? stripHtml(ans) : null;
-  };
+  chatbotGetPlainAnswer = function(text) { const ans = findAnswer(text); return ans ? stripHtml(ans) : null; };
   chatbotFindAnswer = findAnswer;
 })();
 
 /* =========================================================
-   SISTEMA DE VOZ ACCESIBLE — VERSIÓN ESTABLE
+   SISTEMA DE VOZ — VERSIÓN CON FILTRO DE ECO
    ========================================================= */
 (function () {
   'use strict';
-
   const voiceStatus = document.getElementById('voiceStatus');
   const voiceText   = document.getElementById('voiceText');
   const voiceDot    = document.getElementById('voiceDot');
@@ -2211,13 +1967,30 @@ let chatbotFindAnswer = null;
   const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
   const supportsRecog = !!SR;
 
-  const READ_SELECTORS = 'h1,h2,h3,h4,h5,h6,p,li,summary,label,span,a,button,strong,em,small,blockquote,figcaption,cite,td,th,.price-box,.nivelacion-header,img[alt]';
-  const SKIP_TEXT = /^(volver al inicio|volver arriba|menú|abrir menú|cerrar menú|✕|×|cerrar|escuchar|reproducir|detener|pausar|reanudar)$/i;
+  const READ_SELECTORS = 'h1,h2,h3,h4,h5,h6,p,li,summary,label,blockquote,figcaption,cite,td,th,.price-box,.nivelacion-header,.taller-item > span:not(.taller-num)';
+  const SKIP_TEXT = /^(volver al inicio|volver arriba|menú|abrir menú|cerrar menú|✕|×|cerrar|escuchar|reproducir|detener|pausar|reanudar|buscar|inscribirme\s*(gratis)?|-?\s*\$[\d.,]+\s*COP)$/i;
+
+  const STOP_REGEX = /\b(detener|detente|parar|párate|stop|basta)\b/;
+
+  const WORKSHOP_ALIASES = {
+    'dibujo': ['dibujo','dibujos','dibujar'],
+    'pintura': ['pintura','pinturas','pintar'],
+    'teatro': ['teatro','teatral','actuación','actuacion'],
+    'literatura': ['literatura','literario','literaria'],
+    'guion': ['guion','guión','guiones'],
+    'revistas': ['revista','revistas'],
+    'danza': ['danza','danzas','bailar','baile'],
+    'reciclado': ['reciclado','reciclaje','reciclados'],
+    'inglés': ['inglés','ingles','english'],
+    'office': ['office','excel','word','powerpoint','microsoft'],
+    'convocatorias': ['convocatoria','convocatorias','concurso','concursos'],
+    'derechos': ['derechos de autor','derecho de autor'],
+    'formulación': ['formulación','formulacion']
+  };
 
   const NAV_COMMANDS = [
-    { rx: /\b(talleres?\s*gratis|talleres?\s*gratuitos?|cursos?\s*gratis|taller\s*b[aá]sico|b[aá]sicos?)\b/, section: '#talleres-basicos', label: 'Talleres gratuitos' },
-    { rx: /\b(qui[eé]nes\s*somos|sobre\s*la\s*fundaci[oó]n|fundaci[oó]n)\b/, section: '#que-es', label: 'Quiénes somos' },
-    { rx: /\b(descuentos?|estratos?|rebajas?)\b/, section: '#descuentos', label: 'Descuentos por estrato' },
+    { rx: /\b(qui[eé]nes\s*somos|sobre\s*la\s*fundaci[oó]n|fundaci[oó]n|qu[eé]\s*es\s*la\s*fundaci[oó]n)\b/, section: '#que-es', label: 'Quiénes somos' },
+    { rx: /\b(descuentos?|estratos?|rebajas?|descuento\s*por\s*estrato)\b/, section: '#descuentos', label: 'Descuentos', special: 'descuentos' },
     { rx: /\b(paquetes?\s*intermedios?|niveles?\s*intermedios?|intermedios?)\b/, section: '#talleres-intermedios', label: 'Paquetes intermedios' },
     { rx: /\b(paquetes?\s*avanzados?|niveles?\s*avanzados?|avanzados?)\b/, section: '#talleres-avanzados', label: 'Paquetes avanzados' },
     { rx: /\b(paquetes?\s*(personalizados?|a\s*medida)|personalizados?)\b/, section: '#personalizado', label: 'Paquetes personalizados' },
@@ -2228,7 +2001,8 @@ let chatbotFindAnswer = null;
     { rx: /\b(galer[ií]a)\b/, section: '#galeria', label: 'Galería' },
     { rx: /\b(inscripci[oó]n|inscribir|inscribirme|formulario|matricular)\b/, section: '#inscripcion', label: 'Inscripción' },
     { rx: /\b(proyectos?\s*culturales?|sin\s*[aá]nimo|proyectos?\s*educativos?)\b/, section: '#proyectos-culturales', label: 'Proyectos culturales' },
-    { rx: /\b(preguntas?\s*frecuentes?|faq|dudas?)\b/, section: '#faq', label: 'Preguntas frecuentes' }
+    { rx: /\b(preguntas?\s*frecuentes?|faq|dudas?)\b/, section: '#faq', label: 'Preguntas frecuentes' },
+    { rx: /\b(todos?\s*los\s*talleres\s*gratis|lista\s*de\s*talleres\s*gratis|cu[aá]les\s*talleres\s*gratis|qu[eé]\s*talleres\s*gratis)\b/, section: '#talleres-basicos', label: 'Todos los talleres gratuitos' }
   ];
 
   const S = {
@@ -2237,9 +2011,48 @@ let chatbotFindAnswer = null;
     recognition: null, recognitionRunning: false, micActive: false,
     welcomePlayed: false, interactionDone: false, lastCmd: 0,
     userScrolling: false, scrollTimer: null,
-    mode: 'normal', capturedText: '',
-    modeEnterTime: 0, stopping: false, lastDetenerTime: 0
+    mode: 'normal', capturedText: '', triggerPhrase: '',
+    stopping: false, lastDetenerTime: 0, modeEnterTime: 0,
+    recentTTSWords: [], recentTTSTimestamp: 0
   };
+
+  function normalizeWord(w) {
+    return (w || '').toLowerCase().replace(/[^\wáéíóúñü]/g, '').trim();
+  }
+  function recordTTSWords(text) {
+    const words = (text || '').toLowerCase().split(/\s+/).map(normalizeWord).filter(w => w.length >= 3);
+    S.recentTTSWords = words;
+    S.recentTTSTimestamp = Date.now();
+  }
+  function isEcho(text) {
+    if (!S.recentTTSWords.length) return false;
+    if (Date.now() - S.recentTTSTimestamp > 5000) return false;
+    const t = (text || '').toLowerCase().trim();
+    if (!t) return false;
+    const words = t.split(/\s+/).map(normalizeWord).filter(w => w.length >= 3);
+    if (!words.length) return false;
+    if (words.length > 4) return false;
+    let matches = 0;
+    for (const w of words) {
+      if (S.recentTTSWords.includes(w)) matches++;
+    }
+    return matches >= Math.ceil(words.length * 0.6);
+  }
+
+  function formatPricesForSpeech(text) {
+    if (!text) return text;
+    let out = text;
+    out = out.replace(/\$\s*([\d]{1,3}(?:[.,]\d{3})+|\d{3,})/g, function(match, num) {
+      const clean = num.replace(/[.,]/g, '');
+      return clean + ' pesos colombianos';
+    });
+    out = out.replace(/\bCOP\b/g, 'pesos colombianos');
+    out = out.replace(/(\d{1,2})\s*-\s*(\d{1,2})\s*(am|a\.m\.|AM)/g, '$1 a $2 de la mañana, hora Colombia');
+    out = out.replace(/(\d{1,2})\s*-\s*(\d{1,2})\s*(pm|p\.m\.|PM)/g, '$1 a $2 de la tarde, hora Colombia');
+    out = out.replace(/(\d{1,2}):(\d{2})\s*(am|a\.m\.|AM)/g, '$1 y $2 de la mañana, hora Colombia');
+    out = out.replace(/(\d{1,2}):(\d{2})\s*(pm|p\.m\.|PM)/g, '$1 y $2 de la tarde, hora Colombia');
+    return out;
+  }
 
   function markUserScrolling() {
     S.userScrolling = true;
@@ -2248,11 +2061,6 @@ let chatbotFindAnswer = null;
   }
   window.addEventListener('wheel', markUserScrolling, { passive: true });
   window.addEventListener('touchmove', markUserScrolling, { passive: true });
-  document.addEventListener('keydown', (e) => {
-    if (['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '].indexOf(e.key) !== -1) {
-      markUserScrolling();
-    }
-  });
 
   function loadVoices() {
     if (!supportsSpeech) return;
@@ -2271,20 +2079,17 @@ let chatbotFindAnswer = null;
         || vs.find(v => /^es[-_]MX/i.test(v.lang))
         || vs.find(v => /^es[-_]US/i.test(v.lang))
         || vs.find(v => /^es[-_]ES/i.test(v.lang))
-        || vs.find(v => /^es/i.test(v.lang))
-        || null;
+        || vs.find(v => /^es/i.test(v.lang)) || null;
   }
 
   function cleanText(t) { return (t || '').replace(/\s+/g, ' ').trim(); }
   function splitText(text, max) {
-    max = max || 200;
+    max = max || 250;
     if (text.length <= max) return [text];
     const parts = text.match(/[^.!?¡¿;:]+[.!?]*\s*/g) || [text];
-    const out = [];
-    let cur = '';
+    const out = []; let cur = '';
     parts.forEach(p => {
-      if ((cur + p).length > max && cur) { out.push(cur.trim()); cur = p; }
-      else { cur += p; }
+      if ((cur + p).length > max && cur) { out.push(cur.trim()); cur = p; } else { cur += p; }
     });
     if (cur.trim()) out.push(cur.trim());
     return out.filter(Boolean);
@@ -2303,18 +2108,15 @@ let chatbotFindAnswer = null;
       if (el.getAttribute('aria-hidden') === 'true') return;
       if (el.hasAttribute('hidden')) return;
       if (el.classList && el.classList.contains('taller-num')) return;
+      if (el.tagName === 'IMG') return;
 
-      const isImg = el.tagName === 'IMG';
-      if (!isImg) {
-        let p = el.parentElement, nested = false;
-        while (p && p !== document.body) {
-          if (collected.has(p)) { nested = true; break; }
-          p = p.parentElement;
-        }
-        if (nested) return;
+      let p = el.parentElement, nested = false;
+      while (p && p !== document.body) {
+        if (collected.has(p)) { nested = true; break; }
+        p = p.parentElement;
       }
-      const raw = isImg ? (el.getAttribute('alt') || '') : (el.textContent || '');
-      const text = cleanText(raw);
+      if (nested) return;
+      const text = cleanText(el.textContent || '');
       if (!text || text.length < 2) return;
       if (SKIP_TEXT.test(text)) return;
       collected.add(el);
@@ -2324,10 +2126,7 @@ let chatbotFindAnswer = null;
   }
 
   function clearHighlight() {
-    if (S.highlighted) {
-      S.highlighted.classList.remove('audio-highlight');
-      S.highlighted = null;
-    }
+    if (S.highlighted) { S.highlighted.classList.remove('audio-highlight'); S.highlighted = null; }
   }
   function highlight(el) {
     if (!el || el === S.highlighted) return;
@@ -2355,28 +2154,38 @@ let chatbotFindAnswer = null;
   function setPaused()    { showStatus('Pausado... di "continuar"', '#f4d03f'); }
   function setCapturing(label, color) { showStatus(label, color || '#f4d03f'); }
 
+  function cancelImmediate() {
+    S.gen++;
+    try { synth.cancel(); } catch (e) {}
+    S.playing = false;
+    S.paused = false;
+    S.index = 0;
+    S.recentTTSWords = [];
+    clearHighlight();
+    stopWatchdog();
+    if (S.micActive) setListening(); else hideStatus();
+  }
+
   function speakFrom(i) {
     if (i >= S.items.length) { finishReading(); return; }
     S.index = i;
     const item = S.items[i];
     highlight(item.el);
-
-    const u = new SpeechSynthesisUtterance(item.text);
-    u.lang = 'es-CO';
-    u.rate = S.rate;
-    u.pitch = 1;
-    u.volume = 1;
-    const v = pickVoice();
-    if (v) u.voice = v;
-
+    const spoken = formatPricesForSpeech(item.text);
+    recordTTSWords(spoken);
+    const u = new SpeechSynthesisUtterance(spoken);
+    u.lang = 'es-CO'; u.rate = S.rate; u.pitch = 1; u.volume = 1;
+    const v = pickVoice(); if (v) u.voice = v;
     const myGen = S.gen;
     u.onend = function () {
       if (myGen !== S.gen) return;
+      S.recentTTSWords = [];
       speakFrom(i + 1);
     };
     u.onerror = function (ev) {
       if (myGen !== S.gen) return;
       if (ev && (ev.error === 'interrupted' || ev.error === 'canceled')) return;
+      S.recentTTSWords = [];
       speakFrom(i + 1);
     };
     try { synth.speak(u); } catch (e) {}
@@ -2389,115 +2198,118 @@ let chatbotFindAnswer = null;
       try { if (synth.paused) synth.resume(); } catch (e) {}
     }, 5000);
   }
-  function stopWatchdog() {
-    if (S.watchdog) { clearInterval(S.watchdog); S.watchdog = null; }
-  }
+  function stopWatchdog() { if (S.watchdog) { clearInterval(S.watchdog); S.watchdog = null; } }
 
   function resetReader() {
-    S.gen++;
-    try { synth.cancel(); } catch (e) {}
-    S.playing = false;
-    S.paused = false;
-    S.index = 0;
-    clearHighlight();
-    stopWatchdog();
+    S.gen++; try { synth.cancel(); } catch (e) {}
+    S.playing = false; S.paused = false; S.index = 0;
+    S.recentTTSWords = [];
+    clearHighlight(); stopWatchdog();
   }
 
   function startReading() {
     if (!supportsSpeech) { speakText('Tu navegador no permite lectura en voz alta.'); return; }
     resetReader();
     S.items = collectItems(null);
-    if (!S.items.length) { speakText('No se encontró contenido para leer.'); return; }
-    S.gen++;
-    S.playing = true;
-    S.paused = false;
-    setReading();
-    speakFrom(0);
-    startWatchdog();
+    if (!S.items.length) { speakText('No se encontró contenido.'); return; }
+    S.gen++; S.playing = true; S.paused = false;
+    setReading(); speakFrom(0); startWatchdog();
   }
 
-  function readSection(selector, label) {
+  function readSection(selector, label, special) {
     if (!supportsSpeech) { speakText('Tu navegador no permite lectura en voz alta.'); return; }
     const section = document.querySelector(selector);
     if (!section) { speakText('No encontré esa sección.'); return; }
 
-    resetReader();
-    speakText(label + '. Te leo esta sección.', function () {
-      try { section.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {}
-      setTimeout(function () {
-        S.items = collectItems(section);
-        if (!S.items.length) { speakText('Esta sección no tiene contenido.'); return; }
-        S.gen++;
-        S.playing = true;
-        S.paused = false;
-        setReading();
-        speakFrom(0);
-        startWatchdog();
-      }, 400);
-    });
+    S.gen++;
+    try { synth.cancel(); } catch (e) {}
+    S.playing = false; S.paused = false; S.index = 0;
+    S.recentTTSWords = [];
+    clearHighlight(); stopWatchdog();
+
+    try { section.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {}
+
+    S.items = collectItems(section);
+    if (!S.items.length) { speakText('Esta sección no tiene contenido.'); return; }
+
+    S.gen++; S.playing = true; S.paused = false;
+    setReading();
+    setTimeout(function () { speakFrom(0); }, 180);
+    startWatchdog();
+  }
+
+  function findWorkshopButton(name, level) {
+    const sectionMap = { gratis: 'talleres-basicos', intermedio: 'talleres-intermedios', avanzado: 'talleres-avanzados' };
+    const targetSectionId = sectionMap[level] || null;
+    const buttons = document.querySelectorAll('.accordion-button');
+    const searchName = (name || '').toLowerCase().trim();
+    for (const btn of buttons) {
+      const parentSection = btn.closest('section');
+      const sid = parentSection ? parentSection.id : '';
+      if (targetSectionId && sid !== targetSectionId) continue;
+      const img = btn.querySelector('img');
+      const alt = img ? (img.getAttribute('alt') || '').toLowerCase().trim() : '';
+      if (alt === searchName || alt.includes(searchName)) return btn;
+    }
+    return null;
+  }
+
+  function readSpecificWorkshop(workshopName, level) {
+    const btn = findWorkshopButton(workshopName, level);
+    if (!btn) {
+      speakText('No encontré el taller de ' + workshopName + ' ' + level + '. Prueba decir: dibujo gratis, pintura intermedio o teatro avanzado.');
+      return;
+    }
+    if (!btn.classList.contains('is-open')) btn.click();
+    try { btn.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {}
+
+    S.gen++;
+    try { synth.cancel(); } catch (e) {}
+    S.playing = false; S.paused = false; S.index = 0;
+    S.recentTTSWords = [];
+    clearHighlight(); stopWatchdog();
+
+    const content = btn.nextElementSibling;
+    if (!content) { speakText('No hay información de ese taller.'); return; }
+
+    S.items = collectItems(content);
+    if (!S.items.length) { speakText('No hay información de ese taller.'); return; }
+
+    S.gen++; S.playing = true; S.paused = false;
+    setReading();
+    setTimeout(function () { speakFrom(0); }, 180);
+    startWatchdog();
   }
 
   function togglePause() {
     if (!S.playing || !supportsSpeech) return;
-    if (S.paused) {
-      try { synth.resume(); } catch (e) {}
-      S.paused = false;
-      setReading();
-    } else {
-      try { synth.pause(); } catch (e) {}
-      S.paused = true;
-      setPaused();
-    }
-  }
-
-  function stopReading(announce) {
-    resetReader();
-    if (S.micActive) setListening();
-    else hideStatus();
-    if (announce && supportsSpeech) {
-      const u = new SpeechSynthesisUtterance('Lectura detenida.');
-      u.lang = 'es-CO'; u.rate = 1.1;
-      const v = pickVoice(); if (v) u.voice = v;
-      try { synth.speak(u); } catch (e) {}
-    }
+    if (S.paused) { try { synth.resume(); } catch (e) {} S.paused = false; setReading(); }
+    else { try { synth.pause(); } catch (e) {} S.paused = true; setPaused(); }
   }
 
   function finishReading() {
-    S.playing = false;
-    S.paused = false;
-    clearHighlight();
-    stopWatchdog();
-    if (S.micActive) setListening();
-    else hideStatus();
-    if (supportsSpeech) {
-      const u = new SpeechSynthesisUtterance('Lectura finalizada.');
-      u.lang = 'es-CO';
-      const v = pickVoice(); if (v) u.voice = v;
-      try { synth.speak(u); } catch (e) {}
-    }
+    S.playing = false; S.paused = false;
+    S.recentTTSWords = [];
+    clearHighlight(); stopWatchdog();
+    if (S.micActive) setListening(); else hideStatus();
   }
 
   function speakText(text, onDone) {
     if (!supportsSpeech) { if (onDone) onDone(); return; }
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = 'es-CO';
-    u.rate = S.rate || 1;
-    u.pitch = 1;
-    const v = pickVoice();
-    if (v) u.voice = v;
+    const u = new SpeechSynthesisUtterance(formatPricesForSpeech(text));
+    u.lang = 'es-CO'; u.rate = S.rate || 1; u.pitch = 1;
+    const v = pickVoice(); if (v) u.voice = v;
     u.onend = function () { if (onDone) onDone(); };
     u.onerror = function () { if (onDone) onDone(); };
     try { synth.speak(u); } catch (e) { if (onDone) onDone(); }
   }
 
-  /* ============================================================
-     MODO WHATSAPP
-     ============================================================ */
-  function enterWhatsappMode() {
+  function enterWhatsappMode(triggerText) {
     S.mode = 'whatsapp-capture';
     S.capturedText = '';
+    S.triggerPhrase = (triggerText || '').toLowerCase().trim();
     S.modeEnterTime = Date.now();
-    speakText('Modo WhatsApp activado. Dime tu mensaje. Cuando termines, di enviar. Para cancelar, di cancelar.');
+    speakText('Modo WhatsApp. Dicta tu mensaje y di enviar. Para cancelar di cancelar.');
     setCapturing('Modo WhatsApp: dicta tu mensaje y di "enviar"', '#25D366');
   }
 
@@ -2507,88 +2319,65 @@ let chatbotFindAnswer = null;
       const w = window.open(url, '_blank');
       if (!w) window.location.href = url;
     } catch (e) { window.location.href = url; }
-    speakText('Abriendo WhatsApp con tu mensaje.');
-    S.mode = 'normal';
-    S.capturedText = '';
+    speakText('Abriendo WhatsApp.');
+    S.mode = 'normal'; S.capturedText = ''; S.triggerPhrase = '';
     if (S.micActive) setListening();
   }
 
-  /* ============================================================
-     MODO CHATBOT
-     ============================================================ */
-  function enterChatbotMode() {
+  function enterChatbotMode(triggerText) {
     S.mode = 'chatbot-capture';
     S.capturedText = '';
+    S.triggerPhrase = (triggerText || '').toLowerCase().trim();
     S.modeEnterTime = Date.now();
-    speakText('Modo chatbot activado. Hazme tu pregunta. Puedes decir cancelar para salir.');
+    speakText('Modo chatbot. Hazme tu pregunta. Di cancelar para salir.');
     setCapturing('Modo chatbot: haz tu pregunta', '#7c3aed');
   }
 
   function askChatbot(question) {
     if (typeof chatbotOpen === 'function') chatbotOpen();
     if (typeof chatbotSendMessage !== 'function') {
-      speakText('El chatbot no está disponible.');
+      speakText('Chatbot no disponible.');
+      S.mode = 'normal'; S.capturedText = ''; S.triggerPhrase = '';
       return;
     }
     const plain = (typeof chatbotGetPlainAnswer === 'function') ? chatbotGetPlainAnswer(question) : null;
     chatbotSendMessage(question);
-    S.mode = 'normal';
-    S.capturedText = '';
+    S.mode = 'normal'; S.capturedText = ''; S.triggerPhrase = '';
     setTimeout(function () {
-      if (plain) {
-        speakText('Respuesta: ' + plain);
-      } else {
-        speakText('No tengo una respuesta exacta. Te recomiendo escribirnos por WhatsApp.');
-      }
+      if (plain) speakText('Respuesta: ' + plain);
+      else speakText('No tengo una respuesta exacta. Escríbenos por WhatsApp.');
       if (S.micActive) setListening();
-    }, 700);
+    }, 300);
   }
 
-  /* ============================================================
-     RECONOCIMIENTO DE VOZ
-     ============================================================ */
   function initRecognition() {
     if (!supportsRecog) return null;
     const r = new SR();
-    r.lang = 'es-CO';
-    r.continuous = true;
-    r.interimResults = true;
-    r.maxAlternatives = 3;
+    r.lang = 'es-CO'; r.continuous = true; r.interimResults = true; r.maxAlternatives = 3;
 
     r.onresult = function (event) {
-      // Separar final vs interim
-      let finalText = '';
-      let interimText = '';
-
+      let finalText = ''; let interimText = '';
       for (let i = event.resultIndex; i < event.results.length; i++) {
         const transcript = event.results[i][0].transcript;
-        if (event.results[i].isFinal) {
-          finalText += ' ' + transcript;
-        } else {
-          interimText += ' ' + transcript;
-        }
+        if (event.results[i].isFinal) finalText += ' ' + transcript;
+        else interimText += ' ' + transcript;
       }
-
       const interimClean = interimText.toLowerCase().trim();
 
-      // *** PRIORIDAD MÁXIMA: DETENER en interim (respuesta rápida) ***
-      if (interimClean) {
-        if (/\b(detener|detente|parar|párate|para|alto|silencio|stop|basta|quieto)\b/.test(interimClean)) {
-          const now = Date.now();
-          if (now - S.lastDetenerTime > 1500) {
-            S.lastDetenerTime = now;
-            if ((S.playing || S.paused) && !S.stopping) {
-              S.stopping = true;
-              stopReading(true);
-              setTimeout(() => { S.stopping = false; }, 1500);
-            }
+      if (interimClean && STOP_REGEX.test(interimClean) && !isEcho(interimClean)) {
+        const now = Date.now();
+        if (now - S.lastDetenerTime > 700) {
+          S.lastDetenerTime = now;
+          if (S.playing || S.paused) {
+            cancelImmediate();
           }
         }
       }
 
-      // Procesar el texto final
       if (finalText.trim()) {
-        handleVoiceInput(finalText.toLowerCase().trim());
+        const t = finalText.toLowerCase().trim();
+        if (isEcho(t)) return;
+        handleVoiceInput(t);
       }
     };
 
@@ -2598,13 +2387,12 @@ let chatbotFindAnswer = null;
         showStatus('Micrófono no disponible. Toca el botón dorado.', '#ef4444');
       }
     };
-
     r.onend = function () {
       S.recognitionRunning = false;
       if (S.micActive && !S.playing) {
         setTimeout(function () {
           if (S.micActive && !S.recognitionRunning) startRecognition();
-        }, 300);
+        }, 150);
       }
     };
     return r;
@@ -2614,150 +2402,142 @@ let chatbotFindAnswer = null;
     if (!supportsRecog || !S.recognition || S.recognitionRunning) return;
     try {
       S.recognition.start();
-      S.recognitionRunning = true;
-      S.micActive = true;
+      S.recognitionRunning = true; S.micActive = true;
       if (S.mode === 'normal') setListening();
     } catch (e) {}
+  }
+
+  function handleWhatsappInput(t) {
+    if (S.triggerPhrase && t === S.triggerPhrase) return;
+    if (Date.now() - S.modeEnterTime < 400 && t.length < 10) return;
+    if (t.length < 40 && /\b(enviar|env[ií]a|env[ií]alo|manda|m[aá]ndalo|mandar|ya\s*est[aá]|listo|ya)\b/.test(t)) {
+      if (S.capturedText.trim()) {
+        sendWhatsappMessage('Hola Fundación Artes Multicap. ' + S.capturedText.trim());
+      } else {
+        speakText('No capté ningún mensaje.');
+        setCapturing('Modo WhatsApp: dicta tu mensaje y di "enviar"', '#25D366');
+      }
+      return;
+    }
+    if (t.length < 30 && /\b(cancelar|cancela|salir\s*del\s*modo|abortar|olv[ií]dalo)\b/.test(t)) {
+      S.mode = 'normal'; S.capturedText = ''; S.triggerPhrase = '';
+      speakText('Modo WhatsApp cancelado.');
+      if (S.micActive) setListening();
+      return;
+    }
+    if (t.length < 40 && /\b(borrar|borra|empezar\s*de\s*nuevo|repetir\s*mensaje)\b/.test(t)) {
+      S.capturedText = '';
+      speakText('Mensaje borrado.');
+      setCapturing('Modo WhatsApp: dicta tu mensaje', '#25D366');
+      return;
+    }
+    if (t.length < 30 && /\b(leer|lee|qu[eé]\s*dije|revisar|leelo|leerlo)\b/.test(t)) {
+      if (S.capturedText.trim()) speakText('Tu mensaje es: ' + S.capturedText);
+      else speakText('Aún no has dictado nada.');
+      return;
+    }
+    const clean = t.replace(/\bpunto\b/g, '.').replace(/\bcoma\b/g, ',');
+    S.capturedText += (S.capturedText ? ' ' : '') + clean;
+    const preview = S.capturedText.length > 50 ? '...' + S.capturedText.slice(-50) : S.capturedText;
+    showStatus('Capturando: "' + preview + '" · di "enviar"', '#25D366');
+  }
+
+  function handleChatbotInput(t) {
+    if (S.triggerPhrase && t === S.triggerPhrase) return;
+    if (Date.now() - S.modeEnterTime < 400 && t.length < 10) return;
+    if (t.length < 30 && /\b(cancelar|cancela|salir\s*del\s*modo|abortar)\b/.test(t)) {
+      S.mode = 'normal'; S.capturedText = ''; S.triggerPhrase = '';
+      speakText('Modo chatbot cancelado.');
+      if (S.micActive) setListening();
+      return;
+    }
+    if (t.length < 3) return;
+    askChatbot(t);
   }
 
   function handleVoiceInput(t) {
     if (!t) return;
     const now = Date.now();
+    if (S.mode === 'whatsapp-capture') { handleWhatsappInput(t); return; }
+    if (S.mode === 'chatbot-capture') { handleChatbotInput(t); return; }
 
-    // Cooldown después de cambiar de modo (evita re-procesar el mismo utterance)
-    if (now - S.modeEnterTime < 2000 && S.mode !== 'normal') {
-      // Durante el cooldown, en modo captura, empezar a acumular texto
-      if (S.mode === 'whatsapp-capture') {
-        // Solo acumular si no es un comando
-        if (!/\b(enviar|envía|manda|listo|cancelar|borrar)\b/.test(t)) {
-          S.capturedText += (S.capturedText ? ' ' : '') + t;
-          showStatus('Capturando: "' + (S.capturedText.length > 50 ? S.capturedText.slice(-50) : S.capturedText) + '"  ·  di "enviar"', '#25D366');
-        }
-      }
-      return;
-    }
-
-    // CANCELAR (siempre disponible en modo captura)
-    if (S.mode !== 'normal') {
-      if (/\b(cancelar|cancela|salir|olvídalo|olvidalo|abortar)\b/.test(t)) {
-        S.mode = 'normal';
-        S.capturedText = '';
-        speakText('Cancelado.');
-        if (S.micActive) setListening();
-        return;
-      }
-    }
-
-    // ============ MODO WHATSAPP ============
-    if (S.mode === 'whatsapp-capture') {
-      // ENVIAR
-      if (/\b(enviar|envía|envia|manda|mándalo|mandalo|mandar|listo|ya\s*está|ya\s*esta|ya)\b/.test(t)) {
-        if (S.capturedText.trim()) {
-          const msg = 'Hola Fundación Artes Multicap. ' + S.capturedText.trim();
-          sendWhatsappMessage(msg);
-        } else {
-          speakText('No capté ningún mensaje. Intenta de nuevo.');
-          setCapturing('Modo WhatsApp: dicta tu mensaje y di "enviar"', '#25D366');
-        }
-        return;
-      }
-      // BORRAR / REPETIR
-      if (/\b(repetir|repite|borrar|empieza de nuevo|empezar de nuevo)\b/.test(t)) {
-        S.capturedText = '';
-        speakText('Mensaje borrado. Dime tu mensaje.');
-        return;
-      }
-      // LEER lo capturado
-      if (/\b(leer|escuchar|qué\s*dije|que\s*dije|revisar|leelo|leerlo)\b/.test(t)) {
-        if (S.capturedText.trim()) speakText('Tu mensaje es: ' + S.capturedText);
-        else speakText('Aún no has dictado nada.');
-        return;
-      }
-      // Acumular texto
-      const clean = t.replace(/\bpunto\b/g, '.').replace(/\bcoma\b/g, ',').replace(/\bdos puntos\b/g, ':');
-      S.capturedText += (S.capturedText ? ' ' : '') + clean;
-      showStatus('Capturando: "' + (S.capturedText.length > 50 ? S.capturedText.slice(-50) : S.capturedText) + '"  ·  di "enviar"', '#25D366');
-      return;
-    }
-
-    // ============ MODO CHATBOT ============
-    if (S.mode === 'chatbot-capture') {
-      if (t.length < 3) return;
-      askChatbot(t);
-      return;
-    }
-
-    // ============ MODO NORMAL ============
-    // Throttle general
-    if (now - S.lastCmd < 400) return;
-
-    // 1. DETENER
-    if (/\b(detener|detente|parar|párate|para|alto|silencio|stop|basta|quieto)\b/.test(t)) {
+    if (STOP_REGEX.test(t) && !isEcho(t)) {
       S.lastCmd = now;
-      if ((S.playing || S.paused) && !S.stopping) {
-        S.stopping = true;
-        stopReading(true);
-        setTimeout(() => { S.stopping = false; }, 1500);
-      }
+      if (S.playing || S.paused) cancelImmediate();
       return;
     }
 
-    // 2. PAUSAR / CONTINUAR
+    if (now - S.lastCmd < 200) return;
+
     if (/\b(pausa|pausar)\b/.test(t) && S.playing && !S.paused) { S.lastCmd = now; togglePause(); return; }
     if (/\b(continuar|continúa|sigue|reanudar|reanuda)\b/.test(t) && S.playing && S.paused) { S.lastCmd = now; togglePause(); return; }
 
-    // 3. ENVIAR WHATSAPP (solo en modo normal)
-    if (/\b(whatsapp|wasap|wpp|whats\s*app)\b/.test(t) ||
-        /\b(escribir\s*(un\s*)?mensaje|mandar\s*(un\s*)?mensaje|enviar\s*(un\s*)?mensaje)\b/.test(t)) {
-      S.lastCmd = now;
-      enterWhatsappMode();
-      return;
-    }
+    if (
+      /\b(whatsapp|wasap|wpp|whats\s*app)\b/.test(t) ||
+      /\b(escribir\s*(un\s*)?mensaje|mandar\s*(un\s*)?mensaje|enviar\s*(un\s*)?mensaje|quiero\s*(enviar|mandar|escribir)\s*(un\s*)?(mensaje|whatsapp)?)\b/.test(t)
+    ) { S.lastCmd = now; enterWhatsappMode(t); return; }
 
-    // 4. CHATBOT (solo en modo normal)
     if (/\b(chatbot|chat\s*bot|pregunta\s*al\s*chatbot|preguntar|quiero\s*preguntar|tengo\s*una\s*(pregunta|duda|consulta)|consultar\s*(al\s*)?(bot|chatbot|asistente))\b/.test(t)) {
-      S.lastCmd = now;
-      enterChatbotMode();
-      return;
+      S.lastCmd = now; enterChatbotMode(t); return;
     }
 
-    // 5. NAVEGACIÓN POR SECCIONES
-    for (let i = 0; i < NAV_COMMANDS.length; i++) {
-      const nav = NAV_COMMANDS[i];
-      if (nav.rx.test(t)) {
+    let detectedName = null;
+    for (const canonical in WORKSHOP_ALIASES) {
+      const aliases = WORKSHOP_ALIASES[canonical];
+      for (const a of aliases) {
+        const rx = new RegExp('\\b' + a.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b');
+        if (rx.test(t)) { detectedName = canonical; break; }
+      }
+      if (detectedName) break;
+    }
+    if (detectedName) {
+      let level = null;
+      if (/\b(gratis|gratuitos?|b[aá]sicos?|sin\s*costo|cursos?\s*gratis)\b/.test(t)) level = 'gratis';
+      else if (/\b(intermedios?|nivel\s*intermedio)\b/.test(t)) level = 'intermedio';
+      else if (/\b(avanzados?|nivel\s*avanzado)\b/.test(t)) level = 'avanzado';
+
+      if (level) {
         S.lastCmd = now;
-        readSection(nav.section, nav.label);
+        const displayName = detectedName.charAt(0).toUpperCase() + detectedName.slice(1);
+        readSpecificWorkshop(displayName, level);
+        return;
+      } else {
+        S.lastCmd = now;
+        speakText('¿Quieres ' + detectedName + ' gratis, intermedio o avanzado?');
         return;
       }
     }
 
-    // 6. LEER TODA LA PÁGINA
+    for (let i = 0; i < NAV_COMMANDS.length; i++) {
+      const nav = NAV_COMMANDS[i];
+      if (nav.rx.test(t)) { S.lastCmd = now; readSection(nav.section, nav.label, nav.special); return; }
+    }
+
     if (/\b(audio|escuchar|escúchame|leer|lectura|leeme|léeme|reproducir|reproduce|comenzar|empezar)\b/.test(t)) {
       if (!S.playing) {
         S.lastCmd = now;
-        speakText('Iniciando lectura.', function () { setTimeout(startReading, 250); });
+        startReading();
       }
       return;
     }
-
-    // 7. REINICIAR
     if (/\b(reiniciar|comenzar de nuevo|desde el principio|repetir)\b/.test(t)) {
       S.lastCmd = now;
-      stopReading(false);
-      speakText('Reiniciando.', function () { setTimeout(startReading, 250); });
+      startReading();
       return;
     }
   }
 
   function playWelcome(onDone) {
     if (!supportsSpeech) { if (onDone) onDone(); return; }
-    const msg = 'Bienvenido a la Fundación Artes Multicap. ' +
-                'Di "audio" para leer toda la página, o di un tema como talleres gratis, convocatorias, precios, descuentos, editorial, nivelación, paquetes, o proyectos culturales. ' +
-                'Para enviar un mensaje por WhatsApp, di "enviar por WhatsApp", dicta tu mensaje y di "enviar". ' +
-                'Para preguntar al chatbot, di "quiero preguntar". ' +
-                'Para detener la lectura, di "detener".';
+    const msg = 'Fundación Artes Multicap. ' +
+                'Di audio para leer toda la página. ' +
+                'O di el nombre de un taller, por ejemplo: dibujo gratis, pintura gratis, teatro gratis, dibujo intermedio, o teatro avanzado. ' +
+                'También puedes decir: descuentos, paquetes intermedios, paquetes avanzados, paquetes a medida, convocatorias, precios, editorial, nivelación, o proyectos culturales. ' +
+                'Para WhatsApp di "enviar mensaje por WhatsApp". ' +
+                'Para preguntar di "quiero preguntar". ' +
+                'Para detener di "detener".';
     const u = new SpeechSynthesisUtterance(msg);
-    u.lang = 'es-CO'; u.rate = 0.95; u.pitch = 1; u.volume = 1;
+    u.lang = 'es-CO'; u.rate = 1.0; u.pitch = 1; u.volume = 1;
     const v = pickVoice(); if (v) u.voice = v;
     u.onend = function () { if (onDone) onDone(); };
     u.onerror = function () { if (onDone) onDone(); };
@@ -2771,7 +2551,7 @@ let chatbotFindAnswer = null;
       S.welcomePlayed = true;
       setTimeout(function () {
         playWelcome(function () { if (S.micActive) setListening(); });
-      }, 500);
+      }, 200);
     }
   }
 
@@ -2791,9 +2571,7 @@ let chatbotFindAnswer = null;
       if (!S.welcomePlayed) {
         S.welcomePlayed = true;
         playWelcome(function () { activateSystem(); });
-      } else {
-        activateSystem();
-      }
+      } else { activateSystem(); }
     });
   }
 
@@ -2806,14 +2584,13 @@ let chatbotFindAnswer = null;
           startRecognition();
         });
       }
-    }, 400);
+    }, 200);
   });
 
   document.addEventListener('keydown', function (e) {
     if (e.altKey && (e.key === 'l' || e.key === 'L')) {
       e.preventDefault();
-      if (S.playing) stopReading(false);
-      else startReading();
+      if (S.playing) cancelImmediate(); else startReading();
     }
   });
 
