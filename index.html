@@ -70,35 +70,13 @@
       transition:all 0.3s ease; flex-shrink:0; position:relative;
       overflow:hidden;
     }
-    .workshop-icon img {
-      width:100%; height:100%; object-fit:contain; border-radius:12px;
-      display:block;
-    }
-    .workshop-icon svg { width:22px; height:22px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
-    .accordion-button:hover .workshop-icon {
-      border-color:#f4d03f; box-shadow:0 0 18px rgba(212,175,55,0.7); transform:scale(1.04);
-    }
-    .accordion-button.is-open .workshop-icon {
-      border-color:#f4d03f; box-shadow:0 0 22px rgba(212,175,55,0.9);
-    }
+    .workshop-icon img { width:100%; height:100%; object-fit:contain; border-radius:12px; display:block; }
+    .accordion-button:hover .workshop-icon { border-color:#f4d03f; box-shadow:0 0 18px rgba(212,175,55,0.7); transform:scale(1.04); }
+    .accordion-button.is-open .workshop-icon { border-color:#f4d03f; box-shadow:0 0 22px rgba(212,175,55,0.9); }
 
-    .nivelacion-img {
-      width:100%; height:auto; display:block;
-      border-radius:14px 14px 0 0;
-      object-fit:cover;
-    }
-    .nivelacion-header {
-      display:flex; align-items:center; justify-content:space-between;
-      padding:0.7rem 1rem;
-      border-top:1px solid rgba(212,175,55,0.2);
-      gap:0.5rem;
-    }
-    .nivelacion-price {
-      background:linear-gradient(135deg,#d4af37,#b8941f);
-      color:#000; font-weight:700; font-size:0.8rem;
-      padding:0.35rem 0.75rem; border-radius:8px;
-      white-space:nowrap;
-    }
+    .nivelacion-img { width:100%; height:auto; display:block; border-radius:14px 14px 0 0; object-fit:cover; }
+    .nivelacion-header { display:flex; align-items:center; justify-content:space-between; padding:0.7rem 1rem; border-top:1px solid rgba(212,175,55,0.2); gap:0.5rem; }
+    .nivelacion-price { background:linear-gradient(135deg,#d4af37,#b8941f); color:#000; font-weight:700; font-size:0.8rem; padding:0.35rem 0.75rem; border-radius:8px; white-space:nowrap; }
 
     @keyframes pulseGold { 0%,100% { box-shadow:0 0 8px rgba(212,175,55,0.6), 0 0 20px rgba(212,175,55,0.4); } 50% { box-shadow:0 0 18px rgba(212,175,55,1), 0 0 40px rgba(212,175,55,0.6); } }
 
@@ -150,6 +128,268 @@
     .price-row.highlight .label { color:#f4d03f; font-weight:600; }
     .price-row.highlight .value { color:#fff; }
 
+    .audio-highlight {
+      outline:3px solid #d4af37 !important;
+      outline-offset:3px;
+      border-radius:8px;
+      background-color:rgba(212,175,55,0.14) !important;
+      scroll-margin-top:140px;
+      transition:background-color 0.3s ease, outline 0.3s ease;
+    }
+
+    @keyframes voicePulse {
+      0%,100% { box-shadow:0 6px 25px rgba(212,175,55,0.75), 0 0 0 0 rgba(212,175,55,0.5); }
+      50% { box-shadow:0 6px 25px rgba(212,175,55,0.75), 0 0 0 14px rgba(212,175,55,0); }
+    }
+    @keyframes voiceDotPulse {
+      0%,100% { opacity:1; transform:scale(1); }
+      50% { opacity:0.5; transform:scale(0.85); }
+    }
+
+    /* ==================== CHATBOT CON MUÑEQUITO ==================== */
+    .chatbot-btn {
+      position:fixed; bottom:170px; right:24px; z-index:9999;
+      width:72px; height:72px; border-radius:50%;
+      background:linear-gradient(135deg,#7c3aed,#5b21b6);
+      border:3px solid #f4d03f;
+      cursor:pointer; color:#fff;
+      display:flex; align-items:center; justify-content:center;
+      box-shadow:0 6px 30px rgba(124,58,237,0.8), 0 0 0 0 rgba(244,208,63,0.7);
+      transition:all 0.3s ease;
+      animation:robotFloat 3s ease-in-out infinite, robotGlow 2.5s ease-in-out infinite;
+      padding:0;
+      overflow:visible;
+    }
+    .chatbot-btn:hover { transform:scale(1.1) rotate(-5deg); }
+    .chatbot-btn svg { width:100%; height:100%; display:block; }
+
+    @keyframes robotFloat {
+      0%,100% { transform:translateY(0); }
+      50% { transform:translateY(-8px); }
+    }
+    @keyframes robotGlow {
+      0%,100% { box-shadow:0 6px 30px rgba(124,58,237,0.8), 0 0 0 0 rgba(244,208,63,0.7); }
+      50% { box-shadow:0 6px 30px rgba(124,58,237,0.8), 0 0 0 14px rgba(244,208,63,0); }
+    }
+
+    .chatbot-btn .chat-badge {
+      position:absolute; top:-4px; right:-4px;
+      background:#ef4444; color:#fff; font-size:0.7rem; font-weight:800;
+      min-width:22px; height:22px; border-radius:999px;
+      display:flex; align-items:center; justify-content:center;
+      padding:0 5px;
+      box-shadow:0 0 0 3px #000;
+      animation:voiceDotPulse 1.5s infinite ease-in-out;
+    }
+
+    .chatbot-panel {
+      position:fixed; bottom:24px; right:24px; z-index:10000;
+      width:min(94vw, 400px);
+      height:min(88vh, 660px);
+      background:#0a0a0a;
+      border:2px solid #d4af37;
+      border-radius:22px;
+      display:none;
+      flex-direction:column;
+      overflow:hidden;
+      box-shadow:0 25px 70px rgba(0,0,0,0.9), 0 0 45px rgba(124,58,237,0.4);
+      font-family:'Outfit',system-ui,sans-serif;
+    }
+    .chatbot-panel.show { display:flex; }
+
+    .chat-header {
+      background:linear-gradient(135deg,#7c3aed,#5b21b6);
+      padding:0.9rem 1rem;
+      display:flex; align-items:center; gap:0.7rem;
+      color:#fff;
+      flex-shrink:0;
+      border-bottom:2px solid #f4d03f;
+    }
+    .chat-header .chat-avatar {
+      width:52px; height:52px; border-radius:50%;
+      background:#fff; color:#000;
+      display:flex; align-items:center; justify-content:center;
+      flex-shrink:0;
+      box-shadow:0 0 0 3px rgba(244,208,63,0.8);
+      overflow:hidden;
+      padding:2px;
+    }
+    .chat-header .chat-avatar svg { width:100%; height:100%; }
+    .chat-header .chat-title { flex:1; min-width:0; line-height:1.2; }
+    .chat-header .chat-title strong { display:block; font-size:1rem; font-weight:800; }
+    .chat-header .chat-title span {
+      font-size:0.74rem; opacity:0.9;
+      display:flex; align-items:center; gap:5px;
+      margin-top:2px;
+    }
+    .chat-header .chat-title span::before {
+      content:''; display:inline-block;
+      width:8px; height:8px; border-radius:50%;
+      background:#22c55e; box-shadow:0 0 8px #22c55e;
+      animation:voiceDotPulse 1.5s infinite ease-in-out;
+    }
+    .chat-header button {
+      background:rgba(255,255,255,0.18); border:none; color:#fff;
+      width:34px; height:34px; border-radius:50%;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; transition:all 0.2s;
+      flex-shrink:0;
+    }
+    .chat-header button:hover { background:rgba(255,255,255,0.32); transform:rotate(90deg); }
+    .chat-header button svg { width:16px; height:16px; fill:none; stroke:#fff; stroke-width:2.5; stroke-linecap:round; }
+
+    .chat-body {
+      flex:1; overflow-y:auto;
+      padding:1rem;
+      background:#000;
+      display:flex; flex-direction:column; gap:0.65rem;
+      scrollbar-width:thin;
+      scrollbar-color:#d4af37 #111;
+    }
+    .chat-body::-webkit-scrollbar { width:6px; }
+    .chat-body::-webkit-scrollbar-track { background:#111; }
+    .chat-body::-webkit-scrollbar-thumb { background:#d4af37; border-radius:3px; }
+
+    .chat-msg {
+      max-width:88%;
+      padding:0.7rem 0.9rem;
+      border-radius:15px;
+      font-size:0.87rem;
+      line-height:1.45;
+      word-wrap:break-word;
+      animation:chatMsgIn 0.3s ease;
+    }
+    @keyframes chatMsgIn {
+      from { opacity:0; transform:translateY(8px); }
+      to { opacity:1; transform:translateY(0); }
+    }
+    .chat-msg.bot {
+      align-self:flex-start;
+      background:#1a1a1a;
+      border:1px solid rgba(212,175,55,0.35);
+      color:#e5e7eb;
+      border-bottom-left-radius:4px;
+    }
+    .chat-msg.user {
+      align-self:flex-end;
+      background:linear-gradient(135deg,#d4af37,#b8941f);
+      color:#000;
+      font-weight:600;
+      border-bottom-right-radius:4px;
+    }
+    .chat-msg a {
+      color:#f4d03f; text-decoration:underline; font-weight:700;
+    }
+    .chat-msg strong { color:#f4d03f; }
+
+    .chat-typing {
+      align-self:flex-start;
+      background:#1a1a1a;
+      border:1px solid rgba(212,175,55,0.35);
+      padding:0.75rem 1rem;
+      border-radius:15px;
+      border-bottom-left-radius:4px;
+      display:flex; gap:5px;
+    }
+    .chat-typing span {
+      width:7px; height:7px; border-radius:50%;
+      background:#d4af37;
+      animation:typingDot 1.2s infinite ease-in-out;
+    }
+    .chat-typing span:nth-child(2) { animation-delay:0.2s; }
+    .chat-typing span:nth-child(3) { animation-delay:0.4s; }
+    @keyframes typingDot {
+      0%,60%,100% { transform:translateY(0); opacity:0.5; }
+      30% { transform:translateY(-5px); opacity:1; }
+    }
+
+    .chat-quick {
+      display:flex; flex-wrap:wrap; gap:6px;
+      padding:0.55rem 1rem 0.5rem;
+      background:#000; border-top:1px solid rgba(212,175,55,0.18);
+      flex-shrink:0;
+      max-height:100px;
+      overflow-y:auto;
+    }
+    .chat-quick::-webkit-scrollbar { height:4px; }
+    .chat-quick::-webkit-scrollbar-thumb { background:#d4af37; border-radius:2px; }
+    .chat-quick button {
+      background:transparent;
+      border:1px solid rgba(212,175,55,0.55);
+      color:#f4d03f;
+      border-radius:999px;
+      padding:0.38rem 0.8rem;
+      font-family:inherit;
+      font-size:0.73rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:all 0.2s;
+      white-space:nowrap;
+    }
+    .chat-quick button:hover { background:#d4af37; color:#000; transform:translateY(-1px); }
+
+    .chat-input-row {
+      display:flex; gap:0.5rem;
+      padding:0.75rem;
+      background:#0a0a0a;
+      border-top:1px solid rgba(212,175,55,0.28);
+      flex-shrink:0;
+    }
+    .chat-input-row input {
+      flex:1; min-width:0;
+      background:#111 !important;
+      border:1px solid rgba(212,175,55,0.45);
+      color:#fff !important;
+      border-radius:12px;
+      padding:0.65rem 0.9rem;
+      font-family:inherit;
+      font-size:0.86rem;
+      outline:none;
+      transition:border-color 0.2s;
+    }
+    .chat-input-row input:focus { border-color:#d4af37; box-shadow:0 0 0 2px rgba(212,175,55,0.2); }
+    .chat-input-row input::placeholder { color:#6b7280; }
+    .chat-input-row button {
+      background:linear-gradient(135deg,#d4af37,#b8941f);
+      border:none; color:#000;
+      width:46px; height:46px; border-radius:12px;
+      display:flex; align-items:center; justify-content:center;
+      cursor:pointer; transition:all 0.2s;
+      flex-shrink:0;
+    }
+    .chat-input-row button:hover { transform:scale(1.06); }
+    .chat-input-row button svg { width:20px; height:20px; fill:#000; }
+
+    .chat-wa-row {
+      padding:0 0.75rem 0.75rem;
+      background:#0a0a0a;
+      flex-shrink:0;
+    }
+    .chat-wa-btn {
+      display:flex; align-items:center; justify-content:center; gap:0.5rem;
+      width:100%;
+      background:#25D366; color:#fff;
+      border:none; border-radius:12px;
+      padding:0.75rem 1rem;
+      font-family:inherit; font-weight:700; font-size:0.86rem;
+      cursor:pointer; transition:all 0.2s;
+      text-decoration:none;
+    }
+    .chat-wa-btn:hover { background:#1eb355; transform:translateY(-1px); }
+    .chat-wa-btn svg { width:20px; height:20px; }
+
+    /* ==================== CONTADOR DE VISITAS ==================== */
+    .visitor-counter-box {
+      display:flex; align-items:center; justify-content:center;
+      min-height:56px;
+      padding:0.5rem 1rem;
+      background:#000;
+      border:1px solid rgba(212,175,55,0.4);
+      border-radius:12px;
+      box-shadow:0 0 18px rgba(212,175,55,0.2);
+    }
+    .visitor-counter-box img { max-width:100%; height:auto; }
+
     @media (max-width:768px) {
       .logo-img { width:60px; height:60px; }
       .logo-text { font-size:1rem; }
@@ -158,11 +398,34 @@
       .whatsapp-float svg { width:28px; height:28px; }
       .back-to-top { width:54px; height:54px; right:16px; bottom:16px; }
       .workshop-icon { width:130px; height:130px; min-width:130px; }
+      .chatbot-btn { width:64px; height:64px; bottom:158px; right:16px; }
+      .chatbot-panel {
+        bottom:0; right:0; left:0;
+        width:100%;
+        height:92vh;
+        border-radius:22px 22px 0 0;
+        border-left:none; border-right:none; border-bottom:none;
+      }
     }
     @media (min-width:768px) { .logo-img { width:80px; height:80px; } }
   </style>
 </head>
 <body class="bg-black text-white">
+
+<!-- ============ INDICADOR DE VOZ ============ -->
+<div id="voiceStatus" style="position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:9999;display:none;align-items:center;gap:9px;background:rgba(0,0,0,0.92);color:#f4d03f;border:1.5px solid rgba(212,175,55,0.75);border-radius:999px;padding:9px 18px;font-family:'Outfit',system-ui,sans-serif;font-size:13px;font-weight:600;backdrop-filter:blur(10px);box-shadow:0 0 28px rgba(212,175,55,0.55);white-space:nowrap;pointer-events:none;max-width:92vw;overflow:hidden;text-overflow:ellipsis" role="status" aria-live="polite">
+  <span id="voiceDot" style="width:10px;height:10px;border-radius:50%;background:#22c55e;box-shadow:0 0 10px #22c55e;animation:voiceDotPulse 1.3s infinite ease-in-out;flex-shrink:0"></span>
+  <span id="voiceText">Escuchando... di "audio"</span>
+</div>
+
+<!-- ============ BOTÓN DE RESPALDO VOZ ============ -->
+<button id="voiceFallback" type="button" style="position:fixed;bottom:24px;left:24px;z-index:9999;display:flex;align-items:center;justify-content:center;width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#d4af37,#b8941f);border:none;cursor:pointer;box-shadow:0 6px 25px rgba(212,175,55,0.75);color:#000;animation:voicePulse 2.5s ease-in-out infinite" aria-label="Activar lector de voz" title="Activar lector de voz">
+  <svg viewBox="0 0 24 24" style="width:28px;height:28px;fill:none;stroke:#000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" aria-hidden="true">
+    <path d="M11 5 6 9H3v6h3l5 4V5z"/>
+    <path d="M15.5 8.5a5 5 0 0 1 0 7"/>
+    <path d="M18.5 5.5a9 9 0 0 1 0 13"/>
+  </svg>
+</button>
 
 <header class="relative z-40 glass border-b border-gray-800 sticky top-0">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3">
@@ -1582,8 +1845,134 @@
       </div>
     </div>
   </div>
-  <p class="text-center text-xs text-gray-500 mt-5">© <span id="year"></span> Fundación Artes Multicap. Todos los derechos reservados.</p>
+
+  <!-- ==================== CONTADOR DE VISITAS + COPYRIGHT ==================== -->
+  <div class="mt-6 pt-5 border-t border-gray-800 flex flex-col items-center gap-3">
+    <p class="text-center text-xs text-gray-500">© <span id="year"></span> Fundación Artes Multicap. Todos los derechos reservados.</p>
+
+    <div class="flex flex-col items-center gap-2" aria-label="Contador de visitas">
+      <span class="text-[0.7rem] uppercase tracking-widest text-[#d4af37] font-semibold">Visitas a nuestro sitio</span>
+      <div class="visitor-counter-box">
+        <div id="sfc41s13mxazqllrgkfnqglqbtu7aweejtc"></div>
+      </div>
+    </div>
+  </div>
 </footer>
+
+<!-- Script del contador (después del div donde se dibuja) -->
+<script type="text/javascript" src="https://counter6.optistats.ovh/private/counter.js?c=41s13mxazqllrgkfnqglqbtu7aweejtc&down=async" async></script>
+<noscript>
+  <div class="text-center mt-2">
+    <a href="https://www.freecounterstat.com" title="website counters">
+      <img src="https://counter6.optistats.ovh/private/freecounterstat.php?c=41s13mxazqllrgkfnqglqbtu7aweejtc" border="0" title="website counters" alt="Contador de visitas Fundación Artes Multicap" style="display:inline-block;filter:brightness(1.1) contrast(1.05);">
+    </a>
+  </div>
+</noscript>
+
+<!-- ==================== BOTÓN CHATBOT (MUÑEQUITO ROBOT) ==================== -->
+<button id="chatbotBtn" class="chatbot-btn" type="button" aria-label="Chatear con el asistente virtual" title="¡Hola! Soy tu asistente. ¿En qué te ayudo?">
+  <svg viewBox="0 0 80 80" aria-hidden="true">
+    <defs>
+      <linearGradient id="bodyGrad" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#a78bfa"/>
+        <stop offset="100%" stop-color="#7c3aed"/>
+      </linearGradient>
+    </defs>
+    <line x1="40" y1="14" x2="40" y2="7" stroke="#f4d03f" stroke-width="2.5" stroke-linecap="round"/>
+    <circle cx="40" cy="5" r="3.5" fill="#f4d03f">
+      <animate attributeName="opacity" values="1;0.3;1" dur="1.4s" repeatCount="indefinite"/>
+    </circle>
+    <rect x="9" y="26" width="8" height="16" rx="4" fill="#f4d03f"/>
+    <rect x="63" y="26" width="8" height="16" rx="4" fill="#f4d03f"/>
+    <rect x="16" y="14" width="48" height="40" rx="14" fill="url(#bodyGrad)" stroke="#f4d03f" stroke-width="2"/>
+    <rect x="22" y="20" width="36" height="28" rx="10" fill="#fff"/>
+    <circle cx="33" cy="31" r="3.8" fill="#1a1a1a">
+      <animate attributeName="cy" values="31;29;31;31;31;31" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="47" cy="31" r="3.8" fill="#1a1a1a">
+      <animate attributeName="cy" values="31;29;31;31;31;31" dur="3.5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="34.2" cy="30" r="1.2" fill="#fff"/>
+    <circle cx="48.2" cy="30" r="1.2" fill="#fff"/>
+    <path d="M32 40 Q40 46 48 40" stroke="#1a1a1a" stroke-width="2.3" fill="none" stroke-linecap="round"/>
+    <rect x="35" y="54" width="10" height="6" fill="#5b21b6"/>
+    <rect x="22" y="58" width="36" height="18" rx="9" fill="url(#bodyGrad)" stroke="#f4d03f" stroke-width="1.8"/>
+    <circle cx="40" cy="67" r="3" fill="#f4d03f">
+      <animate attributeName="opacity" values="1;0.4;1" dur="1.8s" repeatCount="indefinite"/>
+    </circle>
+    <path d="M20 66 Q12 62 14 54" stroke="#a78bfa" stroke-width="5" fill="none" stroke-linecap="round">
+      <animate attributeName="d" values="M20 66 Q12 62 14 54;M20 66 Q10 60 14 50;M20 66 Q12 62 14 54" dur="1.6s" repeatCount="indefinite"/>
+    </path>
+    <path d="M60 66 Q68 62 66 54" stroke="#a78bfa" stroke-width="5" fill="none" stroke-linecap="round"/>
+  </svg>
+  <span class="chat-badge">1</span>
+</button>
+
+<!-- ==================== PANEL CHATBOT ==================== -->
+<div id="chatbotPanel" class="chatbot-panel" role="dialog" aria-label="Chat de ayuda">
+  <div class="chat-header">
+    <div class="chat-avatar">
+      <svg viewBox="0 0 80 80" aria-hidden="true">
+        <line x1="40" y1="14" x2="40" y2="7" stroke="#7c3aed" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="40" cy="5" r="3.5" fill="#f4d03f">
+          <animate attributeName="opacity" values="1;0.3;1" dur="1.4s" repeatCount="indefinite"/>
+        </circle>
+        <rect x="9" y="26" width="8" height="16" rx="4" fill="#f4d03f"/>
+        <rect x="63" y="26" width="8" height="16" rx="4" fill="#f4d03f"/>
+        <rect x="16" y="14" width="48" height="40" rx="14" fill="#a78bfa" stroke="#7c3aed" stroke-width="2"/>
+        <rect x="22" y="20" width="36" height="28" rx="10" fill="#fff"/>
+        <circle cx="33" cy="31" r="3.8" fill="#1a1a1a">
+          <animate attributeName="cy" values="31;29;31;31;31;31" dur="3.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="47" cy="31" r="3.8" fill="#1a1a1a">
+          <animate attributeName="cy" values="31;29;31;31;31;31" dur="3.5s" repeatCount="indefinite"/>
+        </circle>
+        <circle cx="34.2" cy="30" r="1.2" fill="#fff"/>
+        <circle cx="48.2" cy="30" r="1.2" fill="#fff"/>
+        <path d="M32 40 Q40 46 48 40" stroke="#1a1a1a" stroke-width="2.3" fill="none" stroke-linecap="round"/>
+      </svg>
+    </div>
+    <div class="chat-title">
+      <strong>Asistente Artes Multicap</strong>
+      <span>En línea · Responde al instante</span>
+    </div>
+    <button type="button" id="chatbotClose" aria-label="Cerrar chat">
+      <svg viewBox="0 0 24 24"><path d="M18 6 6 18M6 6l12 12"/></svg>
+    </button>
+  </div>
+
+  <div class="chat-body" id="chatBody"></div>
+
+  <div class="chat-quick" id="chatQuick">
+    <button type="button" data-q="Talleres gratis">Talleres gratis</button>
+    <button type="button" data-q="Precios y paquetes">Precios</button>
+    <button type="button" data-q="Descuentos">Descuentos</button>
+    <button type="button" data-q="Paquetes intermedios">Intermedios</button>
+    <button type="button" data-q="Paquetes avanzados">Avanzados</button>
+    <button type="button" data-q="Taller individual">Individual</button>
+    <button type="button" data-q="Nivelación académica">Nivelación</button>
+    <button type="button" data-q="Editorial">Editorial</button>
+    <button type="button" data-q="Convocatorias">Convocatorias</button>
+    <button type="button" data-q="Proyectos culturales">Sin ánimo de lucro</button>
+    <button type="button" data-q="Horarios">Horarios</button>
+    <button type="button" data-q="Certificados">Certificados</button>
+    <button type="button" data-q="Contacto">Contacto</button>
+  </div>
+
+  <div class="chat-input-row">
+    <input type="text" id="chatInput" placeholder="Escribe tu pregunta..." aria-label="Escribe tu pregunta" />
+    <button type="button" id="chatSend" aria-label="Enviar mensaje">
+      <svg viewBox="0 0 24 24"><path d="M2.01 21 23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+    </button>
+  </div>
+
+  <div class="chat-wa-row">
+    <a href="https://wa.me/573113555949?text=Hola%20Fundaci%C3%B3n%20Artes%20Multicap%2C%20tengo%20una%20consulta." target="_blank" class="chat-wa-btn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Escribir por WhatsApp
+    </a>
+  </div>
+</div>
 
 <!-- ==================== BOTONES FLOTANTES ==================== -->
 <a href="https://wa.me/573113555949?text=Hola%20Fundaci%C3%B3n%20Artes%20Multicap%2C%20quiero%20informaci%C3%B3n%20sobre%20los%20talleres." target="_blank" class="whatsapp-float" aria-label="Escribir por WhatsApp" title="Escríbenos por WhatsApp">
@@ -1595,126 +1984,747 @@
 </button>
 
 <script>
-  const WHATSAPP_NUMBER = "573113555949";
+/* =========================================================
+   FUNCIONES GENERALES DEL SITIO
+   ========================================================= */
+const WHATSAPP_NUMBER = "573113555949";
 
-  const hamburgerBtn = document.getElementById('hamburgerBtn');
-  const mobileMenu = document.getElementById('mobileMenu');
-  if (hamburgerBtn && mobileMenu) {
-    hamburgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
-    mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('open')));
+const hamburgerBtn = document.getElementById('hamburgerBtn');
+const mobileMenu = document.getElementById('mobileMenu');
+if (hamburgerBtn && mobileMenu) {
+  hamburgerBtn.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.remove('open')));
+}
+
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 400) backToTop.classList.remove('hidden');
+  else backToTop.classList.add('hidden');
+});
+backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+function selectCourse(id) {
+  try {
+    const programSelect = document.getElementById('program');
+    if (!programSelect) return;
+    for (let i = 0; i < programSelect.options.length; i++) {
+      const opt = programSelect.options[i];
+      const optId = (opt.dataset && opt.dataset.id) ? opt.dataset.id : '';
+      const optValue = (opt.value || '').toLowerCase();
+      const searchId = String(id).toLowerCase();
+      if (optId === id || (optValue && optValue.indexOf(searchId) !== -1)) {
+        programSelect.value = opt.value;
+        break;
+      }
+    }
+    const inscripcionSection = document.getElementById('inscripcion');
+    if (inscripcionSection) inscripcionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    const form = document.getElementById('enrollForm');
+    if (form) {
+      form.style.transition = 'box-shadow 0.4s ease';
+      form.style.boxShadow = '0 0 0 3px #d4af37, 0 0 25px rgba(212,175,55,0.6)';
+      setTimeout(() => { form.style.boxShadow = ''; }, 1800);
+    }
+    if (programSelect) setTimeout(() => programSelect.focus({ preventScroll: true }), 500);
+  } catch (err) { console.error('Error en selectCourse:', err); }
+}
+
+async function sendToWhatsApp(formData) {
+  const message = `*NUEVA INSCRIPCIÓN FUNDACIÓN ARTES MULTICAP*%0A%0A*Nombre:* ${formData.name}%0A*Email:* ${formData.email}%0A*WhatsApp:* ${formData.whatsapp || 'No especificado'}%0A*Edad:* ${formData.age || 'No especificada'}%0A*Estrato:* ${formData.estrato || 'No especificado'}%0A*Taller/Paquete:* ${formData.program}%0A*Horario:* ${formData.schedule || 'No especificado'}%0A*Mensaje:* ${formData.message || 'Ninguno'}%0A%0A_Fecha: ${new Date().toLocaleString('es-CO')}_`;
+  window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+}
+
+const enrollForm = document.getElementById('enrollForm');
+if (enrollForm) {
+  enrollForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = {
+      name: document.getElementById('name').value,
+      email: document.getElementById('email').value,
+      whatsapp: document.getElementById('whatsapp').value,
+      age: document.getElementById('age').value,
+      estrato: document.getElementById('estrato').value,
+      program: document.getElementById('program').value,
+      schedule: document.getElementById('schedule').value,
+      message: document.getElementById('message').value
+    };
+    if (!formData.name || !formData.email || !formData.program) {
+      document.getElementById('formStatus').textContent = '⚠ Completa los campos obligatorios';
+      setTimeout(() => document.getElementById('formStatus').textContent = '', 4000);
+      return;
+    }
+    const btn = e.target.querySelector('button[type="submit"]');
+    const original = btn.textContent;
+    btn.textContent = 'Enviando...';
+    btn.disabled = true;
+    try {
+      await sendToWhatsApp(formData);
+      document.getElementById('formStatus').textContent = '✔ Inscripción enviada correctamente';
+      e.target.reset();
+      setTimeout(() => document.getElementById('formStatus').textContent = '', 6000);
+    } catch (error) {
+      document.getElementById('formStatus').textContent = '⚠ Error, intenta de nuevo.';
+      setTimeout(() => document.getElementById('formStatus').textContent = '', 4000);
+    } finally {
+      btn.textContent = original;
+      btn.disabled = false;
+    }
+  });
+}
+
+function setupAccordion() {
+  document.querySelectorAll('.accordion-button').forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      const content = btn.nextElementSibling;
+      if (!content) return;
+      const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
+      document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = null);
+      document.querySelectorAll('.accordion-button').forEach(b => b.classList.remove('is-open'));
+      if (!isOpen) {
+        content.style.maxHeight = content.scrollHeight + "px";
+        btn.classList.add('is-open');
+      }
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const yearEl = document.getElementById('year');
+  if (yearEl) yearEl.textContent = new Date().getFullYear();
+  setupAccordion();
+});
+
+/* =========================================================
+   SISTEMA DE VOZ ACCESIBLE CON NAVEGACIÓN POR VOZ
+   ========================================================= */
+(function () {
+  'use strict';
+
+  const voiceStatus = document.getElementById('voiceStatus');
+  const voiceText   = document.getElementById('voiceText');
+  const voiceDot    = document.getElementById('voiceDot');
+  const voiceFallback = document.getElementById('voiceFallback');
+
+  const synth = window.speechSynthesis;
+  const supportsSpeech = !!synth && typeof window.SpeechSynthesisUtterance === 'function';
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const supportsRecog = !!SR;
+
+  const READ_SELECTORS = 'h1,h2,h3,h4,h5,h6,p,li,summary,label,span,a,button,strong,em,small,blockquote,figcaption,cite,td,th,.price-box,.nivelacion-header,img[alt]';
+  const SKIP_TEXT = /^(volver al inicio|volver arriba|menú|abrir menú|cerrar menú|✕|×|cerrar|escuchar|reproducir|detener|pausar|reanudar)$/i;
+
+  const NAV_COMMANDS = [
+    { rx: /\b(talleres?\s*gratis|talleres?\s*gratuitos?|cursos?\s*gratis|taller\s*b[aá]sico|b[aá]sicos?)\b/, section: '#talleres-basicos', label: 'Talleres gratuitos' },
+    { rx: /\b(qui[eé]nes\s*somos|sobre\s*la\s*fundaci[oó]n|fundaci[oó]n|informaci[oó]n\s*general)\b/, section: '#que-es', label: 'Quiénes somos' },
+    { rx: /\b(descuentos?|estratos?|rebajas?|tarifas?\s*por\s*estrato)\b/, section: '#descuentos', label: 'Descuentos por estrato' },
+    { rx: /\b(paquetes?\s*intermedios?|niveles?\s*intermedios?|intermedios?)\b/, section: '#talleres-intermedios', label: 'Paquetes intermedios' },
+    { rx: /\b(paquetes?\s*avanzados?|niveles?\s*avanzados?|avanzados?)\b/, section: '#talleres-avanzados', label: 'Paquetes avanzados' },
+    { rx: /\b(paquetes?\s*(personalizados?|a\s*medida)|personalizados?|a\s*medida)\b/, section: '#personalizado', label: 'Paquetes personalizados' },
+    { rx: /\b(nivelaci[oó]n|refuerzos?|nivelar|escolar)\b/, section: '#nivelacion', label: 'Nivelación académica' },
+    { rx: /\b(testimonios?|opiniones?|experiencias?)\b/, section: '#testimonios', label: 'Testimonios' },
+    { rx: /\b(editorial|publicar\s*(mi\s*)?libro|libros?|servicios?\s*editoriales?)\b/, section: '#editorial', label: 'Editorial' },
+    { rx: /\b(convocatorias?|concursos?|revistas?|issn)\b/, section: '#convocatorias', label: 'Convocatorias' },
+    { rx: /\b(galer[ií]a|trabajos?\s*de\s*estudiantes?)\b/, section: '#galeria', label: 'Galería' },
+    { rx: /\b(inscripci[oó]n|inscribir|inscribirme|formulario|matricular)\b/, section: '#inscripcion', label: 'Inscripción' },
+    { rx: /\b(proyectos?\s*culturales?|sin\s*[aá]nimo|proyectos?\s*educativos?|obra\s*social)\b/, section: '#proyectos-culturales', label: 'Proyectos culturales' },
+    { rx: /\b(preguntas?\s*frecuentes?|faq|dudas?|ayuda)\b/, section: '#faq', label: 'Preguntas frecuentes' }
+  ];
+
+  const S = {
+    items: [], index: 0, playing: false, paused: false, rate: 1, gen: 0,
+    voices: [], watchdog: null, highlighted: null,
+    recognition: null, recognitionRunning: false, micActive: false,
+    welcomePlayed: false, interactionDone: false, lastCmd: 0,
+    userScrolling: false, scrollTimer: null
+  };
+
+  function markUserScrolling() {
+    S.userScrolling = true;
+    clearTimeout(S.scrollTimer);
+    S.scrollTimer = setTimeout(function () { S.userScrolling = false; }, 4500);
+  }
+  window.addEventListener('wheel', markUserScrolling, { passive: true });
+  window.addEventListener('touchmove', markUserScrolling, { passive: true });
+  document.addEventListener('keydown', function (e) {
+    if (['ArrowUp','ArrowDown','PageUp','PageDown','Home','End',' '].indexOf(e.key) !== -1) {
+      markUserScrolling();
+    }
+  });
+
+  function loadVoices() {
+    if (!supportsSpeech) return;
+    try { S.voices = synth.getVoices() || []; } catch (e) { S.voices = []; }
+  }
+  if (supportsSpeech) {
+    loadVoices();
+    if (typeof synth.addEventListener === 'function') synth.addEventListener('voiceschanged', loadVoices);
+    else synth.onvoiceschanged = loadVoices;
+  }
+  function pickVoice() {
+    if (!S.voices.length) loadVoices();
+    const vs = S.voices;
+    if (!vs.length) return null;
+    return vs.find(v => /^es[-_]CO/i.test(v.lang))
+        || vs.find(v => /^es[-_]MX/i.test(v.lang))
+        || vs.find(v => /^es[-_]US/i.test(v.lang))
+        || vs.find(v => /^es[-_]ES/i.test(v.lang))
+        || vs.find(v => /^es/i.test(v.lang))
+        || null;
   }
 
-  const backToTop = document.getElementById('backToTop');
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) backToTop.classList.remove('hidden');
-    else backToTop.classList.add('hidden');
-  });
-  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+  function cleanText(t) { return (t || '').replace(/\s+/g, ' ').trim(); }
+  function splitText(text, max) {
+    max = max || 200;
+    if (text.length <= max) return [text];
+    const parts = text.match(/[^.!?¡¿;:]+[.!?]*\s*/g) || [text];
+    const out = [];
+    let cur = '';
+    parts.forEach(p => {
+      if ((cur + p).length > max && cur) { out.push(cur.trim()); cur = p; }
+      else { cur += p; }
+    });
+    if (cur.trim()) out.push(cur.trim());
+    return out.filter(Boolean);
+  }
 
-  function selectCourse(id) {
-    try {
-      const programSelect = document.getElementById('program');
-      if (!programSelect) return;
+  function collectItems(root) {
+    const container = root || document.body;
+    const els = container.querySelectorAll(READ_SELECTORS);
+    const collected = new Set();
+    const list = [];
+    els.forEach(el => {
+      if (el.closest('#voiceStatus') || el.closest('#voiceFallback')) return;
+      if (el.closest('#mobileMenu')) return;
+      if (el.closest('#chatbotPanel') || el.closest('#chatbotBtn')) return;
+      if (el.closest('script,style,noscript,footer')) return;
+      if (el.getAttribute('aria-hidden') === 'true') return;
+      if (el.hasAttribute('hidden')) return;
+      if (el.classList && el.classList.contains('taller-num')) return;
 
-      let found = false;
-      for (let i = 0; i < programSelect.options.length; i++) {
-        const opt = programSelect.options[i];
-        const optId = (opt.dataset && opt.dataset.id) ? opt.dataset.id : '';
-        const optValue = (opt.value || '').toLowerCase();
-        const searchId = String(id).toLowerCase();
-
-        if (optId === id || (optValue && optValue.indexOf(searchId) !== -1)) {
-          programSelect.value = opt.value;
-          found = true;
-          break;
+      const isImg = el.tagName === 'IMG';
+      if (!isImg) {
+        let p = el.parentElement, nested = false;
+        while (p && p !== document.body) {
+          if (collected.has(p)) { nested = true; break; }
+          p = p.parentElement;
         }
+        if (nested) return;
       }
+      const raw = isImg ? (el.getAttribute('alt') || '') : (el.textContent || '');
+      const text = cleanText(raw);
+      if (!text || text.length < 2) return;
+      if (SKIP_TEXT.test(text)) return;
+      collected.add(el);
+      splitText(text).forEach(t => list.push({ el: el, text: t }));
+    });
+    return list;
+  }
 
-      const inscripcionSection = document.getElementById('inscripcion');
-      if (inscripcionSection) {
-        inscripcionSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-
-      const form = document.getElementById('enrollForm');
-      if (form) {
-        form.style.transition = 'box-shadow 0.4s ease';
-        form.style.boxShadow = '0 0 0 3px #d4af37, 0 0 25px rgba(212,175,55,0.6)';
-        setTimeout(() => { form.style.boxShadow = ''; }, 1800);
-      }
-
-      if (programSelect) {
-        setTimeout(() => programSelect.focus({ preventScroll: true }), 500);
-      }
-    } catch (err) {
-      console.error('Error en selectCourse:', err);
+  function clearHighlight() {
+    if (S.highlighted) {
+      S.highlighted.classList.remove('audio-highlight');
+      S.highlighted = null;
+    }
+  }
+  function highlight(el) {
+    if (!el || el === S.highlighted) return;
+    clearHighlight();
+    S.highlighted = el;
+    el.classList.add('audio-highlight');
+    if (!S.userScrolling) {
+      try {
+        const rect = el.getBoundingClientRect();
+        const inView = rect.top >= 0 && rect.bottom <= (window.innerHeight || document.documentElement.clientHeight);
+        if (!inView) el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (e) {}
     }
   }
 
-  async function sendToWhatsApp(formData) {
-    const message = `*NUEVA INSCRIPCIÓN FUNDACIÓN ARTES MULTICAP*%0A%0A*Nombre:* ${formData.name}%0A*Email:* ${formData.email}%0A*WhatsApp:* ${formData.whatsapp || 'No especificado'}%0A*Edad:* ${formData.age || 'No especificada'}%0A*Estrato:* ${formData.estrato || 'No especificado'}%0A*Taller/Paquete:* ${formData.program}%0A*Horario:* ${formData.schedule || 'No especificado'}%0A*Mensaje:* ${formData.message || 'Ninguno'}%0A%0A_Fecha: ${new Date().toLocaleString('es-CO')}_`;
-    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${message}`, '_blank');
+  function showStatus(text, color) {
+    if (!voiceStatus) return;
+    voiceStatus.style.display = 'flex';
+    if (voiceText) voiceText.textContent = text;
+    if (voiceDot) voiceDot.style.background = color || '#22c55e';
+  }
+  function hideStatus() {
+    if (voiceStatus) voiceStatus.style.display = 'none';
+  }
+  function setListening() { showStatus('Escuchando... di "audio" o un tema', '#22c55e'); }
+  function setReading()   { showStatus('Leyendo... di "detener" para parar', '#f4d03f'); }
+  function setPaused()    { showStatus('Pausado... di "continuar"', '#f4d03f'); }
+
+  function speakFrom(i) {
+    if (i >= S.items.length) { finishReading(); return; }
+    S.index = i;
+    const item = S.items[i];
+    highlight(item.el);
+
+    const u = new SpeechSynthesisUtterance(item.text);
+    u.lang = 'es-CO';
+    u.rate = S.rate;
+    u.pitch = 1;
+    u.volume = 1;
+    const v = pickVoice();
+    if (v) u.voice = v;
+
+    const myGen = S.gen;
+    u.onend = function () {
+      if (myGen !== S.gen) return;
+      speakFrom(i + 1);
+    };
+    u.onerror = function (ev) {
+      if (myGen !== S.gen) return;
+      if (ev && (ev.error === 'interrupted' || ev.error === 'canceled')) return;
+      speakFrom(i + 1);
+    };
+    try { synth.speak(u); } catch (e) {}
   }
 
-  const enrollForm = document.getElementById('enrollForm');
-  if (enrollForm) {
-    enrollForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const formData = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        whatsapp: document.getElementById('whatsapp').value,
-        age: document.getElementById('age').value,
-        estrato: document.getElementById('estrato').value,
-        program: document.getElementById('program').value,
-        schedule: document.getElementById('schedule').value,
-        message: document.getElementById('message').value
-      };
-      if (!formData.name || !formData.email || !formData.program) {
-        document.getElementById('formStatus').textContent = '⚠ Completa los campos obligatorios';
-        setTimeout(() => document.getElementById('formStatus').textContent = '', 4000);
+  function startWatchdog() {
+    stopWatchdog();
+    S.watchdog = setInterval(function () {
+      if (!S.playing || S.paused) return;
+      try { if (synth.paused) synth.resume(); } catch (e) {}
+    }, 5000);
+  }
+  function stopWatchdog() {
+    if (S.watchdog) { clearInterval(S.watchdog); S.watchdog = null; }
+  }
+
+  function resetReader() {
+    S.gen++;
+    try { synth.cancel(); } catch (e) {}
+    S.playing = false;
+    S.paused = false;
+    S.index = 0;
+    clearHighlight();
+    stopWatchdog();
+  }
+
+  function startReading() {
+    if (!supportsSpeech) {
+      speakText('Tu navegador no permite la lectura en voz alta.');
+      return;
+    }
+    resetReader();
+    S.items = collectItems(null);
+    if (!S.items.length) { speakText('No se encontró contenido para leer.'); return; }
+    S.gen++;
+    S.playing = true;
+    S.paused = false;
+    setReading();
+    speakFrom(0);
+    startWatchdog();
+  }
+
+  function readSection(selector, label) {
+    if (!supportsSpeech) {
+      speakText('Tu navegador no permite la lectura en voz alta.');
+      return;
+    }
+    const section = document.querySelector(selector);
+    if (!section) {
+      speakText('No encontré esa sección.');
+      return;
+    }
+
+    resetReader();
+
+    speakText(label + '. Te leo esta sección.', function () {
+      try { section.scrollIntoView({ behavior: 'smooth', block: 'start' }); } catch (e) {}
+
+      setTimeout(function () {
+        S.items = collectItems(section);
+        if (!S.items.length) {
+          speakText('Esta sección no tiene contenido para leer.');
+          return;
+        }
+        S.gen++;
+        S.playing = true;
+        S.paused = false;
+        setReading();
+        speakFrom(0);
+        startWatchdog();
+      }, 400);
+    });
+  }
+
+  function togglePause() {
+    if (!S.playing || !supportsSpeech) return;
+    if (S.paused) {
+      try { synth.resume(); } catch (e) {}
+      S.paused = false;
+      setReading();
+    } else {
+      try { synth.pause(); } catch (e) {}
+      S.paused = true;
+      setPaused();
+    }
+  }
+
+  function stopReading(announce) {
+    resetReader();
+    if (S.micActive) setListening();
+    else hideStatus();
+    if (announce && supportsSpeech) {
+      const u = new SpeechSynthesisUtterance('Lectura detenida.');
+      u.lang = 'es-CO'; u.rate = 1.1;
+      const v = pickVoice(); if (v) u.voice = v;
+      try { synth.speak(u); } catch (e) {}
+    }
+  }
+
+  function finishReading() {
+    S.playing = false;
+    S.paused = false;
+    clearHighlight();
+    stopWatchdog();
+    if (S.micActive) setListening();
+    else hideStatus();
+    if (supportsSpeech) {
+      const u = new SpeechSynthesisUtterance('Lectura finalizada. ¡Gracias por escuchar!');
+      u.lang = 'es-CO';
+      const v = pickVoice(); if (v) u.voice = v;
+      try { synth.speak(u); } catch (e) {}
+    }
+  }
+
+  function speakText(text, onDone) {
+    if (!supportsSpeech) { if (onDone) onDone(); return; }
+    const u = new SpeechSynthesisUtterance(text);
+    u.lang = 'es-CO';
+    u.rate = S.rate || 1;
+    u.pitch = 1;
+    const v = pickVoice();
+    if (v) u.voice = v;
+    u.onend = function () { if (onDone) onDone(); };
+    u.onerror = function () { if (onDone) onDone(); };
+    try { synth.speak(u); } catch (e) { if (onDone) onDone(); }
+  }
+
+  function initRecognition() {
+    if (!supportsRecog) return null;
+    const r = new SR();
+    r.lang = 'es-CO';
+    r.continuous = true;
+    r.interimResults = true;
+    r.maxAlternatives = 3;
+
+    r.onresult = function (event) {
+      let finalText = '';
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        finalText += ' ' + event.results[i][0].transcript;
+      }
+      const t = finalText.toLowerCase().trim();
+      if (!t) return;
+
+      if (S.playing && !S.paused) {
+        if (/\b(detener|detente|parar|párate|para|alto|silencio|stop|basta|quieto|pausa|pausar|continuar|continúa|sigue|reanudar|reanuda)\b/.test(t)) {
+          handleCommand(t);
+        }
         return;
       }
-      const btn = e.target.querySelector('button[type="submit"]');
-      const original = btn.textContent;
-      btn.textContent = 'Enviando...';
-      btn.disabled = true;
-      try {
-        await sendToWhatsApp(formData);
-        document.getElementById('formStatus').textContent = '✔ Inscripción enviada correctamente';
-        e.target.reset();
-        setTimeout(() => document.getElementById('formStatus').textContent = '', 6000);
-      } catch (error) {
-        document.getElementById('formStatus').textContent = '⚠ Error, intenta de nuevo.';
-        setTimeout(() => document.getElementById('formStatus').textContent = '', 4000);
-      } finally {
-        btn.textContent = original;
-        btn.disabled = false;
+      handleCommand(t);
+    };
+
+    r.onerror = function (ev) {
+      if (ev.error === 'not-allowed' || ev.error === 'service-not-allowed') {
+        S.micActive = false;
+        showStatus('Micrófono no disponible. Toca el botón dorado.', '#ef4444');
+      }
+    };
+
+    r.onend = function () {
+      S.recognitionRunning = false;
+      if (S.micActive && !S.playing) {
+        setTimeout(function () {
+          if (S.micActive && !S.recognitionRunning) startRecognition();
+        }, 500);
+      }
+    };
+    return r;
+  }
+
+  function startRecognition() {
+    if (!supportsRecog || !S.recognition || S.recognitionRunning) return;
+    try {
+      S.recognition.start();
+      S.recognitionRunning = true;
+      S.micActive = true;
+      setListening();
+    } catch (e) {}
+  }
+
+  function handleCommand(transcript) {
+    const t = transcript.toLowerCase().trim();
+    const now = Date.now();
+    if (now - S.lastCmd < 500) return;
+
+    if (/\b(detener|detente|parar|párate|para|alto|silencio|stop|basta|quieto)\b/.test(t)) {
+      S.lastCmd = now;
+      if (S.playing || S.paused) stopReading(true);
+      return;
+    }
+
+    if (/\b(pausa|pausar)\b/.test(t) && S.playing && !S.paused) { S.lastCmd = now; togglePause(); return; }
+    if (/\b(continuar|continúa|sigue|reanudar|reanuda)\b/.test(t) && S.playing && S.paused) { S.lastCmd = now; togglePause(); return; }
+
+    for (let i = 0; i < NAV_COMMANDS.length; i++) {
+      const nav = NAV_COMMANDS[i];
+      if (nav.rx.test(t)) {
+        S.lastCmd = now;
+        readSection(nav.section, nav.label);
+        return;
+      }
+    }
+
+    if (/\b(audio|escuchar|escúchame|leer|lectura|leeme|léeme|reproducir|reproduce|comenzar|empezar)\b/.test(t)) {
+      if (!S.playing) {
+        S.lastCmd = now;
+        speakText('Iniciando lectura de la página.', function () { setTimeout(startReading, 250); });
+      }
+      return;
+    }
+
+    if (/\b(reiniciar|comenzar de nuevo|desde el principio|repetir)\b/.test(t)) {
+      S.lastCmd = now;
+      stopReading(false);
+      speakText('Reiniciando lectura.', function () { setTimeout(startReading, 250); });
+      return;
+    }
+  }
+
+  function playWelcome(onDone) {
+    if (!supportsSpeech) { if (onDone) onDone(); return; }
+    const msg = 'Bienvenido a la Fundación Artes Multicap. ' +
+                'Puedes decir la palabra audio para que lea toda la página. ' +
+                'O decir el nombre de un tema, por ejemplo: talleres gratis, convocatorias, precios, descuentos, editorial, nivelación, paquetes intermedios, paquetes avanzados, o proyectos culturales, y te leeré esa sección. ' +
+                'También puedes decir detener para parar, o pausar y continuar.';
+    const u = new SpeechSynthesisUtterance(msg);
+    u.lang = 'es-CO'; u.rate = 0.95; u.pitch = 1; u.volume = 1;
+    const v = pickVoice(); if (v) u.voice = v;
+    u.onend = function () { if (onDone) onDone(); };
+    u.onerror = function () { if (onDone) onDone(); };
+    try { synth.speak(u); } catch (e) { if (onDone) onDone(); }
+  }
+
+  function activateSystem() {
+    if (supportsRecog && !S.recognition) S.recognition = initRecognition();
+    startRecognition();
+    if (!S.welcomePlayed && supportsSpeech) {
+      S.welcomePlayed = true;
+      setTimeout(function () {
+        playWelcome(function () { if (S.micActive) setListening(); });
+      }, 500);
+    }
+  }
+
+  function onFirstInteraction() {
+    if (S.interactionDone) return;
+    S.interactionDone = true;
+    activateSystem();
+  }
+
+  ['click','touchstart','keydown','pointerdown','scroll','mousedown'].forEach(evt => {
+    document.addEventListener(evt, onFirstInteraction, { capture: true, passive: true });
+  });
+
+  if (voiceFallback) {
+    voiceFallback.addEventListener('click', function (e) {
+      e.stopPropagation();
+      if (!S.welcomePlayed) {
+        S.welcomePlayed = true;
+        playWelcome(function () { activateSystem(); });
+      } else {
+        activateSystem();
       }
     });
   }
 
-  function setupAccordion() {
-    document.querySelectorAll('.accordion-button').forEach(btn => {
-      btn.addEventListener('click', (e) => {
-        e.preventDefault();
-        const content = btn.nextElementSibling;
-        if (!content) return;
-        const isOpen = content.style.maxHeight && content.style.maxHeight !== "0px";
-        document.querySelectorAll('.accordion-content').forEach(c => c.style.maxHeight = null);
-        document.querySelectorAll('.accordion-button').forEach(b => b.classList.remove('is-open'));
-        if (!isOpen) {
-          content.style.maxHeight = content.scrollHeight + "px";
-          btn.classList.add('is-open');
-        }
-      });
-    });
+  window.addEventListener('load', function () {
+    setTimeout(function () {
+      if (!S.welcomePlayed) {
+        S.welcomePlayed = true;
+        playWelcome(function () {
+          if (!S.recognition) S.recognition = initRecognition();
+          startRecognition();
+        });
+      }
+    }, 400);
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.altKey && (e.key === 'l' || e.key === 'L')) {
+      e.preventDefault();
+      if (S.playing) stopReading(false);
+      else startReading();
+    }
+  });
+
+  window.addEventListener('beforeunload', function () {
+    try { synth.cancel(); } catch (e) {}
+    try { if (S.recognition) S.recognition.abort(); } catch (e) {}
+  });
+})();
+
+/* =========================================================
+   CHATBOT COMPLETO
+   ========================================================= */
+(function () {
+  'use strict';
+
+  const chatbotBtn = document.getElementById('chatbotBtn');
+  const chatbotPanel = document.getElementById('chatbotPanel');
+  const chatbotClose = document.getElementById('chatbotClose');
+  const chatBody = document.getElementById('chatBody');
+  const chatInput = document.getElementById('chatInput');
+  const chatSend = document.getElementById('chatSend');
+  const chatQuick = document.getElementById('chatQuick');
+
+  if (!chatbotBtn || !chatbotPanel) return;
+
+  const WA_NUMBER = '573113555949';
+  const WA_GENERAL = 'https://wa.me/' + WA_NUMBER + '?text=Hola%20Fundaci%C3%B3n%20Artes%20Multicap%2C%20tengo%20una%20consulta.';
+
+  const KB = [
+    { keys: ['hola','buenas','buenos días','buenos dias','buenas tardes','buenas noches','hey','saludos','qué tal','que tal','holi','hi'], reply: '¡Hola! 👋 Soy <strong>MULTI</strong>, el asistente virtual de la Fundación Artes Multicap. Puedo ayudarte con información sobre talleres, precios, descuentos, paquetes, nivelación, editorial, convocatorias y más. ¿Qué te gustaría saber? También puedes tocar los botones rápidos abajo 👇' },
+    { keys: ['gracias','muchas gracias','ok','perfecto','listo','genial','excelente','bacano','chévere','chevere','buenisimo'], reply: '¡Con gusto! 😊 Si tienes más preguntas aquí estoy. También puedes escribirnos por <a href="' + WA_GENERAL + '" target="_blank">WhatsApp</a>. ¡Que tengas un excelente día!' },
+    { keys: ['adios','adiós','chao','nos vemos','hasta luego','bye'], reply: '¡Hasta luego! 👋 Recuerda que puedes escribirnos por <a href="' + WA_GENERAL + '" target="_blank">WhatsApp</a> cuando quieras. ¡Éxitos!' },
+    { keys: ['taller gratis','talleres gratis','taller gratuito','talleres gratuitos','gratis','gratuitos','talleres básicos','talleres basicos','básico','basico','sin costo','no cobran'], reply: 'Tenemos <strong>11 talleres básicos GRATIS</strong>, cada uno con 3 sesiones de 1 a 2 horas:<br><br>🎨 Dibujo<br>🖌️ Pintura<br>🎭 Teatro<br>📚 Literatura<br>🎬 Guion<br>📰 Edición de Revistas<br>💃 Danza<br>♻️ Arte Reciclado<br>🇬🇧 Inglés<br>💻 Microsoft Office<br>🏆 Convocatorias y Concursos<br><br>Son virtuales o presenciales (mínimo 10 personas). <a href="#talleres-basicos">Ver más</a> · <a href="#inscripcion">Inscribirme</a>' },
+    { keys: ['dibujo básico','dibujo gratis','taller de dibujo','dibujo'], reply: '🎨 <strong>Taller de Dibujo Básico (GRATIS)</strong><br>3 talleres:<br>1. Introducción al Dibujo y materiales<br>2. Líneas, formas y volúmenes básicos<br>3. Sombras y luces - ejercicios prácticos<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['pintura básico','pintura gratis','taller de pintura','pintura'], reply: '🖌️ <strong>Taller de Pintura Básico (GRATIS)</strong><br>3 talleres:<br>1. Introducción a la pintura y materiales<br>2. Teoría del color básica<br>3. Mezclas de colores y primeras pinceladas<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['teatro básico','teatro gratis','taller de teatro','teatro'], reply: '🎭 <strong>Taller de Teatro Básico (GRATIS)</strong><br>3 talleres:<br>1. Expresión corporal y juegos teatrales<br>2. La voz y la emoción en escena<br>3. Improvisación básica<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['literatura básico','literatura gratis','taller de literatura','literatura'], reply: '📚 <strong>Taller de Literatura Básico (GRATIS)</strong><br>3 talleres:<br>1. Introducción a la literatura y géneros<br>2. Poesía y creatividad - rimas básicas<br>3. Narrativa breve - escribir un microcuento<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['guion','guión','escritura de guion','guion básico','guion gratis'], reply: '🎬 <strong>Taller de Guion Básico (GRATIS)</strong><br>3 talleres:<br>1. Introducción al guion audiovisual<br>2. Estructura de tres actos básica<br>3. Creación de personajes simples<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['revistas','edición de revistas','edicion de revistas','revista básico','revistas gratis'], reply: '📰 <strong>Taller de Edición de Revistas Básico (GRATIS)</strong><br>3 talleres:<br>1. Introducción al diseño editorial<br>2. Maquetación básica con Canva<br>3. Creación de portada simple<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['danza básico','danza gratis','taller de danza','danza'], reply: '💃 <strong>Taller de Danza Básico (GRATIS)</strong><br>3 talleres:<br>1. Introducción a la danza y postura básica<br>2. Coordinación y ritmo<br>3. Secuencia coreográfica simple<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['arte reciclado','reciclaje','reciclado'], reply: '♻️ <strong>Taller de Arte Reciclado (GRATIS)</strong><br>3 talleres:<br>1. Introducción al arte con materiales reciclados<br>2. Esculturas básicas con botellas plásticas<br>3. Creación de un objeto decorativo reciclado<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['inglés','ingles','english','idiomas'], reply: '🇬🇧 <strong>Taller de Inglés Básico (GRATIS)</strong><br>3 talleres:<br>1. Saludos y presentaciones básicas<br>2. Verb "to be" y vocabulario esencial<br>3. Conversaciones simples<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['office','microsoft office','word','excel','powerpoint','computación','computacion'], reply: '💻 <strong>Taller de Microsoft Office Básico (GRATIS)</strong><br>3 talleres:<br>1. Word básico<br>2. Excel básico<br>3. PowerPoint básico<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['convocatorias básico','convocatorias y concursos','convocatorias gratis','taller de convocatorias'], reply: '🏆 <strong>Taller de Convocatorias y Concursos (GRATIS)</strong><br>3 talleres:<br>1. Los 10 errores que descalifican una obra antes de llegar al jurado<br>2. Cómo leer correctamente las bases de una convocatoria<br>3. Formato, seudónimo, extensión y documentación obligatoria<br><br><a href="#inscripcion">Inscribirme gratis</a>' },
+    { keys: ['precio','precios','cuánto','cuanto','vale','costo','costos','cuánto vale','cuánto cuesta','tarifas','cuánto es'], reply: '💰 <strong>Precios oficiales:</strong><br><br>• Taller individual: <strong>$60,000</strong> (2 horas)<br>• Paquete intermedio/avanzado: <strong>$380,000</strong> (7 talleres + proyecto)<br>• Paquete complementario: desde <strong>$220,000</strong><br>• Nivelación académica: <strong>$50,000/hora</strong><br>• Talleres básicos: <strong>GRATIS</strong><br><br>Con descuento por estrato pagas menos. ¿Quieres ver los descuentos? <a href="#descuentos">Ver descuentos</a>' },
+    { keys: ['descuento','descuentos','estrato','estratos','rebaja','rebajas','económico','barato','ayuda económica'], reply: '🎯 <strong>Descuentos por estrato:</strong><br><br>• <strong>Estratos 1 y 2:</strong> 50% dto en paquetes y talleres individuales<br>• <strong>Estratos 3 y 4:</strong> 30% dto solo en paquetes<br>• <strong>Estratos 5 y 6:</strong> precio pleno<br><br>Ejemplo: paquete de $380,000 queda en <strong>$190,000</strong> para estrato 1 o 2. <a href="#descuentos">Ver tabla completa</a>' },
+    { keys: ['paquete','paquetes','combo','paquete intermedio','intermedio','intermedios'], reply: '📦 <strong>Paquetes intermedios - $380,000</strong> (7 talleres + proyecto final):<br><br>✏️ Dibujo<br>🎨 Pintura<br>🎭 Teatro<br>🎬 Guion<br>📰 Revistas<br>📚 Literatura<br>💃 Danza<br>🏆 Convocatorias<br><br>Con descuento estrato 1 y 2: <strong>$190,000</strong><br>Con descuento estrato 3 y 4: <strong>$266,000</strong><br><br><a href="#talleres-intermedios">Ver detalles</a>' },
+    { keys: ['paquete avanzado','avanzado','avanzados'], reply: '🚀 <strong>Paquetes avanzados - $380,000</strong> (7 talleres + proyecto profesional):<br><br>✏️ Dibujo (hiperrealismo)<br>🎨 Pintura (óleo profesional)<br>🎭 Teatro (Stanislavski, Meisner)<br>🎬 Guion profesional<br>📰 Revistas (Adobe InDesign)<br>📚 Literatura (novela)<br>💃 Danza profesional<br>⚖️ Derechos de autor e IA<br>📋 Formulación de proyectos culturales - $420,000<br><br><a href="#talleres-avanzados">Ver detalles</a>' },
+    { keys: ['paquete complementario','complementarios','complementario','convocatorias internacionales','dossier','investigación creación','investigacion creacion','publicar obra','mundo editorial'], reply: '🎁 <strong>Paquetes complementarios avanzados:</strong><br><br>• Convocatorias internacionales – $220,000 (4 talleres)<br>• Dossier para residencias artísticas – $220,000<br>• Investigación-creación – $320,000 (6 talleres)<br>• Publicar una obra: del manuscrito al libro – $320,000<br>• Mundo editorial para autores independientes – $240,000<br>• Publicar y posicionar una obra – $240,000<br><br><a href="#talleres-avanzados">Ver detalles</a>' },
+    { keys: ['individual','taller individual','taller suelto','personalizado','personalizados','a medida','paquete personalizado'], reply: '🎨 <strong>Taller individual:</strong> $60,000 (2 horas). Con 50% dto para estratos 1 y 2 → $30,000.<br><br>✨ <strong>Paquete personalizado:</strong> combina 2 o más talleres de distintas áreas y obtén precio especial.<br><br>Ejemplos:<br>• 7 talleres = $380,000<br>• 4 talleres = $220,000<br>• 6 talleres = $320,000<br><br><a href="#personalizado">Solicitar paquete a medida</a>' },
+    { keys: ['nivelación','nivelacion','refuerzo','colegio','escolar','primaria','bachillerato','matemáticas','matematicas','lengua','ciencias'], reply: '📚 <strong>Nivelación académica</strong> – $50,000 por hora<br><br>Cubre:<br>• Lengua Castellana<br>• Matemáticas<br>• Ciencias Naturales<br>• Ciencias Sociales<br>• Inglés<br><br>5 ciclos disponibles (1° a 11°). Virtual o presencial. <a href="#nivelacion">Ver ciclos</a>' },
+    { keys: ['editorial','libro','publicar','publicación','publicacion','isbn','portada','manuscrito','editar','corrección','correccion','e-book','ebook'], reply: '📖 <strong>Editorial Artes Multicap</strong><br><br>Servicios:<br>• Corrección ortotipográfica y de estilo<br>• Maquetación interior profesional<br>• Diseño de portada<br>• Gestión de ISBN<br>• Publicación internacional<br>• eBook<br><br>Planes Profesional y Premium Global.<br><br><a href="https://editorialartesmulticap.netlify.app/" target="_blank">Conocer la editorial</a> · <a href="https://editorialartesmulticap.netlify.app/#cotizador" target="_blank">Cotizar mi libro</a>' },
+    { keys: ['convocatoria','convocatorias','concurso','concursos','revista','issn','participar','publicar en revista'], reply: '🏆 <strong>Convocatorias internacionales 2026:</strong><br><br>1️⃣ <strong>Revista Explorando Arte y Cultura de Latinoamérica</strong> (ISSN 3114-9871) – Mayores de 18 años<br>2️⃣ <strong>Revista Jóvenes Creadores de Latinoamérica</strong> (ISSN 3115-0357) – Jóvenes de 8 a 17 años<br>3️⃣ <strong>Concurso Latinoamérica Escribe</strong> – Participación GRATIS, premio Plan Premium Global valorado en $4.100.000<br><br><a href="#convocatorias">Ver todas las convocatorias</a>' },
+    { keys: ['sin ánimo de lucro','sin animo de lucro','proyectos culturales','proyectos educativos','obra social','explorando museos','juego de emociones','proyecto cultural'], reply: '❤️ <strong>Proyectos culturales y educativos SIN ÁNIMO DE LUCRO</strong> de la Fundación:<br><br>1️⃣ <strong>Explorando Museos y Arte Latinoamericano</strong> – Revista educativa<br>2️⃣ <strong>Juego de Emociones en el Aula</strong> – Herramienta pedagógica<br><br>También publicamos las revistas "Explorando los Museos Nacionales de Colombia", "Explorando Arte y Cultura de Latinoamérica" y "Jóvenes Creadores de Latinoamérica" junto con talleres gratuitos.<br><br><a href="#proyectos-culturales">Ver proyectos</a>' },
+    { keys: ['horario','horarios','hora','cuándo','cuando','días','dias','clases','jornada'], reply: '⏰ <strong>Horarios disponibles</strong> (hora Colombia):<br>• Lunes a Viernes 9:00 a 11:00 am<br>• Lunes a Viernes 4:00 a 6:00 pm<br>• Lunes a Viernes 7:00 a 9:00 pm<br><br>Elige el que prefieras al inscribirte. <a href="#inscripcion">Ir al formulario</a>' },
+    { keys: ['modalidad','virtual','presencial','online','en línea','en linea','remoto'], reply: '🌐 <strong>Modalidad:</strong> VIRTUAL o PRESENCIAL.<br><br>• Virtual: desde cualquier lugar de Latinoamérica<br>• Presencial: requiere mínimo 10 personas<br><br>Puedes elegir al inscribirte. <a href="#inscripcion">Inscribirme</a>' },
+    { keys: ['certificado','certificados','diploma','constancia','acreditación'], reply: '🎓 Sí, entregamos <strong>certificado de participación</strong> al completar mínimo el <strong>80% de las sesiones</strong> de cualquier taller o paquete. Está avalado por la Fundación Artes Multicap. <a href="#faq">Ver más</a>' },
+    { keys: ['materiales','material','necesito','requisitos','llevar','herramientas'], reply: '🎨 <strong>Materiales:</strong><br>• Talleres artísticos: tus propios materiales (lápices, pinturas, etc.)<br>• Talleres técnicos: un computador con internet<br><br>Los materiales corren por cuenta del aprendiz. <a href="#faq">Ver más</a>' },
+    { keys: ['inscripción','inscripcion','inscribir','inscribirme','registrar','registro','matrícula','matricula','cómo me inscribo','como me inscribo','formulario'], reply: '📝 <strong>Cómo inscribirte:</strong><br><br>1. Llena el formulario en <a href="#inscripcion">la página</a> y se envía por WhatsApp<br>2. O escríbenos directo: <a href="' + WA_GENERAL + '" target="_blank">WhatsApp</a><br><br>¿Ya sabes qué taller quieres?' },
+    { keys: ['pago','pagar','pagos','nequi','paypal','mercado pago','transferencia','western union','cuenta','formas de pago'], reply: '💳 <strong>Formas de pago:</strong><br>• Nequi<br>• PayPal<br>• Mercado Pago<br>• Western Union<br><br>El pago se realiza antes del inicio del taller o paquete. Te enviamos los datos al confirmar tu inscripción.' },
+    { keys: ['contacto','contactar','correo','email','teléfono','telefono','comunicar','llamar'], reply: '📞 <strong>Contacto Fundación Artes Multicap:</strong><br>📧 Correo: <a href="mailto:artesmulticap2024@gmail.com">artesmulticap2024@gmail.com</a><br>📱 WhatsApp: <a href="' + WA_GENERAL + '" target="_blank">+57 311 355 5949</a> (solo mensajes)<br>📘 Facebook: /ArtesMulticap<br>🎵 TikTok: @fundacionartesmulticap' },
+    { keys: ['whatsapp','wasap','wpp','wa','escribir','mensaje','chatear con humano','persona real'], reply: '¡Claro! Puedes escribirnos directamente por WhatsApp: <a href="' + WA_GENERAL + '" target="_blank">Haz clic aquí para abrir WhatsApp</a> 📲<br><br>También puedes usar el botón verde flotante que está en la esquina inferior derecha de esta página.' },
+    { keys: ['edad','edades','niños','jóvenes','jovenes','adultos','quiénes pueden','quienes pueden','para quién','para quien'], reply: '👥 Nuestros talleres son para <strong>niños, niñas, jóvenes y adultos</strong>.<br><br>• Revistas Jóvenes Creadores: 8 a 17 años<br>• Revista Explorando Arte: mayores de 18<br>• Talleres y nivelación: todas las edades<br><br>¡Hay espacio para todos! 🎉' },
+    { keys: ['ubicación','ubicacion','dónde','donde','dirección','direccion','ciudad','país','pais'], reply: '🌎 La Fundación Artes Multicap es de <strong>Colombia</strong>, pero atendemos a toda Latinoamérica por modalidad virtual.<br><br>La modalidad presencial requiere mínimo 10 personas en la misma ciudad.' },
+    { keys: ['testimonio','testimonios','opiniones','experiencias','alumnos','estudiantes'], reply: '⭐ <strong>Lo que dicen nuestros estudiantes:</strong><br><br>💬 "Empecé sin saber dibujar nada y hoy tengo mi propio portafolio."<br>– María Camila R.<br><br>💬 "Los talleres gratuitos me permitieron descubrir mi pasión por la pintura."<br>– Juan Esteban T.<br><br>💬 "Mi hija ha crecido muchísimo en su expresión artística."<br>– Laura G.<br><br><a href="#testimonios">Ver más testimonios</a>' },
+    { keys: ['galería','galeria','trabajos','exposiciones','obras'], reply: '🖼️ Muy pronto estaremos compartiendo una <strong>galería virtual</strong> con los trabajos de nuestros estudiantes. Mientras tanto puedes ver nuestros proyectos culturales: <a href="#galeria">Ir a Galería</a>' },
+    { keys: ['duración','duracion','cuánto dura','cuanto dura','tiempo','horas','cuántas horas'], reply: '⏱️ <strong>Duración:</strong><br>• Taller individual: 2 horas<br>• Taller básico gratis: 1 a 2 horas cada uno (3 por área)<br>• Paquete intermedio/avanzado: 7 talleres de 2h + proyecto final<br>• Nivelación: 1 hora por sesión' },
+    { keys: ['preguntas frecuentes','faq','dudas','duda'], reply: '❓ Puedes ver todas las <strong>preguntas frecuentes</strong> en <a href="#faq">esta sección</a>. Si no encuentras tu respuesta, escríbenos por <a href="' + WA_GENERAL + '" target="_blank">WhatsApp</a>.' },
+    { keys: ['quiénes somos','quienes somos','fundación','fundacion','sobre la fundación','sobre nosotros','artes multicap'], reply: '🏛️ La <strong>Fundación Artes Multicap</strong> es una organización cultural y educativa de Colombia, dedicada a promover el <strong>arte, la cultura, la literatura, la educación emocional, la inclusión y la formación técnica</strong> como herramientas de transformación social.<br><br>Atendemos a niños, niñas, jóvenes y adultos en Colombia y Latinoamérica. <a href="#que-es">Ver más</a>' }
+  ];
+
+  const FALLBACKS = [
+    'Mmm, no tengo esa respuesta exacta. 🤔 Pero puedo ayudarte por <a href="' + WA_GENERAL + '" target="_blank">WhatsApp</a> o puedes intentar con otra pregunta.<br><br>Prueba con: <strong>talleres gratis, precios, descuentos, paquetes, nivelación, editorial o convocatorias</strong>.',
+    'No encontré información sobre eso en mi base. 😅 Para una respuesta personalizada, escríbenos por <a href="' + WA_GENERAL + '" target="_blank">WhatsApp aquí</a>.<br><br>También puedes tocar los botones rápidos abajo.'
+  ];
+  let fallbackIdx = 0;
+
+  function scrollBottom() {
+    setTimeout(function () { chatBody.scrollTop = chatBody.scrollHeight; }, 60);
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const yearEl = document.getElementById('year');
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-    setupAccordion();
+  function addMsg(html, who) {
+    const div = document.createElement('div');
+    div.className = 'chat-msg ' + (who === 'user' ? 'user' : 'bot');
+    div.innerHTML = html;
+    chatBody.appendChild(div);
+    scrollBottom();
+  }
+
+  function addTyping() {
+    const div = document.createElement('div');
+    div.className = 'chat-typing';
+    div.id = 'chatTypingIndicator';
+    div.innerHTML = '<span></span><span></span><span></span>';
+    chatBody.appendChild(div);
+    scrollBottom();
+  }
+
+  function removeTyping() {
+    const el = document.getElementById('chatTypingIndicator');
+    if (el) el.remove();
+  }
+
+  function findAnswer(text) {
+    const t = (text || '').toLowerCase().trim();
+    if (!t) return null;
+    let best = null, bestScore = 0;
+    KB.forEach(item => {
+      let score = 0;
+      item.keys.forEach(k => {
+        if (t.includes(k)) score += k.length + 5;
+      });
+      if (score > bestScore) { bestScore = score; best = item; }
+    });
+    return best ? best.reply : null;
+  }
+
+  function sendMessage(text) {
+    if (!text || !text.trim()) return;
+    addMsg(text.replace(/</g, '&lt;').replace(/>/g, '&gt;'), 'user');
+    chatInput.value = '';
+    addTyping();
+    setTimeout(function () {
+      removeTyping();
+      const answer = findAnswer(text);
+      if (answer) addMsg(answer, 'bot');
+      else { addMsg(FALLBACKS[fallbackIdx % FALLBACKS.length], 'bot'); fallbackIdx++; }
+    }, 650 + Math.random() * 350);
+  }
+
+  function openChat() {
+    chatbotPanel.classList.add('show');
+    const badge = chatbotBtn.querySelector('.chat-badge');
+    if (badge) badge.style.display = 'none';
+    if (!chatBody.dataset.welcomed) {
+      chatBody.dataset.welcomed = '1';
+      setTimeout(function () {
+        addMsg('¡Hola! 👋 Soy <strong>MULTI</strong>, tu asistente virtual. Puedo ayudarte con:<br><br>🎨 Talleres gratis<br>💰 Precios y descuentos<br>📦 Paquetes<br>📚 Nivelación<br>📖 Editorial<br>🏆 Convocatorias<br>❤️ Proyectos sin ánimo de lucro<br><br>¿Qué quieres saber?', 'bot');
+      }, 200);
+    }
+    setTimeout(function () { chatInput.focus(); }, 250);
+  }
+
+  function closeChat() { chatbotPanel.classList.remove('show'); }
+
+  chatbotBtn.addEventListener('click', function () {
+    if (chatbotPanel.classList.contains('show')) closeChat();
+    else openChat();
   });
+  chatbotClose.addEventListener('click', closeChat);
+
+  chatSend.addEventListener('click', function () { sendMessage(chatInput.value); });
+  chatInput.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { e.preventDefault(); sendMessage(chatInput.value); }
+  });
+
+  chatQuick.addEventListener('click', function (e) {
+    const btn = e.target.closest('button[data-q]');
+    if (!btn) return;
+    sendMessage(btn.getAttribute('data-q'));
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && chatbotPanel.classList.contains('show')) closeChat();
+  });
+})();
 </script>
 </body>
 </html>
