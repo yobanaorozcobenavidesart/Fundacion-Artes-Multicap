@@ -70,14 +70,14 @@ h1,h2,h3,h4{font-family:var(--ff-head);font-weight:700;line-height:1.15;color:#f
 h1{font-size:clamp(2.1rem,5.4vw,3.7rem);letter-spacing:-.01em}
 h2{font-size:clamp(1.55rem,3.6vw,2.35rem)}
 h3{font-size:1.2rem}
-p{max-width:68ch}
+p{max-width:100%;text-wrap:pretty}
 :focus-visible{outline:3px solid var(--gold-hi);outline-offset:3px;border-radius:6px}
 .skip{position:absolute;left:-999px;top:0;background:var(--gold);color:#000;padding:.7rem 1rem;z-index:1000;font-weight:700}
 .skip:focus{left:8px;top:8px}
 .wrap{width:100%;max-width:1180px;margin-inline:auto;padding-inline:var(--pad)}
 section[id]{scroll-margin-top:7.5rem}
 .band{padding-block:clamp(2.5rem,6vw,4.5rem);border-top:1px solid var(--line)}
-.sec-head{margin-bottom:clamp(1.2rem,3vw,2rem);max-width:46rem}
+.sec-head{margin-bottom:clamp(1.2rem,3vw,2rem);max-width:min(100%,62rem)}
 .sec-head p{color:var(--dim);margin-top:.6rem}
 .note{color:var(--dim);font-size:.92rem}
 
@@ -161,12 +161,13 @@ section[id]{scroll-margin-top:7.5rem}
 .disc{font-size:.85rem;color:#d8d8d8;margin:.4rem 0 .8rem}
 .panel .main h3{color:var(--violet-hi);margin-bottom:.7rem}
 .items{display:grid;gap:.4rem;list-style:none;padding:0}
-.items li{display:flex;gap:.7rem;align-items:flex-start;background:rgba(124,58,237,.08);border-left:3px solid var(--violet-hi);border-radius:8px;padding:.5rem .8rem;color:#e3e3e3}
+.items li{display:flex;gap:.7rem;align-items:flex-start;background:rgba(124,58,237,.08);border-left:3px solid var(--violet-hi);border-radius:8px;padding:.5rem .8rem;color:#e3e3e3;text-align:left}
 .items b{display:grid;place-items:center;min-width:1.5rem;height:1.5rem;border-radius:50%;background:#4c1d95;font-size:.8rem}
 .age-block{background:rgba(124,58,237,.08);border-left:3px solid var(--violet-hi);border-radius:10px;padding:.7rem .9rem;margin-bottom:.6rem}
-.age-block h4{display:flex;align-items:center;gap:.5rem;font-family:var(--ff-body);font-size:.98rem;color:var(--violet-hi);margin-bottom:.35rem}
+.age-block h4{display:flex;align-items:center;justify-content:flex-start;gap:.5rem;font-family:var(--ff-body);font-size:.98rem;color:var(--violet-hi);margin-bottom:.35rem;text-align:left}
 .age-block img{width:30px;height:30px;border-radius:50%;object-fit:cover;border:2px solid var(--violet-hi)}
-.age-block ol{padding-left:1.2rem;color:#e3e3e3;font-size:.95rem}
+.age-block ol{padding-left:1.2rem;list-style-position:outside;text-align:left;color:#e3e3e3;font-size:.95rem}
+.age-block li{text-align:left}
 .chip{display:flex;justify-content:center;border:1px dashed var(--gold-lo);border-radius:12px;padding:.5rem 1rem;margin-bottom:1rem;color:var(--gold-hi);font-weight:500;font-size:.95rem;text-align:center}
 
 .price-box{background:var(--panel);border:1px solid var(--gold-lo);border-radius:18px;padding:1.2rem;max-width:680px;margin-inline:auto}
@@ -195,8 +196,9 @@ tr:last-child td{border-bottom:0}
 .proofs{list-style:none;padding:0;display:grid;gap:.7rem}
 .proofs li{border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:.8rem 1rem;background:var(--panel)}
 .proofs h3{font-size:1.05rem;margin-bottom:.2rem}
+.proofs h3 a{color:var(--gold-hi);text-decoration:none;border-bottom:1px dashed var(--gold-lo);transition:color .15s,border-bottom-color .15s}
+.proofs h3 a:hover{color:#fff;border-bottom-color:var(--gold-hi)}
 .proofs p{color:var(--dim);font-size:.95rem}
-.proofs a{display:inline-block;margin-top:.3rem;font-weight:600}
 
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.1rem}
 .card{background:var(--panel);border:1px solid var(--gold-lo);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column}
@@ -386,77 +388,144 @@ input[type=checkbox]{width:22px;min-height:22px;height:22px;accent-color:var(--g
    ===== CENTRADO GENERAL DE TEXTOS Y TÍTULOS =====
    ========================================================= */
 
-/* Títulos */
 h1, h2, h3, h4, h5, h6,
 .hero h1, .sec-head h2, .picker h2, .teacher h2,
 .gain h3, .steps h3, .box h3, .proofs h3, .card h3,
 .don-cta h3, .price-box h3, .panel .side h3, .panel .main h3,
-.age-block h4, .foot-grid h3, .tag, .chip {
+.foot-grid h3, .tag, .chip {
   text-align: center;
 }
 
-/* Párrafos y textos */
 p, .lead, .note, .meta,
 .hero .lead, .sec-head p,
 .gain p, .steps p, .box p, .proofs p, .card p,
 .quote blockquote, .quote footer,
-.don-cta p, .don-cta .note,
-.faq summary, .faq details p,
+.don-cta p,
+.faq details p,
 .panel .side .meta, .panel .side .proj,
 .panel .side .exp, .panel .side .disc,
-.age-block li, .items li, .items li span,
 .age-btn b, .age-btn small,
 .contact-box p, .copy p {
   text-align: center;
 }
 
-/* Bloques que contienen texto y necesitan centrarse por margen */
 .sec-head, .hero .lead, .card .body p, .box p, .proofs p {
   margin-inline: auto;
 }
 
-/* Contenedores flex: centrado horizontal */
 .hero-cta, .row-btns, .don-cta .acts, .route .acts {
   justify-content: center;
 }
 
-/* Botones dentro de cards alineados al centro */
 .card .btn { align-self: center; }
 .niv button { margin-inline: auto; }
 
-/* Steps: círculo numerado centrado */
 .steps li { text-align: center; }
 .steps li::before { margin-inline: auto; }
 
-/* Items con numerito en paquetes: contenido centrado */
 .items li { justify-content: center; }
 .items b { flex-shrink: 0; }
 
-/* Bloques de edad: imagen + texto centrados */
-.age-block h4 { justify-content: center; }
-.age-block ol { padding-left: 0; list-style-position: inside; }
+/* Listas de edad: alineadas a la IZQUIERDA (mejor lectura) */
+.age-block h4 { justify-content: flex-start; text-align: left; }
+.age-block ol { padding-left: 1.2rem; list-style-position: outside; text-align: left; }
+.age-block li { text-align: left; }
 
-/* Listas "checks" del hero: bloque centrado sin perder el tilde */
 .checks { text-align: center; }
 .checks li { display: inline-block; text-align: left; }
 
-/* Botones de tarjetas de nivelación */
 .niv div { text-align: center; }
 
-/* Chips y tags centrados */
 .chip { justify-content: center; }
 
-/* Acordeones de donaciones: títulos centrados pero lista de materiales alineada */
 details.acc summary { justify-content: center; }
 details.acc ul { text-align: left; }
 
-/* Tarjetas de precios y editorial */
 .price-box { text-align: center; }
 .price-box table { text-align: left; }
 
-/* Pie de página */
 .foot-grid, .copy { text-align: center; }
 .foot-grid ul { justify-items: center; }
+
+/* =========================================================
+   ===== AJUSTES FINOS SOLICITADOS =====
+   ========================================================= */
+
+/* Pestañas de estrato centradas */
+#grpTabs{justify-content:center}
+
+/* Encabezados del pie de página en dorado */
+.foot-grid h3{color:var(--gold-hi)}
+
+/* Caja de "qué es" adaptable y texto justificado */
+#que-es .box{max-width:100%}
+#que-es .box p{text-align:justify;max-width:100%;margin-inline:0}
+
+/* Bloques de texto centrados correctamente para que no se corten */
+.hero .lead, .sec-head p, .gain p, .steps p, .box p, .proofs p,
+.card .body p, .don-cta > p, .faq details p, .contact-box p, .copy p {
+  margin-inline: auto;
+  max-width: 100%;
+}
+
+/* Logo en el pie de página */
+.foot-logo{display:flex;align-items:center;justify-content:center;gap:.7rem;margin-bottom:.5rem}
+.foot-logo img{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;flex:none}
+.foot-logo h3{margin:0}
+
+/* =========================================================
+   ===== ALINEACIONES PUNTUALES (SOLICITADAS) =====
+   ========================================================= */
+
+/* 1) Los talleres numerados de cada paquete A LA IZQUIERDA */
+.items li,
+.items li span {
+  justify-content: flex-start;
+  text-align: left;
+}
+
+/* 2) Párrafos de "Taller individual o paquete personalizado" y "Nivelación académica" A LA IZQUIERDA */
+#personalizado .box p {
+  text-align: left;
+  margin-inline: 0;
+}
+
+/* 3) Biografía de "Quién enseña" A LA IZQUIERDA */
+#quien-ensena p,
+#quien-ensena .lead {
+  text-align: left;
+  margin-inline: 0;
+}
+
+/* 4) Preguntas frecuentes (cada pregunta) A LA IZQUIERDA */
+.faq summary,
+.faq details summary {
+  text-align: left;
+}
+
+/* 5) Datos de contacto (correo, WhatsApp, Instagram, etc.) A LA IZQUIERDA */
+.contact-box,
+.contact-box p,
+.contact-box a {
+  text-align: left;
+}
+
+/* 6) Texto del footer "Transformamos vidas a través del arte..." A LA IZQUIERDA */
+.foot-grid > div:first-child p {
+  text-align: left;
+}
+
+/* 7) "Cada aporte, grande o pequeño, transforma vidas." CENTRADO */
+.don-cta .note {
+  text-align: center;
+  margin-inline: auto;
+}
+
+/* 8) "Comentarios publicados en nuestro perfil de Google..." CENTRADO */
+#testimonios .sec-head p {
+  text-align: center;
+  margin-inline: auto;
+}
 </style>
 </head>
 <body>
@@ -566,7 +635,7 @@ details.acc ul { text-align: left; }
     </div>
     <div class="tabs" id="grpTabs" role="group" aria-label="Estrato socioeconómico"></div>
     <div class="price-box" id="priceBox" aria-live="polite" style="margin-top:1rem"></div>
-    <p class="note" style="margin-top:.8rem">Estratos 1 y 2: 50% en paquetes y talleres individuales. Estratos 3 y 4: 30% solo en paquetes de 2 o más talleres. Estratos 5 y 6: precio pleno.</p>
+    <p class="note" style="margin-top:.8rem">Estratos 1 y 2: 50% dto. · Estratos 3 y 4: 30% dto. en paquetes de 2 o más talleres. · Estratos 5 y 6: precio pleno.</p>
   </div>
 </section>
 
@@ -620,15 +689,15 @@ details.acc ul { text-align: left; }
       <div class="avatar"><span aria-hidden="true">YO</span><img src="https://img.autoreseditores.com/autor/000074507.jpeg" width="132" height="132" alt="Retrato de Yobana Orozco Benavides" loading="lazy" onerror="this.remove()"></div>
       <h2 id="t-quien">Quién enseña</h2>
       <p class="lead" style="margin-top:.6rem">Yobana Orozco Benavides: docente, artista, gestora cultural, investigadora, escritora y editora. Fundadora y representante legal de la Fundación Artes Multicap.</p>
-      <p>Enseño desde lo que hago: dirijo revistas con ISSN, organizo convocatorias internacionales, publico libros y postulo a estímulos de cultura. Cada enlace de la derecha lleva a la fuente original, para que lo compruebes por tu cuenta.</p>
+      <p>Enseño desde lo que hago: dirijo revistas con ISSN, organizo convocatorias internacionales, publico libros y postulo a estímulos de cultura. Cada título lleva directo a la fuente original, para que lo compruebes por tu cuenta.</p>
     </div>
     <ul class="proofs">
-      <li><h3>Revistas con ISSN</h3><p>Explorando Arte y Cultura de Latinoamérica (ISSN 3114-9871) y Jóvenes Creadores de Latinoamérica (ISSN 3115-0357).</p><a href="https://explorandomuseosyartelatinoamericano.netlify.app/" target="_blank" rel="noopener">Ver la plataforma de revistas</a></li>
-      <li><h3>Perfil de investigadora</h3><p>Identificador ORCID 0009-0002-9253-6429.</p><a href="https://orcid.org/0009-0002-9253-6429" target="_blank" rel="noopener">Ver perfil en ORCID</a></li>
-      <li><h3>Libros publicados</h3><p>Autora en Amazon: «22 Days: To Heal and Bloom» y «Diversidad Funcional».</p><a href="https://www.amazon.com/YOBANA-OROZCO-BENAVIDES/e/B0CZG5RS1T" target="_blank" rel="noopener">Ver página de autora</a></li>
-      <li><h3>Obra con DOI abierto</h3><p>Colección de poemas en audio «Reflejos del alma», publicada en Zenodo.</p><a href="https://zenodo.org/records/23193382" target="_blank" rel="noopener">Ver registro en Zenodo</a></li>
-      <li><h3>Estímulos y convocatorias</h3><p>Ganadora del estímulo de Artes Audiovisuales de la Secretaría de Cultura de Cali (2025). El soporte está en la plataforma de revistas.</p><a href="https://explorandomuseosyartelatinoamericano.netlify.app/" target="_blank" rel="noopener">Ver soporte</a></li>
-      <li><h3>Portafolio de artista</h3><p>Pintura, arte digital y revistas en un solo lugar.</p><a href="https://yobanaorozcoartista.bio.link" target="_blank" rel="noopener">Ver portafolio</a></li>
+      <li><h3><a href="https://explorandomuseosyartelatinoamericano.netlify.app/" target="_blank" rel="noopener">Revistas con ISSN</a></h3><p>Explorando Arte y Cultura de Latinoamérica (ISSN 3114-9871) y Jóvenes Creadores de Latinoamérica (ISSN 3115-0357).</p></li>
+      <li><h3><a href="https://orcid.org/0009-0002-9253-6429" target="_blank" rel="noopener">Perfil de investigadora</a></h3><p>Identificador ORCID 0009-0002-9253-6429.</p></li>
+      <li><h3><a href="https://www.amazon.com/YOBANA-OROZCO-BENAVIDES/e/B0CZG5RS1T" target="_blank" rel="noopener">Libros publicados</a></h3><p>Autora en Amazon: «22 Days: To Heal and Bloom» y «Diversidad Funcional».</p></li>
+      <li><h3><a href="https://zenodo.org/records/23193382" target="_blank" rel="noopener">Obra con DOI abierto</a></h3><p>Colección de poemas en audio «Reflejos del alma», publicada en Zenodo.</p></li>
+      <li><h3><a href="https://explorandomuseosyartelatinoamericano.netlify.app/" target="_blank" rel="noopener">Estímulos y convocatorias</a></h3><p>Ganadora del estímulo de Artes Audiovisuales de la Secretaría de Cultura de Cali (2025). El soporte está en la plataforma de revistas.</p></li>
+      <li><h3><a href="https://yobanaorozcoartista.bio.link" target="_blank" rel="noopener">Portafolio de artista</a></h3><p>Pintura, arte digital y revistas en un solo lugar.</p></li>
     </ul>
   </div>
 </section>
@@ -662,7 +731,7 @@ details.acc ul { text-align: left; }
 <section class="band" id="que-es" aria-labelledby="t-que">
   <div class="wrap">
     <div class="sec-head"><h2 id="t-que">¿Qué es la Fundación Artes Multicap?</h2><p>Arte, cultura, educación, tecnología y emociones como herramientas de transformación social.</p></div>
-    <div class="box" style="max-width:900px;margin-inline:auto">
+    <div class="box">
       <p>La <strong>Fundación Artes Multicap</strong> es una organización artística, cultural y educativa de Latinoamérica ubicada en Colombia, de carácter comunitario y sin ánimo de lucro. Promueve el arte, la cultura, la literatura, la educación emocional, la tecnología, la inteligencia artificial, la inclusión y la formación técnica como herramientas para la transformación social y el desarrollo humano.</p>
       <p>Nuestra convicción: el arte y la cultura deben ser espacios de encuentro, aprendizaje, expresión y participación accesibles para todas las personas. Por eso trabajamos con niñas, niños, jóvenes, adultos, artistas, escritores, docentes, investigadores, gestores culturales y comunidades, en Colombia y en otros países de Latinoamérica.</p>
     </div>
@@ -710,11 +779,11 @@ details.acc ul { text-align: left; }
     <div class="faq">
       <details><summary>¿Qué modalidades ofrecen?</summary><p>Virtual, presencial e híbrida. Virtual desde 1 persona. Presencial desde 10 personas. La híbrida combina las dos.</p></details>
       <details><summary>¿Puedo elegir el horario?</summary><p>En talleres personalizados tú eliges el horario que más te facilite. En los talleres grupales tenemos horarios establecidos: lunes a viernes de 9 a 11 a. m., de 4 a 6 p. m. y de 7 a 9 p. m. (hora de Colombia).</p></details>
-      <details><summary>¿Cómo funcionan los paquetes?</summary><p>Cada paquete (intermedio, avanzado o complementario) incluye un conjunto de talleres y un proyecto final. Los intermedios y avanzados tienen 7 u 8 talleres; los complementarios, entre 5 y 7.</p></details>
+      <details><summary>¿Cómo funcionan los paquetes?</summary><p>Cada paquete (intermedio, avanzado o complementario) incluye un conjunto de talleres y un proyecto final. Los intermedios y avanzados tienen 7 u 8 talleres; los complementarios, entre 4 y 7.</p></details>
       <details><summary>¿Hay talleres para niñas y niños?</summary><p>Sí. Cada taller sin costo tiene 3 sesiones para niñas y niños (8 a 12 años), 3 para jóvenes (13 a 17 años) y 3 para adultos (18 en adelante). Los paquetes intermedios, avanzados y complementarios son para jóvenes y adultos. Las personas menores participan con autorización de su acudiente.</p></details>
       <details><summary>¿Cómo aplican los descuentos?</summary><p>Estratos 1 y 2 tienen 50%. Estratos 3 y 4 tienen 30% solo en paquetes de 2 o más talleres. Estratos 5 y 6 pagan precio pleno.</p></details>
       <details><summary>¿Cómo sé cuál es mi estrato?</summary><p>Aparece en tu recibo de servicios públicos. Si no lo sabes, en el formulario puedes elegir «No aplica o no sé» y te ayudamos por WhatsApp.</p></details>
-      <details><summary>¿Cuál es la diferencia entre taller suelto y paquete?</summary><p>El taller suelto dura 2 horas y cuesta $60.000 COP. El paquete incluye entre 5 y 8 talleres de 2 horas y un proyecto final, desde $220.000 COP.</p></details>
+      <details><summary>¿Cuál es la diferencia entre taller suelto y paquete?</summary><p>El taller suelto dura 2 horas y cuesta $60.000 COP. El paquete incluye entre 4 y 8 talleres de 2 horas y un proyecto final, desde $180.000 COP.</p></details>
       <details><summary>¿Cómo se paga?</summary><p>Por Nequi, PayPal, Mercado Pago o Western Union, antes del inicio y en pesos colombianos.</p></details>
       <details><summary>¿Entregan certificado?</summary><p>Sí, al completar el 80% de las sesiones.</p></details>
     </div>
@@ -807,7 +876,13 @@ details.acc ul { text-align: left; }
 <footer class="site-footer">
   <div class="wrap">
     <div class="foot-grid">
-      <div><h3>Fundación Artes Multicap</h3><p style="color:var(--dim);font-size:.95rem">Transformamos vidas a través del arte, la literatura, las emociones y la tecnología en Colombia y Latinoamérica.</p></div>
+      <div>
+        <div class="foot-logo">
+          <img src="https://i.postimg.cc/dqKj7LQQ/480702220-618041787505911-8280549859336367380-n.jpg" width="48" height="48" alt="Logo de la Fundación Artes Multicap">
+          <h3>Fundación Artes Multicap</h3>
+        </div>
+        <p style="color:var(--dim);font-size:.95rem">Transformamos vidas a través del arte, la literatura, las emociones y la tecnología en Colombia y Latinoamérica.</p>
+      </div>
       <div><h3>Talleres</h3><ul><li><a href="#talleres-basicos">Sin costo</a></li><li><a href="#talleres-intermedios">Intermedios</a></li><li><a href="#talleres-avanzados">Avanzados</a></li><li><a href="#complementarios">Complementarios</a></li><li><a href="#personalizado">A tu medida</a></li><li><a href="#precios">Precios por estrato</a></li></ul></div>
       <div><h3>Fundación</h3><ul><li><a href="#quien-ensena">Quién enseña</a></li><li><a href="#que-es">Quiénes somos</a></li><li><a href="#editorial">Editorial</a></li><li><a href="#convocatorias">Convocatorias</a></li><li><a href="#donaciones">Donaciones</a></li><li><a href="#faq">Preguntas frecuentes</a></li></ul></div>
       <div><h3>Contacto</h3><ul><li><a href="mailto:artesmulticap2024@gmail.com">artesmulticap2024@gmail.com</a></li><li><a href="https://wa.me/573113555949" target="_blank" rel="noopener">WhatsApp +57 311 355 5949</a></li><li><a href="https://www.instagram.com/artesmulticap/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.facebook.com/ArtesMulticap/?locale=es_LA" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://www.tiktok.com/@fundacionartesmulticap" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://www.youtube.com/channel/UCQ6x8YRgF9EIk2qjJYTEpPw" target="_blank" rel="noopener">YouTube</a></li></ul></div>
@@ -995,58 +1070,47 @@ const AVANZADOS = [
     t:['Automatiza tareas con IA','Tu sitio o aplicación con IA','Flujos creativos avanzados','Emprender con IA: idea, marca y redes','Chatbot y atención automática para tu proyecto','Derechos de autor y uso ético de la IA','Publicar y difundir tu obra','Presentación pública de tu proyecto'], proy:'Un producto o proyecto publicado en línea', precio:420000 }
 ];
 
+/* ✅ TUS 13 TALLERES COMPLEMENTARIOS */
 const COMPLEMENTARIOS = [
-  { id:'convocatorias-estimulos', n:'Gana convocatorias y estímulos',
-    t:['Leer las bases sin perderte','Armar tu propuesta y tu presupuesto','Documentos y soportes que piden','Cronograma y entrega a tiempo','Errores que descalifican y cómo evitarlos'],
-    proy:'Tu postulación lista para enviar', precio:220000,
-    exp:'Lo enseño desde mi experiencia organizando convocatorias internacionales y postulando a estímulos públicos de cultura.' },
-  { id:'tu-revista', n:'Lanza tu propia revista o publicación',
-    t:['De la idea a la línea editorial','Comité, convocatoria y selección de textos','Diseño y maquetación','ISSN y registro legal','Licencias y derechos de las obras','Difusión y primer número'],
-    proy:'El número cero de tu revista', precio:320000,
-    exp:'Lo enseño desde mi experiencia dirigiendo revistas con ISSN.' },
-  { id:'tu-libro', n:'Publica tu libro y llévalo al mundo',
-    t:['Preparar tu manuscrito','Corrección y estilo','Maquetación y portada','ISBN y registro','Publicación en papel y digital','Venta en tiendas internacionales','Promoción y primeras ventas'],
-    proy:'Tu libro listo para publicar', precio:320000,
-    exp:'Lo enseño desde mi experiencia publicando libros con ISBN y vendiéndolos en tiendas internacionales.' },
-  { id:'perfil-profesional', n:'Tu perfil profesional que destaca',
-    t:['Tu historia en pocas líneas','Hoja de vida que se lee hasta el final','Biografía artística y profesional','Portafolio con enlaces verificables','Identidad digital: perfiles y enlaces'],
-    proy:'Tu hoja de vida, tu biografía y tu portafolio listos', precio:220000,
-    exp:'Lo enseño desde mi propio perfil verificable: identificador de investigadora, portafolio y publicaciones.' },
-  { id:'presenta-idea', n:'Presenta tu idea y que te digan que sí',
-    t:['Estructurar tu mensaje','Diapositivas claras y sin saturar','Hablar con seguridad','Responder preguntas difíciles','Ensayo con retroalimentación'],
-    proy:'Una presentación de 5 minutos con su guion', precio:220000 },
-  { id:'emocional-laboral', n:'Inteligencia emocional para tu vida laboral',
-    t:['Reconocer lo que sientes','Manejar la presión y el estrés','Comunicarte con claridad','Poner límites con respeto','Trabajar en equipo','Tu plan de bienestar'],
-    proy:'Tu plan personal de bienestar emocional', precio:240000,
-    exp:'Se apoya en mi formación en educación emocional y en el proyecto Juego de emociones en el aula.',
-    nota:'Es un taller de formación; no reemplaza la atención psicológica.' },
-  { id:'inclusion', n:'Inclusión y diversidad en el trabajo y en el aula',
-    t:['Qué es la diversidad funcional','Lenguaje que incluye','Ajustes razonables en el aula y en el trabajo','Materiales y espacios accesibles','Plan de inclusión para tu entorno'],
-    proy:'Un plan de inclusión para tu aula o tu equipo', precio:220000,
-    exp:'Se apoya en mi libro «Diversidad Funcional» y en el sistema de voz de esta página, pensado para personas ciegas.' },
-  { id:'docente-engancha', n:'Docente que engancha',
-    t:['Planear una clase con propósito','Actividades que motivan','Juegos educativos y emociones en el aula','Evaluar sin miedo','Materiales atractivos','Comunicarte con las familias'],
-    proy:'Una unidad didáctica completa', precio:240000,
-    exp:'Se apoya en mi trayectoria como docente y en el proyecto Juego de emociones en el aula.' },
-  { id:'historia-video-audio', n:'Cuenta tu historia en video y audio',
-    t:['Elegir qué historia contar','Guion y estructura','Grabar con lo que tienes','Edición sencilla','Voz y audio','Publicar y compartir'],
-    proy:'Un video corto y un audio publicados', precio:240000,
-    exp:'Se apoya en mi trabajo con poesía en audio y piezas animadas.' },
-  { id:'gana-tiempo', n:'Gana tiempo y vive con menos estrés',
-    t:['Ordenar tus prioridades','Planear tu semana','Dejar de repetir tareas a mano','Organizar proyectos con otras personas','Tu sistema personal funcionando'],
-    proy:'Tu sistema de organización funcionando', precio:220000 },
-  { id:'emprende-talento', n:'Emprende con tu talento',
-    t:['Tu propuesta de valor','Tu marca personal','Tu página y tus enlaces','Contenido para redes con propósito','Precios y primeras ventas','Alianzas y colaboraciones','Plan de lanzamiento de 30 días'],
-    proy:'El plan de lanzamiento de tu proyecto', precio:260000 },
-  { id:'protege-obra', n:'Protege tu obra y tu nombre',
-    t:['Derechos morales y patrimoniales','Licencias abiertas (Creative Commons)','Registro y depósito legal','Contratos básicos','Uso responsable de la tecnología y cómo declararlo','Qué hacer ante un plagio'],
-    proy:'Tu obra documentada y protegida', precio:240000,
-    exp:'Se apoya en mi experiencia licenciando y registrando las obras de mis revistas.',
-    nota:'Es orientación educativa; no reemplaza la asesoría de una abogada o un abogado.' },
-  { id:'investigacion-creacion', n:'Investigación-creación: respalda lo que haces',
-    t:['Fundamentos de la investigación-creación','Tu pregunta y tus objetivos','Fuentes confiables y citas','Recolectar y analizar tu material','Escribir el informe creativo','Visibilidad como investigadora o investigador'],
-    proy:'Un proyecto de investigación-creación con referencias', precio:320000,
-    exp:'Se apoya en mi perfil de investigadora y en mis publicaciones con identificador abierto.' }
+  { id:'conv-internacionales', n:'Convocatorias Internacionales',
+    t:['Cómo leer bases y requisitos','Documentación y formatos internacionales','Presentación de propuesta','Checklist antes de enviar'],
+    proy:'Postulación guiada a una convocatoria real', precio:220000 },
+  { id:'investigacion-creacion', n:'Investigación-Creación',
+    t:['Fundamentos de la investigación-creación','Metodologías artísticas','Pregunta y objetivos de investigación','Recolección y análisis de material','Escritura del informe creativo','Presentación de resultados'],
+    proy:'Proyecto de investigación-creación completo', precio:320000 },
+  { id:'publicar-obra', n:'Publicar una Obra',
+    t:['Preparar tu manuscrito','Corrección ortotipográfica y de estilo','Maquetación y diseño editorial','ISBN y registro legal','Publicación impresa y digital','Distribución y promoción'],
+    proy:'Obra lista para publicar', precio:320000 },
+  { id:'mundo-editorial', n:'Mundo Editorial Independiente',
+    t:['Cómo funciona una editorial independiente','Selección y edición de textos','Producción editorial','Modelos de negocio y distribución'],
+    proy:'Proyecto editorial independiente', precio:240000 },
+  { id:'publicar-posicionar', n:'Publicar y Posicionar Obra',
+    t:['Estrategia de publicación','Marca autoral y presencia digital','Redes sociales para autores','Prensa, reseñas y difusión','Ventas y distribución'],
+    proy:'Plan de posicionamiento de tu obra', precio:240000 },
+  { id:'libros-digitales', n:'Vender Libros y Productos Digitales',
+    t:['Dónde vender tus libros y productos digitales','Preparar tu libro para el formato digital','Portada y maquetación digital','Publicar tu primer libro paso a paso','Configurar regalías e ingresos','Promoción y visibilidad en tiendas online','Escalar tu catálogo de publicaciones'],
+    proy:'Tu primer libro publicado en tienda digital', precio:260000 },
+  { id:'marketing-ia', n:'IA Aplicada al Marketing y Redes',
+    t:['Estrategia de contenido con IA','Copies y hooks que venden','Captions y hashtags inteligentes','Guiones para Reels y TikTok','Calendario de contenido automatizado','Analítica y optimización','Marca personal con IA'],
+    proy:'Plan de 30 días de contenido para redes con IA', precio:220000 },
+  { id:'video-ia', n:'Producción de Video con IA',
+    t:['Fundamentos del video para redes','Guion y storyboard con IA','Edición automática con IA','Subtítulos y doblaje automático','Avatares y voz sintética','Video generativo (texto a video)','Publicación y algoritmo'],
+    proy:'Un video corto viral listo para publicar', precio:240000 },
+  { id:'automatizacion-ia', n:'Automatización con IA sin Código',
+    t:['Introducción a la automatización no-code','Conectar tus herramientas favoritas','Automatizar emails y respuestas','Automatizar redes sociales','Automatizar gestión de clientes','Chatbots y atención automática','Casos reales paso a paso'],
+    proy:'Un flujo de trabajo automatizado funcional', precio:260000 },
+  { id:'fundamentos-ia', n:'Fundamentos de IA para Profesionales',
+    t:['Qué es la IA generativa y cómo funciona','Panorama de herramientas: ChatGPT, Gemini, Claude','Ética, sesgos y uso responsable','Aplicaciones en tu profesión','Integrar IA en tu rutina diaria','Casos por sector profesional'],
+    proy:'Tu kit personal de IA para el trabajo', precio:180000 },
+  { id:'prompt-engineering', n:'Prompt Engineering',
+    t:['Cómo funciona la ingeniería de prompts','Estructura de un buen prompt','Técnicas avanzadas (chain of thought, few-shot)','Prompts para texto, imagen y análisis','Personalizar tono, estilo y formato','Iterar y refinar respuestas','Crear tu biblioteca de prompts'],
+    proy:'Biblioteca personal de 30 prompts especializados', precio:220000 },
+  { id:'agentes-ia', n:'Creación de Agentes y Asistentes con IA',
+    t:['Qué es un agente de IA','Cómo crear asistentes personalizados','GPTs personalizados paso a paso','Agentes para automatizar flujos','Conectar agentes con tus herramientas','Ética y control de agentes','Casos prácticos por industria'],
+    proy:'Tu propio agente o asistente funcionando', precio:280000 },
+  { id:'monetizacion-marca', n:'Monetización de Obra y Marca Autoral',
+    t:['Cómo construir una marca autoral auténtica','Del seguidor al cliente','Vender arte y obra directamente','Productos digitales y suscripciones','Colaboraciones y patrocinios','Precios y posicionamiento','Estrategias de lanzamiento'],
+    proy:'Plan de monetización de tu obra y marca', precio:240000 }
 ];
 
 const PRECIO_INDIVIDUAL = 60000;
@@ -1059,7 +1123,7 @@ let grp = '56';
 let basicoActivo = 'dibujo';
 let intermedioActivo = 'dibujo-intermedio';
 let avanzadoActivo = 'dibujo-avanzado';
-let complementarioActivo = 'convocatorias-estimulos';
+let complementarioActivo = 'conv-internacionales';
 
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/"/g,'&quot;').replace(/</g,'&lt;');
 
@@ -1166,7 +1230,7 @@ function renderPrices(){
     ['Taller individual (2 horas)', m(PRECIO_INDIVIDUAL,'single')],
     ['Paquete intermedio o avanzado (7 talleres y proyecto)', m(380000,'pkg')],
     ['Paquete de 8 talleres (IA avanzada y Formulación de proyectos)', m(420000,'pkg')],
-    ['Paquete complementario (5 a 7 talleres y proyecto)', 'Desde ' + m(PRECIO_MIN_COMPLEMENTARIO,'pkg')],
+    ['Paquete complementario (4 a 7 talleres y proyecto)', 'Desde ' + m(PRECIO_MIN_COMPLEMENTARIO,'pkg')],
     ['Talleres sin costo, incluido el de inteligencia artificial', 'Sin costo']
   ];
   $('priceBox').innerHTML = `
@@ -1345,7 +1409,7 @@ $('newsForm').addEventListener('submit', async e => {
     { k:['sin costo','gratis','gratuito','todos los talleres','lista de talleres'], r:'Tenemos 12 talleres sin costo: Dibujo, Pintura, Teatro, Literatura, Guion, Revistas, Danza, Arte Reciclado, Inglés, Office, Convocatorias e Inteligencia Artificial. Cada uno tiene 3 sesiones para niñas y niños, 3 para jóvenes y 3 para adultos. <a href="#talleres-basicos">Ver todos</a>' },
     { k:['intermedio','intermedios'], r:'Los paquetes intermedios incluyen 7 talleres de 2 horas y un proyecto final, por ' + money(380000) + '. <a href="#talleres-intermedios">Ver intermedios</a>' },
     { k:['avanzado','avanzados'], r:'Los paquetes avanzados incluyen 7 u 8 talleres de 2 horas y un proyecto final profesional, desde ' + money(380000) + '. <a href="#talleres-avanzados">Ver avanzados</a>' },
-    { k:['complementario','complementarios'], r:'Tenemos 13 paquetes complementarios:<br>' + COMPLEMENTARIOS.map(c=>'· '+c.n+' ('+money(c.precio)+')').join('<br>') + '<br><a href="#complementarios">Ver todos</a>' },
+    { k:['complementario','complementarios'], r:'Tenemos 13 paquetes complementarios:<br><br><strong>Publicación y editorial:</strong><br>· Convocatorias Internacionales ($220.000)<br>· Investigación-Creación ($320.000)<br>· Publicar una Obra ($320.000)<br>· Mundo Editorial Independiente ($240.000)<br>· Publicar y Posicionar Obra ($240.000)<br>· Vender Libros y Productos Digitales ($260.000)<br><br><strong>IA aplicada:</strong><br>· IA Aplicada al Marketing y Redes ($220.000)<br>· Producción de Video con IA ($240.000)<br>· Automatización sin Código ($260.000)<br>· Fundamentos de IA para Profesionales ($180.000)<br>· Prompt Engineering ($220.000)<br>· Creación de Agentes y Asistentes con IA ($280.000)<br><br><strong>Marca:</strong><br>· Monetización de Obra y Marca Autoral ($240.000)<br><br><a href="#complementarios">Ver todos</a>' },
     { k:['quien ensena','quien da','profesora','docente','yobana','experiencia','ensena'], r:'Enseña Yobana Orozco Benavides, docente, artista, gestora cultural, investigadora, escritora y editora. En la sección Quién enseña hay enlaces para comprobar su trabajo. <a href="#quien-ensena">Ver pruebas</a>' },
     { k:['donacion','donaciones','donar','materiales'], r:`Puedes donar materiales para los talleres presenciales: lienzos, pinceles, pinturas, marcadores, hojas, colores, crayolas, lapiceros y más. <a href="#donaciones">Ver la lista</a> o escríbenos por ${waLink}.` },
     { k:['descuento','descuentos','estrato','estratos'], r:'Estratos 1 y 2: 50% en paquetes y talleres individuales. Estratos 3 y 4: 30% en paquetes de 2 o más talleres. Estratos 5 y 6: precio pleno. Tu estrato aparece en tu recibo de servicios públicos. <a href="#precios">Ver precios</a>' },
