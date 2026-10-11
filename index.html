@@ -195,8 +195,8 @@ tr:last-child td{border-bottom:0}
 .teacher p+p{margin-top:.8rem}
 .proofs{list-style:none;padding:0;display:grid;gap:.7rem}
 .proofs li{border:1px solid var(--line);border-left:4px solid var(--gold);border-radius:10px;padding:.8rem 1rem;background:var(--panel)}
-.proofs h3{font-size:1.05rem;margin-bottom:.2rem}
-.proofs h3 a{color:var(--gold-hi);text-decoration:none;border-bottom:1px dashed var(--gold-lo);transition:color .15s,border-bottom-color .15s}
+.proofs h3{font-size:1.05rem;margin-bottom:0}
+.proofs h3 a{color:var(--gold-hi);text-decoration:none;border-bottom:1px dashed var(--gold-lo);transition:color .15s,border-bottom-color .15s;display:block}
 .proofs h3 a:hover{color:#fff;border-bottom-color:var(--gold-hi)}
 .proofs p{color:var(--dim);font-size:.95rem}
 
@@ -263,7 +263,7 @@ input[type=checkbox]{width:22px;min-height:22px;height:22px;accent-color:var(--g
 .copy{margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--line);text-align:center;color:#bdbdbd;font-size:.9rem}
 .copy p{margin-inline:auto}
 
-.float-r{position:fixed;right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));z-index:90;display:flex;flex-direction:column;gap:.6rem;align-items:center}
+.float-r{position:fixed;right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));z-index:100;display:flex;flex-direction:column;gap:.6rem;align-items:center}
 .fab{width:58px;height:58px;border-radius:50%;display:grid;place-items:center;border:0;cursor:pointer;text-decoration:none;transition:transform .15s}
 .fab:hover{transform:scale(1.08)}
 .fab svg{width:28px;height:28px}
@@ -277,7 +277,7 @@ input[type=checkbox]{width:22px;min-height:22px;height:22px;accent-color:var(--g
   position:fixed;
   left:max(10px, env(safe-area-inset-left));
   bottom:max(10px, env(safe-area-inset-bottom));
-  z-index:90;
+  z-index:100;
   width:clamp(52px, 8vw, 68px);
   height:clamp(52px, 8vw, 68px);
   border-radius:50%;
@@ -297,7 +297,7 @@ input[type=checkbox]{width:22px;min-height:22px;height:22px;accent-color:var(--g
   position:fixed;
   left:max(10px, env(safe-area-inset-left));
   bottom:calc(max(10px, env(safe-area-inset-bottom)) + clamp(60px, 9vw, 82px));
-  z-index:90;
+  z-index:99;
   display:none;
   align-items:center;
   gap:.5rem;
@@ -331,7 +331,7 @@ input[type=checkbox]{width:22px;min-height:22px;height:22px;accent-color:var(--g
 }
 .hl{background:rgba(212,175,55,.2);border-left:4px solid var(--gold);padding-left:.7rem;border-radius:6px}
 
-.chat{position:fixed;right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));z-index:100;width:min(96vw,400px);height:min(86vh,640px);background:#0a0a0a;border:2px solid var(--gold);border-radius:20px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 24px 70px #000}
+.chat{position:fixed;right:max(12px,env(safe-area-inset-right));bottom:max(12px,env(safe-area-inset-bottom));z-index:101;width:min(96vw,400px);height:min(86vh,640px);background:#0a0a0a;border:2px solid var(--gold);border-radius:20px;display:none;flex-direction:column;overflow:hidden;box-shadow:0 24px 70px #000}
 .chat.on{display:flex}
 .chat-head{display:flex;align-items:center;gap:.7rem;padding:.8rem 1rem;background:linear-gradient(135deg,var(--violet),#5b21b6);border-bottom:2px solid var(--gold-hi)}
 .chat-head div{flex:1}
@@ -361,6 +361,7 @@ input[type=checkbox]{width:22px;min-height:22px;height:22px;accent-color:var(--g
   .panel{grid-template-columns:1fr}
   .panel .side{border-right:0;border-bottom:1px solid rgba(124,58,237,.3)}
   .faq{grid-template-columns:1fr}
+  .collab-accordions{grid-template-columns:1fr}
   section[id]{scroll-margin-top:5rem}
   .menu-btn{display:flex}
   .bar-actions .btn-ghost{display:none}
@@ -426,7 +427,6 @@ p, .lead, .note, .meta,
 .items li { justify-content: center; }
 .items b { flex-shrink: 0; }
 
-/* Listas de edad: alineadas a la IZQUIERDA (mejor lectura) */
 .age-block h4 { justify-content: flex-start; text-align: left; }
 .age-block ol { padding-left: 1.2rem; list-style-position: outside; text-align: left; }
 .age-block li { text-align: left; }
@@ -451,80 +451,381 @@ details.acc ul { text-align: left; }
    ===== AJUSTES FINOS SOLICITADOS =====
    ========================================================= */
 
-/* Pestañas de estrato centradas */
 #grpTabs{justify-content:center}
-
-/* Encabezados del pie de página en dorado */
 .foot-grid h3{color:var(--gold-hi)}
-
-/* Caja de "qué es" adaptable y texto justificado */
 #que-es .box{max-width:100%}
 #que-es .box p{text-align:justify;max-width:100%;margin-inline:0}
 
-/* Bloques de texto centrados correctamente para que no se corten */
 .hero .lead, .sec-head p, .gain p, .steps p, .box p, .proofs p,
 .card .body p, .don-cta > p, .faq details p, .contact-box p, .copy p {
   margin-inline: auto;
   max-width: 100%;
 }
 
-/* Logo en el pie de página */
 .foot-logo{display:flex;align-items:center;justify-content:center;gap:.7rem;margin-bottom:.5rem}
 .foot-logo img{width:48px;height:48px;border-radius:50%;border:2px solid var(--gold);object-fit:cover;flex:none}
 .foot-logo h3{margin:0}
 
-/* =========================================================
-   ===== ALINEACIONES PUNTUALES (SOLICITADAS) =====
-   ========================================================= */
-
-/* 1) Los talleres numerados de cada paquete A LA IZQUIERDA */
 .items li,
 .items li span {
   justify-content: flex-start;
   text-align: left;
 }
 
-/* 2) Párrafos de "Taller individual o paquete personalizado" y "Nivelación académica" A LA IZQUIERDA */
 #personalizado .box p {
   text-align: left;
   margin-inline: 0;
 }
 
-/* 3) Biografía de "Quién enseña" A LA IZQUIERDA */
 #quien-ensena p,
 #quien-ensena .lead {
   text-align: left;
   margin-inline: 0;
 }
 
-/* 4) Preguntas frecuentes (cada pregunta) A LA IZQUIERDA */
 .faq summary,
 .faq details summary {
   text-align: left;
 }
 
-/* 5) Datos de contacto (correo, WhatsApp, Instagram, etc.) A LA IZQUIERDA */
 .contact-box,
 .contact-box p,
 .contact-box a {
   text-align: left;
 }
 
-/* 6) Texto del footer "Transformamos vidas a través del arte..." A LA IZQUIERDA */
 .foot-grid > div:first-child p {
   text-align: left;
 }
 
-/* 7) "Cada aporte, grande o pequeño, transforma vidas." CENTRADO */
 .don-cta .note {
   text-align: center;
   margin-inline: auto;
 }
 
-/* 8) "Comentarios publicados en nuestro perfil de Google..." CENTRADO */
 #testimonios .sec-head p {
   text-align: center;
   margin-inline: auto;
+}
+
+/* =========================================================
+   ===== COLABORA: ACORDEONES DESPLEGABLES EN 3 COLUMNAS =====
+   ========================================================= */
+.collab-accordions{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+  margin-bottom:2rem;
+  align-items:start;
+}
+.collab-acc{
+  border:none;
+  border-radius:14px;
+  overflow:hidden;
+  background:transparent;
+  padding:0;
+  height:100%;
+}
+.collab-acc summary{
+  list-style:none;
+  cursor:pointer;
+  position:relative;
+  font-family:var(--ff-body);
+  font-weight:800;
+  font-size:.95rem;
+  color:#fff;
+  padding:.9rem 1rem;
+  border-radius:14px;
+  background:linear-gradient(145deg,#7c3aed 0%,#4c1d95 55%,#0a0a0a 100%);
+  box-shadow: 0 4px 0 #0a0a0a, 0 6px 14px rgba(0,0,0,.55), 0 0 14px rgba(124,58,237,.4), inset 0 1px 0 rgba(167,139,250,.25);
+  transition:transform .15s ease, box-shadow .15s ease, filter .2s ease, border-radius .2s ease;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:.6rem;
+  line-height:1.2;
+}
+.collab-acc summary::-webkit-details-marker{ display:none; }
+.collab-acc summary::after{
+  content:'+';
+  font-size:1.3rem;
+  font-weight:900;
+  color:#fff;
+  line-height:1;
+  flex-shrink:0;
+  opacity:.9;
+  transition:transform .25s ease;
+}
+.collab-acc[open] summary::after{ content:'−'; }
+.collab-acc summary:hover{
+  filter:brightness(1.12);
+  transform:translateY(-2px);
+  box-shadow: 0 6px 0 #0a0a0a, 0 10px 20px rgba(0,0,0,.65), 0 0 22px rgba(124,58,237,.7), inset 0 1px 0 rgba(167,139,250,.35);
+}
+.collab-acc[open] summary{
+  background:linear-gradient(145deg,#a78bfa 0%,#7c3aed 45%,#3b1080 100%);
+  box-shadow: 0 4px 0 #1e0a3c, 0 6px 16px rgba(0,0,0,.6), 0 0 0 2px #f4d03f, 0 0 24px rgba(167,139,250,.85), inset 0 1px 0 rgba(255,255,255,.25);
+  border-bottom-left-radius:0;
+  border-bottom-right-radius:0;
+}
+.collab-acc .collab-num{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:1.9rem;
+  height:1.9rem;
+  background:rgba(0,0,0,.35);
+  border:1.5px solid rgba(244,208,63,.7);
+  border-radius:8px;
+  font-size:.85rem;
+  color:var(--gold-hi);
+  margin-right:.5rem;
+  font-weight:900;
+}
+.collab-acc[open] .collab-num{
+  background:rgba(0,0,0,.5);
+  color:#f4d03f;
+}
+.collab-acc summary > span{
+  display:flex;
+  align-items:center;
+  text-align:left;
+}
+.collab-acc .collab-body{
+  padding:1rem 1.1rem 1.1rem;
+  background:#0d0d0d;
+  border:1px solid rgba(124,58,237,.4);
+  border-top:none;
+  border-bottom-left-radius:14px;
+  border-bottom-right-radius:14px;
+  box-shadow: 0 6px 14px rgba(0,0,0,.5), inset 0 1px 0 rgba(124,58,237,.15);
+}
+.collab-acc .collab-body p{
+  text-align:left;
+  margin-inline:0;
+  color:#e0e0e0;
+  font-size:.92rem;
+  margin-bottom:.65rem;
+}
+.collab-acc .collab-body ul{
+  padding-left:1.1rem;
+  color:var(--dim);
+  text-align:left;
+  margin-bottom:.8rem;
+  font-size:.88rem;
+}
+.collab-acc .collab-body ul li{
+  text-align:left;
+  margin-bottom:.22rem;
+}
+.collab-acc .collab-body .note{
+  text-align:left;
+  margin-inline:0;
+  font-size:.85rem;
+}
+.collab-acc .collab-body .btn{
+  margin-top:.6rem;
+  font-size:.85rem;
+  padding:.5rem 1rem;
+  min-height:auto;
+}
+
+/* ====== FORMULARIO DE COLABORADORES (DESPLEGABLE) ====== */
+.collab-form-details{
+  scroll-margin-top:7rem;
+  border:2px solid rgba(124,58,237,.45);
+  border-radius:20px;
+  overflow:hidden;
+  margin-bottom:2rem;
+  background:linear-gradient(160deg,rgba(124,58,237,.12),rgba(124,58,237,.02));
+}
+.collab-form-details > summary{
+  list-style:none;
+  cursor:pointer;
+  padding:1.2rem 1.4rem;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:1rem;
+  font-family:var(--ff-body);
+  font-weight:800;
+  font-size:1.05rem;
+  color:#fff;
+  background:linear-gradient(145deg,rgba(124,58,237,.5),rgba(76,29,149,.4));
+  transition:background .2s ease;
+}
+.collab-form-details > summary::-webkit-details-marker{ display:none; }
+.collab-form-details > summary::after{
+  content:'▼';
+  font-size:.9rem;
+  color:var(--gold-hi);
+  flex-shrink:0;
+  transition:transform .25s ease;
+}
+.collab-form-details[open] > summary::after{
+  transform:rotate(180deg);
+}
+.collab-form-details > summary:hover{
+  background:linear-gradient(145deg,rgba(124,58,237,.7),rgba(76,29,149,.6));
+}
+.collab-form-details[open] > summary{
+  border-bottom:1px solid rgba(124,58,237,.4);
+}
+.collab-form-inner{
+  padding:1.5rem;
+}
+.collab-form-inner h3{
+  color:var(--gold-hi);
+  margin-bottom:.5rem;
+  font-size:1.1rem;
+}
+.collab-form-inner > p{
+  text-align:left;
+  margin-inline:0;
+  color:var(--dim);
+  font-size:.92rem;
+  margin-bottom:1.2rem;
+}
+
+.collab-form{
+  display:grid;
+  gap:1rem;
+}
+.collab-form .field{
+  display:grid;
+  gap:.3rem;
+}
+.collab-form label{
+  text-align:left;
+  font-weight:600;
+  color:#e5e5e5;
+  font-size:.92rem;
+}
+.collab-form input,
+.collab-form select,
+.collab-form textarea{
+  background:#000;
+  border:1px solid #444;
+  color:#fff;
+  padding:.7rem .85rem;
+  border-radius:11px;
+  font-family:inherit;
+  font-size:.95rem;
+  width:100%;
+}
+.collab-form input:focus,
+.collab-form select:focus,
+.collab-form textarea:focus{
+  border-color:var(--gold-hi);
+  box-shadow:0 0 0 3px rgba(244,208,63,.2);
+  outline:none;
+}
+.collab-form .radio-group{
+  display:grid;
+  gap:.5rem;
+  padding:.7rem .9rem;
+  background:rgba(0,0,0,.4);
+  border:1px solid #333;
+  border-radius:12px;
+}
+.collab-form .radio-group label{
+  display:flex;
+  align-items:flex-start;
+  gap:.6rem;
+  font-weight:400;
+  cursor:pointer;
+  padding:.35rem .3rem;
+  border-radius:8px;
+  transition:background .15s ease;
+  font-size:.93rem;
+}
+.collab-form .radio-group label:hover{ background:rgba(124,58,237,.15); }
+.collab-form .radio-group input[type=radio]{
+  width:18px;
+  height:18px;
+  min-height:18px;
+  accent-color:var(--gold-hi);
+  flex:none;
+  margin-top:2px;
+}
+.collab-form .form-actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.6rem;
+  margin-top:.5rem;
+}
+.collab-form .status-msg{
+  min-height:1.4em;
+  font-weight:600;
+  font-size:.92rem;
+}
+.collab-form .status-msg.ok{ color:#4ade80; }
+.collab-form .status-msg.bad{ color:#ff8a8a; }
+
+/* ====== VALORES DE COLABORACIÓN ====== */
+.collab-values{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:1rem;
+  margin-bottom:1.6rem;
+}
+.collab-value{
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:1rem;
+  background:var(--panel);
+  text-align:center;
+  transition:border-color .2s ease;
+}
+.collab-value:hover{ border-color:var(--gold); }
+.collab-value strong{
+  display:block;
+  color:var(--gold-hi);
+  font-size:.95rem;
+  margin-bottom:.3rem;
+  font-weight:800;
+}
+.collab-value p{
+  text-align:center;
+  margin-inline:auto;
+  color:var(--dim);
+  font-size:.88rem;
+  margin:0;
+}
+
+@media (max-width:560px){
+  .collab-acc summary{
+    font-size:.92rem;
+    padding:.85rem 1rem;
+  }
+  .collab-acc .collab-num{
+    min-width:1.7rem;
+    height:1.7rem;
+    font-size:.8rem;
+    margin-right:.5rem;
+  }
+  .collab-form-inner{ padding:1rem; }
+  .collab-form-details > summary{ padding:1rem 1.1rem; font-size:.98rem; }
+}
+
+/* ===== Ajustes para móviles: subir botones por la barra del navegador ===== */
+@media (max-width: 900px){
+  .float-r{
+    bottom: max(90px, calc(env(safe-area-inset-bottom) + 70px));
+    z-index: 100;
+  }
+  .fab-voice{
+    bottom: max(90px, calc(env(safe-area-inset-bottom) + 70px));
+    z-index: 100;
+  }
+  .voice-status{
+    bottom: calc(max(90px, calc(env(safe-area-inset-bottom) + 70px)) + clamp(60px, 9vw, 82px));
+    z-index: 99;
+  }
+  .chat{
+    bottom: max(90px, calc(env(safe-area-inset-bottom) + 70px));
+    z-index: 101;
+  }
 }
 </style>
 </head>
@@ -563,6 +864,7 @@ details.acc ul { text-align: left; }
     <a href="#quien-ensena">Quién enseña</a>
     <a href="#editorial">Editorial</a>
     <a href="#convocatorias">Convocatorias</a>
+    <a href="#colabora">Colabora</a>
     <a href="#que-es">Quiénes somos</a>
     <a href="#donaciones">Donaciones</a>
     <a href="#testimonios">Opiniones</a>
@@ -692,12 +994,12 @@ details.acc ul { text-align: left; }
       <p>Enseño desde lo que hago: dirijo revistas con ISSN, organizo convocatorias internacionales, publico libros y postulo a estímulos de cultura. Cada título lleva directo a la fuente original, para que lo compruebes por tu cuenta.</p>
     </div>
     <ul class="proofs">
-      <li><h3><a href="https://explorandomuseosyartelatinoamericano.netlify.app/" target="_blank" rel="noopener">Revistas con ISSN</a></h3><p>Explorando Arte y Cultura de Latinoamérica (ISSN 3114-9871) y Jóvenes Creadores de Latinoamérica (ISSN 3115-0357).</p></li>
-      <li><h3><a href="https://orcid.org/0009-0002-9253-6429" target="_blank" rel="noopener">Perfil de investigadora</a></h3><p>Identificador ORCID 0009-0002-9253-6429.</p></li>
-      <li><h3><a href="https://www.amazon.com/YOBANA-OROZCO-BENAVIDES/e/B0CZG5RS1T" target="_blank" rel="noopener">Libros publicados</a></h3><p>Autora en Amazon: «22 Days: To Heal and Bloom» y «Diversidad Funcional».</p></li>
-      <li><h3><a href="https://zenodo.org/records/23193382" target="_blank" rel="noopener">Obra con DOI abierto</a></h3><p>Colección de poemas en audio «Reflejos del alma», publicada en Zenodo.</p></li>
-      <li><h3><a href="https://explorandomuseosyartelatinoamericano.netlify.app/" target="_blank" rel="noopener">Estímulos y convocatorias</a></h3><p>Ganadora del estímulo de Artes Audiovisuales de la Secretaría de Cultura de Cali (2025). El soporte está en la plataforma de revistas.</p></li>
-      <li><h3><a href="https://yobanaorozcoartista.bio.link" target="_blank" rel="noopener">Portafolio de artista</a></h3><p>Pintura, arte digital y revistas en un solo lugar.</p></li>
+      <li><h3><a href="https://explorandomuseosyartelatinoamericano.netlify.app/" target="_blank" rel="noopener">Revistas con ISSN</a></h3></li>
+      <li><h3><a href="https://orcid.org/0009-0002-9253-6429" target="_blank" rel="noopener">Perfil de investigadora</a></h3></li>
+      <li><h3><a href="https://www.amazon.com/stores/YOBANA-OROZCO-BENAVIDES/author/B0CZG5RS1T/allbooks?ccs_id=04c41120-2042-430a-bb97-ad59933455d2" target="_blank" rel="noopener">Libros publicados</a></h3></li>
+      <li><h3><a href="https://zenodo.org/records/23193382" target="_blank" rel="noopener">Obra con DOI abierto</a></h3></li>
+      <li><h3><a href="https://www.cali.gov.co/loader.php?lServicio=Tools2&lTipo=descargas&lFuncion=visorpdf&file=https%3A%2F%2Fwww.cali.gov.co%2Floader.php%3FlServicio%3DTools2%26lTipo%3Ddescargas%26lFuncion%3DexposeDocument%26idFile%3DcpE7BqemevJbpqAyI2C7ejo5clgwS093PQ%26tmp%3D15925b086a990c81359f61e1568894d9%26urlDeleteFunction%3Dhttps%253A%252F%252Fwww.cali.gov.co%252Floader.php%253FlServicio%253DTools2%2526lTipo%253Ddescargas%2526lFuncion%253DdeleteTemporalFile%2526tmp%253D15925b086a990c81359f61e1568894d9&pdf=1&tmp=15925b086a990c81359f61e1568894d9&fileItem=cpE7BqemevJbpqAyI2C7ejo5clgwS093PQ" target="_blank" rel="noopener">Estímulos y convocatorias</a></h3></li>
+      <li><h3><a href="https://yobanaorozcoartista.bio.link" target="_blank" rel="noopener">Portafolio de artista</a></h3></li>
     </ul>
   </div>
 </section>
@@ -724,6 +1026,145 @@ details.acc ul { text-align: left; }
     <div class="proj-row">
       <article class="card"><img src="https://i.postimg.cc/wvCtQBSN/Revista%20Explorando%20Arte%20y%20Cultura%20de%20Latinoam%C3%A9rica%201%202025%20(4).png" width="260" height="347" alt="Portada del proyecto Explorando museos y arte latinoamericano" loading="lazy"><div class="body"><p><strong>Explorando museos y arte latinoamericano</strong></p><a class="btn btn-sm" href="https://explorandomuseosyartelatinoamericano.netlify.app/" target="_blank" rel="noopener">Ver proyecto</a></div></article>
       <article class="card"><img src="https://i.postimg.cc/yYnhMFWF/418b1c0f-8d2a-463f-9cb1-271bd0abfd0e-(1).png" width="260" height="347" alt="Imagen del proyecto Juego de emociones en el aula" loading="lazy"><div class="body"><p><strong>Juego de emociones en el aula</strong></p><a class="btn btn-sm" href="https://juegoemocionesenelaulayobanaorozcob.netlify.app/" target="_blank" rel="noopener">Ver proyecto</a></div></article>
+    </div>
+  </div>
+</section>
+
+<!-- ================= HAZ PARTE DE LA FUNDACIÓN ================= -->
+<section class="band" id="colabora" aria-labelledby="t-colabora">
+  <div class="wrap">
+    <div class="sec-head">
+      <h2 id="t-colabora">Haz parte de la Fundación</h2>
+      <p>Buscamos personas apasionadas que quieran aportar su talento a nuestra comunidad en Colombia y Latinoamérica. Hay tres formas de participar: evaluando propuestas como jurado, dictando un taller, o colaborando con tu talento en otras áreas.</p>
+    </div>
+
+    <div class="collab-accordions">
+
+      <details class="collab-acc">
+        <summary><span><span class="collab-num">01</span>Quiero ser jurado</span></summary>
+        <div class="collab-body">
+          <p>Evalúa propuestas y ayuda a reconocer el talento en nuestros concursos y convocatorias internacionales, incluyendo el Concurso Latinoamérica Escribe y las convocatorias de las revistas con ISSN.</p>
+          <p><strong>Buscamos personas con experiencia en:</strong></p>
+          <ul>
+            <li>Artes visuales, plásticas o digitales</li>
+            <li>Literatura, poesía y edición</li>
+            <li>Docencia, investigación o curaduría</li>
+            <li>Gestión cultural y proyectos comunitarios</li>
+            <li>Inteligencia artificial aplicada al arte</li>
+            <li>Diseño editorial y revistas con ISSN</li>
+          </ul>
+          <p class="note">Recibirás reconocimiento público como jurado en nuestras revistas y en nuestras redes sociales.</p>
+          <a class="btn" href="https://wa.me/573113555949?text=Hola%20Fundaci%C3%B3n%20Artes%20Multicap%2C%20quiero%20ser%20jurado%20en%20sus%20concursos%20y%20convocatorias.%20Les%20cuento%20mi%20perfil%3A" target="_blank" rel="noopener">Postularme como jurado</a>
+        </div>
+      </details>
+
+      <details class="collab-acc">
+        <summary><span><span class="collab-num">02</span>Quiero dictar un taller</span></summary>
+        <div class="collab-body">
+          <p>Enseña, comparte tu experiencia y contribuye a la formación de nuevos talentos. Puedes dictar un taller gratuito o uno de pago aplicando nuestros descuentos de inclusión.</p>
+          <p><strong>Te ofrecemos:</strong></p>
+          <ul>
+            <li>Espacio y coordinación del taller</li>
+            <li>Difusión en nuestras redes y revistas con ISSN</li>
+            <li>Una página con tu perfil y tus enlaces</li>
+            <li>Certificado de participación</li>
+            <li>Dar a conocer tu trabajo ante nuestra comunidad</li>
+            <li>Posibilidad de aparecer en nuestras publicaciones</li>
+          </ul>
+          <p class="note">Puede ser virtual, presencial o híbrido, de 1 o 2 sesiones, adaptado a niñas, niños, jóvenes o adultos. Si es de pago, tú decides la tarifa y la Fundación asume los descuentos de inclusión.</p>
+          <a class="btn" href="https://wa.me/573113555949?text=Hola%20Fundaci%C3%B3n%20Artes%20Multicap%2C%20quiero%20dictar%20un%20taller%20y%20dar%20a%20conocer%20mi%20trabajo.%20Les%20cuento%20mi%20propuesta%3A" target="_blank" rel="noopener">Postular mi taller</a>
+        </div>
+      </details>
+
+      <details class="collab-acc">
+        <summary><span><span class="collab-num">03</span>Quiero colaborar con mi talento</span></summary>
+        <div class="collab-body">
+          <p>Propón ideas, aporta tus habilidades y encuentra nuevas formas de participar. Buscamos pares evaluadores para nuestras revistas con ISSN, personas que nos ayuden en gestión cultural, diseño, traducción, redes sociales, edición y más.</p>
+          <p><strong>Algunas formas de colaborar:</strong></p>
+          <ul>
+            <li>Par evaluador de las revistas con ISSN</li>
+            <li>Diseño editorial y gráfico</li>
+            <li>Community manager y redes sociales</li>
+            <li>Traducción e idiomas</li>
+            <li>Gestión cultural y producción de eventos</li>
+            <li>Investigación y documentación</li>
+            <li>Fotografía y video</li>
+          </ul>
+          <p class="note">También recibirás carta de par evaluador para tu hoja de vida y aparecerás en los créditos de la revista.</p>
+          <a class="btn" href="#colabora-form">Llenar formulario de colaborador</a>
+        </div>
+      </details>
+
+    </div>
+
+    <!-- FORMULARIO DE COLABORADORES (DESPLEGABLE, ENVÍA A WHATSAPP) -->
+    <details class="collab-form-details" id="colabora-form">
+      <summary>Formulario para captar colaboradores</summary>
+      <div class="collab-form-inner">
+        <p>Rellena tus datos y presiona <strong>Enviar por WhatsApp</strong>. Se abrirá WhatsApp con tu mensaje listo.</p>
+
+        <form class="collab-form" id="collabForm" novalidate>
+          <div class="field">
+            <label for="collabNombre">Nombre completo</label>
+            <input type="text" id="collabNombre" name="nombre" autocomplete="name" required>
+          </div>
+
+          <div class="field">
+            <label for="collabEmail">Correo electrónico</label>
+            <input type="email" id="collabEmail" name="email" autocomplete="email" required>
+          </div>
+
+          <div class="field">
+            <label>¿Cómo te gustaría colaborar?</label>
+            <div class="radio-group">
+              <label><input type="radio" name="colaboracion" value="Jurado de concursos y convocatorias"> Ser jurado de concursos y convocatorias</label>
+              <label><input type="radio" name="colaboracion" value="Dictar un taller gratuito"> Dictar un taller gratuito</label>
+              <label><input type="radio" name="colaboracion" value="Ambas opciones"> Ambas opciones</label>
+              <label><input type="radio" name="colaboracion" value="Otra forma de colaboración"> Otra forma de colaboración</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="collabArea">Área de experiencia</label>
+            <input type="text" id="collabArea" name="area" placeholder="Ejemplo: artes visuales, literatura, docencia, IA, diseño editorial...">
+          </div>
+
+          <div class="field">
+            <label for="collabExp">Cuéntanos sobre tu experiencia o propuesta</label>
+            <textarea id="collabExp" name="experiencia" rows="4" placeholder="Cuéntanos brevemente qué has hecho y cómo te gustaría aportar a la Fundación."></textarea>
+          </div>
+
+          <div class="field">
+            <label for="collabPortafolio">Portafolio, página web o redes sociales (opcional)</label>
+            <input type="text" id="collabPortafolio" name="portafolio" placeholder="Ejemplo: https://mi-portafolio.com, @mi-usuario">
+          </div>
+
+          <p class="status-msg" id="collabStatus" role="status" aria-live="polite"></p>
+
+          <div class="form-actions">
+            <button type="submit" class="btn">Enviar por WhatsApp</button>
+          </div>
+        </form>
+      </div>
+    </details>
+
+    <div class="collab-values">
+      <div class="collab-value">
+        <strong>Reconocimiento</strong>
+        <p>Tu nombre aparece en nuestras revistas con ISSN y redes sociales.</p>
+      </div>
+      <div class="collab-value">
+        <strong>Certificación</strong>
+        <p>Recibes certificado de jurado, tallerista o colaborador según tu rol.</p>
+      </div>
+      <div class="collab-value">
+        <strong>Visibilidad</strong>
+        <p>Página con tu perfil, biografía y enlaces en nuestra web.</p>
+      </div>
+      <div class="collab-value">
+        <strong>Comunidad</strong>
+        <p>Haces parte de una red de artistas, docentes y creadores de Latinoamérica.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -786,6 +1227,7 @@ details.acc ul { text-align: left; }
       <details><summary>¿Cuál es la diferencia entre taller suelto y paquete?</summary><p>El taller suelto dura 2 horas y cuesta $60.000 COP. El paquete incluye entre 4 y 8 talleres de 2 horas y un proyecto final, desde $180.000 COP.</p></details>
       <details><summary>¿Cómo se paga?</summary><p>Por Nequi, PayPal, Mercado Pago o Western Union, antes del inicio y en pesos colombianos.</p></details>
       <details><summary>¿Entregan certificado?</summary><p>Sí, al completar el 80% de las sesiones.</p></details>
+      <details><summary>¿Puedo ser jurado o dictar un taller?</summary><p>Sí. En la sección «Haz parte de la Fundación» puedes postularte como jurado de concursos, tallerista gratuito o de pago, o colaborador con tu talento (par evaluador de revistas, diseño, redes y más). <a href="#colabora">Ver más</a></p></details>
     </div>
   </div>
 </section>
@@ -861,7 +1303,7 @@ details.acc ul { text-align: left; }
         <li>Los paquetes incluyen talleres y un proyecto final.</li>
         <li>Certificado al completar el 80% de las sesiones.</li>
         <li>Modalidad virtual, presencial o híbrida.</li>
-        <li>Descuentos por estrato y descuento familiar.</li>
+        <li>Descuentos por estrato y descuentos de inclusión.</li>
         <li>En talleres personalizados tú eliges el horario.</li>
       </ul>
       <div class="contact-box">
@@ -884,7 +1326,7 @@ details.acc ul { text-align: left; }
         <p style="color:var(--dim);font-size:.95rem">Transformamos vidas a través del arte, la literatura, las emociones y la tecnología en Colombia y Latinoamérica.</p>
       </div>
       <div><h3>Talleres</h3><ul><li><a href="#talleres-basicos">Sin costo</a></li><li><a href="#talleres-intermedios">Intermedios</a></li><li><a href="#talleres-avanzados">Avanzados</a></li><li><a href="#complementarios">Complementarios</a></li><li><a href="#personalizado">A tu medida</a></li><li><a href="#precios">Precios por estrato</a></li></ul></div>
-      <div><h3>Fundación</h3><ul><li><a href="#quien-ensena">Quién enseña</a></li><li><a href="#que-es">Quiénes somos</a></li><li><a href="#editorial">Editorial</a></li><li><a href="#convocatorias">Convocatorias</a></li><li><a href="#donaciones">Donaciones</a></li><li><a href="#faq">Preguntas frecuentes</a></li></ul></div>
+      <div><h3>Fundación</h3><ul><li><a href="#quien-ensena">Quién enseña</a></li><li><a href="#que-es">Quiénes somos</a></li><li><a href="#editorial">Editorial</a></li><li><a href="#convocatorias">Convocatorias</a></li><li><a href="#colabora">Colabora con nosotros</a></li><li><a href="#donaciones">Donaciones</a></li><li><a href="#faq">Preguntas frecuentes</a></li></ul></div>
       <div><h3>Contacto</h3><ul><li><a href="mailto:artesmulticap2024@gmail.com">artesmulticap2024@gmail.com</a></li><li><a href="https://wa.me/573113555949" target="_blank" rel="noopener">WhatsApp +57 311 355 5949</a></li><li><a href="https://www.instagram.com/artesmulticap/" target="_blank" rel="noopener">Instagram</a></li><li><a href="https://www.facebook.com/ArtesMulticap/?locale=es_LA" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://www.tiktok.com/@fundacionartesmulticap" target="_blank" rel="noopener">TikTok</a></li><li><a href="https://www.youtube.com/channel/UCQ6x8YRgF9EIk2qjJYTEpPw" target="_blank" rel="noopener">YouTube</a></li></ul></div>
     </div>
     <div class="copy">
@@ -899,7 +1341,17 @@ details.acc ul { text-align: left; }
   <div class="chat-head"><div><strong>MULTI, asistente</strong><small>Responde sobre talleres, precios y más</small></div><button type="button" id="chatClose" aria-label="Cerrar chat">×</button></div>
   <div class="chat-body" id="chatBody" aria-live="polite"></div>
   <div class="quick" id="quick">
-    <button type="button" data-q="Talleres sin costo">Sin costo</button><button type="button" data-q="Precios">Precios</button><button type="button" data-q="Descuentos">Descuentos</button><button type="button" data-q="Complementarios">Complementarios</button><button type="button" data-q="Quién enseña">Quién enseña</button><button type="button" data-q="Donaciones">Donaciones</button><button type="button" data-q="Horarios">Horarios</button><button type="button" data-q="Editorial">Editorial</button><button type="button" data-q="Convocatorias">Convocatorias</button><button type="button" data-q="Contacto">Contacto</button>
+    <button type="button" data-q="Talleres sin costo">Sin costo</button>
+    <button type="button" data-q="Precios">Precios</button>
+    <button type="button" data-q="Descuentos">Descuentos</button>
+    <button type="button" data-q="Complementarios">Complementarios</button>
+    <button type="button" data-q="Colaborar">Colaborar</button>
+    <button type="button" data-q="Quién enseña">Quién enseña</button>
+    <button type="button" data-q="Donaciones">Donaciones</button>
+    <button type="button" data-q="Horarios">Horarios</button>
+    <button type="button" data-q="Editorial">Editorial</button>
+    <button type="button" data-q="Convocatorias">Convocatorias</button>
+    <button type="button" data-q="Contacto">Contacto</button>
   </div>
   <form class="chat-in" id="chatForm"><input id="chatInput" aria-label="Escribe tu pregunta" placeholder="Escribe tu pregunta" autocomplete="off"><button type="submit" aria-label="Enviar">→</button></form>
 </section>
@@ -1070,7 +1522,6 @@ const AVANZADOS = [
     t:['Automatiza tareas con IA','Tu sitio o aplicación con IA','Flujos creativos avanzados','Emprender con IA: idea, marca y redes','Chatbot y atención automática para tu proyecto','Derechos de autor y uso ético de la IA','Publicar y difundir tu obra','Presentación pública de tu proyecto'], proy:'Un producto o proyecto publicado en línea', precio:420000 }
 ];
 
-/* ✅ TUS 13 TALLERES COMPLEMENTARIOS */
 const COMPLEMENTARIOS = [
   { id:'conv-internacionales', n:'Convocatorias Internacionales',
     t:['Cómo leer bases y requisitos','Documentación y formatos internacionales','Presentación de propuesta','Checklist antes de enviar'],
@@ -1403,16 +1854,18 @@ $('newsForm').addEventListener('submit', async e => {
   const waLink = `<a href="${WA}" target="_blank" rel="noopener">WhatsApp</a>`;
 
   const KB = [
-    { k:['hola','buenas','buenos dias','buenas tardes','hey','saludos'], r:'Hola, soy MULTI. Te ayudo con talleres, precios, descuentos, editorial, convocatorias y donaciones.' },
+    { k:['hola','buenas','buenos dias','buenas tardes','hey','saludos'], r:'Hola, soy MULTI. Te ayudo con talleres, precios, descuentos, editorial, convocatorias, colaboración y donaciones.' },
     { k:['gracias','perfecto','genial','listo'], r:`Con gusto. Si necesitas algo más, escríbenos por ${waLink}.` },
     { k:['adios','chao','hasta luego'], r:`Hasta luego. Aquí estamos cuando quieras: ${waLink}.` },
     { k:['sin costo','gratis','gratuito','todos los talleres','lista de talleres'], r:'Tenemos 12 talleres sin costo: Dibujo, Pintura, Teatro, Literatura, Guion, Revistas, Danza, Arte Reciclado, Inglés, Office, Convocatorias e Inteligencia Artificial. Cada uno tiene 3 sesiones para niñas y niños, 3 para jóvenes y 3 para adultos. <a href="#talleres-basicos">Ver todos</a>' },
     { k:['intermedio','intermedios'], r:'Los paquetes intermedios incluyen 7 talleres de 2 horas y un proyecto final, por ' + money(380000) + '. <a href="#talleres-intermedios">Ver intermedios</a>' },
     { k:['avanzado','avanzados'], r:'Los paquetes avanzados incluyen 7 u 8 talleres de 2 horas y un proyecto final profesional, desde ' + money(380000) + '. <a href="#talleres-avanzados">Ver avanzados</a>' },
     { k:['complementario','complementarios'], r:'Tenemos 13 paquetes complementarios:<br><br><strong>Publicación y editorial:</strong><br>· Convocatorias Internacionales ($220.000)<br>· Investigación-Creación ($320.000)<br>· Publicar una Obra ($320.000)<br>· Mundo Editorial Independiente ($240.000)<br>· Publicar y Posicionar Obra ($240.000)<br>· Vender Libros y Productos Digitales ($260.000)<br><br><strong>IA aplicada:</strong><br>· IA Aplicada al Marketing y Redes ($220.000)<br>· Producción de Video con IA ($240.000)<br>· Automatización sin Código ($260.000)<br>· Fundamentos de IA para Profesionales ($180.000)<br>· Prompt Engineering ($220.000)<br>· Creación de Agentes y Asistentes con IA ($280.000)<br><br><strong>Marca:</strong><br>· Monetización de Obra y Marca Autoral ($240.000)<br><br><a href="#complementarios">Ver todos</a>' },
+    { k:['colaborar','colabora','jurado','jurados','par evaluador','pares evaluadores','evaluador','evaluadora','dictar taller','dar taller','dar un taller','voluntario','voluntarios','hacer parte','ser parte','participar','quiero ayudar','quiero aportar','postular','postularme'], r:'¡Nos encanta que quieras hacer parte! Tienes tres formas de participar:<br><br><strong>01. Ser jurado</strong> de nuestros concursos y convocatorias.<br><strong>02. Dictar un taller</strong>, gratuito o de pago con nuestros descuentos de inclusión.<br><strong>03. Colaborar con tu talento</strong>: par evaluador de las revistas con ISSN, diseño, redes, traducción, gestión cultural y más.<br><br><a href="#colabora">Ver las opciones y postularme</a> o llena el <a href="#colabora-form">formulario de colaboradores</a>.' },
+    { k:['descuentos de inclusion','descuento de inclusion','descuento inclusion','descuentos inclusion','inclusion','inclusión','diversidad funcional','discapacidad','madre cabeza de hogar','adulto mayor','victima del conflicto','indigena','afro'], r:'Manejamos varios <strong>descuentos de inclusión</strong>: estratos 1 y 2 (50%), diversidad funcional, descuento familiar, madres y padres cabeza de hogar, adultos mayores (65+), víctimas del conflicto, comunidades indígenas, afro y campesinas, estudiantes con matrícula vigente, y 12 talleres sin costo permanentes para niñas, niños y jóvenes.' },
     { k:['quien ensena','quien da','profesora','docente','yobana','experiencia','ensena'], r:'Enseña Yobana Orozco Benavides, docente, artista, gestora cultural, investigadora, escritora y editora. En la sección Quién enseña hay enlaces para comprobar su trabajo. <a href="#quien-ensena">Ver pruebas</a>' },
     { k:['donacion','donaciones','donar','materiales'], r:`Puedes donar materiales para los talleres presenciales: lienzos, pinceles, pinturas, marcadores, hojas, colores, crayolas, lapiceros y más. <a href="#donaciones">Ver la lista</a> o escríbenos por ${waLink}.` },
-    { k:['descuento','descuentos','estrato','estratos'], r:'Estratos 1 y 2: 50% en paquetes y talleres individuales. Estratos 3 y 4: 30% en paquetes de 2 o más talleres. Estratos 5 y 6: precio pleno. Tu estrato aparece en tu recibo de servicios públicos. <a href="#precios">Ver precios</a>' },
+    { k:['descuento','descuentos','estrato','estratos'], r:'Estratos 1 y 2: 50% en paquetes y talleres individuales. Estratos 3 y 4: 30% en paquetes de 2 o más talleres. Estratos 5 y 6: precio pleno. También manejamos descuentos de inclusión. <a href="#precios">Ver precios</a>' },
     { k:['precio','precios','cuanto','cuesta','vale','costo','valor'], r:'Taller individual: ' + money(PRECIO_INDIVIDUAL) + '. Paquete intermedio o avanzado: ' + money(380000) + '. IA avanzada y Formulación: ' + money(420000) + '. Complementarios: desde ' + money(PRECIO_MIN_COMPLEMENTARIO) + '. Nivelación: ' + money(50000) + ' por hora. <a href="#precios">Ver precios por estrato</a>' },
     { k:['nivelacion','refuerzo','colegio'], r:'Nivelación académica: ' + money(50000) + ' por hora en Lengua, Matemáticas, Ciencias e Inglés. <a href="#personalizado">Ver</a>' },
     { k:['editorial','libro','publicar','isbn'], r:'Editorial Artes Multicap: corrección, maquetación, portada, ISBN, publicación y eBook. <a href="https://editorialartesmulticap.netlify.app/" target="_blank" rel="noopener">Conocer la editorial</a>' },
@@ -1431,8 +1884,8 @@ $('newsForm').addEventListener('submit', async e => {
   KB.push({ k:['inteligencia artificial','taller de ia','aprender ia','ia'], r:'La inteligencia artificial es un taller más: sin costo (3 sesiones, todas las edades), intermedio por ' + money(380000) + ' y avanzado por ' + money(420000) + '. <a href="#talleres-basicos">Ver talleres</a>' });
 
   const FALL = [
-    `No tengo esa respuesta. Prueba con «precios», «descuentos», «talleres sin costo» o «donaciones», o escríbenos por ${waLink}.`,
-    `No encontré esa información. Prueba con «horarios», «editorial» o «convocatorias», o escríbenos por ${waLink}.`
+    `No tengo esa respuesta. Prueba con «precios», «descuentos», «talleres sin costo», «colabora» o «donaciones», o escríbenos por ${waLink}.`,
+    `No encontré esa información. Prueba con «horarios», «editorial», «jurado» o «convocatorias», o escríbenos por ${waLink}.`
   ];
   let fb = 0;
 
@@ -1454,7 +1907,7 @@ $('newsForm').addEventListener('submit', async e => {
   }
   function open(){
     chat.classList.add('on'); $('chatBadge').style.display = 'none';
-    if (!body.dataset.hi){ body.dataset.hi = '1'; add('Hola, soy MULTI. Pregúntame por talleres, precios, descuentos, donaciones, editorial o convocatorias.', 'bot'); }
+    if (!body.dataset.hi){ body.dataset.hi = '1'; add('Hola, soy MULTI. Pregúntame por talleres, precios, descuentos, editorial, convocatorias, cómo colaborar con la Fundación, o donaciones.', 'bot'); }
     setTimeout(() => input.focus(), 150); track('chat_abrir');
   }
   function close(){ chat.classList.remove('on'); }
@@ -1499,6 +1952,7 @@ $('newsForm').addEventListener('submit', async e => {
     { rx:/\b(avanzados?)\b/, s:'#talleres-avanzados' },
     { rx:/\b(complementarios?)\b/, s:'#complementarios' },
     { rx:/\b(personalizados?|a\s*medida|nivelaci[oó]n|refuerzos?)\b/, s:'#personalizado' },
+    { rx:/\b(colabora|colaborar|jurado|jurados|par\s*evaluador|evaluador|voluntario|dictar\s*taller)\b/, s:'#colabora' },
     { rx:/\b(editorial)\b/, s:'#editorial' },
     { rx:/\b(convocatorias?|concursos?|revistas?)\b/, s:'#convocatorias' },
     { rx:/\b(inscripci[oó]n|inscribir|inscribirme|formulario)\b/, s:'#inscripcion' },
@@ -1517,7 +1971,7 @@ $('newsForm').addEventListener('submit', async e => {
 
   const say = (txt, color) => { vBox.classList.add('on'); vText.textContent = txt; vDot.style.background = color || '#4ade80'; };
   const hideSay = () => vBox.classList.remove('on');
-  const listening = () => say('Te escucho. Di «audio» o el nombre de una sección.');
+  const listening = () => say('Audio activo. Cuando quieres que pare dices parar o cancelar audio.');
 
   window.addEventListener('wheel', () => { S.scrolling = true; clearTimeout(S.sTimer); S.sTimer = setTimeout(()=>S.scrolling=false, 4500); }, { passive:true });
   window.addEventListener('touchmove', () => { S.scrolling = true; clearTimeout(S.sTimer); S.sTimer = setTimeout(()=>S.scrolling=false, 4500); }, { passive:true });
@@ -1578,7 +2032,7 @@ $('newsForm').addEventListener('submit', async e => {
     clearHi(); clearInterval(S.dog);
     if (S.mic) listening(); else hideSay();
     track('voz_detener');
-    if (S.mic && !S.recOn) setTimeout(startRec, 150);
+    if (S.mic && !S.recOn && document.visibilityState === 'visible') setTimeout(startRec, 900);
   }
 
   function next(i, gen){
@@ -1633,8 +2087,8 @@ $('newsForm').addEventListener('submit', async e => {
     if (/\b(pausa|pausar)\b/.test(t) && S.playing && !S.paused) return togglePause();
     if (/\b(continuar|continúa|continua|sigue|reanudar)\b/.test(t) && S.playing && S.paused) return togglePause();
     if (/\b(ayuda|opciones|qué puedo decir|que puedo decir)\b/.test(t))
-      return speak('Puedes decir: audio, para que lea toda la página. El nombre de una sección, como precios, editorial, donaciones o inscripción. Un taller con su nivel, como dibujo sin costo o teatro avanzado. Abre la editorial, para abrir esa página. Asistente, para preguntar. WhatsApp, para escribirnos. Y detener, para parar.');
-    if (/\b(whatsapp|wasap|wpp|whats\s*app)\b/.test(t)) return speak('Abriendo WhatsApp.', () => { window.open('https://wa.me/' + CONFIG.WHATSAPP + '?text=Hola%20Fundaci%C3%B3n%20Artes%20Multicap%2C%20quiero%20informaci%C3%B3n.', '_blank'); track('click_whatsapp', {lugar:'voz'}); });
+      return speak('Puedes decir: audio, para que lea toda la página. El nombre de una sección, como precios, editorial, donaciones, colabora o inscripción. Un taller con su nivel, como dibujo sin costo o teatro avanzado. Abre la editorial, para abrir esa página. Asistente, para preguntar. WhatsApp, para escribirnos. Y detener, para parar.');
+    if (/\b(abre|abrir|escribir|escríbeme|contactar|llamar|manda).{0,30}(whatsapp|wasap|wpp)\b/i.test(t) || /\b(whatsapp|wasap|wpp).{0,30}(abre|abrir|escribir|contactar)\b/i.test(t)) return speak('Abriendo WhatsApp.', () => { window.open('https://wa.me/' + CONFIG.WHATSAPP + '?text=Hola%20Fundaci%C3%B3n%20Artes%20Multicap%2C%20quiero%20informaci%C3%B3n.', '_blank'); track('click_whatsapp', {lugar:'voz'}); });
     if (/\b(asistente|chat\s*bot|chatbot|multi)\b/.test(t)) return speak('Abriendo el asistente. Escribe tu pregunta.', () => window.chatbotOpen && window.chatbotOpen());
     const abre = /\b(abrir|abre|ir|entrar)\b/.test(t);
     if (abre && /\beditorial\b/.test(t)) return openLink('https://editorialartesmulticap.netlify.app/', 'la editorial');
@@ -1650,7 +2104,13 @@ $('newsForm').addEventListener('submit', async e => {
       if (level) return readWorkshop(found.charAt(0).toUpperCase() + found.slice(1), level);
     }
     for (const n of NAV) if (n.rx.test(t)){ track('voz_seccion', {seccion:n.s}); return readSection(n.s); }
-    if (/\b(audio|escuchar|leer|lectura|empezar)\b/.test(t)){ if (!S.playing){ track('voz_leer_todo'); readAll(); } return; }
+    if (/\b(audio|escuchar|leer|lectura|empezar)\b/.test(t)){
+      if (!S.playing){
+        track('voz_leer_todo');
+        speak('Audio activo. Cuando quieres que pare dices parar o cancelar audio.', () => readAll());
+      }
+      return;
+    }
     if (/\b(reiniciar|desde el principio|repetir)\b/.test(t)) return readAll();
   }
 
@@ -1684,7 +2144,10 @@ $('newsForm').addEventListener('submit', async e => {
     };
     r.onend = () => {
       S.recOn = false;
-      if (S.mic){ clearTimeout(S.restartTimer); S.restartTimer = setTimeout(startRec, 150); }
+      if (S.mic && document.visibilityState === 'visible'){
+        clearTimeout(S.restartTimer);
+        S.restartTimer = setTimeout(startRec, 900);
+      }
     };
     S.rec = r;
   }
@@ -1700,7 +2163,7 @@ $('newsForm').addEventListener('submit', async e => {
     } catch(e){
       S.recOn = false;
       clearTimeout(S.restartTimer);
-      S.restartTimer = setTimeout(startRec, 400);
+      S.restartTimer = setTimeout(startRec, 1200);
     }
   }
 
@@ -1709,12 +2172,7 @@ $('newsForm').addEventListener('submit', async e => {
     S.welcomeDone = true; S.welcomed = true;
     speak(
       'Te damos la bienvenida a la Fundación Artes Multicap. ' +
-      'Di audio y te leo la página. ' +
-      'Para una sección, di su nombre: talleres sin costo, precios, editorial, donaciones o inscripción. ' +
-      'Para abrir una página, di: abre la editorial. ' +
-      'Para preguntar, di: asistente. ' +
-      'Para escribirnos, di: WhatsApp. ' +
-      'Di detener para parar. Te escucho.',
+      'Si necesitas el audio di audio y te leo la página o la sección que necesites.',
       () => startRec()
     );
   }
@@ -1726,7 +2184,9 @@ $('newsForm').addEventListener('submit', async e => {
     if (!S.welcomeDone) welcome(); else startRec();
   }
 
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
   window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
     setTimeout(() => {
       try { synth.resume(); } catch(e){}
       if (!S.welcomeDone) ensureStarted();
@@ -1763,6 +2223,50 @@ $('newsForm').addEventListener('submit', async e => {
   window.addEventListener('beforeunload', () => {
     try { synth.cancel(); } catch(e){}
     try { if (S.rec) S.rec.abort(); } catch(e){}
+  });
+})();
+
+/* =========================================================
+   FORMULARIO DE COLABORADORES (ENVÍO A WHATSAPP)
+   ========================================================= */
+(function(){
+  const form = document.getElementById('collabForm');
+  if (!form) return;
+  const status = document.getElementById('collabStatus');
+
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    status.className = 'status-msg';
+    status.textContent = '';
+
+    const nombre = document.getElementById('collabNombre').value.trim();
+    const email = document.getElementById('collabEmail').value.trim();
+    const area = document.getElementById('collabArea').value.trim();
+    const exp = document.getElementById('collabExp').value.trim();
+    const portafolio = document.getElementById('collabPortafolio').value.trim();
+    const colabRadio = document.querySelector('input[name="colaboracion"]:checked');
+
+    if (!nombre) { status.className='status-msg bad'; status.textContent='Por favor escribe tu nombre completo.'; return; }
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) { status.className='status-msg bad'; status.textContent='Escribe un correo válido, por ejemplo nombre@correo.com.'; return; }
+    if (!colabRadio) { status.className='status-msg bad'; status.textContent='Elige cómo te gustaría colaborar.'; return; }
+
+    const lineas = [
+      'Hola Fundación Artes Multicap, quiero hacer parte como colaborador.',
+      '',
+      'Nombre: ' + nombre,
+      'Correo: ' + email,
+      'Cómo quiero colaborar: ' + colabRadio.value
+    ];
+    if (area) lineas.push('Área de experiencia: ' + area);
+    if (exp) lineas.push('', 'Sobre mi experiencia o propuesta:', exp);
+    if (portafolio) lineas.push('', 'Portafolio / redes: ' + portafolio);
+
+    const texto = lineas.join('\n');
+    track('colaborador_formulario', {tipo: colabRadio.value});
+
+    window.open('https://wa.me/' + CONFIG.WHATSAPP + '?text=' + encodeURIComponent(texto), '_blank', 'noopener');
+    status.className = 'status-msg ok';
+    status.textContent = 'Listo. Se abrió WhatsApp con tu solicitud. Solo falta que presiones enviar.';
   });
 })();
 
