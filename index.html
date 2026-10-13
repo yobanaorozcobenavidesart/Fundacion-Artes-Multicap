@@ -1002,7 +1002,7 @@ details.acc ul { text-align: left; }
       <li><h3><a href="https://www.amazon.com/stores/YOBANA-OROZCO-BENAVIDES/author/B0CZG5RS1T/allbooks?ccs_id=04c41120-2042-430a-bb97-ad59933455d2" target="_blank" rel="noopener">Libros publicados</a></h3></li>
       <li><h3><a href="https://zenodo.org/records/23193382" target="_blank" rel="noopener">Obra con DOI abierto</a></h3></li>
       <li><h3><a href="https://www.cali.gov.co/loader.php?lServicio=Tools2&lTipo=descargas&lFuncion=visorpdf&file=https%3A%2F%2Fwww.cali.gov.co%2Floader.php%3FlServicio%3DTools2%26lTipo%3Ddescargas%26lFuncion%3DexposeDocument%26idFile%3DcpE7BqemevJbpqAyI2C7ejo5clgwS093PQ%26tmp%3D15925b086a990c81359f61e1568894d9%26urlDeleteFunction%3Dhttps%253A%252F%252Fwww.cali.gov.co%252Floader.php%253FlServicio%253DTools2%2526lTipo%253Ddescargas%2526lFuncion%253DdeleteTemporalFile%2526tmp%253D15925b086a990c81359f61e1568894d9&pdf=1&tmp=15925b086a990c81359f61e1568894d9&fileItem=cpE7BqemevJbpqAyI2C7ejo5clgwS093PQ" target="_blank" rel="noopener">Estímulos y convocatorias</a></h3></li>
-      <li><h3><a href="https://yobanaorozcoartista.bio.link" target="_blank" rel="noopener">Portafolio de artista</a></h3></li>
+      <li><h3><a href="https://portafolioprofesionalyobanaorozcobena.netlify.app/#contacto" target="_blank" rel="noopener">Portafolio de artista</a></h3></li>
     </ul>
   </div>
 </section>
@@ -2152,8 +2152,6 @@ $('newsForm').addEventListener('submit', async e => {
     };
     r.onend = () => {
       S.recOn = false;
-      // En móvil NO reiniciar solo (evita el pitido constante).
-      // En PC sí se reinicia para que funcione sin que toques el botón.
       if (!IS_MOBILE && S.mic && S.micEnabled && document.visibilityState === 'visible'){
         clearTimeout(S.restartTimer);
         S.restartTimer = setTimeout(startRec, 900);
@@ -2188,7 +2186,6 @@ $('newsForm').addEventListener('submit', async e => {
       'Te damos la bienvenida a la Fundación Artes Multicap. ' +
       'Si necesitas el audio di audio y te leo la página o la sección que necesites.',
       () => {
-        // Al terminar la bienvenida, si ya hay gesto de usuario, activamos el micrófono
         if (S.micEnabled) startRec();
       }
     );
@@ -2200,7 +2197,6 @@ $('newsForm').addEventListener('submit', async e => {
     try { synth.resume(); } catch(e){}
     S.micEnabled = true;
     if (!S.welcomeDone) welcome();
-    // Arrancamos el micrófono en cuanto hay gesto de usuario (una sola vez)
     if (!S.mic && !S.recOn) startRec();
   }
 
