@@ -1,0 +1,29 @@
+# Fundación Artes Multicap
+
+> Fundación artística, cultural y educativa sin ánimo de lucro de Colombia. Ofrece talleres de arte, escritura y tecnología para niñas, niños, jóvenes y adultos, con un nivel inicial sin costo en cada especialidad, además de editorial y convocatorias internacionales con ISSN.
+
+## Datos clave
+- País: Colombia. Alcance: Colombia y Latinoamérica. Hora de atención: Colombia (GMT-5).
+- Públicos: niñas y niños (8 a 12 años), jóvenes (13 a 17 años) y adultos (18 en adelante). Las personas menores participan con autorización de su acudiente.
+- Modalidades: virtual (desde 1 persona), presencial (desde 10 personas) e híbrida.
+- Certificado: al completar el 80% de las sesiones.
+- Pagos: Nequi, PayPal, Mercado Pago o Western Union, en pesos colombianos, antes del inicio.
+- Fundadora y docente: Yobana Orozco Benavides.
+
+## Talleres por área (cada especialidad tiene nivel sin costo, intermedio y avanzado según el caso)
+- Dibujo: fundamentos, manga y dibujo digital.
+- Pintura: fundamentos y color, acuarela, acrílico y óleo.
+- Producción digital: Microsoft Office, inteligencia artificial y programación.
+- Teatro (actuación, dramaturgia, producción y teatro y sociedad), Literatura, Guion, Revistas, Danza (fundamentos y urbana), Arte reciclado, Inglés y Lengua de señas colombiana (solo nivel sin costo).
+- Convocatorias y proyectos: convocatorias, derechos de autor e IA, formulación de proyectos.
+
+## Niveles y precios
+- Sin costo: 3 sesiones adaptadas a cada edad.
+- Intermedio y avanzado: paquetes de 7 u 8 talleres de 2 horas con proyecto final, desde $380.000 COP.
+- Taller individual de 2 horas: $60.000 COP.
+- Descuentos: estratos 1 y 2, 50%; estratos 3 y 4, 30% en paquetes de 2 o más talleres; estratos 5 y 6, precio pleno.
+
+## Enlaces
+- Sitio web: https://fundacion-artes-multicap.netlify.app/
+- Editorial: https://editorialartesmulticap.netlify.app/
+- Contacto: artesmulticap2024@gmail.com, WhatsApp +57 311 355 5949
